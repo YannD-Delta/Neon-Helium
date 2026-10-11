@@ -34,25 +34,10 @@
                     <DockPanel>
                         <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="18" Height="18"
                                  VerticalAlignment="Center"
+                                 Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
                                  RenderOptions.ClearTypeHint="Enabled" RenderOptions.BitmapScalingMode="Fant">
-                            <Grid>
-                                <ContentControl x:Name="LinkFavicon"
-                                                Content="{Binding Url, Converter={PluginConverter Plugin=ThemeExtras, Converter=UrlToAsyncIconConverter}}"/>
-                                <!--Fallback glyph, shown when the Extras plugin is missing or provides no icon-->
-                                <TextBlock Text="&#xef71;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"
-                                           Foreground="{TemplateBinding Foreground}"
-                                           HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=LinkFavicon, Path=HasContent}" Value="True">
-                                                    <Setter Property="Visibility" Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </Grid>
+                            <ContentControl Content="{Binding Value, TargetNullValue={StaticResource LinksIcon}}"
+                                            DataContext="{Binding Url, Converter={PluginConverter Plugin=ThemeExtras, Converter=UrlToAsyncIconConverter}}"/>
                         </Viewbox>
                         <TextBlock DockPanel.Dock="Left" FontSize="{TemplateBinding FontSize}"
                                    Foreground="{TemplateBinding Foreground}"
@@ -169,25 +154,10 @@
                             <DockPanel>
                                 <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="18" Height="18"
                                          VerticalAlignment="Center"
+                                         Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
                                          RenderOptions.ClearTypeHint="Enabled" RenderOptions.BitmapScalingMode="Fant">
-                                    <Grid>
-                                        <ContentControl x:Name="LinkFavicon"
-                                                        Content="{Binding Url, Converter={PluginConverter Plugin=ThemeExtras, Converter=UrlToAsyncIconConverter}}"/>
-                                        <!--Fallback glyph, shown when the Extras plugin is missing or provides no icon-->
-                                        <TextBlock Text="&#xef71;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"
-                                                   Foreground="{TemplateBinding Foreground}"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock.Style>
-                                                <Style TargetType="TextBlock">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ElementName=LinkFavicon, Path=HasContent}" Value="True">
-                                                            <Setter Property="Visibility" Value="Collapsed" />
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
-                                    </Grid>
+                                    <ContentControl Content="{Binding Value, TargetNullValue={StaticResource LinksIcon}}"
+                                                    DataContext="{Binding Url, Converter={PluginConverter Plugin=ThemeExtras, Converter=UrlToAsyncIconConverter}}"/>
                                 </Viewbox>
                                 <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="Medium"
                                            Foreground="{TemplateBinding Foreground}"
