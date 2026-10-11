@@ -111,6 +111,15 @@
     <sys:Double x:Key="SectionHeaderMinHeight">34</sys:Double>
     <sys:Double x:Key="SectionContainerMinHeight">45</sys:Double>
     <sys:Double x:Key="HeaderButtonSize">32</sys:Double>
+    <sys:Double x:Key="HeroActionButtonHeight">40</sys:Double>
+    <sys:Double x:Key="HeroActionButtonWidth">252</sys:Double>
+    <sys:Double x:Key="HeroMinHeight">400</sys:Double>
+    <sys:Double x:Key="HeroShadeOpacity">0.65</sys:Double>
+    <sys:Boolean x:Key="HeroShowInfoLine">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowReleaseDate">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowPlatforms">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowSource">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowGenres">True</sys:Boolean>
     <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
     <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
     <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>
@@ -275,6 +284,9 @@
     <SolidColorBrush x:Key="PlayersCountDetailsViewForegroundBrush" Color="#99ffffff" />
     <SolidColorBrush x:Key="PlayersCountGridViewForegroundBrush" Color="#7cc53f" />
 
+    <SolidColorBrush x:Key="HeroSecondaryButtonBackgroundBrush" Color="#66101418" />
+    <SolidColorBrush x:Key="HeroSecondaryButtonHoverBackgroundBrush" Color="#99252C36" />
+    <SolidColorBrush x:Key="HeroSecondaryButtonBorderBrush" Color="#33FFFFFF" />
     <SolidColorBrush x:Key="DetailsViewBannerPanelBorderBrush" Color="#4Dffffff" />
     <SolidColorBrush x:Key="DetailsViewBannerPanelBackgroundBrush" Color="#4D000000" />
 

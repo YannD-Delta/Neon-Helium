@@ -27,6 +27,7 @@ Helium-Neon exposes its settings through the [ThemeModifier](https://playnite.li
 - **Colors:** accent, text, controls, play button, details and grid views, game list, top panel, menus and inputs.
 - **Sections:** show or hide each extension panel and each header item, in both the Grid and the Details views.
 - **Order:** reorder the extension panels. Each panel needs its own number (0 to 18); two panels with the same number overlap. In the Details view the order applies within each column.
+- **Hero header:** the Details view header borrows Dune Rev's look: a darkened game artwork with info chips (release date, platforms, source, genres) and a Play / Edit / Favorite button row. Height, shade, button size and each chip can be changed.
 - **Sizes:** header buttons, section headers, logo limits, play button, top panel, sidebar, link icons, panel heights and text sizes.
 
 ## Development

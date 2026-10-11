@@ -435,4 +435,159 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <!-- Dune-inspired hero actions. They only use keys defined in Constants.xaml. -->
+    <Style x:Key="HeroPlayButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource PlayButtonBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="12,0,44,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadius}" />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Grid" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource PlayButtonIsMouseOverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroContextButton" TargetType="{x:Type Button}" BasedOn="{StaticResource HeroPlayButton}">
+        <Setter Property="Background" Value="{DynamicResource ContextButtonBackgroundBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ContextButtonIsMouseOverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroMoreActionsButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource MoreButtonInstalledBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="#55FFFFFF" />
+        <Setter Property="BorderThickness" Value="1,0,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Part" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="0,3,3,0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Part" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource MoreButtonInstalledIsMouseOverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroIconActionButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroFavoriteToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Part" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <TextBlock x:Name="Icon" Text="&#xe734;" FontSize="18" FontWeight="Normal"
+                                   FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" Property="Text" Value="&#xe735;" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                            <Setter TargetName="Part" Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroInfoChip" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="9,2,9,3" />
+        <Setter Property="Margin" Value="0,0,8,6" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+    </Style>
+
+    <Style x:Key="HeroInfoChipText" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSize}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
 </ResourceDictionary>

@@ -114,7 +114,16 @@
                                 </Grid>
 
                                 <StackPanel Grid.Row="0" Name="DetailsTop" VerticalAlignment="Top">
-                                    <Grid Name="HeaderImagesGrid" Height="{Settings CalculatedGameDetailsIndentation}" MinHeight="310">
+                                    <Grid Name="HeaderImagesGrid" Height="{Settings CalculatedGameDetailsIndentation}" MinHeight="{DynamicResource HeroMinHeight}">
+                                        <!-- Dune-style shade so the actions stay readable on bright artwork -->
+                                        <Border Background="Black" Opacity="{DynamicResource HeroShadeOpacity}" IsHitTestVisible="False">
+                                            <Border.OpacityMask>
+                                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                                                    <GradientStop Color="White" Offset="0" />
+                                                    <GradientStop Color="Transparent" Offset="0.55" />
+                                                </LinearGradientBrush>
+                                            </Border.OpacityMask>
+                                        </Border>
                                         <Border Panel.ZIndex="99">
                                             <Border.Style>
                                                 <Style TargetType="Border">
@@ -184,6 +193,117 @@
                                                     </TextBlock.Effect>
                                                 </TextBlock>
                                             </Border>
+                                            <!-- Hero footer (Dune): info chips and actions -->
+                                            <Grid x:Name="HeroFooter" Margin="0,14,0,0" HorizontalAlignment="Left">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowInfoLine}">
+                                                    <WrapPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowReleaseDate}">
+                                                            <Border>
+                                                        <Border.Style>
+                                                            <Style TargetType="Border" BasedOn="{StaticResource HeroInfoChip}">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Game.ReleaseDate}" Value="{x:Null}">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Game.ReleaseDate}" />
+                                                    </Border>
+                                                        </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowPlatforms}">
+                                                            <ItemsControl ItemsSource="{Binding Game.Platforms}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <WrapPanel Orientation="Horizontal" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Border Style="{StaticResource HeroInfoChip}">
+                                                                            <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                        </Border>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowSource}">
+                                                            <Border>
+                                                        <Border.Style>
+                                                            <Style TargetType="Border" BasedOn="{StaticResource HeroInfoChip}">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Game.Source}" Value="{x:Null}">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                        <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Game.Source.Name}" />
+                                                    </Border>
+                                                        </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowGenres}">
+                                                            <ItemsControl ItemsSource="{Binding Game.Genres}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <WrapPanel Orientation="Horizontal" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Border Style="{StaticResource HeroInfoChip}">
+                                                                            <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                        </Border>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </Grid>
+                                                    </WrapPanel>
+                                                </Grid>
+                                                <Grid x:Name="HeroActions" Grid.Row="1" HorizontalAlignment="Left" MinWidth="200"
+                                                      Width="{DynamicResource HeroActionButtonWidth}">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="0">
+                                                        <Button Name="PART_ButtonPlayAction" Style="{DynamicResource HeroPlayButton}" />
+                                                        <Button Name="PART_ButtonContextAction" Style="{DynamicResource HeroContextButton}" />
+                                                        <Button Name="PART_ButtonMoreActions" HorizontalAlignment="Right" Content="&#xe228;">
+                                                            <Button.Style>
+                                                                <Style TargetType="Button" BasedOn="{StaticResource HeroMoreActionsButton}">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding ElementName=PART_ButtonContextAction, Path=Visibility}" Value="Visible">
+                                                                            <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledBackgroundBrush}" />
+                                                                        </DataTrigger>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding ElementName=PART_ButtonContextAction, Path=Visibility}" Value="Visible" />
+                                                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledIsMouseOverBackgroundBrush}" />
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Button.Style>
+                                                        </Button>
+                                                    </Grid>
+                                                    <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowEditButton}">
+                                                        <Button x:Name="PART_ButtonEditGame" Margin="8,0,0,0" Focusable="False" Content="&#xe70f;"
+                                                                ToolTip="{DynamicResource LOCEditGame}" Style="{DynamicResource HeroIconActionButton}" />
+                                                    </Grid>
+                                                    <Grid Grid.Column="2" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowFavoriteButton}">
+                                                        <ToggleButton Name="GameFavoriteToggleButton" Margin="8,0,0,0" Focusable="False"
+                                                                      Style="{DynamicResource HeroFavoriteToggle}"
+                                                                      Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
+                                                                      IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
                                         </StackPanel>
                                         <StackPanel Margin="20,20,0,0"
                                                     HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -259,13 +379,6 @@
                                                         </Setter>
                                                     </Style>
                                                 </DockPanel.Resources>
-                                                <DockPanel HorizontalAlignment="Left"  VerticalAlignment="Center"
-                                                           Margin="0,0,10,0" DockPanel.Dock="Left">
-                                                    <Button Name="PART_ButtonPlayAction" Style="{DynamicResource PlayButton}" />
-                                                    <Button Name="PART_ButtonContextAction" Style="{DynamicResource ContextButton}" />
-                                                    <Button Name="PART_ButtonMoreActions" Style="{DynamicResource MoreActionsButton}"/>
-                                                </DockPanel>
-
                                                 <DockPanel DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,0,0">
                                                     <ContentControl x:Name="PlayState_GameStateSwitchControl" Margin="10,0,0,0"
                                                                     Visibility="{PluginSettings Plugin=PlayState, Path=IsControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -276,17 +389,8 @@
                                                             </Style>
                                                         </ContentControl.Resources>
                                                     </ContentControl>
-                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowEditButton}">
-                                                    <Button x:Name="PART_ButtonEditGame" Focusable="False" Height="{DynamicResource HeaderButtonSize}" Width="{DynamicResource HeaderButtonSize}"
-                                                            Style="{StaticResource DetailsViewEditButton}" Margin="10,0,0,0"/>
-                                                    </Grid>
                                                     <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowInfoButton}">
                                                     <ToggleButton Name="PanelToggleButton" Margin="10,0,0,0" Focusable="False" Height="{DynamicResource HeaderButtonSize}" Width="{DynamicResource HeaderButtonSize}" Style="{DynamicResource PannelToggleButton}" IsChecked="{DynamicResource DetailsViewShowInfoPanelDefault}"/>
-                                                    </Grid>
-                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowFavoriteButton}">
-                                                    <ToggleButton Name="GameFavoriteToggleButton" Margin="10,0,0,0" Focusable="False" Height="{DynamicResource HeaderButtonSize}" Width="{DynamicResource HeaderButtonSize}" Style="{DynamicResource PannelFavoriteToggleButton}"
-                                                                  Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
-                                                                  IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}"/>
                                                     </Grid>
                                                 </DockPanel>
                                                 
