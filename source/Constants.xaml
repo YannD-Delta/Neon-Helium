@@ -172,6 +172,10 @@
     <sys:Boolean x:Key="HltbShowInHeaderBar">False</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowHltbProgressBar">True</sys:Boolean>
     <sys:Boolean x:Key="DemoteSectionsShownElsewhere">True</sys:Boolean>
+    <sys:Boolean x:Key="LibraryListShowHltb">True</sys:Boolean>
+    <sys:Boolean x:Key="LibraryListShowAchievements">True</sys:Boolean>
+    <sys:Boolean x:Key="GridCoverShowHltb">True</sys:Boolean>
+    <sys:Boolean x:Key="GridCoverShowAchievements">True</sys:Boolean>
     <sys:Boolean x:Key="DemoteGenresSection">True</sys:Boolean>
     <sys:Boolean x:Key="DemoteCategoriesSection">True</sys:Boolean>
     <sys:Boolean x:Key="DemoteFeaturesSection">True</sys:Boolean>
@@ -184,6 +188,13 @@
     <sys:Boolean x:Key="HeroChipsBreakBeforeHltb">False</sys:Boolean>
     <sys:Boolean x:Key="HeroChipsBreakBeforeAchievements">False</sys:Boolean>
     <sys:Boolean x:Key="HeroChipsBreakBeforeActivity">True</sys:Boolean>
+    <!-- Chip group order (Double so live sliders can write it; each group shows in the slot equal to its value) -->
+    <sys:Double x:Key="HeroChipsOrderGame">0</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderClassification">1</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderStudio">2</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderHltb">3</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderAchievements">4</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderActivity">5</sys:Double>
     <sys:Boolean x:Key="DetailsViewExpandGenres">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandCategories">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandFeatures">True</sys:Boolean>
@@ -202,6 +213,10 @@
     <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
     <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
     <sys:String x:Key="LOCHNDQuickTooltip">Quick settings</sys:String>
+    <sys:String x:Key="LOCHNDWorkshopTooltip">Theme workshop</sys:String>
+    <sys:String x:Key="LOCHNDWorkshopTitle">Theme workshop</sys:String>
+    <sys:String x:Key="LOCHNDWorkshopIntro">Changes apply while you drag or click, and are kept by Theme Options. Styles (global style, buttons, chips, accent color) are drop-down lists in the Theme Options settings.</sys:String>
+    <sys:String x:Key="LOCHNDWorkshopColors">Colors</sys:String>
     <sys:String x:Key="LOCHNDQuickShowIn">Show in</sys:String>
     <sys:String x:Key="LOCHNDQuickSectionGroup">Section</sys:String>
     <sys:String x:Key="LOCHNDQuickThisSection">This section</sys:String>
@@ -213,6 +228,7 @@
     <sys:String x:Key="LOCHNDQuickChipsTitle">Chips on the artwork</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsShown">Chips shown</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsBreaks">New line before</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsOrder">Group order (0 = first)</sys:String>
     <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
     <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
     <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Install the Theme Options extension to change these settings here.</sys:String>

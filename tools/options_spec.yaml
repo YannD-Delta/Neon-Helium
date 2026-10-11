@@ -16,6 +16,10 @@
 # slider values as text and a decimal comma would break the generated resources.
 
 strings:
+  LOCHNDWorkshopTooltip: {en: Theme workshop, fr: Atelier du thème}
+  LOCHNDWorkshopTitle: {en: Theme workshop, fr: Atelier du thème}
+  LOCHNDWorkshopIntro: {en: 'Changes apply while you drag or click, and are kept by Theme Options. Styles (global style, buttons, chips, accent color) are drop-down lists in the Theme Options settings.', fr: 'Les changements s''appliquent pendant que vous glissez ou cliquez, et Theme Options les garde. Les styles (style global, boutons, puces, couleur d''accent) sont des menus déroulants dans les réglages de Theme Options.'}
+  LOCHNDWorkshopColors: {en: Colors, fr: Couleurs}
   LOCHNDChipAchievements: {en: Achievements, fr: Succès}
   LOCHNDChipScore: {en: Score, fr: Note}
   LOCHNDChipHltbMain: {en: Main, fr: Histoire}
@@ -40,6 +44,7 @@ strings:
   LOCHNDQuickChipsTitle: {en: 'Chips on the artwork', fr: 'Puces sur l''image'}
   LOCHNDQuickChipsShown: {en: 'Chips shown', fr: 'Puces affichées'}
   LOCHNDQuickChipsBreaks: {en: 'New line before', fr: 'Retour à la ligne avant'}
+  LOCHNDQuickChipsOrder: {en: 'Group order (0 = first)', fr: 'Ordre des groupes (0 = en premier)'}
   LOCHNDQuickPluginSettings: {en: 'Extension settings', fr: 'Paramètres de l''extension'}
   LOCHNDQuickThemeSettings: {en: 'All theme settings', fr: 'Tous les réglages du thème'}
   LOCHNDQuickNeedsThemeOptions: {en: 'Install the Theme Options extension to change these settings here.', fr: 'Installez l''extension Theme Options pour modifier ces réglages ici.'}
@@ -375,8 +380,18 @@ variables:
   - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
   - {key: HeroChipsBreakBeforeAchievements, en: New line before achievements, fr: Retour à la ligne avant les succès}
   - {key: HeroChipsBreakBeforeActivity, en: New line before GameActivity, fr: Retour à la ligne avant GameActivity}
+  - {key: HeroChipsOrderGame, range: [0, 5], en: 'Order: date, platforms, source', fr: 'Ordre : date, plateformes, source'}
+  - {key: HeroChipsOrderClassification, range: [0, 5], en: 'Order: genres, categories, features, tags', fr: 'Ordre : genres, catégories, fonctionnalités, étiquettes'}
+  - {key: HeroChipsOrderStudio, range: [0, 5], en: 'Order: developers, status, score', fr: 'Ordre : développeurs, statut, note'}
+  - {key: HeroChipsOrderHltb, range: [0, 5], en: 'Order: HowLongToBeat', fr: 'Ordre : HowLongToBeat'}
+  - {key: HeroChipsOrderAchievements, range: [0, 5], en: 'Order: achievements', fr: 'Ordre : succès'}
+  - {key: HeroChipsOrderActivity, range: [0, 5], en: 'Order: GameActivity', fr: 'Ordre : GameActivity'}
   - {key: HltbShowOnCover, en: HowLongToBeat time on the cover, fr: Durée HowLongToBeat sur la pochette}
   - {key: AchievementsShowOnCover, en: Achievements on the cover, fr: Succès sur la pochette}
+  - {key: LibraryListShowHltb, en: HowLongToBeat time in the game list, fr: Durée HowLongToBeat dans la liste des jeux}
+  - {key: LibraryListShowAchievements, en: Achievements in the game list, fr: Succès dans la liste des jeux}
+  - {key: GridCoverShowHltb, en: HowLongToBeat time on Grid view covers, fr: Durée HowLongToBeat sur les jaquettes de la vue Grille}
+  - {key: GridCoverShowAchievements, en: Achievements on Grid view covers, fr: Succès sur les jaquettes de la vue Grille}
 
   - header: HeaderBar
     en: Details view - header bar
@@ -699,3 +714,69 @@ colors:
   - [ProgressBarBackgroundBrush, 'Progress bar track']
   - [ThumbBackgroundBrush, 'Scroll bar thumb']
   - [ThumbIsMouseOverBackgroundBrush, 'Scroll bar thumb hovered']
+
+# Tooltips: shown in the theme workshop and in Theme Options (as the variable Description).
+tips:
+  HeroMinHeight: {en: 'Minimum height of the artwork header at the top of the Details view.', fr: 'Hauteur minimale de l''en-tête avec l''image, en haut de la vue Détails.'}
+  HeroActionButtonWidth: {en: 'Total width of the Play, Edit and Favorite row.', fr: 'Largeur totale de la rangée Jouer, Modifier et Favori.'}
+  HeroActionButtonHeight: {en: 'Height of the Play button and of the square buttons next to it.', fr: 'Hauteur du bouton Jouer et des boutons carrés à côté.'}
+  GameLogoMaxWidth: {en: 'Largest width of the game logo (Extra Metadata Loader).', fr: 'Largeur maximale du logo du jeu (Extra Metadata Loader).'}
+  GameLogoMaxHeight: {en: 'Largest height of the game logo (Extra Metadata Loader).', fr: 'Hauteur maximale du logo du jeu (Extra Metadata Loader).'}
+  DetailsViewShowEditButton: {en: 'Pencil button that opens the game editor.', fr: 'Bouton crayon qui ouvre l''édition du jeu.'}
+  DetailsViewShowFavoriteButton: {en: 'Star button that adds or removes the game from favorites. Needs ThemeExtras.', fr: 'Bouton étoile pour ajouter ou retirer le jeu des favoris. Demande ThemeExtras.'}
+  HeroShowSteamShortcuts: {en: 'Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.', fr: 'Bouton vers le client, le magasin, la communauté et les guides Steam. Demande Steam Shortcuts.'}
+  HeroShowUpdateStatus: {en: 'Dot that shows when a Steam or Epic update is available. Needs Game Update Status.', fr: 'Pastille qui signale une mise à jour Steam ou Epic. Demande Game Update Status.'}
+  DetailsViewAllowUseOfLogos: {en: 'Shows the game logo instead of its name when Extra Metadata Loader has one.', fr: 'Affiche le logo du jeu à la place de son nom quand Extra Metadata Loader en a un.'}
+  DetailsViewDisplayGameNameIfLogoVisible: {en: 'Keeps the game name under the logo.', fr: 'Garde le nom du jeu sous le logo.'}
+  HeroShowInfoLine: {en: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.', fr: 'Les puces sous le titre (date, plateformes, genres, durées...). L''engrenage au début de la ligne règle chaque puce.'}
+  HeroInfoLineMaxWidth: {en: 'Width after which the chips wrap to a new line.', fr: 'Largeur au-delà de laquelle les puces passent à la ligne.'}
+  DetailsViewShowHeaderBar: {en: 'The bar under the artwork with the last played date, time played and completion status.', fr: 'La barre sous l''image avec la dernière partie, le temps de jeu et le statut.'}
+  DetailsViewShowLastPlayed: {en: 'Date of the last session.', fr: 'Date de la dernière session.'}
+  DetailsViewShowPlayTime: {en: 'Total time played.', fr: 'Temps de jeu total.'}
+  DetailsViewShowCompletionStatus: {en: 'Completion status, which ThemeExtras lets you change from here.', fr: 'Statut de complétion, modifiable ici avec ThemeExtras.'}
+  DetailsViewShowAchievementsSummary: {en: 'Unlocked achievements with a progress bar. Needs PlayniteAchievements.', fr: 'Succès débloqués avec une barre de progression. Demande PlayniteAchievements.'}
+  HltbShowInHeaderBar: {en: 'HowLongToBeat main story time in the bar.', fr: 'Durée HowLongToBeat de l''histoire dans la barre.'}
+  DetailsViewShowUserRating: {en: 'Your rating as clickable stars. Needs ThemeExtras.', fr: 'Votre note en étoiles cliquables. Demande ThemeExtras.'}
+  DetailsViewShowInfoButton: {en: 'Button that shows or hides the information panel (cover, description, details).', fr: 'Bouton qui affiche ou masque le panneau d''informations (pochette, description, détails).'}
+  HeaderButtonSize: {en: 'Size of the round buttons in the header bar.', fr: 'Taille des boutons ronds de la barre d''en-tête.'}
+  HltbShowOnCover: {en: 'HowLongToBeat main story time in a corner of the cover.', fr: 'Durée HowLongToBeat de l''histoire dans un coin de la pochette.'}
+  AchievementsShowOnCover: {en: 'Unlocked and total achievements in a corner of the cover.', fr: 'Succès débloqués et total dans un coin de la pochette.'}
+  LibraryListShowHltb: {en: 'HowLongToBeat time at the end of each game in the list. Turn on "view item" in the HowLongToBeat settings.', fr: 'Durée HowLongToBeat au bout de chaque jeu de la liste. Activez l''élément de vue dans les paramètres de HowLongToBeat.'}
+  LibraryListShowAchievements: {en: 'Unlocked and total achievements at the end of each game in the list. Can slow down very large libraries.', fr: 'Succès débloqués et total au bout de chaque jeu de la liste. Peut ralentir les très grandes bibliothèques.'}
+  GridCoverShowHltb: {en: 'HowLongToBeat time on each cover of the Grid view.', fr: 'Durée HowLongToBeat sur chaque jaquette de la vue Grille.'}
+  GridCoverShowAchievements: {en: 'Achievements on each cover of the Grid view.', fr: 'Succès sur chaque jaquette de la vue Grille.'}
+  DemoteSectionsShownElsewhere: {en: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.', fr: 'Une section dont l''info est déjà affichée en haut se replie en bas de sa colonne. Chaque section peut s''en exclure dans son engrenage.'}
+  DetailsViewShowInfoPanelDefault: {en: 'Information panel (cover, description, details) open when a game is selected.', fr: 'Panneau d''informations (pochette, description, détails) ouvert quand un jeu est sélectionné.'}
+  SectionHeaderMinHeight: {en: 'Height of the section titles with their fold arrow and gear.', fr: 'Hauteur des titres de section avec leur flèche et leur engrenage.'}
+  DetailsViewDescriptionWidth: {en: 'Width of the game description.', fr: 'Largeur de la description du jeu.'}
+  DetailsViewDescriptionMaxHeight: {en: 'Height after which the description scrolls.', fr: 'Hauteur au-delà de laquelle la description défile.'}
+  AchievementsDataGridMaxHeight: {en: 'Height after which the full achievements table scrolls.', fr: 'Hauteur au-delà de laquelle le tableau complet des succès défile.'}
+  LinksShowNames: {en: 'Shows the name next to each link icon. Off: icons only.', fr: 'Affiche le nom à côté de chaque icône de lien. Désactivé : icônes seules.'}
+  LinkIconSize: {en: 'Size of the link icons (favicons).', fr: 'Taille des icônes de liens (favicons).'}
+  TopPanelHeight: {en: 'Height of the bar at the top of the window.', fr: 'Hauteur de la barre en haut de la fenêtre.'}
+  ShowNavigationButtons: {en: 'Back and forward buttons. Need ThemeExtras.', fr: 'Boutons précédent et suivant. Demandent ThemeExtras.'}
+  TopPanelShowThemeSettingsButtons: {en: 'Buttons for Theme Options and ThemeModifier. Need ThemeExtras. The workshop button stays.', fr: 'Boutons vers Theme Options et ThemeModifier. Demandent ThemeExtras. Le bouton de l''atelier reste.'}
+
+# Theme workshop: popup opened from the top panel, generated into Views/TopPanel.xaml.
+# Booleans become check boxes, Doubles with a range become sliders. Changes apply while you drag.
+workshop:
+  - title: {en: Artwork header, fr: En-tête avec image}
+    items: [HeroMinHeight, HeroActionButtonWidth, HeroActionButtonHeight, GameLogoMaxWidth, GameLogoMaxHeight,
+            DetailsViewShowEditButton, DetailsViewShowFavoriteButton, HeroShowSteamShortcuts, HeroShowUpdateStatus,
+            DetailsViewAllowUseOfLogos, DetailsViewDisplayGameNameIfLogoVisible]
+  - title: {en: Chips, fr: Puces}
+    items: [HeroShowInfoLine, HeroInfoLineMaxWidth]
+  - title: {en: Header bar, fr: Barre d'en-tête}
+    items: [DetailsViewShowHeaderBar, DetailsViewShowLastPlayed, DetailsViewShowPlayTime, DetailsViewShowCompletionStatus,
+            DetailsViewShowAchievementsSummary, HltbShowInHeaderBar, DetailsViewShowUserRating, DetailsViewShowInfoButton, HeaderButtonSize]
+  - title: {en: Cover, fr: Pochette}
+    items: [HltbShowOnCover, AchievementsShowOnCover]
+  - title: {en: Game list and covers, fr: Liste des jeux et jaquettes}
+    items: [LibraryListShowHltb, LibraryListShowAchievements, GridCoverShowHltb, GridCoverShowAchievements]
+  - title: {en: Sections, fr: Sections}
+    items: [DemoteSectionsShownElsewhere, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
+            DetailsViewDescriptionMaxHeight, AchievementsDataGridMaxHeight]
+  - title: {en: Links, fr: Liens}
+    items: [LinksShowNames, LinkIconSize]
+  - title: {en: Top panel, fr: Barre du haut}
+    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons]

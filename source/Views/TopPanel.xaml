@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -204,7 +204,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TopPanel}">
-                    <Border Height="{DynamicResource TopPanelHeight}" BorderBrush="{DynamicResource PanelSeparatorBrush}"
+                    <Border Height="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelHeight], FallbackValue={StaticResource TopPanelHeight}, TargetNullValue={StaticResource TopPanelHeight}}" BorderBrush="{DynamicResource PanelSeparatorBrush}"
                             Background="{TemplateBinding Background}"
                             d:DesignWidth="1280"
                             d:DataContext="{x:Static DesignMainViewModel.DesignIntance}">
@@ -234,10 +234,10 @@
                                        Background="{DynamicResource TopPanelSearchBoxBackgroundBrush}"
                                        Margin="0,6,0,6" DockPanel.Dock="Left"
                                        WindowChrome.IsHitTestVisibleInChrome="True"
-                                       Width="{DynamicResource TopPanelSearchBoxWidthHelium}"
+                                       Width="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelSearchBoxWidthHelium], FallbackValue={StaticResource TopPanelSearchBoxWidthHelium}, TargetNullValue={StaticResource TopPanelSearchBoxWidthHelium}}"
                                        MaxWidth="{Settings DetailsListWitdh}" />
 
-                            <Border Tag="{DynamicResource ShowNavigationButtons}"
+                            <Border Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], FallbackValue={StaticResource ShowNavigationButtons}, TargetNullValue={StaticResource ShowNavigationButtons}}"
                                     DockPanel.Dock="Left"
                                     Visibility="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <StackPanel Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
@@ -249,7 +249,204 @@
                             </Border>
                             
                             <!-- Shortcuts to the theme settings: Theme Options (layout) and ThemeModifier (colors). Need ThemeExtras. -->
-                            <Border Tag="{DynamicResource TopPanelShowThemeSettingsButtons}"
+                            <!-- Theme workshop: live settings popup (always available) -->
+                            <!-- BEGIN generated workshop: edit tools/options_spec.yaml (workshop), then run tools/build_options.py -->
+                            <Grid VerticalAlignment="Center" Margin="{Binding ElementName=PART_ToggleNotifications, Path=Margin}">
+                                <ToggleButton x:Name="ThemeWorkshopToggle" Style="{DynamicResource TopPanelWorkshopToggleStyle}"
+                                              ToolTip="{DynamicResource LOCHNDWorkshopTooltip}" />
+                                <Popup IsOpen="{Binding IsChecked, ElementName=ThemeWorkshopToggle, Mode=TwoWay}" StaysOpen="False" AllowsTransparency="True"
+                                       PlacementTarget="{Binding ElementName=ThemeWorkshopToggle}" Placement="Bottom" VerticalOffset="6">
+                                    <Border Style="{DynamicResource QuickSettingsPanel}" Width="460" MaxWidth="460">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="760">
+                                            <StackPanel Margin="0,0,6,0">
+                                                <TextBlock Style="{DynamicResource QuickSettingsTitle}" Text="{DynamicResource LOCHNDWorkshopTitle}" />
+                                                <TextBlock Style="{DynamicResource QuickSettingsHint}" Text="{DynamicResource LOCHNDQuickNeedsThemeOptions}"
+                                                           Visibility="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" />
+                                                <TextBlock Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDWorkshopIntro}" TextWrapping="Wrap"
+                                                           Foreground="{DynamicResource TextBrushDarker}" FontSize="{DynamicResource FontSizeSmall}" Margin="0,0,0,4" />
+                                                <StackPanel IsEnabled="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed}">
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopArtworkheader}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipHeroMinHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptHeroMinHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopHeroMinHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopHeroMinHeightSlider" Minimum="300" Maximum="900" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroMinHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroMinHeight}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipHeroActionButtonWidth}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptHeroActionButtonWidth}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopHeroActionButtonWidthSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopHeroActionButtonWidthSlider" Minimum="200" Maximum="600" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroActionButtonWidth}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipHeroActionButtonHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptHeroActionButtonHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopHeroActionButtonHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopHeroActionButtonHeightSlider" Minimum="28" Maximum="72" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroActionButtonHeight}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipGameLogoMaxWidth}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptGameLogoMaxWidth}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopGameLogoMaxWidthSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopGameLogoMaxWidthSlider" Minimum="100" Maximum="2000" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource GameLogoMaxWidth}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipGameLogoMaxHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptGameLogoMaxHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopGameLogoMaxHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopGameLogoMaxHeightSlider" Minimum="50" Maximum="1000" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource GameLogoMaxHeight}}" />
+                                                    </DockPanel>
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowEditButton}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowEditButton}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowEditButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowEditButton}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowFavoriteButton}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowFavoriteButton}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowFavoriteButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowFavoriteButton}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowSteamShortcuts}" ToolTip="{DynamicResource LOCHNDTipHeroShowSteamShortcuts}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSteamShortcuts], Mode=TwoWay, FallbackValue={StaticResource HeroShowSteamShortcuts}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowUpdateStatus}" ToolTip="{DynamicResource LOCHNDTipHeroShowUpdateStatus}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowUpdateStatus], Mode=TwoWay, FallbackValue={StaticResource HeroShowUpdateStatus}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewAllowUseOfLogos}" ToolTip="{DynamicResource LOCHNDTipDetailsViewAllowUseOfLogos}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewAllowUseOfLogos], Mode=TwoWay, FallbackValue={StaticResource DetailsViewAllowUseOfLogos}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible}" ToolTip="{DynamicResource LOCHNDTipDetailsViewDisplayGameNameIfLogoVisible}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDisplayGameNameIfLogoVisible], Mode=TwoWay, FallbackValue={StaticResource DetailsViewDisplayGameNameIfLogoVisible}}" />
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopChips}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowInfoLine}" ToolTip="{DynamicResource LOCHNDTipHeroShowInfoLine}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], Mode=TwoWay, FallbackValue={StaticResource HeroShowInfoLine}}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipHeroInfoLineMaxWidth}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptHeroInfoLineMaxWidth}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopHeroInfoLineMaxWidthSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopHeroInfoLineMaxWidthSlider" Minimum="300" Maximum="2000" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroInfoLineMaxWidth}}" />
+                                                    </DockPanel>
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopHeaderbar}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowHeaderBar}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowHeaderBar}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHeaderBar], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHeaderBar}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowLastPlayed}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowLastPlayed}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowLastPlayed], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowLastPlayed}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowPlayTime}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowPlayTime}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowPlayTime], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowPlayTime}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowCompletionStatus}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowCompletionStatus}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowCompletionStatus}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowAchievementsSummary}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowAchievementsSummary}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowAchievementsSummary}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHltbShowInHeaderBar}" ToolTip="{DynamicResource LOCHNDTipHltbShowInHeaderBar}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], Mode=TwoWay, FallbackValue={StaticResource HltbShowInHeaderBar}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowUserRating}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowUserRating}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowUserRating], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowUserRating}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowInfoButton}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowInfoButton}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInfoButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowInfoButton}}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipHeaderButtonSize}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptHeaderButtonSize}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopHeaderButtonSizeSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopHeaderButtonSizeSlider" Minimum="20" Maximum="56" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeaderButtonSize], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeaderButtonSize}}" />
+                                                    </DockPanel>
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopCover}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHltbShowOnCover}" ToolTip="{DynamicResource LOCHNDTipHltbShowOnCover}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowOnCover], Mode=TwoWay, FallbackValue={StaticResource HltbShowOnCover}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptAchievementsShowOnCover}" ToolTip="{DynamicResource LOCHNDTipAchievementsShowOnCover}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsShowOnCover], Mode=TwoWay, FallbackValue={StaticResource AchievementsShowOnCover}}" />
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopGamelistandcovers}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptLibraryListShowHltb}" ToolTip="{DynamicResource LOCHNDTipLibraryListShowHltb}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowHltb], Mode=TwoWay, FallbackValue={StaticResource LibraryListShowHltb}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptLibraryListShowAchievements}" ToolTip="{DynamicResource LOCHNDTipLibraryListShowAchievements}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowAchievements], Mode=TwoWay, FallbackValue={StaticResource LibraryListShowAchievements}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptGridCoverShowHltb}" ToolTip="{DynamicResource LOCHNDTipGridCoverShowHltb}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowHltb], Mode=TwoWay, FallbackValue={StaticResource GridCoverShowHltb}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptGridCoverShowAchievements}" ToolTip="{DynamicResource LOCHNDTipGridCoverShowAchievements}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowAchievements], Mode=TwoWay, FallbackValue={StaticResource GridCoverShowAchievements}}" />
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopSections}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDemoteSectionsShownElsewhere}" ToolTip="{DynamicResource LOCHNDTipDemoteSectionsShownElsewhere}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowInfoPanelDefault}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowInfoPanelDefault}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInfoPanelDefault], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowInfoPanelDefault}}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipSectionHeaderMinHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptSectionHeaderMinHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopSectionHeaderMinHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopSectionHeaderMinHeightSlider" Minimum="24" Maximum="64" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource SectionHeaderMinHeight}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipDetailsViewDescriptionWidth}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptDetailsViewDescriptionWidth}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopDetailsViewDescriptionWidthSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopDetailsViewDescriptionWidthSlider" Minimum="150" Maximum="2400" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDescriptionWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource DetailsViewDescriptionWidth}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipDetailsViewDescriptionMaxHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptDetailsViewDescriptionMaxHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopDetailsViewDescriptionMaxHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopDetailsViewDescriptionMaxHeightSlider" Minimum="110" Maximum="2000" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDescriptionMaxHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource DetailsViewDescriptionMaxHeight}}" />
+                                                    </DockPanel>
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipAchievementsDataGridMaxHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptAchievementsDataGridMaxHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopAchievementsDataGridMaxHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopAchievementsDataGridMaxHeightSlider" Minimum="100" Maximum="1200" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsDataGridMaxHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource AchievementsDataGridMaxHeight}}" />
+                                                    </DockPanel>
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopLinks}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptLinksShowNames}" ToolTip="{DynamicResource LOCHNDTipLinksShowNames}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LinksShowNames], Mode=TwoWay, FallbackValue={StaticResource LinksShowNames}}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipLinkIconSize}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptLinkIconSize}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopLinkIconSizeSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopLinkIconSizeSlider" Minimum="12" Maximum="48" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[LinkIconSize], Mode=TwoWay, Delay=150, FallbackValue={StaticResource LinkIconSize}}" />
+                                                    </DockPanel>
+                                                    <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopToppanel}" />
+                                                    <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipTopPanelHeight}">
+                                                        <TextBlock DockPanel.Dock="Top" Style="{DynamicResource BaseTextBlockStyle}" Text="{DynamicResource LOCHNDOptTopPanelHeight}" Margin="0,0,0,2" />
+                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource BaseTextBlockStyle}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+                                                                   Text="{Binding Value, ElementName=WorkshopTopPanelHeightSlider, StringFormat={}{0:0}}" />
+                                                        <Slider x:Name="WorkshopTopPanelHeightSlider" Minimum="36" Maximum="100" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+                                                                VerticalAlignment="Center"
+                                                                Value="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource TopPanelHeight}}" />
+                                                    </DockPanel>
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptShowNavigationButtons}" ToolTip="{DynamicResource LOCHNDTipShowNavigationButtons}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], Mode=TwoWay, FallbackValue={StaticResource ShowNavigationButtons}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptTopPanelShowThemeSettingsButtons}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowThemeSettingsButtons}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}}" />
+                                                </StackPanel>
+                                                <WrapPanel Margin="0,12,0,0" Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}">
+                                                    <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
+                                                            Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                            CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef" />
+                                                    <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDWorkshopColors}"
+                                                            Visibility="{PluginStatus Plugin=playnite-thememodifier-plugin, Status=Installed}"
+                                                            Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                            CommandParameter="ec2f4013-17e6-428a-b8a9-5e34a3b80009" />
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            <!-- END generated workshop -->
+
+                            <Border Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}, TargetNullValue={StaticResource TopPanelShowThemeSettingsButtons}}"
                                     DockPanel.Dock="Left"
                                     Visibility="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <StackPanel Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"

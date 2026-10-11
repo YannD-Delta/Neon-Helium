@@ -9,9 +9,11 @@ Presets:
             Default:
                 Name: 'Helium-Neon-Dune (Dune header, Neon information)'
                 LocKey: LOCHNDPresetStyleDefault
+                Preview: 'Presets\Previews\Style_Default.png'
             Neon:
                 Name: 'Neon classic (buttons in the header bar)'
                 LocKey: LOCHNDPresetStyleNeon
+                Preview: 'Presets\Previews\Style_Neon.png'
                 Files:
                     - 'Presets\Buttons\Neon.xaml'
                 Constants:
@@ -27,6 +29,7 @@ Presets:
             Dune:
                 Name: 'Dune (large artwork, text chips, clear header bar)'
                 LocKey: LOCHNDPresetStyleDune
+                Preview: 'Presets\Previews\Style_Dune.png'
                 Files:
                     - 'Presets\Chips\Text.xaml'
                 Constants:
@@ -42,6 +45,7 @@ Presets:
             Minimal:
                 Name: 'Minimal (no chips, no header bar)'
                 LocKey: LOCHNDPresetStyleMinimal
+                Preview: 'Presets\Previews\Style_Minimal.png'
                 Constants:
                     HeroStyleShowInfoLine:
                         Type: Boolean
@@ -62,21 +66,25 @@ Presets:
             Dune:
                 Name: 'Dune (flat, rounded)'
                 LocKey: LOCHNDPresetButtonsDune
+                Preview: 'Presets\Previews\Buttons_Dune.png'
                 Files:
                     - 'Presets\Buttons\Dune.xaml'
             Neon:
                 Name: 'Neon (gradient, small caps)'
                 LocKey: LOCHNDPresetButtonsNeon
+                Preview: 'Presets\Previews\Buttons_Neon.png'
                 Files:
                     - 'Presets\Buttons\Neon.xaml'
             Pill:
                 Name: 'Pill (fully rounded)'
                 LocKey: LOCHNDPresetButtonsPill
+                Preview: 'Presets\Previews\Buttons_Pill.png'
                 Files:
                     - 'Presets\Buttons\Pill.xaml'
             Glass:
                 Name: 'Glass (outline, accent color)'
                 LocKey: LOCHNDPresetButtonsGlass
+                Preview: 'Presets\Previews\Buttons_Glass.png'
                 Files:
                     - 'Presets\Buttons\Glass.xaml'
     ActionsLocation:
@@ -89,6 +97,7 @@ Presets:
             Hero:
                 Name: 'In the artwork (Dune)'
                 LocKey: LOCHNDPresetActionsLocationHero
+                Preview: 'Presets\Previews\ActionsLocation_Hero.png'
                 Constants:
                     HeroActionsLocation:
                         Type: Int32
@@ -96,6 +105,7 @@ Presets:
             HeaderBar:
                 Name: 'In the header bar (Neon)'
                 LocKey: LOCHNDPresetActionsLocationHeaderBar
+                Preview: 'Presets\Previews\ActionsLocation_HeaderBar.png'
                 Constants:
                     HeroActionsLocation:
                         Type: Int32
@@ -110,6 +120,7 @@ Presets:
             Pills:
                 Name: 'Pills'
                 LocKey: LOCHNDPresetChipsPills
+                Preview: 'Presets\Previews\Chips_Pills.png'
                 Files:
                     - 'Presets\Chips\Pills.xaml'
                 Constants:
@@ -119,6 +130,7 @@ Presets:
             Text:
                 Name: 'Plain text (Dune)'
                 LocKey: LOCHNDPresetChipsText
+                Preview: 'Presets\Previews\Chips_Text.png'
                 Files:
                     - 'Presets\Chips\Text.xaml'
                 Constants:
@@ -128,6 +140,7 @@ Presets:
             Outline:
                 Name: 'Outline'
                 LocKey: LOCHNDPresetChipsOutline
+                Preview: 'Presets\Previews\Chips_Outline.png'
                 Files:
                     - 'Presets\Chips\Outline.xaml'
                 Constants:
@@ -137,6 +150,7 @@ Presets:
             Hidden:
                 Name: 'Hidden'
                 LocKey: LOCHNDPresetChipsHidden
+                Preview: 'Presets\Previews\Chips_Hidden.png'
                 Constants:
                     HeroStyleShowInfoLine:
                         Type: Boolean
@@ -148,10 +162,12 @@ Presets:
             Default:
                 Name: 'Neon blue'
                 LocKey: LOCHNDPresetAccentDefault
+                Preview: 'Presets\Previews\Accent_Default.png'
                 NeedRestart: True
             Amber:
                 Name: 'Dune amber'
                 LocKey: LOCHNDPresetAccentAmber
+                Preview: 'Presets\Previews\Accent_Amber.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -169,6 +185,7 @@ Presets:
             Violet:
                 Name: 'Violet'
                 LocKey: LOCHNDPresetAccentViolet
+                Preview: 'Presets\Previews\Accent_Violet.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -186,6 +203,7 @@ Presets:
             Emerald:
                 Name: 'Emerald'
                 LocKey: LOCHNDPresetAccentEmerald
+                Preview: 'Presets\Previews\Accent_Emerald.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -203,6 +221,7 @@ Presets:
             Crimson:
                 Name: 'Crimson'
                 LocKey: LOCHNDPresetAccentCrimson
+                Preview: 'Presets\Previews\Accent_Crimson.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -220,6 +239,7 @@ Presets:
             Pink:
                 Name: 'Pink'
                 LocKey: LOCHNDPresetAccentPink
+                Preview: 'Presets\Previews\Accent_Pink.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -237,6 +257,7 @@ Presets:
             Cyan:
                 Name: 'Cyan'
                 LocKey: LOCHNDPresetAccentCyan
+                Preview: 'Presets\Previews\Accent_Cyan.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -254,6 +275,7 @@ Presets:
             Gold:
                 Name: 'Gold'
                 LocKey: LOCHNDPresetAccentGold
+                Preview: 'Presets\Previews\Accent_Gold.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -271,6 +293,7 @@ Presets:
             Linkin:
                 Name: 'Hybrid red (Linkin Park)'
                 LocKey: LOCHNDPresetAccentLinkin
+                Preview: 'Presets\Previews\Accent_Linkin.png'
                 NeedRestart: True
                 Constants:
                     GlyphColor:
@@ -312,6 +335,7 @@ Presets:
             None:
                 Name: 'None'
                 LocKey: LOCHNDPresetHeroShadeNone
+                Preview: 'Presets\Previews\HeroShade_None.png'
                 Constants:
                     HeroShadeOpacity:
                         Type: Double
@@ -319,6 +343,7 @@ Presets:
             Light:
                 Name: 'Light'
                 LocKey: LOCHNDPresetHeroShadeLight
+                Preview: 'Presets\Previews\HeroShade_Light.png'
                 Constants:
                     HeroShadeOpacity:
                         Type: Double
@@ -326,6 +351,7 @@ Presets:
             Medium:
                 Name: 'Medium'
                 LocKey: LOCHNDPresetHeroShadeMedium
+                Preview: 'Presets\Previews\HeroShade_Medium.png'
                 Constants:
                     HeroShadeOpacity:
                         Type: Double
@@ -333,6 +359,7 @@ Presets:
             Strong:
                 Name: 'Strong'
                 LocKey: LOCHNDPresetHeroShadeStrong
+                Preview: 'Presets\Previews\HeroShade_Strong.png'
                 Constants:
                     HeroShadeOpacity:
                         Type: Double
@@ -344,14 +371,17 @@ Presets:
             Default:
                 Name: 'Sharp'
                 LocKey: LOCHNDPresetHeroBackgroundDefault
+                Preview: 'Presets\Previews\HeroBackground_Default.png'
             Soft:
                 Name: 'Soft blur'
                 LocKey: LOCHNDPresetHeroBackgroundSoft
+                Preview: 'Presets\Previews\HeroBackground_Soft.png'
                 Files:
                     - 'Presets\Background\SoftBlur.xaml'
             Strong:
                 Name: 'Strong blur'
                 LocKey: LOCHNDPresetHeroBackgroundStrong
+                Preview: 'Presets\Previews\HeroBackground_Strong.png'
                 Files:
                     - 'Presets\Background\StrongBlur.xaml'
     BackgroundVertical:
@@ -361,14 +391,17 @@ Presets:
             Default:
                 Name: 'Center'
                 LocKey: LOCHNDPresetBackgroundVerticalDefault
+                Preview: 'Presets\Previews\BackgroundVertical_Default.png'
             Top:
                 Name: 'Top'
                 LocKey: LOCHNDPresetBackgroundVerticalTop
+                Preview: 'Presets\Previews\BackgroundVertical_Top.png'
                 Files:
                     - 'Presets\Background\AlignTop.xaml'
             Bottom:
                 Name: 'Bottom'
                 LocKey: LOCHNDPresetBackgroundVerticalBottom
+                Preview: 'Presets\Previews\BackgroundVertical_Bottom.png'
                 Files:
                     - 'Presets\Background\AlignBottom.xaml'
     BackgroundHorizontal:
@@ -378,14 +411,17 @@ Presets:
             Default:
                 Name: 'Left'
                 LocKey: LOCHNDPresetBackgroundHorizontalDefault
+                Preview: 'Presets\Previews\BackgroundHorizontal_Default.png'
             Center:
                 Name: 'Center'
                 LocKey: LOCHNDPresetBackgroundHorizontalCenter
+                Preview: 'Presets\Previews\BackgroundHorizontal_Center.png'
                 Files:
                     - 'Presets\Background\AlignCenter.xaml'
             Right:
                 Name: 'Right'
                 LocKey: LOCHNDPresetBackgroundHorizontalRight
+                Preview: 'Presets\Previews\BackgroundHorizontal_Right.png'
                 Files:
                     - 'Presets\Background\AlignRight.xaml'
     HeaderBar:
@@ -398,6 +434,7 @@ Presets:
             Glass:
                 Name: 'Frosted glass'
                 LocKey: LOCHNDPresetHeaderBarGlass
+                Preview: 'Presets\Previews\HeaderBar_Glass.png'
                 Constants:
                     HeaderBarBlurOpacity:
                         Type: Double
@@ -411,6 +448,7 @@ Presets:
             Solid:
                 Name: 'Solid'
                 LocKey: LOCHNDPresetHeaderBarSolid
+                Preview: 'Presets\Previews\HeaderBar_Solid.png'
                 Constants:
                     HeaderBarBlurOpacity:
                         Type: Double
@@ -424,6 +462,7 @@ Presets:
             Transparent:
                 Name: 'Transparent'
                 LocKey: LOCHNDPresetHeaderBarTransparent
+                Preview: 'Presets\Previews\HeaderBar_Transparent.png'
                 Constants:
                     HeaderBarBlurOpacity:
                         Type: Double
@@ -437,6 +476,7 @@ Presets:
             Hidden:
                 Name: 'Hidden'
                 LocKey: LOCHNDPresetHeaderBarHidden
+                Preview: 'Presets\Previews\HeaderBar_Hidden.png'
                 Constants:
                     HeaderBarStyleVisible:
                         Type: Boolean
@@ -448,9 +488,11 @@ Presets:
             Default:
                 Name: 'Normal'
                 LocKey: LOCHNDPresetBackgroundBlurDefault
+                Preview: 'Presets\Previews\BackgroundBlur_Default.png'
             Off:
                 Name: 'False'
                 LocKey: LOCHNDPresetBackgroundBlurOff
+                Preview: 'Presets\Previews\BackgroundBlur_Off.png'
                 Constants:
                     DetailsViewBackgroundBlurOpacity:
                         Type: Double
@@ -461,6 +503,7 @@ Presets:
             Light:
                 Name: 'Light'
                 LocKey: LOCHNDPresetBackgroundBlurLight
+                Preview: 'Presets\Previews\BackgroundBlur_Light.png'
                 Constants:
                     DetailsViewBackgroundBlurOpacity:
                         Type: Double
@@ -471,6 +514,7 @@ Presets:
             Strong:
                 Name: 'Strong'
                 LocKey: LOCHNDPresetBackgroundBlurStrong
+                Preview: 'Presets\Previews\BackgroundBlur_Strong.png'
                 Constants:
                     DetailsViewBackgroundBlurOpacity:
                         Type: Double
@@ -489,11 +533,13 @@ Variables:
         LocKey: LOCHNDOptShowNavigationButtons
         Type: Boolean
         Default: 'True'
+        Description: 'Back and forward buttons. Need ThemeExtras.'
     TopPanelShowThemeSettingsButtons:
         Title: 'Theme settings and colors buttons (ThemeExtras)'
         LocKey: LOCHNDOptTopPanelShowThemeSettingsButtons
         Type: Boolean
         Default: 'True'
+        Description: 'Buttons for Theme Options and ThemeModifier. Need ThemeExtras. The workshop button stays.'
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
@@ -508,6 +554,7 @@ Variables:
         LocKey: LOCHNDOptTopPanelHeight
         Type: Double
         Default: '50'
+        Description: 'Height of the bar at the top of the window.'
         Slider:
             Min: '36'
             Max: '100'
@@ -530,6 +577,7 @@ Variables:
         LocKey: LOCHNDOptHeroMinHeight
         Type: Double
         Default: '400'
+        Description: 'Minimum height of the artwork header at the top of the Details view.'
         Slider:
             Min: '300'
             Max: '900'
@@ -539,6 +587,7 @@ Variables:
         LocKey: LOCHNDOptHeroActionButtonWidth
         Type: Double
         Default: '252'
+        Description: 'Total width of the Play, Edit and Favorite row.'
         Slider:
             Min: '200'
             Max: '600'
@@ -548,6 +597,7 @@ Variables:
         LocKey: LOCHNDOptHeroActionButtonHeight
         Type: Double
         Default: '40'
+        Description: 'Height of the Play button and of the square buttons next to it.'
         Slider:
             Min: '28'
             Max: '72'
@@ -566,36 +616,43 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowEditButton
         Type: Boolean
         Default: 'True'
+        Description: 'Pencil button that opens the game editor.'
     DetailsViewShowFavoriteButton:
         Title: 'Show the favorite button (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowFavoriteButton
         Type: Boolean
         Default: 'True'
+        Description: 'Star button that adds or removes the game from favorites. Needs ThemeExtras.'
     HeroShowSteamShortcuts:
         Title: 'Steam shortcuts button (Steam Shortcuts)'
         LocKey: LOCHNDOptHeroShowSteamShortcuts
         Type: Boolean
         Default: 'True'
+        Description: 'Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.'
     HeroShowUpdateStatus:
         Title: 'Update available indicator (Game Update Status)'
         LocKey: LOCHNDOptHeroShowUpdateStatus
         Type: Boolean
         Default: 'True'
+        Description: 'Dot that shows when a Steam or Epic update is available. Needs Game Update Status.'
     DetailsViewAllowUseOfLogos:
         Title: 'Use game logos (Extra Metadata Loader)'
         LocKey: LOCHNDOptDetailsViewAllowUseOfLogos
         Type: Boolean
         Default: 'True'
+        Description: 'Shows the game logo instead of its name when Extra Metadata Loader has one.'
     DetailsViewDisplayGameNameIfLogoVisible:
         Title: 'Show the game name even with a logo'
         LocKey: LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible
         Type: Boolean
         Default: 'False'
+        Description: 'Keeps the game name under the logo.'
     GameLogoMaxWidth:
         Title: 'Logo maximum width'
         LocKey: LOCHNDOptGameLogoMaxWidth
         Type: Double
         Default: '1000'
+        Description: 'Largest width of the game logo (Extra Metadata Loader).'
         Slider:
             Min: '100'
             Max: '2000'
@@ -605,6 +662,7 @@ Variables:
         LocKey: LOCHNDOptGameLogoMaxHeight
         Type: Double
         Default: '400'
+        Description: 'Largest height of the game logo (Extra Metadata Loader).'
         Slider:
             Min: '50'
             Max: '1000'
@@ -618,11 +676,13 @@ Variables:
         LocKey: LOCHNDOptHeroShowInfoLine
         Type: Boolean
         Default: 'True'
+        Description: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.'
     HeroInfoLineMaxWidth:
         Title: 'Maximum width of the chips line'
         LocKey: LOCHNDOptHeroInfoLineMaxWidth
         Type: Double
         Default: '900'
+        Description: 'Width after which the chips wrap to a new line.'
         Slider:
             Min: '300'
             Max: '2000'
@@ -741,16 +801,96 @@ Variables:
         LocKey: LOCHNDOptHeroChipsBreakBeforeActivity
         Type: Boolean
         Default: 'True'
+    HeroChipsOrderGame:
+        Title: 'Order: date, platforms, source'
+        LocKey: LOCHNDOptHeroChipsOrderGame
+        Type: Double
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderClassification:
+        Title: 'Order: genres, categories, features, tags'
+        LocKey: LOCHNDOptHeroChipsOrderClassification
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderStudio:
+        Title: 'Order: developers, status, score'
+        LocKey: LOCHNDOptHeroChipsOrderStudio
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderHltb:
+        Title: 'Order: HowLongToBeat'
+        LocKey: LOCHNDOptHeroChipsOrderHltb
+        Type: Double
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderAchievements:
+        Title: 'Order: achievements'
+        LocKey: LOCHNDOptHeroChipsOrderAchievements
+        Type: Double
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderActivity:
+        Title: 'Order: GameActivity'
+        LocKey: LOCHNDOptHeroChipsOrderActivity
+        Type: Double
+        Default: '5'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
     HltbShowOnCover:
         Title: 'HowLongToBeat time on the cover'
         LocKey: LOCHNDOptHltbShowOnCover
         Type: Boolean
         Default: 'True'
+        Description: 'HowLongToBeat main story time in a corner of the cover.'
     AchievementsShowOnCover:
         Title: 'Achievements on the cover'
         LocKey: LOCHNDOptAchievementsShowOnCover
         Type: Boolean
         Default: 'True'
+        Description: 'Unlocked and total achievements in a corner of the cover.'
+    LibraryListShowHltb:
+        Title: 'HowLongToBeat time in the game list'
+        LocKey: LOCHNDOptLibraryListShowHltb
+        Type: Boolean
+        Default: 'True'
+        Description: 'HowLongToBeat time at the end of each game in the list. Turn on "view item" in the HowLongToBeat settings.'
+    LibraryListShowAchievements:
+        Title: 'Achievements in the game list'
+        LocKey: LOCHNDOptLibraryListShowAchievements
+        Type: Boolean
+        Default: 'True'
+        Description: 'Unlocked and total achievements at the end of each game in the list. Can slow down very large libraries.'
+    GridCoverShowHltb:
+        Title: 'HowLongToBeat time on Grid view covers'
+        LocKey: LOCHNDOptGridCoverShowHltb
+        Type: Boolean
+        Default: 'True'
+        Description: 'HowLongToBeat time on each cover of the Grid view.'
+    GridCoverShowAchievements:
+        Title: 'Achievements on Grid view covers'
+        LocKey: LOCHNDOptGridCoverShowAchievements
+        Type: Boolean
+        Default: 'True'
+        Description: 'Achievements on each cover of the Grid view.'
     HeaderHeaderBar:
         Title: 'Details view - header bar'
         LocKey: LOCHNDHeaderHeaderBar
@@ -760,46 +900,55 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowHeaderBar
         Type: Boolean
         Default: 'True'
+        Description: 'The bar under the artwork with the last played date, time played and completion status.'
     DetailsViewShowLastPlayed:
         Title: 'Last played'
         LocKey: LOCHNDOptDetailsViewShowLastPlayed
         Type: Boolean
         Default: 'True'
+        Description: 'Date of the last session.'
     DetailsViewShowPlayTime:
         Title: 'Time played'
         LocKey: LOCHNDOptDetailsViewShowPlayTime
         Type: Boolean
         Default: 'True'
+        Description: 'Total time played.'
     DetailsViewShowCompletionStatus:
         Title: 'Completion status'
         LocKey: LOCHNDOptDetailsViewShowCompletionStatus
         Type: Boolean
         Default: 'True'
+        Description: 'Completion status, which ThemeExtras lets you change from here.'
     DetailsViewShowAchievementsSummary:
         Title: 'Achievements summary'
         LocKey: LOCHNDOptDetailsViewShowAchievementsSummary
         Type: Boolean
         Default: 'True'
+        Description: 'Unlocked achievements with a progress bar. Needs PlayniteAchievements.'
     DetailsViewShowInfoButton:
         Title: 'Information panel button'
         LocKey: LOCHNDOptDetailsViewShowInfoButton
         Type: Boolean
         Default: 'True'
+        Description: 'Button that shows or hides the information panel (cover, description, details).'
     DetailsViewShowUserRating:
         Title: 'Your rating with stars (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowUserRating
         Type: Boolean
         Default: 'False'
+        Description: 'Your rating as clickable stars. Needs ThemeExtras.'
     HltbShowInHeaderBar:
         Title: 'HowLongToBeat main story time'
         LocKey: LOCHNDOptHltbShowInHeaderBar
         Type: Boolean
         Default: 'False'
+        Description: 'HowLongToBeat main story time in the bar.'
     HeaderButtonSize:
         Title: 'Size of the header bar buttons'
         LocKey: LOCHNDOptHeaderButtonSize
         Type: Double
         Default: '32'
+        Description: 'Size of the round buttons in the header bar.'
         Slider:
             Min: '20'
             Max: '56'
@@ -813,11 +962,13 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowInfoPanelDefault
         Type: Boolean
         Default: 'True'
+        Description: 'Information panel (cover, description, details) open when a game is selected.'
     DetailsViewDescriptionWidth:
         Title: 'Description width'
         LocKey: LOCHNDOptDetailsViewDescriptionWidth
         Type: Double
         Default: '400'
+        Description: 'Width of the game description.'
         Slider:
             Min: '150'
             Max: '2400'
@@ -827,6 +978,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewDescriptionMaxHeight
         Type: Double
         Default: '2000'
+        Description: 'Height after which the description scrolls.'
         Slider:
             Min: '110'
             Max: '2000'
@@ -947,6 +1099,7 @@ Variables:
         LocKey: LOCHNDOptDemoteSectionsShownElsewhere
         Type: Boolean
         Default: 'True'
+        Description: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.'
     DemoteGenresSection:
         Title: '... including Genres'
         LocKey: LOCHNDOptDemoteGenresSection
@@ -1741,6 +1894,7 @@ Variables:
         LocKey: LOCHNDOptAchievementsDataGridMaxHeight
         Type: Double
         Default: '450'
+        Description: 'Height after which the full achievements table scrolls.'
         Slider:
             Min: '100'
             Max: '1200'
@@ -1808,6 +1962,7 @@ Variables:
         LocKey: LOCHNDOptSectionHeaderMinHeight
         Type: Double
         Default: '34'
+        Description: 'Height of the section titles with their fold arrow and gear.'
         Slider:
             Min: '24'
             Max: '64'
@@ -1826,11 +1981,13 @@ Variables:
         LocKey: LOCHNDOptLinksShowNames
         Type: Boolean
         Default: 'True'
+        Description: 'Shows the name next to each link icon. Off: icons only.'
     LinkIconSize:
         Title: 'Link icon size'
         LocKey: LOCHNDOptLinkIconSize
         Type: Double
         Default: '18'
+        Description: 'Size of the link icons (favicons).'
         Slider:
             Min: '12'
             Max: '48'

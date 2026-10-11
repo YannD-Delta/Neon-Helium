@@ -37,7 +37,7 @@
                                     d:DataContext="{x:Static DesignMainViewModel.DesignSelectedGameIntance}">
                             <Grid>
                                 <Border Style="{StaticResource VisualBrushBorderMask}" Name="Mask"
-                                        Tag="{DynamicResource GridViewCoverUseRoundedCorners}" />
+                                        Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverUseRoundedCorners], FallbackValue={StaticResource GridViewCoverUseRoundedCorners}, TargetNullValue={StaticResource GridViewCoverUseRoundedCorners}}" />
                                 <StackPanel>
                                     <StackPanel.Style>
                                         <Style TargetType="StackPanel">
@@ -55,7 +55,7 @@
                                     <ContentControl x:Name="ThemeExtras_Banner"
                                                 RenderOptions.BitmapScalingMode="Fant"
                                                 Width="{Binding Width, ElementName=PART_ImageCover}"
-                                                Tag="{DynamicResource GridViewCoverDisplayLibraryBanner}"
+                                                Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverDisplayLibraryBanner], FallbackValue={StaticResource GridViewCoverDisplayLibraryBanner}, TargetNullValue={StaticResource GridViewCoverDisplayLibraryBanner}}"
                                                 HorizontalAlignment="Center"
                                                 Visibility="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                     <Image Name="PART_ImageCover" Height="{Settings GridItemHeight}"
@@ -76,6 +76,22 @@
                                 </Grid>
 
 
+                                <!-- Per-game badges on the cover: each tile gets its own game from Playnite -->
+                                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="6" Panel.ZIndex="10"
+                                            IsHitTestVisible="False">
+                                    <StackPanel.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="6" Opacity="1" RenderingBias="Performance" />
+                                    </StackPanel.Effect>
+                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowHltb], FallbackValue={StaticResource GridCoverShowHltb}, TargetNullValue={StaticResource GridCoverShowHltb}}">
+                                        <ContentControl x:Name="HowLongToBeat_PluginViewItem" Foreground="White"
+                                                        FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}" FontWeight="SemiBold" />
+                                    </Grid>
+                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowAchievements], FallbackValue={StaticResource GridCoverShowAchievements}, TargetNullValue={StaticResource GridCoverShowAchievements}}">
+                                        <ContentControl x:Name="PlayniteAchievements_AchievementViewItem" Foreground="White"
+                                                        FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}" FontWeight="SemiBold" />
+                                    </Grid>
+                                </StackPanel>
+
                                 <Border Background="#99000000" x:Name="TextGameName" Visibility="Collapsed"
                                         CornerRadius="{Binding ElementName=Mask, Path=CornerRadius}">
                                     <TextBlock Text="{Binding DisplayName}"
@@ -91,12 +107,12 @@
                                             CornerRadius="{Binding ElementName=Mask, Path=CornerRadius}"
                                             Style="{DynamicResource CoverIsPlayingAnimatedBackground}" />
                                 <TextBlock Name="EnablePlayingGlowBorder" Visibility="Collapsed"
-                                                Tag="{DynamicResource GridViewEnablePlayingGlowBorder}" />
+                                                Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewEnablePlayingGlowBorder], FallbackValue={StaticResource GridViewEnablePlayingGlowBorder}, TargetNullValue={StaticResource GridViewEnablePlayingGlowBorder}}" />
                                 <Border Name="ShineBackground" Tag="False" IsHitTestVisible="False"
                                             CornerRadius="{Binding ElementName=Mask, Path=CornerRadius}"
                                             Style="{DynamicResource AnimatedCoverShineBackground}" />
                                 <TextBlock Name="EnableHighlightAnimation" Visibility="Collapsed"
-                                                Tag="{DynamicResource GridViewEnableCoverShineAnimation}" />
+                                                Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewEnableCoverShineAnimation], FallbackValue={StaticResource GridViewEnableCoverShineAnimation}, TargetNullValue={StaticResource GridViewEnableCoverShineAnimation}}" />
 
                                 <Border Background="{DynamicResource CoversButtonsBrush}"
                                         CornerRadius="{Binding ElementName=Mask, Path=CornerRadius}"
@@ -110,7 +126,7 @@
                                            VerticalAlignment="Top"
                                            HorizontalAlignment="Right"
                                            FontFamily="{DynamicResource FontIcoFont}"
-                                           Tag="{DynamicResource GridViewLibraryGameShowFavorite}">
+                                           Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewLibraryGameShowFavorite], FallbackValue={StaticResource GridViewLibraryGameShowFavorite}, TargetNullValue={StaticResource GridViewLibraryGameShowFavorite}}">
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock" >
                                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -180,22 +196,22 @@
                             </Border>
 
                             <DockPanel Width="{Settings GridItemWidth}"
-                                       Visibility="{DynamicResource GridViewCoverSubtitleVisibility}">
-                                <TextBlock Text="&#xEEDC;" FontSize="{DynamicResource FontSizeSmall}"
+                                       Visibility="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverSubtitleVisibility], FallbackValue={StaticResource GridViewCoverSubtitleVisibility}, TargetNullValue={StaticResource GridViewCoverSubtitleVisibility}}">
+                                <TextBlock Text="&#xEEDC;" FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
                                             FontFamily="{StaticResource FontIcoFont}"
                                             TextAlignment="Left" VerticalAlignment="Center"
                                             Padding="2,4,2,5" Margin="0,0,0,-2"
                                             Foreground="{DynamicResource GridViewCoverSubtitleBrush}" />
                                 <TextBlock Text="{Binding Playtime, Mode=OneWay, Converter={StaticResource PlayTimeToStringConverter}, IsAsync=True}"
                                             Foreground="{DynamicResource GridViewCoverSubtitleBrush}"
-                                            FontSize="{DynamicResource FontSizeSmall}"
+                                            FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
                                             Style="{DynamicResource BaseTextBlockStyle}"                                                                   
                                             TextAlignment="Left" TextTrimming="CharacterEllipsis"
                                             VerticalAlignment="Center"
                                             Padding="3,4,2,2" />
                             </DockPanel>
                             <DockPanel Width="{Settings GridItemWidth}"
-                                        Tag="{DynamicResource GridViewCoverCompStatusSubtitleVisibility}">
+                                        Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverCompStatusSubtitleVisibility], FallbackValue={StaticResource GridViewCoverCompStatusSubtitleVisibility}, TargetNullValue={StaticResource GridViewCoverCompStatusSubtitleVisibility}}">
                                 <DockPanel.Style>
                                     <Style TargetType="DockPanel">
                                         <Setter Property="Visibility" Value="Visible" />
@@ -209,7 +225,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </DockPanel.Style>
-                                <TextBlock Text="&#xEC74;" FontSize="{DynamicResource FontSizeSmall}"
+                                <TextBlock Text="&#xEC74;" FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
                                             FontFamily="{StaticResource FontIcoFont}"
                                             TextAlignment="Left" VerticalAlignment="Center"
                                             Padding="2,4,2,5" Margin="0,0,0,-2"
@@ -217,7 +233,7 @@
                                 <TextBlock x:Name="CompletionStatusName" Text="{Binding CompletionStatus.Name, Mode=OneWay, IsAsync=True}"
                                             ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
                                             Foreground="{DynamicResource GridViewCoverSubtitleBrush}"
-                                            FontSize="{DynamicResource FontSizeSmall}"
+                                            FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
                                             Style="{DynamicResource BaseTextBlockStyle}"
                                             TextAlignment="Left" TextTrimming="CharacterEllipsis"
                                             VerticalAlignment="Center"

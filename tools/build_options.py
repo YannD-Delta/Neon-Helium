@@ -8,6 +8,7 @@ Outputs (all inside the theme folder):
   thememodifier.yaml        ThemeModifier color pickers
   Presets/**/*.xaml         preset resource files (button, chip, animation and artwork looks)
   DerivedStyles/PlayButton.xaml  the default hero styles, between the generated markers
+  Views/TopPanel.xaml       the theme workshop popup, between the generated markers
 
 Types and defaults come from Constants.xaml. The script stops on any inconsistency.
 
@@ -111,6 +112,10 @@ def build_options(spec, constants, source: Path):
             labels[okey] = option["fr"]
             english[okey] = option["en"]
             lines += [f"            {option['id']}:", f"                Name: {q(option['en'])}", f"                LocKey: {okey}"]
+            preview = f"Presets/Previews/{gid}_{option['id']}.png"
+            if (source / preview).is_file():
+                # shown by Theme Options while the mouse is over this choice (tools/make_previews.py)
+                lines.append(f"                Preview: {q(preview.replace('/', chr(92)))}")
             if group.get("restart"):
                 lines.append("                NeedRestart: True")
             files = option.get("files") or []
@@ -163,6 +168,12 @@ def build_options(spec, constants, source: Path):
         english[lkey] = entry["en"]
         lines += [f"    {key}:", f"        Title: {q(entry['en'])}", f"        LocKey: {lkey}",
                   f"        Type: {kind}", f"        Default: {q(default)}"]
+        tip = (spec.get("tips") or {}).get(key)
+        if tip:
+            # Theme Options keeps Description in its model; the workshop shows the tooltip.
+            lines.append(f"        Description: {q(tip['en'])}")
+            labels[loc_key("Tip", key)] = tip["fr"]
+            english[loc_key("Tip", key)] = tip["en"]
         if kind in SLIDER_TYPES:
             if "range" not in entry:
                 raise SpecError(f"variable {key} ({kind}) needs a range")
@@ -176,6 +187,9 @@ def build_options(spec, constants, source: Path):
             raise SpecError(f"variable {key}: type {kind} cannot be a ThemeOptions variable")
         elif "range" in entry:
             raise SpecError(f"variable {key}: a range makes no sense for {kind}")
+    unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
+    if unknown_tips:
+        raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))
     return "\n".join(lines) + "\n", {"fr": labels, "en": english}, seen | used_keys
 
 
@@ -548,6 +562,104 @@ def preset_files():
     return files
 
 
+# ---------------------------------------------------------------------------
+# Theme workshop: a popup in the top panel, generated from the "workshop" section of the
+# spec into Views/TopPanel.xaml. Every control is bound TwoWay to Theme Options
+# Options[...], so the theme behind the popup changes while you click or drag.
+# ---------------------------------------------------------------------------
+
+WS_BEGIN = "<!-- BEGIN generated workshop: edit tools/options_spec.yaml (workshop), then run tools/build_options.py -->"
+WS_END = "<!-- END generated workshop -->"
+THEME_OPTIONS_ADDON = "ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef"
+THEME_OPTIONS_GUID = "904cbf3b-573f-48f8-9642-0a09d05c64ef"
+THEME_MODIFIER_GUID = "ec2f4013-17e6-428a-b8a9-5e34a3b80009"
+
+
+def workshop_block(spec, constants, indent_text):
+    ranges = {e["key"]: e.get("range") for e in spec["variables"] if "key" in e}
+    tips = spec.get("tips") or {}
+    body = []
+    for group in spec.get("workshop") or []:
+        body.append('<TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource %s}" />'
+                    % loc_key("Workshop", re.sub(r"\W", "", group["title"]["en"])))
+        for key in group["items"]:
+            if key not in ranges:
+                raise SpecError(f"workshop item {key} is not a variable")
+            kind = constants[key][0]
+            tip = ' ToolTip="{DynamicResource %s}"' % loc_key("Tip", key) if key in tips else ""
+            if kind == "Boolean":
+                body.append('<CheckBox Margin="0,3,0,3" Content="{DynamicResource %s}"%s\n'
+                            '          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[%s], Mode=TwoWay, FallbackValue={StaticResource %s}}" />'
+                            % (loc_key("Opt", key), tip, key, key))
+            elif kind == "Double" and ranges[key]:
+                low, high = ranges[key]
+                name = "Workshop%sSlider" % key
+                body.append(f'''<DockPanel Margin="0,4,0,4" Background="Transparent"{tip}>
+    <TextBlock DockPanel.Dock="Top" Style="{{DynamicResource BaseTextBlockStyle}}" Text="{{DynamicResource {loc_key("Opt", key)}}}" Margin="0,0,0,2" />
+    <TextBlock DockPanel.Dock="Right" Style="{{DynamicResource BaseTextBlockStyle}}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
+               Text="{{Binding Value, ElementName={name}, StringFormat={{}}{{0:0}}}}" />
+    <Slider x:Name="{name}" Minimum="{low}" Maximum="{high}" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
+            VerticalAlignment="Center"
+            Value="{{PluginSettings Plugin=ThemeOptions, Path=Options[{key}], Mode=TwoWay, Delay=150, FallbackValue={{StaticResource {key}}}}}" />
+</DockPanel>''')
+            else:
+                raise SpecError(f"workshop item {key}: only Booleans and Doubles with a range are supported ({kind})")
+    items = "\n".join(body)
+    block = f'''{WS_BEGIN}
+<Grid VerticalAlignment="Center" Margin="{{Binding ElementName=PART_ToggleNotifications, Path=Margin}}">
+    <ToggleButton x:Name="ThemeWorkshopToggle" Style="{{DynamicResource TopPanelWorkshopToggleStyle}}"
+                  ToolTip="{{DynamicResource LOCHNDWorkshopTooltip}}" />
+    <Popup IsOpen="{{Binding IsChecked, ElementName=ThemeWorkshopToggle, Mode=TwoWay}}" StaysOpen="False" AllowsTransparency="True"
+           PlacementTarget="{{Binding ElementName=ThemeWorkshopToggle}}" Placement="Bottom" VerticalOffset="6">
+        <Border Style="{{DynamicResource QuickSettingsPanel}}" Width="460" MaxWidth="460">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="760">
+                <StackPanel Margin="0,0,6,0">
+                    <TextBlock Style="{{DynamicResource QuickSettingsTitle}}" Text="{{DynamicResource LOCHNDWorkshopTitle}}" />
+                    <TextBlock Style="{{DynamicResource QuickSettingsHint}}" Text="{{DynamicResource LOCHNDQuickNeedsThemeOptions}}"
+                               Visibility="{{PluginStatus Plugin={THEME_OPTIONS_ADDON}, Status=Installed, Converter={{StaticResource InvertedBooleanToVisibilityConverter}}}}" />
+                    <TextBlock Style="{{DynamicResource BaseTextBlockStyle}}" Text="{{DynamicResource LOCHNDWorkshopIntro}}" TextWrapping="Wrap"
+                               Foreground="{{DynamicResource TextBrushDarker}}" FontSize="{{DynamicResource FontSizeSmall}}" Margin="0,0,0,4" />
+                    <StackPanel IsEnabled="{{PluginStatus Plugin={THEME_OPTIONS_ADDON}, Status=Installed}}">
+{"\n".join("                        " + line if line.strip() else line for line in items.split("\n"))}
+                    </StackPanel>
+                    <WrapPanel Margin="0,12,0,0" Visibility="{{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}}">
+                        <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{{DynamicResource LOCHNDQuickThemeSettings}}"
+                                Command="{{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={{x:Null}}}}"
+                                CommandParameter="{THEME_OPTIONS_GUID}" />
+                        <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{{DynamicResource LOCHNDWorkshopColors}}"
+                                Visibility="{{PluginStatus Plugin=playnite-thememodifier-plugin, Status=Installed}}"
+                                Command="{{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={{x:Null}}}}"
+                                CommandParameter="{THEME_MODIFIER_GUID}" />
+                    </WrapPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Popup>
+</Grid>
+{WS_END}'''
+    return "\n".join(indent_text + line if line.strip() else line for line in block.split("\n"))
+
+
+def workshop_labels(spec):
+    labels = {"en": {}, "fr": {}}
+    for group in spec.get("workshop") or []:
+        key = loc_key("Workshop", re.sub(r"\W", "", group["title"]["en"]))
+        labels["en"][key] = group["title"]["en"]
+        labels["fr"][key] = group["title"]["fr"]
+    return labels
+
+
+def top_panel_file(source: Path, spec, constants):
+    text = (source / "Views" / "TopPanel.xaml").read_text(encoding="utf-8-sig")
+    start = text.find(WS_BEGIN)
+    end = text.find(WS_END)
+    if start < 0 or end < 0:
+        raise SpecError("Views/TopPanel.xaml must contain the generated workshop markers")
+    line_start = text.rfind("\n", 0, start) + 1
+    indent_text = text[line_start:start]
+    return text[:line_start] + workshop_block(spec, constants, indent_text) + text[end + len(WS_END):]
+
+
 BEGIN = "    <!-- BEGIN generated hero styles: edit tools/build_options.py, then run it. -->\n"
 END = "    <!-- END generated hero styles -->\n"
 
@@ -585,6 +697,9 @@ def main() -> int:
                     print(f"wrote {path}")
         options, labels, _ = build_options(spec, constants, source)
         outputs["options.yaml"] = options
+        outputs["Views/TopPanel.xaml"] = top_panel_file(source, spec, constants)
+        for language, extra in workshop_labels(spec).items():
+            labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.
         outputs["Localization/en_US.xaml"] = build_localization(spec, labels["en"], constants, "en")
         outputs["Localization/fr_FR.xaml"] = build_localization(spec, labels["fr"], constants, "fr")

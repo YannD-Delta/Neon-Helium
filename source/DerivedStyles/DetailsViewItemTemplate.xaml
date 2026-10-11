@@ -16,7 +16,7 @@
                                        VerticalAlignment="Center"
                                        DockPanel.Dock="Right"
                                        FontFamily="{DynamicResource FontIcoFont}"
-                                       Tag="{DynamicResource DetailsViewLibraryGameShowFavorite}">
+                                       Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewLibraryGameShowFavorite], FallbackValue={StaticResource DetailsViewLibraryGameShowFavorite}, TargetNullValue={StaticResource DetailsViewLibraryGameShowFavorite}}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -32,6 +32,20 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
+                            <!-- Per-game badges: each row gets its own game from Playnite -->
+                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,4,0"
+                                        TextElement.FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}">
+                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowHltb], FallbackValue={StaticResource LibraryListShowHltb}, TargetNullValue={StaticResource LibraryListShowHltb}}">
+                                    <ContentControl x:Name="HowLongToBeat_PluginViewItem" Margin="8,0,0,0" Opacity="0.75"
+                                                    VerticalAlignment="Center" FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
+                                                    Foreground="{DynamicResource TextBrushDarker}" />
+                                </Grid>
+                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowAchievements], FallbackValue={StaticResource LibraryListShowAchievements}, TargetNullValue={StaticResource LibraryListShowAchievements}}">
+                                    <ContentControl x:Name="PlayniteAchievements_AchievementViewItem" Margin="8,0,0,0" Opacity="0.75"
+                                                    VerticalAlignment="Center" FontSize="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}"
+                                                    Foreground="{DynamicResource TextBrushDarker}" />
+                                </Grid>
+                            </StackPanel>
                             <ContentControl x:Name="DuplicateHider_SourceSelector" 
                                     Visibility="Collapsed" 
                                     HorizontalAlignment="Right"
