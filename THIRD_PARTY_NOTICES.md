@@ -1,6 +1,6 @@
 # Third party notices
 
-Helium-Neon contains or derives from the following MIT licensed projects.
+Helium-Neon-Dune contains or derives from the following MIT licensed projects.
 
 ## Neon and Helium
 

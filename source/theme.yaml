@@ -1,8 +1,8 @@
 ThemeApiVersion: 2.9.0
 Id: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
-Name: Helium-Neon
+Name: Helium-Neon-Dune
 Author: YannD-Delta
-Version: 1.1
+Version: 2.0
 Links:
   - Name: GitHub
     Url: https://github.com/YannD-Delta/Neon-Helium
@@ -10,5 +10,5 @@ Links:
     Url: https://github.com/XenorPLxx/Neon
   - Name: Based on Helium (darklinkpower)
     Url: https://github.com/darklinkpower/Helium
-  - Name: Inspired by Dune Rev (hugsyf)
+  - Name: Based on Dune Rev (hugsyf)
     Url: https://github.com/hugsyf/dune-rev

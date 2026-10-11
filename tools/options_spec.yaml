@@ -1,0 +1,641 @@
+# Single source of truth for the theme settings.
+#
+# python tools/build_options.py writes from this file:
+#   source/options.yaml              ThemeOptions presets (drop-down lists) and variables
+#   source/Localization/fr_FR.xaml   French labels (ThemeOptions loads them when Playnite is in French)
+#   source/thememodifier.yaml        ThemeModifier color pickers
+#   source/Presets/**/*.xaml         preset resource files, and the default hero styles in
+#                                    source/DerivedStyles/PlayButton.xaml (templates in build_options.py)
+#
+# Types and default values are read from source/Constants.xaml, so they cannot drift.
+# Ranges become ThemeOptions sliders. Only whole-number steps are used: ThemeOptions stores
+# slider values as text and a decimal comma would break the generated resources.
+
+strings:
+  LOCHNDChipAchievements: {en: Achievements, fr: Succès}
+  LOCHNDChipScore: {en: Score, fr: Note}
+  LOCHNDChipHltbMain: {en: Main, fr: Histoire}
+  LOCHNDChipHltbExtra: {en: Main + Extra, fr: Histoire + extras}
+  LOCHNDChipHltbCompletionist: {en: "100%", fr: "100 %"}
+
+presets:
+  - group: Style
+    en: Global style
+    fr: Style global
+    options:
+      - id: Default
+        en: Helium-Neon-Dune (Dune header, Neon information)
+        fr: Helium-Neon-Dune (en-tête Dune, infos Neon)
+      - id: Neon
+        en: Neon classic (buttons in the header bar)
+        fr: Neon classique (boutons dans la barre)
+        files: [Presets/Buttons/Neon.xaml]
+        constants:
+          HeroActionsLocation: 1
+          HeroShowInfoLine: False
+          HeroShadeOpacity: 0.25
+      - id: Dune
+        en: Dune (large artwork, text chips, clear header bar)
+        fr: Dune (grande image, infos en texte, barre transparente)
+        files: [Presets/Chips/Text.xaml]
+        constants:
+          HeroMinHeight: 460
+          HeroShadeOpacity: 0.85
+          HeaderBarBlurOpacity: 0
+          HeaderBarGlassOpacity: 0
+      - id: Minimal
+        en: Minimal (no chips, no header bar)
+        fr: Minimal (sans puces ni barre)
+        constants:
+          HeroShowInfoLine: False
+          DetailsViewShowHeaderBar: False
+          HeroShadeOpacity: 0.5
+
+  - group: Buttons
+    en: Play button style
+    fr: Style du bouton Jouer
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Dune
+        en: Dune (flat, rounded)
+        fr: Dune (plat, arrondi)
+        files: [Presets/Buttons/Dune.xaml]
+      - id: Neon
+        en: Neon (gradient, small caps)
+        fr: Neon (dégradé, petites capitales)
+        files: [Presets/Buttons/Neon.xaml]
+      - id: Pill
+        en: Pill (fully rounded)
+        fr: Pilule (entièrement arrondi)
+        files: [Presets/Buttons/Pill.xaml]
+      - id: Glass
+        en: Glass (outline, accent color)
+        fr: Verre (contour, couleur d'accent)
+        files: [Presets/Buttons/Glass.xaml]
+
+  - group: ActionsLocation
+    en: Play, edit and favorite buttons
+    fr: Boutons Jouer, Modifier et Favori
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Hero
+        en: In the artwork (Dune)
+        fr: Dans l'image (Dune)
+        constants:
+          HeroActionsLocation: 0
+      - id: HeaderBar
+        en: In the header bar (Neon)
+        fr: Dans la barre d'en-tête (Neon)
+        constants:
+          HeroActionsLocation: 1
+
+  - group: Chips
+    en: Information chips in the artwork
+    fr: Puces d'information dans l'image
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Pills
+        en: Pills
+        fr: Pastilles
+        files: [Presets/Chips/Pills.xaml]
+        constants:
+          HeroShowInfoLine: True
+      - id: Text
+        en: Plain text (Dune)
+        fr: Texte simple (Dune)
+        files: [Presets/Chips/Text.xaml]
+        constants:
+          HeroShowInfoLine: True
+      - id: Outline
+        en: Outline
+        fr: Contour
+        files: [Presets/Chips/Outline.xaml]
+        constants:
+          HeroShowInfoLine: True
+      - id: Hidden
+        en: Hidden
+        fr: Masquées
+        constants:
+          HeroShowInfoLine: False
+
+  - group: Accent
+    en: Accent color
+    fr: Couleur d'accent
+    restart: True
+    options:
+      - id: Default
+        en: Neon blue
+        fr: Bleu Neon
+      - id: Amber
+        en: Dune amber
+        fr: Ambre Dune
+        constants: {GlyphColor: "#FFB547", GlyphSubColor: "#FF9F1C", HighlightGlyphColor: "#88FFC870", HoverColor: "#B7791F"}
+      - id: Violet
+        en: Violet
+        fr: Violet
+        constants: {GlyphColor: "#A78BFA", GlyphSubColor: "#8B5CF6", HighlightGlyphColor: "#88C4B5FD", HoverColor: "#6D28D9"}
+      - id: Emerald
+        en: Emerald
+        fr: Émeraude
+        constants: {GlyphColor: "#34D399", GlyphSubColor: "#10B981", HighlightGlyphColor: "#886EE7B7", HoverColor: "#047857"}
+      - id: Crimson
+        en: Crimson
+        fr: Cramoisi
+        constants: {GlyphColor: "#F87171", GlyphSubColor: "#EF4444", HighlightGlyphColor: "#88FCA5A5", HoverColor: "#B91C1C"}
+      - id: Pink
+        en: Pink
+        fr: Rose
+        constants: {GlyphColor: "#F472B6", GlyphSubColor: "#EC4899", HighlightGlyphColor: "#88F9A8D4", HoverColor: "#BE185D"}
+      - id: Cyan
+        en: Cyan
+        fr: Cyan
+        constants: {GlyphColor: "#22D3EE", GlyphSubColor: "#06B6D4", HighlightGlyphColor: "#8867E8F9", HoverColor: "#0E7490"}
+      - id: Gold
+        en: Gold
+        fr: Or
+        constants: {GlyphColor: "#FACC15", GlyphSubColor: "#EAB308", HighlightGlyphColor: "#88FDE047", HoverColor: "#A16207"}
+      - id: Linkin
+        en: Hybrid red (Linkin Park)
+        fr: Rouge Hybrid (Linkin Park)
+        constants: {GlyphColor: "#E63946", GlyphSubColor: "#C1121F", HighlightGlyphColor: "#88FF6B6B", HoverColor: "#780000"}
+
+  - group: Animations
+    en: Animations
+    fr: Animations
+    options:
+      - id: Default
+        en: Smooth
+        fr: Douces
+      - id: Fast
+        en: Fast
+        fr: Rapides
+        files: [Presets/Animations/Fast.xaml]
+      - id: "Off"
+        en: Off
+        fr: Désactivées
+        files: [Presets/Animations/Off.xaml]
+
+  - group: HeroShade
+    en: Shade over the artwork
+    fr: Voile sur l'image
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: None
+        en: None
+        fr: Aucun
+        constants: {HeroShadeOpacity: 0}
+      - id: Light
+        en: Light
+        fr: Léger
+        constants: {HeroShadeOpacity: 0.35}
+      - id: Medium
+        en: Medium
+        fr: Moyen
+        constants: {HeroShadeOpacity: 0.65}
+      - id: Strong
+        en: Strong
+        fr: Fort
+        constants: {HeroShadeOpacity: 0.85}
+
+  - group: HeroBackground
+    en: Artwork sharpness
+    fr: Netteté de l'image
+    options:
+      - id: Default
+        en: Sharp
+        fr: Nette
+      - id: Soft
+        en: Soft blur
+        fr: Flou léger
+        files: [Presets/Background/SoftBlur.xaml]
+      - id: Strong
+        en: Strong blur
+        fr: Flou fort
+        files: [Presets/Background/StrongBlur.xaml]
+
+  - group: BackgroundVertical
+    en: Artwork vertical position
+    fr: Position verticale de l'image
+    options:
+      - id: Default
+        en: Center
+        fr: Centre
+      - id: Top
+        en: Top
+        fr: Haut
+        files: [Presets/Background/AlignTop.xaml]
+      - id: Bottom
+        en: Bottom
+        fr: Bas
+        files: [Presets/Background/AlignBottom.xaml]
+
+  - group: BackgroundHorizontal
+    en: Artwork horizontal position
+    fr: Position horizontale de l'image
+    options:
+      - id: Default
+        en: Left
+        fr: Gauche
+      - id: Center
+        en: Center
+        fr: Centre
+        files: [Presets/Background/AlignCenter.xaml]
+      - id: Right
+        en: Right
+        fr: Droite
+        files: [Presets/Background/AlignRight.xaml]
+
+  - group: HeaderBar
+    en: Header bar (time played, last played...)
+    fr: Barre d'en-tête (temps de jeu, dernière partie...)
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Glass
+        en: Frosted glass
+        fr: Verre dépoli
+        constants: {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, DetailsViewShowHeaderBar: True}
+      - id: Solid
+        en: Solid
+        fr: Opaque
+        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 1, DetailsViewShowHeaderBar: True}
+      - id: Transparent
+        en: Transparent
+        fr: Transparente
+        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, DetailsViewShowHeaderBar: True}
+      - id: Hidden
+        en: Hidden
+        fr: Masquée
+        constants: {DetailsViewShowHeaderBar: False}
+
+  - group: BackgroundBlur
+    en: Blurred background behind the information
+    fr: Fond flouté derrière les informations
+    options:
+      - id: Default
+        en: Normal
+        fr: Normal
+      - id: "Off"
+        en: Off
+        fr: Désactivé
+        constants: {DetailsViewBackgroundBlurOpacity: 0, GridViewBackgroundBlurOpacity: 0}
+      - id: Light
+        en: Light
+        fr: Léger
+        constants: {DetailsViewBackgroundBlurOpacity: 0.15, GridViewBackgroundBlurOpacity: 0.15}
+      - id: Strong
+        en: Strong
+        fr: Fort
+        constants: {DetailsViewBackgroundBlurOpacity: 0.5, GridViewBackgroundBlurOpacity: 0.5}
+
+variables:
+  - header: TopPanel
+    en: Top panel and sidebar
+    fr: Barre du haut et barre latérale
+  - {key: ShowNavigationButtons, en: Show navigation buttons, fr: Afficher les boutons de navigation}
+  - {key: TopPanelSearchBoxWidthHelium, range: [80, 600], en: Search box width, fr: Largeur de la recherche}
+  - {key: TopPanelHeight, range: [36, 100], en: Top panel height, fr: Hauteur de la barre du haut}
+  - {key: SidebarItemSize, range: [24, 64], en: Sidebar icon size, fr: Taille des icônes de la barre latérale}
+
+  - header: Hero
+    en: Details view - artwork header (Dune)
+    fr: Vue Détails - en-tête avec image (Dune)
+  - {key: HeroMinHeight, range: [300, 900], en: Minimum height of the header, fr: Hauteur minimale de l'en-tête}
+  - {key: HeroActionButtonWidth, range: [200, 600], en: Width of the button row, fr: Largeur de la rangée de boutons}
+  - {key: HeroActionButtonHeight, range: [28, 72], en: Height of the buttons, fr: Hauteur des boutons}
+  - {key: HeroButtonCornerRadius, range: [0, 24], en: Button corner rounding, fr: Arrondi des boutons}
+  - {key: DetailsViewShowEditButton, en: Show the edit button, fr: Afficher le bouton Modifier}
+  - {key: DetailsViewShowFavoriteButton, en: Show the favorite button (ThemeExtras), fr: Afficher le bouton Favori (ThemeExtras)}
+  - {key: DetailsViewAllowUseOfLogos, en: Use game logos (Extra Metadata Loader), fr: Utiliser les logos des jeux (Extra Metadata Loader)}
+  - {key: DetailsViewDisplayGameNameIfLogoVisible, en: Show the game name even with a logo, fr: Afficher le nom du jeu même avec un logo}
+  - {key: GameLogoMaxWidth, range: [100, 2000], en: Logo maximum width, fr: Largeur maximale du logo}
+  - {key: GameLogoMaxHeight, range: [50, 1000], en: Logo maximum height, fr: Hauteur maximale du logo}
+
+  - header: HeroChips
+    en: Details view - information chips
+    fr: Vue Détails - puces d'information
+  - {key: HeroShowInfoLine, en: Show the chips, fr: Afficher les puces}
+  - {key: HeroInfoLineMaxWidth, range: [300, 2000], en: Maximum width of the chips line, fr: Largeur maximale de la ligne de puces}
+  - {key: HeroChipCornerRadius, range: [0, 20], en: Chip corner rounding, fr: Arrondi des puces}
+  - {key: HeroShowReleaseDate, en: Release date, fr: Date de sortie}
+  - {key: HeroShowPlatforms, en: Platforms, fr: Plateformes}
+  - {key: HeroShowSource, en: Source, fr: Source}
+  - {key: HeroShowGenres, en: Genres, fr: Genres}
+  - {key: HeroShowDevelopers, en: Developers, fr: Développeurs}
+  - {key: HeroShowCompletionStatus, en: Completion status, fr: Statut de complétion}
+  - {key: HeroShowCommunityScore, en: Community score, fr: Note de la communauté}
+  - {key: HeroShowHltb, en: HowLongToBeat times, fr: Durées HowLongToBeat}
+  - {key: HeroShowAchievements, en: Achievements (PlayniteAchievements), fr: Succès (PlayniteAchievements)}
+
+  - header: HeaderBar
+    en: Details view - header bar
+    fr: Vue Détails - barre d'en-tête
+  - {key: DetailsViewShowHeaderBar, en: Show the header bar, fr: Afficher la barre d'en-tête}
+  - {key: DetailsViewShowLastPlayed, en: Last played, fr: Dernière partie}
+  - {key: DetailsViewShowPlayTime, en: Time played, fr: Temps de jeu}
+  - {key: DetailsViewShowCompletionStatus, en: Completion status, fr: Statut de complétion}
+  - {key: DetailsViewShowAchievementsSummary, en: Achievements summary, fr: Résumé des succès}
+  - {key: DetailsViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
+  - {key: HeaderButtonSize, range: [20, 56], en: Size of the header bar buttons, fr: Taille des boutons de la barre}
+
+  - header: DetailsInfo
+    en: Details view - information and description
+    fr: Vue Détails - informations et description
+  - {key: DetailsViewShowInfoPanelDefault, en: Information panel open by default, fr: Panneau d'informations ouvert par défaut}
+  - {key: DetailsViewDescriptionWidth, range: [150, 2400], en: Description width, fr: Largeur de la description}
+  - {key: DetailsViewDescriptionMaxHeight, range: [110, 2000], en: Description maximum height, fr: Hauteur maximale de la description}
+  - {key: DetailsViewDescriptionDockToRight, en: Description on the right, fr: Description à droite}
+  - {key: GameInfoNarrowValueMaxWidth, range: [80, 600], en: Maximum width of developers and publishers, fr: Largeur maximale des développeurs et éditeurs}
+  - {key: GameInfoWideValueMaxWidth, range: [80, 600], en: Maximum width of series and install folder, fr: Largeur maximale de la série et du dossier}
+  - {key: DetailsViewEnablePanelsDropShadowEffect, en: Shadow under panels (slower), fr: Ombre sous les panneaux (plus lent)}
+  - {key: DetailsViewLibraryGameShowFavorite, en: Favorite icon in the game list, fr: Icône favori dans la liste des jeux}
+
+  - header: DetailsSections
+    en: Details view - sections shown
+    fr: Vue Détails - sections affichées
+  - {key: DetailsViewShowNotesPanel, en: Play Notes, fr: Play Notes}
+  - {key: DetailsViewShowNewsPanel, en: News Viewer, fr: News Viewer}
+  - {key: DetailsViewShowVideoPanel, en: Video (Extra Metadata Loader), fr: Vidéo (Extra Metadata Loader)}
+  - {key: DetailsViewShowGameActivityPanel, en: GameActivity, fr: GameActivity}
+  - {key: DetailsViewShowCheckDlcPanel, en: CheckDlc, fr: CheckDlc}
+  - {key: DetailsViewShowGameRelationsPanel, en: Game Relations, fr: Game Relations}
+  - {key: DetailsViewShowWebExplorerPanel, en: Web Explorer, fr: Web Explorer}
+  - {key: DetailsViewShowHltbPanel, en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: DetailsViewShowAchievementsPanel, en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: DetailsViewShowSteamScreenshotsPanel, en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: DetailsViewShowVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: DetailsViewShowScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: DetailsViewShowReviewsPanel, en: Review Viewer, fr: Review Viewer}
+
+  - header: DetailsExpand
+    en: Details view - sections open by default
+    fr: Vue Détails - sections dépliées par défaut
+  - {key: DetailsViewExpandNotesPanel, en: Play Notes, fr: Play Notes}
+  - {key: DetailsViewExpandNewsPanel, en: News Viewer, fr: News Viewer}
+  - {key: DetailsViewExpandVideoPanel, en: Video, fr: Vidéo}
+  - {key: DetailsViewExpandGameActivityPanel, en: GameActivity, fr: GameActivity}
+  - {key: DetailsViewExpandCheckDlcPanel, en: CheckDlc, fr: CheckDlc}
+  - {key: DetailsViewExpandGameRelationsPanel, en: Game Relations, fr: Game Relations}
+  - {key: DetailsViewExpandWebExplorerPanel, en: Web Explorer, fr: Web Explorer}
+  - {key: DetailsViewShowHltbPanelDefault, en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: DetailsViewShowAchievementsPanelDefault, en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: DetailsViewExpandSteamScreenshotsPanel, en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: DetailsViewExpandVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: DetailsViewExpandScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: DetailsViewExpandReviewsPanel, en: Review Viewer, fr: Review Viewer}
+
+  - header: DetailsOrderLeft
+    en: Details view - left column order (each number once, 0 to 18)
+    fr: Vue Détails - ordre de la colonne de gauche (chaque numéro une fois, 0 à 18)
+  - {key: DetailsViewSectionOrderNotes, range: [0, 18], en: Play Notes, fr: Play Notes}
+  - {key: DetailsViewSectionOrderGenres, range: [0, 18], en: Genres, fr: Genres}
+  - {key: DetailsViewSectionOrderCategories, range: [0, 18], en: Categories, fr: Catégories}
+  - {key: DetailsViewSectionOrderFeatures, range: [0, 18], en: Features, fr: Fonctionnalités}
+  - {key: DetailsViewSectionOrderTags, range: [0, 18], en: Tags, fr: Étiquettes}
+  - {key: DetailsViewSectionOrderNewsViewer, range: [0, 18], en: News Viewer, fr: News Viewer}
+  - {key: DetailsViewSectionOrderVideo, range: [0, 18], en: Video, fr: Vidéo}
+  - {key: DetailsViewSectionOrderGameActivity, range: [0, 18], en: GameActivity, fr: GameActivity}
+  - {key: DetailsViewSectionOrderCheckDlc, range: [0, 18], en: CheckDlc, fr: CheckDlc}
+  - {key: DetailsViewSectionOrderGameRelations, range: [0, 18], en: Game Relations, fr: Game Relations}
+  - {key: DetailsViewSectionOrderWeb, range: [0, 18], en: Web Explorer, fr: Web Explorer}
+
+  - header: DetailsOrderRight
+    en: Details view - right column order (each number once, 0 to 18)
+    fr: Vue Détails - ordre de la colonne de droite (chaque numéro une fois, 0 à 18)
+  - {key: DetailsViewSectionOrderHowLongToBeat, range: [0, 18], en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: DetailsViewSectionOrderAchievements, range: [0, 18], en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: DetailsViewSectionOrderSteamScreenshots, range: [0, 18], en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: DetailsViewSectionOrderVndb, range: [0, 18], en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: DetailsViewSectionOrderScreenshotsVisualizer, range: [0, 18], en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: DetailsViewSectionOrderReviewViewer, range: [0, 18], en: Review Viewer, fr: Review Viewer}
+
+  - header: DetailsPlugins
+    en: Details view - extension details
+    fr: Vue Détails - détails des extensions
+  - {key: DetailsViewShowHltbDataGrid, en: HowLongToBeat time table, fr: Tableau des durées HowLongToBeat}
+  - {key: WebExplorerControlHeight, range: [400, 1800], en: Web Explorer height, fr: Hauteur de Web Explorer}
+  - {key: CheckDlcListHeight, range: [100, 1600], en: CheckDlc list height, fr: Hauteur des listes CheckDlc}
+  - {key: GameActivityChartTimeHeight, range: [0, 1000], en: GameActivity time chart height (0 = automatic), fr: Hauteur du graphique de temps GameActivity (0 = auto)}
+  - {key: GameActivityChartLogHeight, range: [0, 1000], en: GameActivity log chart height (0 = automatic), fr: Hauteur du graphique de journal GameActivity (0 = auto)}
+
+  - header: DetailsAchievements
+    en: Details view - achievements (PlayniteAchievements)
+    fr: Vue Détails - succès (PlayniteAchievements)
+  - {key: DetailsViewAchievementsShowProgressBar, en: Progress bar, fr: Barre de progression}
+  - {key: DetailsViewAchievementsShowUnlockedList, en: Unlocked icons, fr: Icônes débloquées}
+  - {key: DetailsViewAchievementsShowLockedList, en: Locked icons, fr: Icônes verrouillées}
+  - {key: DetailsViewAchievementsShowCompactList, en: All icons, fr: Toutes les icônes}
+  - {key: DetailsViewAchievementsShowLatest, en: Latest unlocked, fr: Dernier débloqué}
+  - {key: DetailsViewAchievementsShowStats, en: Statistics, fr: Statistiques}
+  - {key: DetailsViewAchievementsShowBarChart, en: Bar chart, fr: Graphique en barres}
+  - {key: DetailsViewAchievementsShowPieChart, en: Pie chart, fr: Graphique circulaire}
+  - {key: DetailsViewAchievementsShowDataGrid, en: Full table, fr: Tableau complet}
+  - {key: DetailsViewAchievementsShowButton, en: Button to open the achievements window, fr: Bouton pour ouvrir la fenêtre des succès}
+
+  - header: GridDetails
+    en: Grid view - game panel
+    fr: Vue Grille - panneau du jeu
+  - {key: GridViewAllowUseOfLogos, en: Use game logos (Extra Metadata Loader), fr: Utiliser les logos des jeux (Extra Metadata Loader)}
+  - {key: GridViewDisplayGameNameIfLogoVisible, en: Show the game name even with a logo, fr: Afficher le nom du jeu même avec un logo}
+  - {key: GridViewPlayButtonMinWidth, range: [120, 400], en: Play button minimum width, fr: Largeur minimale du bouton Jouer}
+  - {key: GridViewPlayButtonHeight, range: [30, 80], en: Play button height, fr: Hauteur du bouton Jouer}
+  - {key: GridViewShowLastPlayed, en: Last played, fr: Dernière partie}
+  - {key: GridViewShowPlayTime, en: Time played, fr: Temps de jeu}
+  - {key: GridViewShowCompletionStatus, en: Completion status, fr: Statut de complétion}
+  - {key: GridViewShowAchievementsSummary, en: Achievements summary, fr: Résumé des succès}
+  - {key: GridViewShowEditButton, en: Edit button, fr: Bouton Modifier}
+  - {key: GridViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
+  - {key: GridViewShowFavoriteButton, en: Favorite button (ThemeExtras), fr: Bouton Favori (ThemeExtras)}
+  - {key: GridViewShowHltbDataGrid, en: HowLongToBeat time table, fr: Tableau des durées HowLongToBeat}
+  - {key: GridViewShowMetadataDetailsDefault, en: 'Platforms, tags and categories open by default', fr: 'Plateformes, étiquettes et catégories dépliées par défaut'}
+
+  - header: GridSections
+    en: Grid view - sections shown
+    fr: Vue Grille - sections affichées
+  - {key: GridViewShowAchievementsPanel, en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: GridViewShowGameActivityPanel, en: GameActivity, fr: GameActivity}
+  - {key: GridViewShowHltbPanel, en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: GridViewShowNotesPanel, en: Play Notes, fr: Play Notes}
+  - {key: GridViewShowVideoPanel, en: Video (Extra Metadata Loader), fr: Vidéo (Extra Metadata Loader)}
+  - {key: GridViewShowScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: GridViewShowReviewsPanel, en: Review Viewer, fr: Review Viewer}
+  - {key: GridViewShowNewsPanel, en: News Viewer, fr: News Viewer}
+  - {key: GridViewShowVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: GridViewShowCheckDlcPanel, en: CheckDlc, fr: CheckDlc}
+  - {key: GridViewShowGameRelationsPanel, en: Game Relations, fr: Game Relations}
+  - {key: GridViewShowSteamScreenshotsPanel, en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: GridViewShowWebExplorerPanel, en: Web Explorer, fr: Web Explorer}
+
+  - header: GridExpand
+    en: Grid view - sections open by default
+    fr: Vue Grille - sections dépliées par défaut
+  - {key: GridViewShowAchievementsPanelDefault, en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: GridViewExpandGameActivityPanel, en: GameActivity, fr: GameActivity}
+  - {key: GridViewShowHltbPanelDefault, en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: GridViewExpandNotesPanel, en: Play Notes, fr: Play Notes}
+  - {key: GridViewExpandVideoPanel, en: Video, fr: Vidéo}
+  - {key: GridViewExpandScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: GridViewExpandReviewsPanel, en: Review Viewer, fr: Review Viewer}
+  - {key: GridViewExpandNewsPanel, en: News Viewer, fr: News Viewer}
+  - {key: GridViewExpandVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: GridViewExpandCheckDlcPanel, en: CheckDlc, fr: CheckDlc}
+  - {key: GridViewExpandGameRelationsPanel, en: Game Relations, fr: Game Relations}
+  - {key: GridViewExpandSteamScreenshotsPanel, en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: GridViewExpandWebExplorerPanel, en: Web Explorer, fr: Web Explorer}
+
+  - header: GridOrder
+    en: Grid view - sections order (each number once, 0 to 18)
+    fr: Vue Grille - ordre des sections (chaque numéro une fois, 0 à 18)
+  - {key: GridViewSectionOrderAchievements, range: [0, 18], en: PlayniteAchievements, fr: PlayniteAchievements}
+  - {key: GridViewSectionOrderGameActivity, range: [0, 18], en: GameActivity, fr: GameActivity}
+  - {key: GridViewSectionOrderHowLongToBeat, range: [0, 18], en: HowLongToBeat, fr: HowLongToBeat}
+  - {key: GridViewSectionOrderNotes, range: [0, 18], en: Notes, fr: Notes}
+  - {key: GridViewSectionOrderVideo, range: [0, 18], en: Video, fr: Vidéo}
+  - {key: GridViewSectionOrderScreenshotsVisualizer, range: [0, 18], en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
+  - {key: GridViewSectionOrderReviewViewer, range: [0, 18], en: Review Viewer, fr: Review Viewer}
+  - {key: GridViewSectionOrderNewsViewer, range: [0, 18], en: News Viewer, fr: News Viewer}
+  - {key: GridViewSectionOrderVndb, range: [0, 18], en: VNDB Nexus, fr: VNDB Nexus}
+  - {key: GridViewSectionOrderCheckDlc, range: [0, 18], en: CheckDlc, fr: CheckDlc}
+  - {key: GridViewSectionOrderGameRelations, range: [0, 18], en: Game Relations, fr: Game Relations}
+  - {key: GridViewSectionOrderSteamScreenshots, range: [0, 18], en: Steam Screenshots, fr: Steam Screenshots}
+  - {key: GridViewSectionOrderWeb, range: [0, 18], en: Web Explorer, fr: Web Explorer}
+
+  - header: GridAchievements
+    en: Grid view - achievements (PlayniteAchievements)
+    fr: Vue Grille - succès (PlayniteAchievements)
+  - {key: GridViewAchievementsShowProgressBar, en: Progress bar, fr: Barre de progression}
+  - {key: GridViewAchievementsShowUnlockedList, en: Unlocked icons, fr: Icônes débloquées}
+  - {key: GridViewAchievementsShowLockedList, en: Locked icons, fr: Icônes verrouillées}
+  - {key: GridViewAchievementsShowCompactList, en: All icons, fr: Toutes les icônes}
+  - {key: GridViewAchievementsShowLatest, en: Latest unlocked, fr: Dernier débloqué}
+  - {key: GridViewAchievementsShowStats, en: Statistics, fr: Statistiques}
+  - {key: GridViewAchievementsShowBarChart, en: Bar chart, fr: Graphique en barres}
+  - {key: GridViewAchievementsShowPieChart, en: Pie chart, fr: Graphique circulaire}
+  - {key: GridViewAchievementsShowDataGrid, en: Full table, fr: Tableau complet}
+  - {key: GridViewAchievementsShowButton, en: Button to open the achievements window, fr: Bouton pour ouvrir la fenêtre des succès}
+  - {key: AchievementsDataGridMaxHeight, range: [100, 1200], en: Full table maximum height, fr: Hauteur maximale du tableau complet}
+
+  - header: GridCovers
+    en: Grid view - covers
+    fr: Vue Grille - jaquettes
+  - {key: GridViewCoverZoomOnHover, en: Zoom when hovered, fr: Zoom au survol}
+  - {key: GridViewCoverShowSelectionBorder, en: Border on hovered and selected covers, fr: Bordure sur les jaquettes survolées et sélectionnées}
+  - {key: GridViewCoverSubtitleVisibility, en: Time played under covers, fr: Temps de jeu sous les jaquettes}
+  - {key: GridViewCoverCompStatusSubtitleVisibility, en: Completion status under covers, fr: Statut de complétion sous les jaquettes}
+  - {key: GridViewEnableCoverShineAnimation, en: Shine animation on hover, fr: Animation de reflet au survol}
+  - {key: GridViewEnablePlayingGlowBorder, en: Glow while the game is running, fr: Halo pendant que le jeu tourne}
+  - {key: GridViewLibraryGameShowFavorite, en: Favorite icon, fr: Icône favori}
+  - {key: GridViewCoverDisplayLibraryBanner, en: Library banners (ThemeExtras), fr: Bannières de bibliothèque (ThemeExtras)}
+  - {key: GridViewCoverUseRoundedCorners, en: Rounded corners (slower), fr: Coins arrondis (plus lent)}
+  - {key: GridViewCoverDisplayDropShadowEffect, en: Shadow (slower), fr: Ombre (plus lent)}
+
+  - header: Common
+    en: Sizes, links and text
+    fr: Tailles, liens et texte
+  - {key: SectionHeaderMinHeight, range: [24, 64], en: Section header height, fr: Hauteur des titres de section}
+  - {key: SectionContainerMinHeight, range: [20, 160], en: Section minimum height, fr: Hauteur minimale des sections}
+  - {key: LinksShowNames, en: Show link names next to icons, fr: Afficher le nom des liens à côté des icônes}
+  - {key: LinkIconSize, range: [12, 48], en: Link icon size, fr: Taille des icônes de liens}
+  - {key: FontSizeSmall, range: [8, 24], en: Small text, fr: Petit texte}
+  - {key: FontSize, range: [10, 28], en: Normal text, fr: Texte normal}
+  - {key: FontSizeLarge, range: [10, 32], en: Large text, fr: Grand texte}
+  - {key: FontSizeLarger, range: [12, 40], en: Section titles, fr: Titres de section}
+  - {key: FontSizeLargest, range: [16, 64], en: Largest text, fr: Très grand texte}
+
+# ThemeModifier keeps the free color pickers (ThemeOptions has no color picker).
+colors:
+  - "Colors - accent and text"
+  - [GlyphColor, 'Accent color (icons, selection)']
+  - [GlyphSubColor, 'Secondary accent color']
+  - [HighlightGlyphColor, 'Accent highlight (translucent)']
+  - [HoverColor, 'Hover color']
+  - [TextColor, 'Main text']
+  - [TextColorDarker, 'Secondary text']
+  - [TextColorDark, 'Dark text (on light backgrounds)']
+  - [MainColorDark, 'Dark main color']
+  - [BackgroundToneColor, 'Tooltip background']
+  - [DataChangeNotifColor, 'Unsaved changes marker']
+  - "Colors - controls and separators"
+  - [ControlBackgroundColor, 'Control background']
+  - [ControlBackgroundColorDark, 'Dark control background (inputs, lists)']
+  - [ControlBackgroundColorDarkHover, 'Dark control background when hovered']
+  - [PopupBorderColor, 'Popup border']
+  - [ToggleButtonNotCheckedBorderColor, 'Unchecked toggle border']
+  - [PanelSeparatorColor, 'Panel separator']
+  - [WindowPanelSeparatorColor, 'Window panel separator']
+  - "Colors - play button"
+  - [PlayButtonBackgroundColor1, 'Play button gradient 1']
+  - [PlayButtonBackgroundColor2, 'Play button gradient 2']
+  - [PlayButtonBackgroundColor3, 'Play button gradient 3']
+  - [PlayButtonIsMouseOverBackgroundColor1, 'Play button hovered gradient 1']
+  - [PlayButtonIsMouseOverBackgroundColor2, 'Play button hovered gradient 2']
+  - [PlayButtonIsMouseOverBackgroundColor3, 'Play button hovered gradient 3']
+  - [MoreButtonInstalledBackgroundBrush, 'More actions button (installed)']
+  - [MoreButtonNotInstalledBackgroundBrush, 'More actions button (not installed)']
+  - "Colors - artwork header"
+  - [HeroSecondaryButtonBackgroundBrush, 'Chips and icon buttons background']
+  - [HeroSecondaryButtonHoverBackgroundBrush, 'Icon buttons background when hovered']
+  - [HeroSecondaryButtonBorderBrush, 'Chips and icon buttons border']
+  - "Colors - details and grid views"
+  - [DetailsViewContainerLabelColor, 'Property labels']
+  - [DetailsViewContainerTextBrush, 'Property values']
+  - [DetailsViewOverviewHeaderLabelBrush, 'Header labels']
+  - [DetailsViewOverviewHeaderTextBlockBrush, 'Header values']
+  - [DetailsViewLinksTextBrush, 'Link text']
+  - [DetailsViewHeaderIconsFillBrush, 'Header icons']
+  - [DetailsViewBannerPanelBackgroundBrush, 'Banner panel background']
+  - [DetailsViewBannerPanelBorderBrush, 'Banner panel border']
+  - [GameInfoContainerBackgroundBrush, 'Game information container']
+  - [GridViewCoverSubtitleBrush, 'Text under covers']
+  - [GridViewItemMaskBackgroundBrush, 'Cover placeholder background']
+  - "Colors - game list"
+  - [DetailsViewItemIsSelectedBackgroundBrush, 'Selected game row']
+  - [DetailsViewItemIsMouseOverBackgroundBrush, 'Hovered game row']
+  - [DetailsViewItemIsMouseOverInstalledBackgroundBrush, 'Hovered installed game row']
+  - [LibraryDetailsViewBackgroundBrush, 'Game list background']
+  - [LibraryDetailsViewNotInstalledForegroundBrush, 'Not installed game text']
+  - [LibraryDetailsViewIsLaunchingForegroundBrush, 'Launching game text']
+  - [LibraryDetailsViewIsRunningForegroundBrush, 'Running game text']
+  - [PlayersCountDetailsViewForegroundBrush, 'Players count text']
+  - [GroupCountBackgroundBrush, 'Group count badge']
+  - "Colors - ratings and messages"
+  - [PositiveRatingBrush, 'Positive rating']
+  - [MixedRatingBrush, 'Mixed rating']
+  - [NegativeRatingBrush, 'Negative rating']
+  - [WarningBrush, 'Warning']
+  - "Colors - top panel and window"
+  - [TopPanelBackgroundBrush, 'Top panel background']
+  - [TopPanelSearchBoxBackgroundBrush, 'Top panel search box']
+  - [TopPanelItemBackgroundBrush, 'Top panel button background']
+  - [TopPanelItemIsMouseOverBackgroundBrush, 'Top panel button hovered']
+  - [TopPanelItemForegroundBrush, 'Top panel button icon']
+  - [TopPanelItemIsMouseOverForegroundBrush, 'Top panel button icon hovered']
+  - [WindowBarButtonForegroundBrush, 'Window buttons (minimize, close)']
+  - "Colors - menus and popups"
+  - [MenusPopupsHoverBrush, 'Menu item hovered']
+  - [MenusPopupMouseOverForegroundBrush, 'Menu item hovered text']
+  - [PopupBorderBrush, 'Popup border']
+  - [NormalBrush, 'Normal control border']
+  - [NormalBorderBrush, 'Control border']
+  - "Colors - inputs"
+  - [SearchBoxBackgroundBrush, 'Search box']
+  - [SearchBoxIsMouseOverBackgroundBrush, 'Search box hovered']
+  - [TextBoxIsSelectedBackgroundBrush, 'Text box focused']
+  - [ComboboxBackgroundBrush, 'Combo box']
+  - [ComboboxIsMouseOverBackgroundBrush, 'Combo box hovered']
+  - [ComboBoxListBackgroundBrush, 'Combo box list']
+  - [CheckboxBackgroundBrush, 'Check box']
+  - [CheckboxIsCheckedBackgroundBrush, 'Check box checked']
+  - [ToggleButtonBackgroundBrush, 'Toggle button']
+  - [ProgressBarBackgroundBrush, 'Progress bar track']
+  - [ThumbBackgroundBrush, 'Scroll bar thumb']
+  - [ThumbIsMouseOverBackgroundBrush, 'Scroll bar thumb hovered']

@@ -95,7 +95,7 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
-                                        <FadeImage x:Name="PART_ImageBackground" Stretch="UniformToFill"
+                                        <FadeImage x:Name="PART_ImageBackground" Stretch="UniformToFill" Effect="{DynamicResource HeroBackgroundEffect}"
                                                    HorizontalAlignment="{DynamicResource DetailsViewBackgroundHorizontalAlignment}"
                                                    VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}">
                                             <FadeImage.OpacityMask>
@@ -113,7 +113,11 @@
                                                     VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}" />
                                 </Grid>
 
-                                <StackPanel Grid.Row="0" Name="DetailsTop" VerticalAlignment="Top">
+                                <Grid Grid.Row="0" Name="DetailsTop" VerticalAlignment="Top">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
                                     <Grid Name="HeaderImagesGrid" Height="{Settings CalculatedGameDetailsIndentation}" MinHeight="{DynamicResource HeroMinHeight}">
                                         <!-- Dune-style shade so the actions stay readable on bright artwork -->
                                         <Border Background="Black" Opacity="{DynamicResource HeroShadeOpacity}" IsHitTestVisible="False">
@@ -142,7 +146,8 @@
                                                         Tag="{DynamicResource DetailsViewAllowUseOfLogos}" 
                                                         Style="{DynamicResource ControlPanelBoolTagToVisibility}"/>
 
-                                        <StackPanel Margin="20,0,10,20" VerticalAlignment="Bottom">
+                                        <StackPanel Margin="20,0,10,20" VerticalAlignment="Bottom"
+                                                    Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
                                             <!--<Image Name="PART_ImageIcon" MaxHeight="48" MaxWidth="48"
                                                    DockPanel.Dock="Left" Margin="0,0,20,0"
                                                    VerticalAlignment="Bottom"
@@ -193,117 +198,246 @@
                                                     </TextBlock.Effect>
                                                 </TextBlock>
                                             </Border>
-                                            <!-- Hero footer (Dune): info chips and actions -->
+                                            <!-- Hero footer (Dune): info chips. Each chip has its own option. -->
                                             <Grid x:Name="HeroFooter" Margin="0,14,0,0" HorizontalAlignment="Left">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid Grid.Row="0" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowInfoLine}">
-                                                    <WrapPanel Orientation="Horizontal" Margin="0,0,0,6">
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowReleaseDate}">
-                                                            <Border>
-                                                        <Border.Style>
-                                                            <Style TargetType="Border" BasedOn="{StaticResource HeroInfoChip}">
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Game.ReleaseDate}" Value="{x:Null}">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Game.ReleaseDate}" />
-                                                    </Border>
-                                                        </Grid>
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowPlatforms}">
-                                                            <ItemsControl ItemsSource="{Binding Game.Platforms}">
-                                                                <ItemsControl.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <WrapPanel Orientation="Horizontal" />
-                                                                    </ItemsPanelTemplate>
-                                                                </ItemsControl.ItemsPanel>
-                                                                <ItemsControl.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <Border Style="{StaticResource HeroInfoChip}">
-                                                                            <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Name}" />
-                                                                        </Border>
-                                                                    </DataTemplate>
-                                                                </ItemsControl.ItemTemplate>
-                                                            </ItemsControl>
-                                                        </Grid>
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowSource}">
-                                                            <Border>
-                                                        <Border.Style>
-                                                            <Style TargetType="Border" BasedOn="{StaticResource HeroInfoChip}">
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Game.Source}" Value="{x:Null}">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Game.Source.Name}" />
-                                                    </Border>
-                                                        </Grid>
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowGenres}">
-                                                            <ItemsControl ItemsSource="{Binding Game.Genres}">
-                                                                <ItemsControl.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <WrapPanel Orientation="Horizontal" />
-                                                                    </ItemsPanelTemplate>
-                                                                </ItemsControl.ItemsPanel>
-                                                                <ItemsControl.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <Border Style="{StaticResource HeroInfoChip}">
-                                                                            <TextBlock Style="{StaticResource HeroInfoChipText}" Text="{Binding Name}" />
-                                                                        </Border>
-                                                                    </DataTemplate>
-                                                                </ItemsControl.ItemTemplate>
-                                                            </ItemsControl>
-                                                        </Grid>
-                                                    </WrapPanel>
-                                                </Grid>
-                                                <Grid x:Name="HeroActions" Grid.Row="1" HorizontalAlignment="Left" MinWidth="200"
-                                                      Width="{DynamicResource HeroActionButtonWidth}">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Grid.Column="0">
-                                                        <Button Name="PART_ButtonPlayAction" Style="{DynamicResource HeroPlayButton}" />
-                                                        <Button Name="PART_ButtonContextAction" Style="{DynamicResource HeroContextButton}" />
-                                                        <Button Name="PART_ButtonMoreActions" HorizontalAlignment="Right" Content="&#xe228;">
-                                                            <Button.Style>
-                                                                <Style TargetType="Button" BasedOn="{StaticResource HeroMoreActionsButton}">
+                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowInfoLine}">
+                                                    <WrapPanel Orientation="Horizontal" Margin="0,0,0,6" MaxWidth="{DynamicResource HeroInfoLineMaxWidth}">
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowReleaseDate}">
+                                                        <Grid>
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
                                                                     <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding ElementName=PART_ButtonContextAction, Path=Visibility}" Value="Visible">
-                                                                            <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledBackgroundBrush}" />
+                                                                        <DataTrigger Binding="{Binding Game.ReleaseDate}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
-                                                                        <MultiDataTrigger>
-                                                                            <MultiDataTrigger.Conditions>
-                                                                                <Condition Binding="{Binding ElementName=PART_ButtonContextAction, Path=Visibility}" Value="Visible" />
-                                                                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
-                                                                            </MultiDataTrigger.Conditions>
-                                                                            <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledIsMouseOverBackgroundBrush}" />
-                                                                        </MultiDataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
-                                                            </Button.Style>
-                                                        </Button>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Game.ReleaseDate}" />
+                                                            </Border>
+                                                        </Grid>
                                                     </Grid>
-                                                    <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowEditButton}">
-                                                        <Button x:Name="PART_ButtonEditGame" Margin="8,0,0,0" Focusable="False" Content="&#xe70f;"
-                                                                ToolTip="{DynamicResource LOCEditGame}" Style="{DynamicResource HeroIconActionButton}" />
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowPlatforms}">
+                                                        <ItemsControl ItemsSource="{Binding Game.Platforms}">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border Style="{DynamicResource HeroInfoChip}">
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
                                                     </Grid>
-                                                    <Grid Grid.Column="2" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowFavoriteButton}">
-                                                        <ToggleButton Name="GameFavoriteToggleButton" Margin="8,0,0,0" Focusable="False"
-                                                                      Style="{DynamicResource HeroFavoriteToggle}"
-                                                                      Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
-                                                                      IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}" />
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowSource}">
+                                                        <Grid>
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Game.Source}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <!-- Playnite uses an empty placeholder when the game has no source -->
+                                                                        <DataTrigger Binding="{Binding Game.Source.Name}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Game.Source.Name}" />
+                                                            </Border>
+                                                        </Grid>
                                                     </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowGenres}">
+                                                        <ItemsControl ItemsSource="{Binding Game.Genres}">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border Style="{DynamicResource HeroInfoChip}">
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowDevelopers}">
+                                                        <ItemsControl ItemsSource="{Binding Game.Developers}">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" />
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border Style="{DynamicResource HeroInfoChip}">
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowCompletionStatus}">
+                                                        <Grid>
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Game.CompletionStatus}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <!-- Playnite uses an empty placeholder when the game has no completion status -->
+                                                                        <DataTrigger Binding="{Binding Game.CompletionStatus.Name}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Game.CompletionStatus.Name}" />
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowCommunityScore}">
+                                                        <Grid>
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Game.CommunityScore}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipScore}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Game.CommunityScore}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowHltb}">
+                                                        <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat, FallbackValue=''}">
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="-">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipHltbMain}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowHltb}">
+                                                        <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainExtraFormat, FallbackValue=''}">
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="-">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipHltbExtra}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowHltb}">
+                                                        <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=CompletionistFormat, FallbackValue=''}">
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="-">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipHltbCompletionist}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowAchievements}">
+                                                        <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAchievements}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UnlockedCount, FallbackValue='-'}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=AchievementCount, FallbackValue='-'}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+                                                    </WrapPanel>
                                                 </Grid>
                                             </Grid>
+                                            <Border x:Name="HeroActionsSpacer" Margin="0,14,0,0"
+                                                    Height="{Binding ElementName=HeroActionsHost, Path=ActualHeight}"
+                                                    Tag="{DynamicResource HeroActionsLocation}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
                                         </StackPanel>
                                         <StackPanel Margin="20,20,0,0"
                                                     HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -338,8 +472,8 @@
                                             </Border>
                                         </StackPanel>
                                     </Grid>
-                                    <Grid Name="DetailsHeader">
-                                        <Border Height="{Binding ElementName=DetailsHeader, Path=Height}" ClipToBounds="True">
+                                    <Grid Name="DetailsHeader" Grid.Row="1" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowHeaderBar}">
+                                        <Border Height="{Binding ElementName=DetailsHeader, Path=Height}" ClipToBounds="True" Opacity="{DynamicResource HeaderBarBlurOpacity}">
                                             <Border.CacheMode>
                                                 <BitmapCache EnableClearType="False" RenderAtScale="0.125"
                                                              SnapsToDevicePixels="False" />
@@ -351,7 +485,7 @@
                                                 <BlurEffect Radius="24" KernelType="Gaussian" RenderingBias="Performance"/>
                                             </Border.Effect>
                                         </Border>
-                                        <Border Background="{DynamicResource BackdropGlass1}"/>
+                                        <Border Background="{DynamicResource BackdropGlass1}" Opacity="{DynamicResource HeaderBarGlassOpacity}"/>
                                         <Border Padding="20,10,30,10" x:Name="HeaderRow" Background="{DynamicResource DetailsSectionBackgroundBrush}">
                                             <DockPanel>
                                                 <DockPanel.Resources>
@@ -379,6 +513,21 @@
                                                         </Setter>
                                                     </Style>
                                                 </DockPanel.Resources>
+                                                <Border x:Name="HeaderActionsSpacer" DockPanel.Dock="Left" Margin="0,0,10,0"
+                                                        Width="{Binding ElementName=HeroActionsHost, Path=ActualWidth}"
+                                                        Height="{Binding ElementName=HeroActionsHost, Path=ActualHeight}"
+                                                        Tag="{DynamicResource HeroActionsLocation}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
                                                 <DockPanel DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,0,0">
                                                     <ContentControl x:Name="PlayState_GameStateSwitchControl" Margin="10,0,0,0"
                                                                     Visibility="{PluginSettings Plugin=PlayState, Path=IsControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -593,7 +742,50 @@
                                             </DockPanel>
                                         </Border>
                                     </Grid>
-                                </StackPanel>
+                                    <!-- Action buttons: in the hero (Dune) or in the header bar (Neon) -->
+                                    <Grid x:Name="HeroActionsHost" HorizontalAlignment="Left" Tag="{DynamicResource HeroActionsLocation}">
+                                        <Grid.Style>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Grid.Row" Value="0" />
+                                                <Setter Property="VerticalAlignment" Value="Bottom" />
+                                                <Setter Property="Margin" Value="20,0,0,20" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
+                                                        <Setter Property="Grid.Row" Value="1" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="Margin" Value="20,10,0,10" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+                                        <Grid x:Name="HeroActions" HorizontalAlignment="Left" MinWidth="200"
+                                              Width="{DynamicResource HeroActionButtonWidth}"
+                                              Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0">
+                                                <Button Name="PART_ButtonPlayAction" Style="{DynamicResource HeroPlayButton}" />
+                                                <Button Name="PART_ButtonContextAction" Style="{DynamicResource HeroContextButton}" />
+                                                <Button Name="PART_ButtonMoreActions" HorizontalAlignment="Right" Content="&#xe228;"
+                                                        Tag="{Binding ElementName=PART_ButtonContextAction, Path=Visibility}"
+                                                        Style="{DynamicResource HeroMoreActionsButton}" />
+                                            </Grid>
+                                            <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowEditButton}">
+                                                <Button x:Name="PART_ButtonEditGame" Margin="8,0,0,0" Focusable="False" Content="&#xe70f;"
+                                                        ToolTip="{DynamicResource LOCEditGame}" Style="{DynamicResource HeroIconActionButton}" />
+                                            </Grid>
+                                            <Grid Grid.Column="2" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowFavoriteButton}">
+                                                <ToggleButton Name="GameFavoriteToggleButton" Margin="8,0,0,0" Focusable="False"
+                                                              Style="{DynamicResource HeroFavoriteToggle}"
+                                                              Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
 
                                 <Grid Name="GameDetailsSection" Grid.Row="1">
                                     <Grid>
@@ -917,7 +1109,7 @@
                                                     <ToggleButton x:Name="DetailsViewNotesPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandNotesPanel}">
                                                         <Label Content="{DynamicResource LOCNotesLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1097,7 +1289,7 @@
                                                     <ToggleButton x:Name="DetailsViewNewsPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandNewsPanel}">
                                                         <Label Content="{DynamicResource LOC_NewsViewer_NewsViewerControl_NewsLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1135,7 +1327,7 @@
                                                     <ToggleButton x:Name="DetailsViewVideoPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandVideoPanel}">
                                                         <Label Content="{DynamicResource LOCExtra_Metadata_Loader_VideoLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1192,7 +1384,7 @@
                                                     <ToggleButton x:Name="DetailsViewGameActivityPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandGameActivityPanel}">
                                                         <Label Content="{DynamicResource LOCGameActivityTitle}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1246,7 +1438,7 @@
                                                     <ToggleButton x:Name="DetailsViewCheckDlcPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandCheckDlcPanel}">
                                                         <Label Content="DLC" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
                                                     <Grid Style="{DynamicResource AdditionalPanelContent}"
@@ -1273,7 +1465,7 @@
                                                     <ToggleButton x:Name="DetailsViewGameRelationsPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandGameRelationsPanel}">
                                                         <Label Content="{DynamicResource LOCGameRelations_RelatedGamesLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1348,7 +1540,7 @@
                                                     <ToggleButton x:Name="DetailsViewWebExplorerPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandWebExplorerPanel}">
                                                         <Label Content="{DynamicResource LOCWebExplorer_WebLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1739,7 +1931,7 @@
                                                     <ToggleButton x:Name="DetailsViewSteamScreenshotsPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandSteamScreenshotsPanel}">
                                                         <Label Content="{DynamicResource LOC_SteamScreenshots_SteamScreenshotsLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1763,7 +1955,7 @@
                                                     <ToggleButton x:Name="DetailsViewVndbPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandVndbPanel}">
                                                         <Label Content="VNDB" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
                                                     <Grid Style="{DynamicResource AdditionalPanelContent}"
@@ -1786,7 +1978,7 @@
                                                     <ToggleButton x:Name="DetailsViewScreenshotsVisualizerPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandScreenshotsVisualizerPanel}">
                                                         <Label Content="{DynamicResource LOCSsvTitle}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>
@@ -1814,7 +2006,7 @@
                                                     <ToggleButton x:Name="DetailsViewReviewsPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
                                                                   Margin="0,0,0,10" Focusable="False"
                                                                   Style="{DynamicResource DetailsSectionHeaderToggleButton}"
-                                                                  IsChecked="{DynamicResource DetailsViewShowAdditionalPanelsDefault}">
+                                                                  IsChecked="{DynamicResource DetailsViewExpandReviewsPanel}">
                                                         <Label Content="{DynamicResource LOCReview_Viewer_ReviewsLabel}"
                                                                Style="{DynamicResource FeedSectionLabel}" Margin="0" />
                                                     </ToggleButton>

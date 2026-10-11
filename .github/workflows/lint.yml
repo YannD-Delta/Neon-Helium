@@ -10,5 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: python -m pip install pyyaml
       - name: Check the theme sources
-        run: python3 tools/lint_theme.py --source source
+        run: python tools/lint_theme.py --source source

@@ -13,12 +13,17 @@ of mistakes that already happened or are easy to make:
   * default values outside the declared (min,max) range
   * resource keys that are used but defined nowhere (compared to a baseline
     source tree, because Playnite itself provides many keys)
+  * ThemeOptions (options.yaml): variables and preset constants that are not
+    defined, never read or only read through StaticResource, preset files that
+    are missing or define keys the theme does not have, labels without a French
+    translation, and generated files that are out of date
 
 Usage:
     python tools/lint_theme.py [--source source] [--base path/to/old/source]
 """
 import argparse
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from collections import defaultdict
@@ -99,6 +104,62 @@ def undefined_keys(source: Path):
     return {key for key in used if key not in definitions}
 
 
+def check_theme_options(source: Path, definitions, dynamic, static, errors):
+    """Validate options.yaml (ThemeOptions) against the theme dictionaries."""
+    path = source / "options.yaml"
+    if not path.exists():
+        return 0, 0
+    try:
+        import yaml
+    except ImportError:
+        errors.append("PyYAML is required to check options.yaml (pip install pyyaml)")
+        return 0, 0
+    options = yaml.safe_load(read_text(path)) or {}
+    locale_path = source / "Localization" / "fr_FR.xaml"
+    locale = set()
+    if locale_path.exists():
+        locale = {element.get(KEY) for element in ET.fromstring(read_text(locale_path)).iter() if element.get(KEY)}
+    theme_keys = {key for key, (_, _, file) in definitions.items()
+                  if "Presets" not in file.parts and "Localization" not in file.parts}
+
+    def check_read(key, where):
+        if key not in theme_keys:
+            errors.append(f"{where}: {key} is not defined in the theme dictionaries")
+        elif dynamic.get(key, 0) == 0 and not re.search(r"Options\[" + re.escape(key) + r"\]", "".join(
+                read_text(f) for f in source.rglob("*.xaml"))):
+            errors.append(f"{where}: {key} is never read through DynamicResource, the option would do nothing")
+
+    def check_loc(key, where):
+        if key and key not in locale:
+            errors.append(f"{where}: no French label for {key}")
+
+    groups = options.get("Presets") or {}
+    for gid, group in groups.items():
+        check_loc(group.get("LocKey"), f"{path} preset {gid}")
+        for oid, option in (group.get("Presets") or {}).items():
+            where = f"{path} preset {gid}.{oid}"
+            check_loc(option.get("LocKey"), where)
+            for file in option.get("Files") or []:
+                file_path = source / file.replace("\\", "/")
+                if not file_path.is_file():
+                    errors.append(f"{where}: missing file {file}")
+                    continue
+                root = ET.fromstring(read_text(file_path))
+                for element in root.iter():
+                    key = element.get(KEY)
+                    if key and key not in theme_keys:
+                        errors.append(f"{where}: {file} defines {key}, which the theme itself does not define")
+            for key in option.get("Constants") or {}:
+                check_read(key, where)
+    variables = options.get("Variables") or {}
+    for key, variable in variables.items():
+        where = f"{path} variable {key}"
+        check_loc(variable.get("LocKey"), where)
+        if variable.get("Type") != "Header":
+            check_read(key, where)
+    return len(groups), sum(1 for v in variables.values() if v.get("Type") != "Header")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--source", default="source", help="theme source folder")
@@ -155,6 +216,15 @@ def main() -> int:
         elif static.get(key, 0) > 0:
             warnings.append(f"{where}: also read through StaticResource in {static[key]} place(s)")
 
+    preset_groups, option_count = check_theme_options(source, definitions, dynamic, static, errors)
+
+    builder = Path(__file__).with_name("build_options.py")
+    if builder.exists() and (source / "options.yaml").exists():
+        result = subprocess.run([sys.executable, str(builder), "--source", str(source), "--check"],
+                                capture_output=True, text=True)
+        if result.returncode != 0:
+            errors.append("generated settings files: " + (result.stderr.strip() or result.stdout.strip()))
+
     missing_now = undefined_keys(source)
     if args.base:
         missing_now -= undefined_keys(Path(args.base))
@@ -168,7 +238,8 @@ def main() -> int:
         print("warning:", message)
     for message in errors:
         print("error:  ", message)
-    print(f"\n{len(files)} xaml files, {len(entries)} ThemeModifier options, {headers} groups, "
+    print(f"\n{len(files)} xaml files, {len(entries)} ThemeModifier colors in {headers} groups, "
+          f"{option_count} ThemeOptions variables, {preset_groups} preset lists, "
           f"{len(errors)} error(s), {len(warnings)} warning(s)")
     return 1 if errors else 0
 
