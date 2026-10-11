@@ -492,6 +492,11 @@ Variables:
         LocKey: LOCHNDOptShowNavigationButtons
         Type: Boolean
         Default: 'True'
+    TopPanelShowThemeSettingsButtons:
+        Title: 'Theme settings and colors buttons (ThemeExtras)'
+        LocKey: LOCHNDOptTopPanelShowThemeSettingsButtons
+        Type: Boolean
+        Default: 'True'
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium

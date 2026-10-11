@@ -13,6 +13,8 @@
     <sys:String x:Key="LOCHNDChipRare">Rares</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rares</sys:String>
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Captures d'écran</sys:String>
+    <sys:String x:Key="LOCHNDThemeOptionsButton">Réglages du thème (Theme Options)</sys:String>
+    <sys:String x:Key="LOCHNDThemeColorsButton">Couleurs du thème (ThemeModifier)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyle">Style global</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleDefault">Helium-Neon-Dune (en-tête Dune, infos Neon)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleNeon">Neon classique (boutons dans la barre)</sys:String>
@@ -79,6 +81,7 @@
     <sys:String x:Key="LOCHNDPresetBackgroundBlurStrong">Fort</sys:String>
     <sys:String x:Key="LOCHNDHeaderTopPanel">Barre du haut et barre latérale</sys:String>
     <sys:String x:Key="LOCHNDOptShowNavigationButtons">Afficher les boutons de navigation</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelShowThemeSettingsButtons">Boutons des réglages et couleurs du thème (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Largeur de la recherche</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Hauteur de la barre du haut</sys:String>
     <sys:String x:Key="LOCHNDOptSidebarItemSize">Taille des icônes de la barre latérale</sys:String>

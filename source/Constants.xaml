@@ -172,6 +172,8 @@
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
+    <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
+    <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
     <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
     <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
     <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>
@@ -180,6 +182,7 @@
     <sys:Double x:Key="GameLogoMaxWidth">1000</sys:Double>
     <sys:Double x:Key="GameLogoMaxHeight">400</sys:Double>
     <sys:Double x:Key="TopPanelHeight">50</sys:Double>
+    <sys:Boolean x:Key="TopPanelShowThemeSettingsButtons">True</sys:Boolean>
     <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>

@@ -248,6 +248,26 @@
                                 </StackPanel>
                             </Border>
                             
+                            <!-- Shortcuts to the theme settings: Theme Options (layout) and ThemeModifier (colors). Need ThemeExtras. -->
+                            <Border Tag="{DynamicResource TopPanelShowThemeSettingsButtons}"
+                                    DockPanel.Dock="Left"
+                                    Visibility="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <StackPanel Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
+                                            Margin="{Binding ElementName=PART_ToggleNotifications, Path=Margin}"
+                                            Orientation="Horizontal">
+                                    <Button Style="{DynamicResource TopPanelThemeOptionsButtonStyle}"
+                                            ToolTip="{DynamicResource LOCHNDThemeOptionsButton}"
+                                            Visibility="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed}"
+                                            Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                            CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef" />
+                                    <Button Style="{DynamicResource TopPanelThemeColorsButtonStyle}"
+                                            ToolTip="{DynamicResource LOCHNDThemeColorsButton}"
+                                            Visibility="{PluginStatus Plugin=playnite-thememodifier-plugin, Status=Installed}"
+                                            Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                            CommandParameter="ec2f4013-17e6-428a-b8a9-5e34a3b80009" />
+                                </StackPanel>
+                            </Border>
+
                             <StackPanel x:Name="PART_PanelMainItems" Orientation="Horizontal"
                                         VerticalAlignment="Stretch" Margin="0,6,0,6"/>
 

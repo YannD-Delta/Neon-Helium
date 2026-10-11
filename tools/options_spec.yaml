@@ -22,6 +22,8 @@ strings:
   LOCHNDChipRare: {en: Rare, fr: Rares}
   LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
   LOCHNDSectionScreenshotUtilities: {en: Screenshots, fr: Captures d'écran}
+  LOCHNDThemeOptionsButton: {en: Theme settings (Theme Options), fr: Réglages du thème (Theme Options)}
+  LOCHNDThemeColorsButton: {en: Theme colors (ThemeModifier), fr: Couleurs du thème (ThemeModifier)}
 
 presets:
   - group: Style
@@ -307,6 +309,7 @@ variables:
     en: Top panel and sidebar
     fr: Barre du haut et barre latérale
   - {key: ShowNavigationButtons, en: Show navigation buttons, fr: Afficher les boutons de navigation}
+  - {key: TopPanelShowThemeSettingsButtons, en: Theme settings and colors buttons (ThemeExtras), fr: Boutons des réglages et couleurs du thème (ThemeExtras)}
   - {key: TopPanelSearchBoxWidthHelium, range: [80, 600], en: Search box width, fr: Largeur de la recherche}
   - {key: TopPanelHeight, range: [36, 100], en: Top panel height, fr: Hauteur de la barre du haut}
   - {key: SidebarItemSize, range: [24, 64], en: Sidebar icon size, fr: Taille des icônes de la barre latérale}

@@ -13,6 +13,8 @@
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
+    <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
+    <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyle">Global style</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleDefault">Helium-Neon-Dune (Dune header, Neon information)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleNeon">Neon classic (buttons in the header bar)</sys:String>
@@ -79,6 +81,7 @@
     <sys:String x:Key="LOCHNDPresetBackgroundBlurStrong">Strong</sys:String>
     <sys:String x:Key="LOCHNDHeaderTopPanel">Top panel and sidebar</sys:String>
     <sys:String x:Key="LOCHNDOptShowNavigationButtons">Show navigation buttons</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelShowThemeSettingsButtons">Theme settings and colors buttons (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Search box width</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Top panel height</sys:String>
     <sys:String x:Key="LOCHNDOptSidebarItemSize">Sidebar icon size</sys:String>
