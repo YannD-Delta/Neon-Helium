@@ -51,9 +51,33 @@
     <sys:Int32 x:Key="GridViewSectionOrderWeb">14</sys:Int32>
     <sys:Double x:Key="WebExplorerControlHeight">800</sys:Double>
     <sys:Boolean x:Key="GridViewCoverZoomOnHover">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewCoverShowSelectionBorder">True</sys:Boolean>
+    <sys:Double x:Key="GameActivityChartTimeHeight">0</sys:Double>
+    <sys:Double x:Key="GameActivityChartLogHeight">0</sys:Double>
     <sys:Boolean x:Key="ShowNavigationButtons">True</sys:Boolean>
     <sys:Double x:Key="TopPanelSearchBoxWidthHelium">500</sys:Double>
     <!--region end-->
+
+    <!--GameActivity charts: a height of 0 keeps the size provided by the extension-->
+    <Style x:Key="GameActivityChartTimeStyle" TargetType="ContentControl">
+        <Setter Property="Tag" Value="{DynamicResource GameActivityChartTimeHeight}" />
+        <Setter Property="Height" Value="{DynamicResource GameActivityChartTimeHeight}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="0">
+                <Setter Property="Height" Value="NaN" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GameActivityChartLogStyle" TargetType="ContentControl">
+        <Setter Property="Tag" Value="{DynamicResource GameActivityChartLogHeight}" />
+        <Setter Property="Height" Value="{DynamicResource GameActivityChartLogHeight}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="0">
+                <Setter Property="Height" Value="NaN" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 
     <Style x:Key="AdditionalPanelContent" TargetType="Grid">
         <Setter Property="Visibility" Value="Visible" />

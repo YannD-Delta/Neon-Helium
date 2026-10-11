@@ -625,10 +625,34 @@
                                                     </Grid.ColumnDefinitions>
                                                     <Label Grid.Column="0" Content="{DynamicResource LOCGamePlatformTitle}"
                                                            Style="{DynamicResource FeedSectionLabel}" Margin="0" />
-                                                    <Label Grid.Column="1" Content="{DynamicResource LOCTagsLabel}"
-                                                           Style="{DynamicResource FeedSectionLabel}" Margin="0" />
-                                                    <Label Grid.Column="2" Content="{DynamicResource LOCGameCategoriesTitle}"
-                                                           Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                    <Grid Grid.Column="1">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Settings DetailsVisibility.Tags}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Label Content="{DynamicResource LOCTagsLabel}"
+                                                               Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                    </Grid>
+                                                    <Grid Grid.Column="2">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Settings DetailsVisibility.Categories}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Label Content="{DynamicResource LOCGameCategoriesTitle}"
+                                                               Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                    </Grid>
                                                 </Grid>
                                             </ToggleButton>
 
@@ -663,6 +687,11 @@
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Tags}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <Grid Style="{StaticResource GridViewMetadataValueContainer}" Margin="0,0,0,10" Background="{DynamicResource  LinksContainerBackgroundBrush}" MinHeight="45">
@@ -689,6 +718,11 @@
                                                     <StackPanel.Style>
                                                         <Style TargetType="StackPanel">
                                                             <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Categories}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
                                                         </Style>
                                                     </StackPanel.Style>
                                                     <Grid Style="{StaticResource GridViewMetadataValueContainer}" Margin="0,0,0,10" Background="{DynamicResource  LinksContainerBackgroundBrush}" MinHeight="45">
@@ -779,8 +813,10 @@
                                                         </Grid.RowDefinitions>
                                                         <Border Style="{DynamicResource OutlineBorder}" />
                                                         <StackPanel Orientation="Vertical" Background="{TemplateBinding Background}" Margin="10">
-                                                            <ContentControl x:Name="GameActivity_PluginChartTime" Margin="0,0,0,10" />
-                                                            <ContentControl x:Name="GameActivity_PluginChartLog"  Margin="0,0,0,10"/>
+                                                            <ContentControl x:Name="GameActivity_PluginChartTime" Margin="0,0,0,10"
+                                                                            Style="{DynamicResource GameActivityChartTimeStyle}" />
+                                                            <ContentControl x:Name="GameActivity_PluginChartLog"  Margin="0,0,0,10"
+                                                                            Style="{DynamicResource GameActivityChartLogStyle}" />
                                                             <ContentControl x:Name="GameActivity_PluginButton" HorizontalAlignment="Right"/>
                                                         </StackPanel>
                                                     </Grid>

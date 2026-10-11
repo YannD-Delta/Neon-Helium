@@ -17,6 +17,8 @@ Constants:
     - DetailsViewShowHltbDataGrid: 'Show HowLongToBeat data grid'
     - DetailsViewLibraryGameShowFavorite: 'Show favorites icon in game list'
     - WebExplorerControlHeight(400,1800): 'Web view component height (Requires Web Explorer extension)'
+    - GameActivityChartTimeHeight(0,1000): 'Game Activity time chart height, 0 = automatic (Requires GameActivity extension)'
+    - GameActivityChartLogHeight(0,1000): 'Game Activity log chart height, 0 = automatic (Requires GameActivity extension)'
     - "Grid View Details"
     - GridViewPlaceDescriptionAtBottom: 'Place game description at the bottom'
     - GridViewDetailsIconsVisibility: 'Visibility of icons in details'
@@ -29,6 +31,7 @@ Constants:
     - GridViewShowAdditionalPanelsDefault: 'Expand additional panels by default'
     - "Grid View Covers"
     - GridViewCoverZoomOnHover: 'Zoom when hovered'
+    - GridViewCoverShowSelectionBorder: 'Show border around hovered and selected covers'
     - GridViewCoverSubtitleVisibility: 'Visibility of time played under game covers'
     - GridViewCoverCompStatusSubtitleVisibility: 'Visibility of Completion Status under game covers'
     - GridViewEnableCoverShineAnimation: 'Enable cover highlight animation on hover'
