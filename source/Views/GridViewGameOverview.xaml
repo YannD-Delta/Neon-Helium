@@ -830,18 +830,46 @@
                                                             <Border Style="{DynamicResource OutlineBorder}" />
                                                             <Border Padding="10" >
                                                                 <StackPanel>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowProgressBar}">
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementProgressBar"  Height="20" Margin="0,0,0,10"/>
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowLatest}">
+                                                                        <ContentControl x:Name="PlayniteAchievements_AchievementCompactLatest" HorizontalAlignment="Left" Margin="0,0,0,10" />
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowUnlockedList}">
+                                                                        <StackPanel>
                                                                     <TextBlock Text="UNLOCKED" FontSize="{DynamicResource FontSizeSmall}"
                                                                                FontWeight="SemiBold" Foreground="{DynamicResource DetailsViewContainerLabelBrush}"
                                                                                Margin="0,0,0,3" />
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementCompactUnlockedList" />
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowLockedList}">
+                                                                        <StackPanel>
                                                                     <TextBlock Text="LOCKED" FontSize="{DynamicResource FontSizeSmall}"
                                                                                FontWeight="SemiBold" Foreground="{DynamicResource DetailsViewContainerLabelBrush}"
                                                                                Margin="0,6,0,3" />
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementCompactLockedList" Margin="0,0,0,10"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowStats}">
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementStats" Margin="0,0,0,10"/>
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowBarChart}">
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementBarChart" Margin="0,0,0,10"/>
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowCompactList}">
+                                                                        <ContentControl x:Name="PlayniteAchievements_AchievementCompactList" Margin="0,0,0,10" />
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowPieChart}">
+                                                                        <ContentControl x:Name="PlayniteAchievements_AchievementPieChart" Margin="0,0,0,10" />
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowDataGrid}">
+                                                                        <ContentControl x:Name="PlayniteAchievements_AchievementDataGrid" MaxHeight="{DynamicResource AchievementsDataGridMaxHeight}" Margin="0,0,0,10" />
+                                                                    </Grid>
+                                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource GridViewAchievementsShowButton}">
                                                                     <ContentControl x:Name="PlayniteAchievements_AchievementButton" HorizontalAlignment="Right"/>
+                                                                    </Grid>
                                                                 </StackPanel>
                                                             </Border>
                                                         </Grid>

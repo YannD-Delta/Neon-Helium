@@ -32,3 +32,4 @@ _ReSharper*/
 packages/
 # Python
 __pycache__/
+dist/

@@ -1543,6 +1543,13 @@
                                                                 <Border Style="{DynamicResource OutlineBorderSidePanels}" />
                                                                 <Border Padding="10">
                                                                     <StackPanel>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowProgressBar}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementProgressBar" Height="20" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowLatest}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementCompactLatest" HorizontalAlignment="Left" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowUnlockedList}">
                                                                         <Grid Margin="-10,0,5,10">
                                                                             <ContentControl x:Name="PlayniteAchievements_AchievementCompactUnlockedList" />
                                                                             <Border HorizontalAlignment="Right" Width="42" IsHitTestVisible="False" Panel.ZIndex="1">
@@ -1560,6 +1567,8 @@
                                                                                 </Viewbox>
                                                                             </Border>
                                                                         </Grid>
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowLockedList}">
                                                                         <StackPanel>
                                                                             <StackPanel.Style>
                                                                                 <Style TargetType="StackPanel">
@@ -1589,10 +1598,28 @@
                                                                                         Margin="2,0,0,5" />
                                                                             <ContentControl x:Name="PlayniteAchievements_AchievementCompactLockedList" Margin="-10,0,5,0"/>
                                                                         </StackPanel>
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowCompactList}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementCompactList" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowStats}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementStats" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowBarChart}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementBarChart" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowPieChart}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementPieChart" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowDataGrid}">
+                                                                            <ContentControl x:Name="PlayniteAchievements_AchievementDataGrid" MaxHeight="{DynamicResource AchievementsDataGridMaxHeight}" Margin="0,0,0,10" />
+                                                                        </Grid>
+                                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewAchievementsShowButton}">
                                                                         <ContentControl x:Name="PlayniteAchievements_AchievementButton" HorizontalAlignment="Right" Height="25" Margin="0,2,2,2" 
                                                                                             Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                                     <TextBlock Foreground="{DynamicResource TextBrush}" Text="You've unlocked "/>     
                                                                         </ContentControl>
+                                                                        </Grid>
                                                                     </StackPanel>
                                                                 </Border>
                                                             </Grid>

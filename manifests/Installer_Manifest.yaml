@@ -1,75 +1,13 @@
-AddonId: 8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2
+AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
-  - Version: 3.0
+  - Version: 1.0
     RequiredApiVersion: 2.9.0
-    ReleaseDate: 2026-08-02
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/3.0/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_3_0.pthm
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/1.0/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_1_0.pthm
     Changelog:
-      - "Updated Neon for current Playnite releases"
-      - "Added configurable library and platform banners, cover effects, and improved game cover layout"
-      - "Expanded Grid and Details views with game scores, current player counts, and more optional game information"
-      - "Added support for more optional extension panels, including game relations, screenshots, VNDB, Web Explorer, and game activity"
-      - "Added native PlayniteAchievements support in Grid and Details views"
-      - "Improved DuplicateHider source selectors and library icons"
-      - "Made game information and optional extension panels easier to collapse and expand"
-      - "Refined selected-game controls, notifications, and general theme styling"
-  - Version: 2.0
-    RequiredApiVersion: 2.1.0
-    ReleaseDate: 2023-11-03
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/2.0/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_2_0.pthm
-    Changelog:
-      - "Renamed the theme to Neon"
-  - Version: 1.13
-    RequiredApiVersion: 2.1.0
-    ReleaseDate: 2021-12-18
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.13/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_13.pthm
-    Changelog:
-      - "Ported new changes from the original Helium"
-      - "General: Slight change in popups background color"
-      - 'Details View: Added support for "News Viewer" extension'
-      - "Details View: Fix incorrect margins in details header when Last Played field is disabled"
-      - "Grid View: Fix missing cover show option not showing in grid view when configured"
-      - "Update to Playnite themes API 2.1.0"
-      - "Fix main window not being resizable from the side the sidebar is docked to"
-      - "Details View: Support for Background image extension BackgroundImage control"
-      - "DetailsView: Fix links panel showing when game links count is 0"
-      - "Style filter ComboBox"
-      - "Details View: Fix background image not showing when BackgroundChanger extension is enabled but control is disabled in settings"
-      - "Grid View: Add support for ExtraMetadataLoader video player control"
-      - "Grid View: Add support for NewsViewer extension control"
-      - "General: Adjustments to ThemeModifier variable names"
-      - "Details View: Add support for ExtraMetadataLoader extension alternative video player"
-  - Version: 1.8.1
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-11-03
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.8.1/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_8_1.pthm
-    Changelog:
-      - "Centered the background image on the details panel"
-  - Version: 1.8
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-10-31
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.8/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_8.pthm
-    Changelog:
-      - "Ported new changes from the original Helium"
-      - "General: Animate PlayButton and ContextButton background color transitions"
-      - "Details View: Animate info button and edit button opacity transitions"
-      - "Grid View: Animate edit button opacity transitions"
-      - "Grid View: Modified opacity changes for game item controls"
-      - "Grid View: Add highlight shine animation to covers on hover"
-      - "Minor fixes and improvements"
-      - "Details View: Add ThemeModifier variable to show or hide information panel when Playnite starts"
-      - "Details View: Add ThemeModifier variables to configure horizontal and Vertical alignment of the background image"
-      - "Details View: Add ThemeModifier variable to configure if Extra Metadata Loader logos can be used in the view"
-      - "Details View: Fix Context action button not changing color when game is installing or uninstalling"
-      - "Details View: Add support to show grid with game HowLongToBeat data and ThemeModifier option to enable or disable"
-      - "Grid View: Add ThemeModifier variable to configure if Extra Metadata Loader logos can be used in the view"
-      - "Grid View: Fix Context action button not changing color when game is installing or uninstalling"
-      - "Grid View: Add support to show grid with game HowLongToBeat data and ThemeModifier option to enable or disable"
-      - "Minor fixes and improvements"
-  - Version: 1.6
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-10-19
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.6/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_6.pthm
-    Changelog:
-      - "Forked from Helium by darklinkpower"
-      - "Modified Grid view to better utilize displays with higher horizontal pixel count"
+      - "First release of Helium-Neon, a fork of Neon with its own theme Id so it can be installed next to Neon"
+      - "Fixed link favicons (the ThemeExtras icon converter result was used as the icon instead of its Value)"
+      - "About 200 ThemeModifier options: colors, sizes, show or hide every section and header item, section order in the Grid and Details views"
+      - "Wired the options that did nothing in Neon (section order, grid logo and game name options)"
+      - "Grid View honours the Playnite Tags and Categories visibility settings"
+      - "Added options for the Game Activity chart heights and the cover selection border"
