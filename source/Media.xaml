@@ -15,7 +15,7 @@
     <TextBlock x:Key="AddonsIcon" Text="&#xeea0;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
     <TextBlock x:Key="PlayIcon" Text="&#xec74;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
     <TextBlock x:Key="InstallIcon" Text="&#xef08;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
-    <TextBlock x:Key="LinksIcon" x:Shared="False" Text="&#xef71;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
+    <TextBlock x:Key="LinksIcon" Text="&#xef71;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
     <TextBlock x:Key="OpenFolderIcon" Text="&#xec5b;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
     <TextBlock x:Key="InstallSizeIcon" Text="&#xef43;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>
     <TextBlock x:Key="DesktopShortcutIcon" Text="&#xef20;" FontFamily="{DynamicResource FontIcoFont}" FontWeight="Light"/>

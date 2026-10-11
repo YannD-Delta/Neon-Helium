@@ -1044,10 +1044,8 @@
                                                         <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
                                                         <Border Style="{DynamicResource OutlineBorderMainPanels}" />
                                                         <StackPanel Orientation="Vertical" Margin="10">
-                                                            <ContentControl x:Name="GameActivity_PluginChartTime" Margin="0,0,0,10"
-                                                                            Style="{DynamicResource GameActivityChartTimeStyle}" />
-                                                            <ContentControl x:Name="GameActivity_PluginChartLog"  Margin="0,0,0,10"
-                                                                            Style="{DynamicResource GameActivityChartLogStyle}" />
+                                                            <ContentControl x:Name="GameActivity_PluginChartTime" Margin="0,0,0,10" />
+                                                            <ContentControl x:Name="GameActivity_PluginChartLog"  Margin="0,0,0,10"/>
                                                             <ContentControl x:Name="GameActivity_PluginButton" HorizontalAlignment="Right"
                                                                             Visibility="{PluginSettings Plugin=GameActivity, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                         </StackPanel>
