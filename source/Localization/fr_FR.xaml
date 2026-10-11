@@ -23,7 +23,10 @@
     <sys:String x:Key="LOCHNDQuickCover">Sur la pochette</sys:String>
     <sys:String x:Key="LOCHNDQuickHeaderBar">Barre d'en-tête</sys:String>
     <sys:String x:Key="LOCHNDQuickOpen">Dépliée par défaut</sys:String>
-    <sys:String x:Key="LOCHNDQuickDemote">La replier en bas quand c'est affiché en haut</sys:String>
+    <sys:String x:Key="LOCHNDQuickDemoteThis">Replier cette section en bas quand son info est affichée en haut</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsTitle">Puces sur l'image</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsShown">Puces affichées</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsBreaks">Retour à la ligne avant</sys:String>
     <sys:String x:Key="LOCHNDQuickPluginSettings">Paramètres de l'extension</sys:String>
     <sys:String x:Key="LOCHNDQuickThemeSettings">Tous les réglages du thème</sys:String>
     <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Installez l'extension Theme Options pour modifier ces réglages ici.</sys:String>
@@ -130,6 +133,11 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Succès rares et ultra rares (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Durée de la dernière session (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Activité récente (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">Retour à la ligne avant les développeurs, le statut et la note</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">Retour à la ligne avant HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">Retour à la ligne avant les succès</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">Retour à la ligne avant GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptHltbShowOnCover">Durée HowLongToBeat sur la pochette</sys:String>
     <sys:String x:Key="LOCHNDOptAchievementsShowOnCover">Succès sur la pochette</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Vue Détails - barre d'en-tête</sys:String>
@@ -168,6 +176,13 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsExpand">Vue Détails - sections dépliées par défaut</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteSectionsShownElsewhere">Replier en bas les sections dont l'info est déjà affichée en haut (puces, pochette, barre)</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteGenresSection">... dont Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteCategoriesSection">... dont Catégories</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteFeaturesSection">... dont Fonctionnalités</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteTagsSection">... dont Étiquettes</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteHltbSection">... dont HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteAchievementsSection">... dont PlayniteAchievements</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteGameActivitySection">... dont GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNotesPanel">Play Notes</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandCategories">Catégories</sys:String>

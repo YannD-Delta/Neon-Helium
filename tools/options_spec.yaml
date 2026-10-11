@@ -36,7 +36,10 @@ strings:
   LOCHNDQuickCover: {en: 'On the cover', fr: 'Sur la pochette'}
   LOCHNDQuickHeaderBar: {en: 'Header bar', fr: 'Barre d''en-tête'}
   LOCHNDQuickOpen: {en: 'Open by default', fr: 'Dépliée par défaut'}
-  LOCHNDQuickDemote: {en: 'Fold it at the bottom when shown above', fr: 'La replier en bas quand c''est affiché en haut'}
+  LOCHNDQuickDemoteThis: {en: 'Fold this section at the bottom when its information is shown above', fr: 'Replier cette section en bas quand son info est affichée en haut'}
+  LOCHNDQuickChipsTitle: {en: 'Chips on the artwork', fr: 'Puces sur l''image'}
+  LOCHNDQuickChipsShown: {en: 'Chips shown', fr: 'Puces affichées'}
+  LOCHNDQuickChipsBreaks: {en: 'New line before', fr: 'Retour à la ligne avant'}
   LOCHNDQuickPluginSettings: {en: 'Extension settings', fr: 'Paramètres de l''extension'}
   LOCHNDQuickThemeSettings: {en: 'All theme settings', fr: 'Tous les réglages du thème'}
   LOCHNDQuickNeedsThemeOptions: {en: 'Install the Theme Options extension to change these settings here.', fr: 'Installez l''extension Theme Options pour modifier ces réglages ici.'}
@@ -367,6 +370,11 @@ variables:
   - {key: HeroShowRareAchievements, en: Rare and ultra rare achievements (PlayniteAchievements), fr: Succès rares et ultra rares (PlayniteAchievements)}
   - {key: HeroShowLastSession, en: Last session length (GameActivity), fr: Durée de la dernière session (GameActivity)}
   - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
+  - {key: HeroChipsBreakBeforeGenres, en: 'New line before genres, categories, features and tags', fr: 'Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes'}
+  - {key: HeroChipsBreakBeforeStudio, en: 'New line before developers, completion status and score', fr: 'Retour à la ligne avant les développeurs, le statut et la note'}
+  - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
+  - {key: HeroChipsBreakBeforeAchievements, en: New line before achievements, fr: Retour à la ligne avant les succès}
+  - {key: HeroChipsBreakBeforeActivity, en: New line before GameActivity, fr: Retour à la ligne avant GameActivity}
   - {key: HltbShowOnCover, en: HowLongToBeat time on the cover, fr: Durée HowLongToBeat sur la pochette}
   - {key: AchievementsShowOnCover, en: Achievements on the cover, fr: Succès sur la pochette}
 
@@ -417,6 +425,13 @@ variables:
     en: Details view - sections open by default
     fr: Vue Détails - sections dépliées par défaut
   - {key: DemoteSectionsShownElsewhere, en: 'Fold sections at the bottom when their information is shown above (chips, cover, header bar)', fr: 'Replier en bas les sections dont l''info est déjà affichée en haut (puces, pochette, barre)'}
+  - {key: DemoteGenresSection, en: '... including Genres', fr: '... dont Genres'}
+  - {key: DemoteCategoriesSection, en: '... including Categories', fr: '... dont Catégories'}
+  - {key: DemoteFeaturesSection, en: '... including Features', fr: '... dont Fonctionnalités'}
+  - {key: DemoteTagsSection, en: '... including Tags', fr: '... dont Étiquettes'}
+  - {key: DemoteHltbSection, en: '... including HowLongToBeat', fr: '... dont HowLongToBeat'}
+  - {key: DemoteAchievementsSection, en: '... including PlayniteAchievements', fr: '... dont PlayniteAchievements'}
+  - {key: DemoteGameActivitySection, en: '... including GameActivity', fr: '... dont GameActivity'}
   - {key: DetailsViewExpandNotesPanel, en: Play Notes, fr: Play Notes}
   - {key: DetailsViewExpandGenres, en: Genres, fr: Genres}
   - {key: DetailsViewExpandCategories, en: Categories, fr: Catégories}

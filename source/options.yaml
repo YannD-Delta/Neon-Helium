@@ -716,6 +716,31 @@ Variables:
         LocKey: LOCHNDOptHeroShowRecentActivity
         Type: Boolean
         Default: 'True'
+    HeroChipsBreakBeforeGenres:
+        Title: 'New line before genres, categories, features and tags'
+        LocKey: LOCHNDOptHeroChipsBreakBeforeGenres
+        Type: Boolean
+        Default: 'False'
+    HeroChipsBreakBeforeStudio:
+        Title: 'New line before developers, completion status and score'
+        LocKey: LOCHNDOptHeroChipsBreakBeforeStudio
+        Type: Boolean
+        Default: 'False'
+    HeroChipsBreakBeforeHltb:
+        Title: 'New line before HowLongToBeat'
+        LocKey: LOCHNDOptHeroChipsBreakBeforeHltb
+        Type: Boolean
+        Default: 'False'
+    HeroChipsBreakBeforeAchievements:
+        Title: 'New line before achievements'
+        LocKey: LOCHNDOptHeroChipsBreakBeforeAchievements
+        Type: Boolean
+        Default: 'False'
+    HeroChipsBreakBeforeActivity:
+        Title: 'New line before GameActivity'
+        LocKey: LOCHNDOptHeroChipsBreakBeforeActivity
+        Type: Boolean
+        Default: 'True'
     HltbShowOnCover:
         Title: 'HowLongToBeat time on the cover'
         LocKey: LOCHNDOptHltbShowOnCover
@@ -922,6 +947,41 @@ Variables:
         LocKey: LOCHNDOptDemoteSectionsShownElsewhere
         Type: Boolean
         Default: 'True'
+    DemoteGenresSection:
+        Title: '... including Genres'
+        LocKey: LOCHNDOptDemoteGenresSection
+        Type: Boolean
+        Default: 'True'
+    DemoteCategoriesSection:
+        Title: '... including Categories'
+        LocKey: LOCHNDOptDemoteCategoriesSection
+        Type: Boolean
+        Default: 'True'
+    DemoteFeaturesSection:
+        Title: '... including Features'
+        LocKey: LOCHNDOptDemoteFeaturesSection
+        Type: Boolean
+        Default: 'True'
+    DemoteTagsSection:
+        Title: '... including Tags'
+        LocKey: LOCHNDOptDemoteTagsSection
+        Type: Boolean
+        Default: 'True'
+    DemoteHltbSection:
+        Title: '... including HowLongToBeat'
+        LocKey: LOCHNDOptDemoteHltbSection
+        Type: Boolean
+        Default: 'True'
+    DemoteAchievementsSection:
+        Title: '... including PlayniteAchievements'
+        LocKey: LOCHNDOptDemoteAchievementsSection
+        Type: Boolean
+        Default: 'False'
+    DemoteGameActivitySection:
+        Title: '... including GameActivity'
+        LocKey: LOCHNDOptDemoteGameActivitySection
+        Type: Boolean
+        Default: 'False'
     DetailsViewExpandNotesPanel:
         Title: 'Play Notes'
         LocKey: LOCHNDOptDetailsViewExpandNotesPanel

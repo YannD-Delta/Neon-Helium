@@ -23,7 +23,10 @@
     <sys:String x:Key="LOCHNDQuickCover">On the cover</sys:String>
     <sys:String x:Key="LOCHNDQuickHeaderBar">Header bar</sys:String>
     <sys:String x:Key="LOCHNDQuickOpen">Open by default</sys:String>
-    <sys:String x:Key="LOCHNDQuickDemote">Fold it at the bottom when shown above</sys:String>
+    <sys:String x:Key="LOCHNDQuickDemoteThis">Fold this section at the bottom when its information is shown above</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsTitle">Chips on the artwork</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsShown">Chips shown</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsBreaks">New line before</sys:String>
     <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
     <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
     <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Install the Theme Options extension to change these settings here.</sys:String>
@@ -130,6 +133,11 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Rare and ultra rare achievements (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Last session length (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Recent activity (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">New line before genres, categories, features and tags</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">New line before developers, completion status and score</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">New line before HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">New line before achievements</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">New line before GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptHltbShowOnCover">HowLongToBeat time on the cover</sys:String>
     <sys:String x:Key="LOCHNDOptAchievementsShowOnCover">Achievements on the cover</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Details view - header bar</sys:String>
@@ -168,6 +176,13 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsExpand">Details view - sections open by default</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteSectionsShownElsewhere">Fold sections at the bottom when their information is shown above (chips, cover, header bar)</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteGenresSection">... including Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteCategoriesSection">... including Categories</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteFeaturesSection">... including Features</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteTagsSection">... including Tags</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteHltbSection">... including HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteAchievementsSection">... including PlayniteAchievements</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteGameActivitySection">... including GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNotesPanel">Play Notes</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandCategories">Categories</sys:String>

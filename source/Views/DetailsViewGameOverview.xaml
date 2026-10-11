@@ -203,10 +203,84 @@
                                             </Border>
                                             <!-- Hero footer (Dune): info chips. Each chip has its own option. -->
                                             <Grid x:Name="HeroFooter" Margin="0,14,0,0" HorizontalAlignment="Left">
-                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <!-- Quick settings for the chips line -->
+                                                <Grid Grid.Column="0" VerticalAlignment="Top" Margin="0,0,8,0">
+                                                    <ToggleButton x:Name="QuickSettingsChipsToggle" Style="{DynamicResource SectionQuickSettingsToggle}" />
+                                                    <Popup IsOpen="{Binding IsChecked, ElementName=QuickSettingsChipsToggle, Mode=TwoWay}" StaysOpen="False" AllowsTransparency="True"
+                                                           PlacementTarget="{Binding ElementName=QuickSettingsChipsToggle}" Placement="Bottom">
+                                                        <Border Style="{DynamicResource QuickSettingsPanel}">
+                                                            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="620">
+                                                                <StackPanel>
+                                                                    <TextBlock Style="{DynamicResource QuickSettingsTitle}" Text="{DynamicResource LOCHNDQuickChipsTitle}" />
+                                                                    <TextBlock Style="{DynamicResource QuickSettingsHint}" Text="{DynamicResource LOCHNDQuickNeedsThemeOptions}"
+                                                                               Visibility="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" />
+                                                                    <StackPanel IsEnabled="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed}">
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowInfoLine}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], Mode=TwoWay, FallbackValue={StaticResource HeroShowInfoLine}}" />
+                                                                        <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickChipsShown}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowReleaseDate}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroShowReleaseDate}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowPlatforms}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowPlatforms], Mode=TwoWay, FallbackValue={StaticResource HeroShowPlatforms}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowSource}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSource], Mode=TwoWay, FallbackValue={StaticResource HeroShowSource}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowGenres}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], Mode=TwoWay, FallbackValue={StaticResource HeroShowGenres}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowCategories}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], Mode=TwoWay, FallbackValue={StaticResource HeroShowCategories}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowFeatures}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], Mode=TwoWay, FallbackValue={StaticResource HeroShowFeatures}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowTags}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], Mode=TwoWay, FallbackValue={StaticResource HeroShowTags}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowDevelopers}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowDevelopers], Mode=TwoWay, FallbackValue={StaticResource HeroShowDevelopers}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowCompletionStatus}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource HeroShowCompletionStatus}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowCommunityScore}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCommunityScore], Mode=TwoWay, FallbackValue={StaticResource HeroShowCommunityScore}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowHltb}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], Mode=TwoWay, FallbackValue={StaticResource HeroShowHltb}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowAchievements}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroShowAchievements}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowLatestAchievement}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLatestAchievement], Mode=TwoWay, FallbackValue={StaticResource HeroShowLatestAchievement}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowRareAchievements}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroShowRareAchievements}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowLastSession}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroShowLastSession}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowRecentActivity}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}}" />
+                                                                        <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickChipsBreaks}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeGenres}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeGenres}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeStudio}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeStudio}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeHltb}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeHltb}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeAchievements}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeActivity}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeActivity}}" />
+                                                                    </StackPanel>
+                                                                    <WrapPanel Margin="0,12,0,0">
+                                                                        <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
+                                                                                Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
+                                                                                Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                                                CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef" />
+                                                                    </WrapPanel>
+                                                                </StackPanel>
+                                                            </ScrollViewer>
+                                                        </Border>
+                                                    </Popup>
+                                                </Grid>
+                                                <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}">
                                                     <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}">
                                                         <WrapPanel Orientation="Horizontal" Margin="0,0,0,6" MaxWidth="{DynamicResource HeroInfoLineMaxWidth}">
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowReleaseDate}">
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowReleaseDate], FallbackValue={StaticResource HeroShowReleaseDate}, TargetNullValue={StaticResource HeroShowReleaseDate}}">
                                                             <Grid>
                                                                 <Grid.Style>
                                                                     <Style TargetType="Grid">
@@ -222,8 +296,7 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowPlatforms}">
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowPlatforms], FallbackValue={StaticResource HeroShowPlatforms}, TargetNullValue={StaticResource HeroShowPlatforms}}">
                                                             <ItemsControl ItemsSource="{Binding Game.Platforms}">
                                                                 <ItemsControl.ItemsPanel>
                                                                     <ItemsPanelTemplate>
@@ -239,8 +312,7 @@
                                                                 </ItemsControl.ItemTemplate>
                                                             </ItemsControl>
                                                         </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowSource}">
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSource], FallbackValue={StaticResource HeroShowSource}, TargetNullValue={StaticResource HeroShowSource}}">
                                                             <Grid>
                                                                 <Grid.Style>
                                                                     <Style TargetType="Grid">
@@ -261,25 +333,10 @@
                                                             </Grid>
                                                         </Grid>
 
+                                                            <!-- optional line break: a zero-height item as wide as the line -->
+                                                            <Grid Height="0" Width="{DynamicResource HeroInfoLineMaxWidth}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}">
                                                             <ItemsControl ItemsSource="{Binding Game.Genres}">
-                                                                <ItemsControl.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <WrapPanel Orientation="Horizontal" />
-                                                                    </ItemsPanelTemplate>
-                                                                </ItemsControl.ItemsPanel>
-                                                                <ItemsControl.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <Border Style="{DynamicResource HeroInfoChip}">
-                                                                            <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Name}" />
-                                                                        </Border>
-                                                                    </DataTemplate>
-                                                                </ItemsControl.ItemTemplate>
-                                                            </ItemsControl>
-                                                        </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowDevelopers}">
-                                                            <ItemsControl ItemsSource="{Binding Game.Developers}">
                                                                 <ItemsControl.ItemsPanel>
                                                                     <ItemsPanelTemplate>
                                                                         <WrapPanel Orientation="Horizontal" />
@@ -343,7 +400,25 @@
                                                             </ItemsControl>
                                                         </Grid>
 
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowCompletionStatus}">
+                                                            <!-- optional line break: a zero-height item as wide as the line -->
+                                                            <Grid Height="0" Width="{DynamicResource HeroInfoLineMaxWidth}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowDevelopers], FallbackValue={StaticResource HeroShowDevelopers}, TargetNullValue={StaticResource HeroShowDevelopers}}">
+                                                            <ItemsControl ItemsSource="{Binding Game.Developers}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <WrapPanel Orientation="Horizontal" />
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Name}" />
+                                                                        </Border>
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCompletionStatus], FallbackValue={StaticResource HeroShowCompletionStatus}, TargetNullValue={StaticResource HeroShowCompletionStatus}}">
                                                             <Grid>
                                                                 <Grid.Style>
                                                                     <Style TargetType="Grid">
@@ -363,8 +438,7 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowCommunityScore}">
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCommunityScore], FallbackValue={StaticResource HeroShowCommunityScore}, TargetNullValue={StaticResource HeroShowCommunityScore}}">
                                                             <Grid>
                                                                 <Grid.Style>
                                                                     <Style TargetType="Grid">
@@ -384,6 +458,8 @@
                                                             </Grid>
                                                         </Grid>
 
+                                                            <!-- optional line break: a zero-height item as wide as the line -->
+                                                            <Grid Height="0" Width="{DynamicResource HeroInfoLineMaxWidth}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}">
                                                             <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat, FallbackValue=''}">
                                                                 <Grid.Style>
@@ -409,7 +485,6 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
-
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}">
                                                             <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainExtraFormat, FallbackValue=''}">
                                                                 <Grid.Style>
@@ -435,7 +510,6 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
-
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}">
                                                             <Grid Tag="{PluginSettings Plugin=HowLongToBeat, Path=CompletionistFormat, FallbackValue=''}">
                                                                 <Grid.Style>
@@ -462,6 +536,8 @@
                                                             </Grid>
                                                         </Grid>
 
+                                                            <!-- optional line break: a zero-height item as wide as the line -->
+                                                            <Grid Height="0" Width="{DynamicResource HeroInfoLineMaxWidth}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}">
                                                             <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Border Style="{DynamicResource HeroInfoChip}">
@@ -474,6 +550,35 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLatestAchievement], FallbackValue={StaticResource HeroShowLatestAchievement}, TargetNullValue={StaticResource HeroShowLatestAchievement}}">
+                                                            <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasLatestAchievementData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                <Border Style="{DynamicResource HeroInfoChip}">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipLatestAchievement}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" MaxWidth="320" Text="{PluginSettings Plugin=PlayniteAchievements, Path=LatestAchievementData.DisplayName, FallbackValue=''}" />
+                                                                    </StackPanel>
+                                                                </Border>
+                                                            </Grid>
+                                                        </Grid>
+                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRareAchievements], FallbackValue={StaticResource HeroShowRareAchievements}, TargetNullValue={StaticResource HeroShowRareAchievements}}">
+                                                            <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                <Border Style="{DynamicResource HeroInfoChip}">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipRare}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Unlocked, FallbackValue='-'}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Total, FallbackValue='-'}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Margin="12,0,6,0" Text="{DynamicResource LOCHNDChipUltraRare}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Unlocked, FallbackValue='-'}" />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
+                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Total, FallbackValue='-'}" />
+                                                                    </StackPanel>
+                                                                </Border>
+                                                            </Grid>
+                                                        </Grid>
+
+                                                            <!-- optional line break: a zero-height item as wide as the line -->
+                                                            <Grid Height="0" Width="{DynamicResource HeroInfoLineMaxWidth}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}">
                                                             <Grid Tag="{PluginSettings Plugin=GameActivity, Path=LastPlaytimeSession, FallbackValue=''}">
                                                                 <Grid.Style>
@@ -496,7 +601,6 @@
                                                                 </Border>
                                                             </Grid>
                                                         </Grid>
-
                                                         <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}">
                                                             <Grid Tag="{PluginSettings Plugin=GameActivity, Path=RecentActivity, FallbackValue=''}">
                                                                 <Grid.Style>
@@ -514,34 +618,6 @@
                                                                 <Border Style="{DynamicResource HeroInfoChip}">
                                                                     <StackPanel Orientation="Horizontal">
                                                                         <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
-                                                                    </StackPanel>
-                                                                </Border>
-                                                            </Grid>
-                                                        </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLatestAchievement], FallbackValue={StaticResource HeroShowLatestAchievement}, TargetNullValue={StaticResource HeroShowLatestAchievement}}">
-                                                            <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasLatestAchievementData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                                <Border Style="{DynamicResource HeroInfoChip}">
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipLatestAchievement}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" MaxWidth="320" Text="{PluginSettings Plugin=PlayniteAchievements, Path=LatestAchievementData.DisplayName, FallbackValue=''}" />
-                                                                    </StackPanel>
-                                                                </Border>
-                                                            </Grid>
-                                                        </Grid>
-
-                                                        <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRareAchievements], FallbackValue={StaticResource HeroShowRareAchievements}, TargetNullValue={StaticResource HeroShowRareAchievements}}">
-                                                            <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                                <Border Style="{DynamicResource HeroInfoChip}">
-                                                                    <StackPanel Orientation="Horizontal">
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipRare}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Unlocked, FallbackValue='-'}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Total, FallbackValue='-'}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Margin="12,0,6,0" Text="{DynamicResource LOCHNDChipUltraRare}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Unlocked, FallbackValue='-'}" />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
-                                                                        <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Total, FallbackValue='-'}" />
                                                                     </StackPanel>
                                                                 </Border>
                                                             </Grid>
@@ -1412,6 +1488,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
@@ -1445,6 +1522,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
@@ -1475,8 +1553,8 @@
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandGenres], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandGenres}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], Mode=TwoWay, FallbackValue={StaticResource DemoteGenresSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -1528,6 +1606,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
@@ -1561,6 +1640,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
@@ -1591,8 +1671,8 @@
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandCategories], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandCategories}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteCategoriesSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -1644,6 +1724,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
@@ -1677,6 +1758,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
@@ -1707,8 +1789,8 @@
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandFeatures], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandFeatures}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteFeaturesSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -1760,6 +1842,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
@@ -1793,6 +1876,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
@@ -1823,8 +1907,8 @@
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandTags], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandTags}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], Mode=TwoWay, FallbackValue={StaticResource DemoteTagsSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -2046,6 +2130,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}" Value="True" />
@@ -2055,6 +2140,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}" Value="True" />
@@ -2107,6 +2193,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}" Value="True" />
@@ -2117,6 +2204,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}" Value="True" />
@@ -2152,8 +2240,8 @@
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandGameActivityPanel], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandGameActivityPanel}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], Mode=TwoWay, FallbackValue={StaticResource DemoteGameActivitySection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickPluginSettings}"
@@ -2548,6 +2636,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}" Value="True" />
@@ -2557,6 +2646,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowOnCover], FallbackValue={StaticResource HltbShowOnCover}, TargetNullValue={StaticResource HltbShowOnCover}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="19" />
@@ -2564,6 +2654,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], FallbackValue={StaticResource HltbShowInHeaderBar}, TargetNullValue={StaticResource HltbShowInHeaderBar}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="19" />
@@ -2599,6 +2690,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}" Value="True" />
@@ -2609,6 +2701,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowOnCover], FallbackValue={StaticResource HltbShowOnCover}, TargetNullValue={StaticResource HltbShowOnCover}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -2617,6 +2710,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], FallbackValue={StaticResource HltbShowInHeaderBar}, TargetNullValue={StaticResource HltbShowInHeaderBar}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -2655,8 +2749,8 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHltbDataGrid], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHltbDataGrid}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHltbPanelDefault], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHltbPanelDefault}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], Mode=TwoWay, FallbackValue={StaticResource DemoteHltbSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickPluginSettings}"
@@ -2805,6 +2899,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}" Value="True" />
@@ -2814,6 +2909,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsShowOnCover], FallbackValue={StaticResource AchievementsShowOnCover}, TargetNullValue={StaticResource AchievementsShowOnCover}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="20" />
@@ -2821,6 +2917,7 @@
                                                                 <MultiDataTrigger>
                                                                     <MultiDataTrigger.Conditions>
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], FallbackValue={StaticResource DetailsViewShowAchievementsSummary}, TargetNullValue={StaticResource DetailsViewShowAchievementsSummary}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="20" />
@@ -2841,6 +2938,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}" Value="True" />
@@ -2851,6 +2949,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsShowOnCover], FallbackValue={StaticResource AchievementsShowOnCover}, TargetNullValue={StaticResource AchievementsShowOnCover}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -2859,6 +2958,7 @@
                                                                         <MultiDataTrigger>
                                                                             <MultiDataTrigger.Conditions>
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], FallbackValue={StaticResource DetailsViewShowAchievementsSummary}, TargetNullValue={StaticResource DetailsViewShowAchievementsSummary}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -2918,8 +3018,8 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewAchievementsShowButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewAchievementsShowButton}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsPanelDefault], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowAchievementsPanelDefault}}" />
-                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemote}"
-                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], Mode=TwoWay, FallbackValue={StaticResource DemoteAchievementsSection}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickPluginSettings}"

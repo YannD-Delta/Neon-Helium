@@ -1,5 +1,13 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.2
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.2/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_2.pthm
+    Changelog:
+      - "Artwork chips are grouped (game, classification, studio and status, HowLongToBeat, achievements, activity) with an optional line break before each group"
+      - "Gear at the start of the chips line: every chip and every line break in one place"
+      - "Each foldable section has its own fold setting in its gear; PlayniteAchievements and GameActivity stay in place by default"
   - Version: 2.1
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-10-11
