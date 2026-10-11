@@ -161,7 +161,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border BorderThickness="0" Background="{TemplateBinding Background}"
                             CornerRadius="{DynamicResource ControlCornerRadius}">
-                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE9E9;" FontSize="18"
+                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE771;" FontSize="18"
                                    Foreground="{TemplateBinding Foreground}"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Margin="{TemplateBinding Padding}" />

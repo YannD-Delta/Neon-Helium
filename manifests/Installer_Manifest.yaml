@@ -1,5 +1,15 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.3
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.3/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_3.pthm
+    Changelog:
+      - "Theme workshop: a top panel button opens live sliders and switches (sizes, header bar, chips, cover, sections, links, top panel) with a tooltip on each setting"
+      - "HowLongToBeat time and achievements at the end of each game in the list and on Grid view covers"
+      - "Chip groups can be reordered from the chips gear or Theme Options"
+      - "Preview images next to every drop-down choice in Theme Options"
+      - "Dune top panel as a choice: view buttons centered, transparent bar"
   - Version: 2.2
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-10-11

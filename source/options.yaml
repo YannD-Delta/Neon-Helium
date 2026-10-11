@@ -155,6 +155,22 @@ Presets:
                     HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'False'
+    TopPanel:
+        Name: 'Top panel'
+        LocKey: LOCHNDPresetTopPanel
+        Presets:
+            Default:
+                Name: 'Neon (everything on the left)'
+                LocKey: LOCHNDPresetTopPanelDefault
+                Preview: 'Presets\Previews\TopPanel_Default.png'
+                NeedRestart: True
+            Dune:
+                Name: 'Dune (view buttons centered, transparent)'
+                LocKey: LOCHNDPresetTopPanelDune
+                Preview: 'Presets\Previews\TopPanel_Dune.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\TopPanel\Dune.xaml'
     Accent:
         Name: 'Accent color'
         LocKey: LOCHNDPresetAccent

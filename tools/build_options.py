@@ -8,7 +8,8 @@ Outputs (all inside the theme folder):
   thememodifier.yaml        ThemeModifier color pickers
   Presets/**/*.xaml         preset resource files (button, chip, animation and artwork looks)
   DerivedStyles/PlayButton.xaml  the default hero styles, between the generated markers
-  Views/TopPanel.xaml       the theme workshop popup, between the generated markers
+  Views/TopPanel.xaml       the theme workshop popup, between the generated markers (also in the
+                            Dune top panel preset, Presets/TopPanel/Dune.xaml)
 
 Types and defaults come from Constants.xaml. The script stops on any inconsistency.
 
@@ -649,12 +650,16 @@ def workshop_labels(spec):
     return labels
 
 
-def top_panel_file(source: Path, spec, constants):
-    text = (source / "Views" / "TopPanel.xaml").read_text(encoding="utf-8-sig")
+# files that host the workshop toggle: the Neon top panel and the Dune top panel preset
+WORKSHOP_FILES = ["Views/TopPanel.xaml", "Presets/TopPanel/Dune.xaml"]
+
+
+def top_panel_file(source: Path, spec, constants, name="Views/TopPanel.xaml"):
+    text = (source / name).read_text(encoding="utf-8-sig")
     start = text.find(WS_BEGIN)
     end = text.find(WS_END)
     if start < 0 or end < 0:
-        raise SpecError("Views/TopPanel.xaml must contain the generated workshop markers")
+        raise SpecError(f"{name} must contain the generated workshop markers")
     line_start = text.rfind("\n", 0, start) + 1
     indent_text = text[line_start:start]
     return text[:line_start] + workshop_block(spec, constants, indent_text) + text[end + len(WS_END):]
@@ -697,7 +702,8 @@ def main() -> int:
                     print(f"wrote {path}")
         options, labels, _ = build_options(spec, constants, source)
         outputs["options.yaml"] = options
-        outputs["Views/TopPanel.xaml"] = top_panel_file(source, spec, constants)
+        for name in WORKSHOP_FILES:
+            outputs[name] = top_panel_file(source, spec, constants, name)
         for language, extra in workshop_labels(spec).items():
             labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.

@@ -19,6 +19,7 @@ Helium-Neon-Dune works without extensions. It includes integration hosts for the
 - **Play time and completion:** [HowLongToBeat](https://github.com/Lacro59/playnite-howlongtobeat-plugin) (section and header chips), [GameActivity](https://github.com/Lacro59/playnite-gameactivity-plugin) (charts, last session and recent activity chips), PlayState.
 - **Media:** Extra Metadata Loader (logos and trailers), Background Changer, Screenshots Visualizer, Steam Screenshots, [Screenshot Utilities](https://knarzwerk.de/en/playnite-extensions/screenshot-utilities/) (new section).
 - **Library and game information:** CheckDLC, CheckLocalizations, SystemChecker, LibraryManagement, Game Relations, Review Viewer, News Viewer, VNDB Nexus, GOG Second Class Watcher, Web Explorer, Play Notes, Steam Game Status Detector.
+- **Per-game badges:** HowLongToBeat and PlayniteAchievements times and counts at the end of each game in the list and on Grid view covers (HowLongToBeat needs its "view item" integration turned on).
 - **Buttons next to Play:** Steam Shortcuts (Steam client, store and community menu), [Game Update Status](https://github.com/FunkyKwak/playnite-get-update-status) (update available dot).
 - **Interface:** ThemeExtras (favorite toggle, link icons, star rating, banners), DuplicateHider.
 
@@ -43,14 +44,17 @@ Drop-down lists (Theme Options):
 | Artwork sharpness and position | sharp or blurred, vertical and horizontal alignment |
 | Header bar | frosted glass, solid, transparent, hidden |
 | Blurred background behind the information | off, light, normal, strong |
+| Top panel | Neon, Dune (view buttons centered, transparent) |
 
 The global style sets a starting point; every list below it, and every individual setting, overrides it.
+
+**Theme workshop.** The top panel has a workshop button: sliders and switches for the sizes, the header bar, the chips, the cover badges, the game list badges, the sections, the links and the top panel, each with a tooltip. The theme changes while you drag. Theme Options shows a preview image next to every drop-down choice.
 
 **Quick settings.** Every section of the Details view has a gear next to its fold arrow. It lists where that information shows (the section itself, chips on the artwork, the cover, the header bar), what the section contains and whether it opens by default; changes apply at once and are saved by Theme Options. Two buttons open the extension's own settings and all theme settings (both need ThemeExtras). The top panel also has buttons for the Theme Options and ThemeModifier settings.
 
 **No repeated information.** When a section's information is already shown above (genres as chips, HowLongToBeat on the cover...), the section folds at the bottom of its column instead of disappearing, so its gear stays reachable. Each foldable section has its own switch in its gear (PlayniteAchievements and GameActivity stay in place by default, their sections show much more than the chips), and "Fold sections at the bottom when their information is shown above" turns folding off everywhere.
 
-**Chips.** The chips on the artwork are grouped: game (release date, platforms, source), classification (genres, categories, features, tags), studio and status (developers, completion status, score), HowLongToBeat, achievements and activity. A line break can be added before each group. The gear at the start of the chips line lists every chip and every line break.
+**Chips.** The chips on the artwork are grouped: game (release date, platforms, source), classification (genres, categories, features, tags), studio and status (developers, completion status, score), HowLongToBeat, achievements and activity. A line break can be added before each group, and the groups can be reordered. The gear at the start of the chips line lists every chip and every line break.
 
 Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session and recent activity), sizes and corner rounding of the buttons and chips, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
 
@@ -65,6 +69,8 @@ If you used ThemeModifier with an earlier version, only its color settings still
 ```
 python tools/build_options.py
 ```
+
+`tools/make_previews.py` draws the preview images shown next to the drop-down choices (needs Pillow).
 
 `tools/lint_theme.py` checks the sources before packaging: well-formed XAML, no `x:Shared` (Playnite rejects it in loose XAML), valid ThemeModifier and Theme Options entries, no option that is never read, preset files that only override existing keys, French labels, and generated files that are up to date. It needs PyYAML.
 

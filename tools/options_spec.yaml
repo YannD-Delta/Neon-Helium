@@ -154,6 +154,19 @@ presets:
         constants:
           HeroStyleShowInfoLine: False
 
+  - group: TopPanel
+    en: Top panel
+    fr: Barre du haut
+    restart: True
+    options:
+      - id: Default
+        en: Neon (everything on the left)
+        fr: Neon (tout à gauche)
+      - id: Dune
+        en: Dune (view buttons centered, transparent)
+        fr: Dune (boutons de vue centrés, transparente)
+        files: [Presets/TopPanel/Dune.xaml]
+
   - group: Accent
     en: Accent color
     fr: Couleur d'accent

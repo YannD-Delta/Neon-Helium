@@ -120,8 +120,8 @@ def check_theme_options(source: Path, definitions, dynamic, static, errors):
     locale = set()
     if locale_path.exists():
         locale = {element.get(KEY) for element in ET.fromstring(read_text(locale_path)).iter() if element.get(KEY)}
-    theme_keys = {key for key, (_, _, file) in definitions.items()
-                  if "Presets" not in file.parts and "Localization" not in file.parts}
+    theme_files = [f for f in source.rglob("*.xaml") if "Presets" not in f.parts and "Localization" not in f.parts]
+    theme_keys = set(collect_definitions(theme_files))
 
     def check_read(key, where):
         if key not in theme_keys:

@@ -56,6 +56,9 @@
     <sys:String x:Key="LOCHNDPresetChipsText">Plain text (Dune)</sys:String>
     <sys:String x:Key="LOCHNDPresetChipsOutline">Outline</sys:String>
     <sys:String x:Key="LOCHNDPresetChipsHidden">Hidden</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanel">Top panel</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanelDefault">Neon (everything on the left)</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanelDune">Dune (view buttons centered, transparent)</sys:String>
     <sys:String x:Key="LOCHNDPresetAccent">Accent color</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentDefault">Neon blue</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentAmber">Dune amber</sys:String>

@@ -206,7 +206,36 @@ def accent(color):
     return img
 
 
+def top_panel(layout):
+    img = Image.new("RGBA", (W, 90), BG + (255,))
+    img.paste(artwork(W, 90).convert("RGBA"), (0, 0))
+    shade(img, 0, 90, 0.6)
+    d = ImageDraw.Draw(img, "RGBA")
+    if layout == "neon":
+        d.rectangle((0, 0, W, 28), fill=TOP + (255,))
+        x = 10
+        d.ellipse((x, 7, x + 14, 21), fill=ACCENT + (255,))
+        rounded(d, (x + 22, 7, x + 122, 21), 4, fill=(40, 46, 56, 255))
+        x += 132
+        for i in range(6):
+            rounded(d, (x + i * 20, 7, x + i * 20 + 14, 21), 3, fill=TEXT_DIM + (255,))
+    else:
+        d.line([(0, 28), (W, 28)], fill=(255, 255, 255, 40))
+        d.ellipse((10, 7, 24, 21), fill=ACCENT + (255,))
+        rounded(d, (32, 7, 112, 21), 4, fill=(40, 46, 56, 200))
+        cx = W // 2 - 60
+        for i in range(6):
+            rounded(d, (cx + i * 20, 7, cx + i * 20 + 14, 21), 3, fill=TEXT + (230,))
+        d.line([(cx + 2, 25), (cx + 12, 25)], fill=ACCENT + (255,), width=2)
+        for i in range(3):
+            d.ellipse((W - 70 + i * 18, 8, W - 58 + i * 18, 20), fill=TEXT_DIM + (255,))
+    d.text((14, 48), "GAME TITLE", font=font(16, True), fill=(255, 255, 255, 255))
+    return img
+
+
 PRESETS = {
+    "TopPanel_Default": lambda: top_panel("neon"),
+    "TopPanel_Dune": lambda: top_panel("dune"),
     "Style_Default": lambda: scene(),
     "Style_Neon": lambda: scene(chips_style="hidden", buttons_style="neon", actions="bar", shade_level=0.25),
     "Style_Dune": lambda: scene(chips_style="text", bar="transparent", shade_level=0.85, hero_bottom=165),

@@ -56,6 +56,9 @@
     <sys:String x:Key="LOCHNDPresetChipsText">Texte simple (Dune)</sys:String>
     <sys:String x:Key="LOCHNDPresetChipsOutline">Contour</sys:String>
     <sys:String x:Key="LOCHNDPresetChipsHidden">Masquées</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanel">Barre du haut</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanelDefault">Neon (tout à gauche)</sys:String>
+    <sys:String x:Key="LOCHNDPresetTopPanelDune">Dune (boutons de vue centrés, transparente)</sys:String>
     <sys:String x:Key="LOCHNDPresetAccent">Couleur d'accent</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentDefault">Bleu Neon</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentAmber">Ambre Dune</sys:String>
