@@ -184,7 +184,7 @@
                                                         ItemsPanel="{TemplateBinding ItemsPanel}" 
                                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                     <DataGridCellsPresenter.Foreground>
-                                        <SolidColorBrush Color="{StaticResource TextColor}" />
+                                        <SolidColorBrush Color="{DynamicResource TextColor}" />
                                     </DataGridCellsPresenter.Foreground>
                                 </DataGridCellsPresenter>
                             </Border>

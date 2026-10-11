@@ -32,7 +32,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <DockPanel>
-                        <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="18" Height="18"
+                        <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="{DynamicResource LinkIconSize}" Height="{DynamicResource LinkIconSize}"
                                  VerticalAlignment="Center"
                                  Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
                                  RenderOptions.ClearTypeHint="Enabled" RenderOptions.BitmapScalingMode="Fant">
@@ -43,7 +43,17 @@
                                    Foreground="{TemplateBinding Foreground}"
                                    Text="{TemplateBinding Content, Converter={StaticResource ObjectToStringConverter}}"
                                    TextTrimming="CharacterEllipsis"
-                                   TextWrapping="{TemplateBinding TextBlock.TextWrapping}"/>
+                                   TextWrapping="{TemplateBinding TextBlock.TextWrapping}" Tag="{DynamicResource LinksShowNames}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
                     </DockPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -152,7 +162,7 @@
                                 Opacity="0.0"/>
                         <Border Padding="{TemplateBinding Padding}" >
                             <DockPanel>
-                                <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="18" Height="18"
+                                <Viewbox DockPanel.Dock="Left" Margin="0,0,5,0" Width="{DynamicResource LinkIconSize}" Height="{DynamicResource LinkIconSize}"
                                          VerticalAlignment="Center"
                                          Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}"
                                          RenderOptions.ClearTypeHint="Enabled" RenderOptions.BitmapScalingMode="Fant">
@@ -162,7 +172,17 @@
                                 <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="Medium"
                                            Foreground="{TemplateBinding Foreground}"
                                            Text="{TemplateBinding Content, Converter={StaticResource ObjectToStringConverter}}"
-                                           TextWrapping="NoWrap"/>
+                                           TextWrapping="NoWrap" Tag="{DynamicResource LinksShowNames}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                             </DockPanel>
                         </Border>
                     </Grid>

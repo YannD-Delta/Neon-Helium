@@ -20,6 +20,23 @@ Neon works without extensions. It includes integration hosts for the following o
 - **Library and game information:** CheckDLC, CheckLocalizations, SystemChecker, LibraryManagement, Game Relations, Review Viewer, News Viewer, VNDB Nexus, GOG Second Class Watcher, and Web Explorer.
 - **Interface additions:** PlayState and ThemeExtras.
 
+## ThemeModifier options
+
+Neon exposes its settings through the [ThemeModifier](https://playnite.link/addons.html) extension (about 200 options, grouped):
+
+- **Colors:** accent, text, controls, play button, details and grid views, game list, top panel, menus and inputs.
+- **Sections:** show or hide each extension panel and each header item, in both the Grid and the Details views.
+- **Order:** reorder the extension panels. Each panel needs its own number (0 to 18); two panels with the same number overlap. In the Details view the order applies within each column.
+- **Sizes:** header buttons, section headers, logo limits, play button, top panel, sidebar, link icons, panel heights and text sizes.
+
+## Development
+
+`tools/lint_theme.py` checks the sources before packaging: well-formed XAML, no `x:Shared` (Playnite rejects it in loose XAML), valid ThemeModifier entries and no option that is never read.
+
+```
+python tools/lint_theme.py --source source
+```
+
 ## Relevant settings
 
 Keep in mind that a similar effect can be achieved by using original [Helium](https://playnite.link/addons.html#8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb1) with the [Details to Grid View Converter](https://playnite.link/addons.html#ThemesDetailsViewToGridViewConverter_ef8a7226-eedc-478d-a506-92ee6c088aa3) add-on, which is a recommended way for most users.

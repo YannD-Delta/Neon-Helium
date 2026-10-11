@@ -42,7 +42,7 @@
                                             </DataTemplate>
                                         </ExtendedListBox.ItemTemplate>
                                     </ExtendedListBox>
-                                    <TextBlock FontSize="{StaticResource FontSizeLarge}" Margin="0,15,0,0"
+                                    <TextBlock FontSize="{DynamicResource FontSizeLarge}" Margin="0,15,0,0"
                                        Text="{DynamicResource LOCNoItemsFound}" TextWrapping="Wrap"                                       
                                        TextAlignment="Center" HorizontalAlignment="Center">
                                         <TextBlock.Style>

@@ -32,23 +32,93 @@
     <sys:Boolean x:Key="GridViewCoverUseRoundedCorners">False</sys:Boolean>
     <sys:Boolean x:Key="GridViewCoverDisplayDropShadowEffect">False</sys:Boolean>
     <sys:Boolean x:Key="GridViewEnablePlayingGlowBorder">True</sys:Boolean>
-    <sys:Boolean x:Key="GridViewPlaceDescriptionAtBottom">False</sys:Boolean>
-    <Visibility x:Key="GridViewDetailsIconsVisibility">Visible</Visibility>
-    <sys:Int32 x:Key="GridViewSectionOrderDetails">0</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderVideo">1</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderNotes">2</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderDescription">3</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderVndb">4</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderAchievements">5</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderHowLongToBeat">6</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderScreenshotsVisualizer">7</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderGameActivity">8</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderReviewViewer">9</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderNewsViewer">10</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderCheckDlc">11</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderGameRelations">12</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderSteamScreenshots">13</sys:Int32>
-    <sys:Int32 x:Key="GridViewSectionOrderWeb">14</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderAchievements">0</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderGameActivity">1</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderHowLongToBeat">2</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderNotes">3</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderVideo">4</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderScreenshotsVisualizer">5</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderReviewViewer">6</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderNewsViewer">7</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderVndb">8</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderCheckDlc">9</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderGameRelations">10</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderSteamScreenshots">11</sys:Int32>
+    <sys:Int32 x:Key="GridViewSectionOrderWeb">12</sys:Int32>
+    <sys:Boolean x:Key="GridViewShowAchievementsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowGameActivityPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowHltbPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowNotesPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowVideoPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowScreenshotsVisualizerPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowReviewsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowNewsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowVndbPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowCheckDlcPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowGameRelationsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowSteamScreenshotsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowWebExplorerPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowNotesPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowNewsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowVideoPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowGameActivityPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowCheckDlcPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowGameRelationsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowWebExplorerPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowHltbPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowAchievementsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowSteamScreenshotsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowVndbPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowScreenshotsVisualizerPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowReviewsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowLastPlayed">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowPlayTime">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowCompletionStatus">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowAchievementsSummary">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowEditButton">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowInfoButton">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowFavoriteButton">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowLastPlayed">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowPlayTime">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowCompletionStatus">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowAchievementsSummary">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowEditButton">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowInfoButton">True</sys:Boolean>
+    <sys:Boolean x:Key="GridViewShowFavoriteButton">True</sys:Boolean>
+    <sys:Boolean x:Key="LinksShowNames">True</sys:Boolean>
+    <sys:Double x:Key="LinkIconSize">18</sys:Double>
+    <sys:Double x:Key="SectionHeaderMinHeight">34</sys:Double>
+    <sys:Double x:Key="SectionContainerMinHeight">45</sys:Double>
+    <sys:Double x:Key="HeaderButtonSize">32</sys:Double>
+    <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
+    <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
+    <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>
+    <sys:Double x:Key="GridViewPlayButtonMinWidth">190</sys:Double>
+    <sys:Double x:Key="GridViewPlayButtonHeight">45</sys:Double>
+    <sys:Double x:Key="GameLogoMaxWidth">1000</sys:Double>
+    <sys:Double x:Key="GameLogoMaxHeight">400</sys:Double>
+    <sys:Double x:Key="TopPanelHeight">50</sys:Double>
+    <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
+    <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
+    <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>
+    <sys:Double x:Key="SidebarItemSize">38</sys:Double>
+    <sys:Int32 x:Key="DetailsViewSectionOrderNotes">0</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderGenres">1</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderCategories">2</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderFeatures">3</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderTags">4</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderNewsViewer">5</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderVideo">6</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderGameActivity">7</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderCheckDlc">8</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderGameRelations">9</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderWeb">10</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderHowLongToBeat">0</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderAchievements">1</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderSteamScreenshots">2</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderVndb">3</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderScreenshotsVisualizer">4</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderReviewViewer">5</sys:Int32>
     <sys:Double x:Key="WebExplorerControlHeight">800</sys:Double>
     <sys:Boolean x:Key="GridViewCoverZoomOnHover">True</sys:Boolean>
     <sys:Boolean x:Key="GridViewCoverShowSelectionBorder">True</sys:Boolean>
@@ -57,6 +127,15 @@
     <sys:Boolean x:Key="ShowNavigationButtons">True</sys:Boolean>
     <sys:Double x:Key="TopPanelSearchBoxWidthHelium">500</sys:Double>
     <!--region end-->
+
+    <!--Hides a section when its ThemeModifier option (stored in Tag) is False-->
+    <Style x:Key="SectionToggleGrid" TargetType="Grid">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 
     <!--GameActivity charts: a height of 0 keeps the size provided by the extension-->
     <Style x:Key="GameActivityChartTimeStyle" TargetType="ContentControl">
