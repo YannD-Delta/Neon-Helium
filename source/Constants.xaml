@@ -20,6 +20,7 @@
     <sys:Boolean x:Key="DetailsViewExpandVndbPanel">False</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandScreenshotsVisualizerPanel">False</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandReviewsPanel">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewExpandScreenshotUtilitiesPanel">False</sys:Boolean>
     <VerticalAlignment x:Key="DetailsViewBackgroundVerticalAlignment">Center</VerticalAlignment>
     <HorizontalAlignment x:Key="DetailsViewBackgroundHorizontalAlignment">Left</HorizontalAlignment>
     <sys:Boolean x:Key="DetailsViewAllowUseOfLogos">true</sys:Boolean>
@@ -91,6 +92,7 @@
     <sys:Boolean x:Key="DetailsViewShowVndbPanel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowScreenshotsVisualizerPanel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowReviewsPanel">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowScreenshotUtilitiesPanel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowLastPlayed">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowPlayTime">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowCompletionStatus">True</sys:Boolean>
@@ -153,11 +155,23 @@
     <sys:Boolean x:Key="HeroShowCommunityScore">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowHltb">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowAchievements">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowLastSession">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowRecentActivity">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowLatestAchievement">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowRareAchievements">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowSteamShortcuts">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowUpdateStatus">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowUserRating">False</sys:Boolean>
     <sys:String x:Key="LOCHNDChipAchievements">Achievements</sys:String>
     <sys:String x:Key="LOCHNDChipScore">Score</sys:String>
     <sys:String x:Key="LOCHNDChipHltbMain">Main</sys:String>
     <sys:String x:Key="LOCHNDChipHltbExtra">Main + Extra</sys:String>
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100%</sys:String>
+    <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
+    <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
+    <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
+    <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
+    <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
     <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
     <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
     <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>
@@ -187,6 +201,7 @@
     <sys:Int32 x:Key="DetailsViewSectionOrderVndb">3</sys:Int32>
     <sys:Int32 x:Key="DetailsViewSectionOrderScreenshotsVisualizer">4</sys:Int32>
     <sys:Int32 x:Key="DetailsViewSectionOrderReviewViewer">5</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderScreenshotUtilities">6</sys:Int32>
     <sys:Double x:Key="WebExplorerControlHeight">800</sys:Double>
     <sys:Boolean x:Key="GridViewCoverZoomOnHover">True</sys:Boolean>
     <sys:Boolean x:Key="GridViewCoverShowSelectionBorder">True</sys:Boolean>

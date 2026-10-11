@@ -8,6 +8,11 @@
     <sys:String x:Key="LOCHNDChipHltbMain">Main</sys:String>
     <sys:String x:Key="LOCHNDChipHltbExtra">Main + Extra</sys:String>
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100%</sys:String>
+    <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
+    <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
+    <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
+    <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
+    <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
     <sys:String x:Key="LOCHNDPresetStyle">Global style</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleDefault">Helium-Neon-Dune (Dune header, Neon information)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleNeon">Neon classic (buttons in the header bar)</sys:String>
@@ -84,6 +89,8 @@
     <sys:String x:Key="LOCHNDOptHeroButtonCornerRadius">Button corner rounding</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowEditButton">Show the edit button</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowFavoriteButton">Show the favorite button (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowSteamShortcuts">Steam shortcuts button (Steam Shortcuts)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowUpdateStatus">Update available indicator (Game Update Status)</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewAllowUseOfLogos">Use game logos (Extra Metadata Loader)</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible">Show the game name even with a logo</sys:String>
     <sys:String x:Key="LOCHNDOptGameLogoMaxWidth">Logo maximum width</sys:String>
@@ -101,6 +108,10 @@
     <sys:String x:Key="LOCHNDOptHeroShowCommunityScore">Community score</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowHltb">HowLongToBeat times</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowAchievements">Achievements (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowLatestAchievement">Latest unlocked achievement (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Rare and ultra rare achievements (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowLastSession">Last session length (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Recent activity (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Details view - header bar</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHeaderBar">Show the header bar</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowLastPlayed">Last played</sys:String>
@@ -108,6 +119,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowCompletionStatus">Completion status</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowAchievementsSummary">Achievements summary</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoButton">Information panel button</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowUserRating">Your rating with stars (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDOptHeaderButtonSize">Size of the header bar buttons</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsInfo">Details view - information and description</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoPanelDefault">Information panel open by default</sys:String>
@@ -132,6 +144,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowVndbPanel">VNDB Nexus</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotsVisualizerPanel">ScreenshotsVisualizer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowReviewsPanel">Review Viewer</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsExpand">Details view - sections open by default</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNotesPanel">Play Notes</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNewsPanel">News Viewer</sys:String>
@@ -146,6 +159,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewExpandVndbPanel">VNDB Nexus</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandScreenshotsVisualizerPanel">ScreenshotsVisualizer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandReviewsPanel">Review Viewer</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsOrderLeft">Details view - left column order (each number once, 0 to 18)</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderNotes">Play Notes</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderGenres">Genres</sys:String>
@@ -165,6 +179,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderVndb">VNDB Nexus</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderScreenshotsVisualizer">ScreenshotsVisualizer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderReviewViewer">Review Viewer</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderScreenshotUtilities">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsPlugins">Details view - extension details</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHltbDataGrid">HowLongToBeat time table</sys:String>
     <sys:String x:Key="LOCHNDOptWebExplorerControlHeight">Web Explorer height</sys:String>

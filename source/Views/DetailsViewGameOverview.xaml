@@ -148,6 +148,9 @@
 
                                         <StackPanel Margin="20,0,10,20" VerticalAlignment="Bottom"
                                                     Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
+                                            <StackPanel.RenderTransform>
+                                                <TranslateTransform />
+                                            </StackPanel.RenderTransform>
                                             <!--<Image Name="PART_ImageIcon" MaxHeight="48" MaxWidth="48"
                                                    DockPanel.Dock="Left" Margin="0,0,20,0"
                                                    VerticalAlignment="Bottom"
@@ -422,6 +425,78 @@
                                                             </Border>
                                                         </Grid>
                                                     </Grid>
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowLastSession}">
+                                                        <Grid Tag="{PluginSettings Plugin=GameActivity, Path=LastPlaytimeSession, FallbackValue=''}">
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipLastSession}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowRecentActivity}">
+                                                        <Grid Tag="{PluginSettings Plugin=GameActivity, Path=RecentActivity, FallbackValue=''}">
+                                                            <Grid.Style>
+                                                                <Style TargetType="Grid">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowLatestAchievement}">
+                                                        <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasLatestAchievementData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipLatestAchievement}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" MaxWidth="320" Text="{PluginSettings Plugin=PlayniteAchievements, Path=LatestAchievementData.DisplayName, FallbackValue=''}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowRareAchievements}">
+                                                        <Grid Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            <Border Style="{DynamicResource HeroInfoChip}">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipRare}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Unlocked, FallbackValue='-'}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=Rare.Total, FallbackValue='-'}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Margin="12,0,6,0" Text="{DynamicResource LOCHNDChipUltraRare}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Unlocked, FallbackValue='-'}" />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text=" / " />
+                                                                    <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{PluginSettings Plugin=PlayniteAchievements, Path=UltraRare.Total, FallbackValue='-'}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
                                                     </WrapPanel>
                                                 </Grid>
                                             </Grid>
@@ -529,6 +604,10 @@
                                                     </Border.Style>
                                                 </Border>
                                                 <DockPanel DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,0,0">
+                                                    <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowUserRating}">
+                                                        <ContentControl x:Name="ThemeExtras_UserRating" Margin="10,0,0,0" VerticalAlignment="Center" Height="{DynamicResource HeaderButtonSize}"
+                                                                        Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" />
+                                                    </Grid>
                                                     <ContentControl x:Name="PlayState_GameStateSwitchControl" Margin="10,0,0,0"
                                                                     Visibility="{PluginSettings Plugin=PlayState, Path=IsControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                         <ContentControl.Resources>
@@ -761,8 +840,13 @@
                                         <Grid x:Name="HeroActions" HorizontalAlignment="Left" MinWidth="200"
                                               Width="{DynamicResource HeroActionButtonWidth}"
                                               Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
+                                            <Grid.RenderTransform>
+                                                <TranslateTransform />
+                                            </Grid.RenderTransform>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
@@ -782,6 +866,15 @@
                                                               Style="{DynamicResource HeroFavoriteToggle}"
                                                               Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
                                                               IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}" />
+                                            </Grid>
+                                            <!-- Steam Shortcuts: one button with the Steam client, store and community pages -->
+                                            <Grid Grid.Column="3" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowSteamShortcuts}">
+                                                <ContentControl x:Name="SteamShortcuts_SteamGameActionsLauncher" Margin="8,0,0,0" VerticalAlignment="Center"
+                                                                Visibility="{PluginSettings Plugin=SteamShortcuts, Path=IsControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                            </Grid>
+                                            <!-- Game Update Status: update available dot for Steam and Epic games -->
+                                            <Grid Grid.Column="4" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroShowUpdateStatus}">
+                                                <ContentControl x:Name="GameUpdateStatus_UpdateStatus" Margin="10,0,0,0" VerticalAlignment="Center" />
                                             </Grid>
                                         </Grid>
                                     </Grid>
@@ -1948,6 +2041,30 @@
                                                 </StackPanel>
                                                 </Grid>
                                                 
+                                                <Grid Grid.Row="{DynamicResource DetailsViewSectionOrderScreenshotUtilities}"
+                                                      Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowScreenshotUtilitiesPanel}">
+                                                <StackPanel Name="ScreenshotUtilitiesPanel" Style="{DynamicResource PluginStackpanelVisibility}"
+                                                            Visibility="{PluginSettings Plugin=ScreenshotUtilities, Path=IsViewerControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <ToggleButton x:Name="DetailsViewScreenshotUtilitiesPanelToggleButton" MinHeight="{DynamicResource SectionHeaderMinHeight}"
+                                                                  Margin="0,0,0,10" Focusable="False"
+                                                                  Style="{DynamicResource DetailsSectionHeaderToggleButton}"
+                                                                  IsChecked="{DynamicResource DetailsViewExpandScreenshotUtilitiesPanel}">
+                                                        <Label Content="{DynamicResource LOCHNDSectionScreenshotUtilities}"
+                                                               Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                    </ToggleButton>
+                                                    <Grid Style="{DynamicResource AdditionalPanelContent}"
+                                                          Tag="{Binding ElementName=DetailsViewScreenshotUtilitiesPanelToggleButton, Path=IsChecked}">
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanels}" />
+                                                        <Border Padding="10" >
+                                                            <StackPanel>
+                                                                <ContentControl x:Name="ScreenshotUtilities_ScreenshotViewerControl" />
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </StackPanel>
+                                                </Grid>
+
                                                 <Grid Grid.Row="{DynamicResource DetailsViewSectionOrderVndb}"
                                                       Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource DetailsViewShowVndbPanel}">
                                                 <StackPanel Name="VNDBPanel" Style="{DynamicResource PluginStackpanelVisibility}"

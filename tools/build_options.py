@@ -490,13 +490,12 @@ def hero_fade(name):
                                 <CubicEase EasingMode="EaseOut" />
                             </DoubleAnimation.EasingFunction>
 """
-    return f"""    <!-- Fade and slide in when the selected game changes (Binding.TargetUpdated). -->
+    return f"""    <!--
+        Fade and slide in when the selected game changes (Binding.TargetUpdated).
+        The element must carry its own local TranslateTransform: a transform set by a style
+        setter is frozen and cannot be animated.
+    -->
     <Style x:Key="HeroFadeInStyle" TargetType="{{x:Type FrameworkElement}}">
-        <Setter Property="RenderTransform">
-            <Setter.Value>
-                <TranslateTransform />
-            </Setter.Value>
-        </Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="Binding.TargetUpdated">
                 <BeginStoryboard>

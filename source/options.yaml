@@ -569,6 +569,16 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowFavoriteButton
         Type: Boolean
         Default: 'True'
+    HeroShowSteamShortcuts:
+        Title: 'Steam shortcuts button (Steam Shortcuts)'
+        LocKey: LOCHNDOptHeroShowSteamShortcuts
+        Type: Boolean
+        Default: 'True'
+    HeroShowUpdateStatus:
+        Title: 'Update available indicator (Game Update Status)'
+        LocKey: LOCHNDOptHeroShowUpdateStatus
+        Type: Boolean
+        Default: 'True'
     DetailsViewAllowUseOfLogos:
         Title: 'Use game logos (Extra Metadata Loader)'
         LocKey: LOCHNDOptDetailsViewAllowUseOfLogos
@@ -669,6 +679,26 @@ Variables:
         LocKey: LOCHNDOptHeroShowAchievements
         Type: Boolean
         Default: 'True'
+    HeroShowLatestAchievement:
+        Title: 'Latest unlocked achievement (PlayniteAchievements)'
+        LocKey: LOCHNDOptHeroShowLatestAchievement
+        Type: Boolean
+        Default: 'True'
+    HeroShowRareAchievements:
+        Title: 'Rare and ultra rare achievements (PlayniteAchievements)'
+        LocKey: LOCHNDOptHeroShowRareAchievements
+        Type: Boolean
+        Default: 'False'
+    HeroShowLastSession:
+        Title: 'Last session length (GameActivity)'
+        LocKey: LOCHNDOptHeroShowLastSession
+        Type: Boolean
+        Default: 'True'
+    HeroShowRecentActivity:
+        Title: 'Recent activity (GameActivity)'
+        LocKey: LOCHNDOptHeroShowRecentActivity
+        Type: Boolean
+        Default: 'True'
     HeaderHeaderBar:
         Title: 'Details view - header bar'
         LocKey: LOCHNDHeaderHeaderBar
@@ -703,6 +733,11 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowInfoButton
         Type: Boolean
         Default: 'True'
+    DetailsViewShowUserRating:
+        Title: 'Your rating with stars (ThemeExtras)'
+        LocKey: LOCHNDOptDetailsViewShowUserRating
+        Type: Boolean
+        Default: 'False'
     HeaderButtonSize:
         Title: 'Size of the header bar buttons'
         LocKey: LOCHNDOptHeaderButtonSize
@@ -841,6 +876,11 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowReviewsPanel
         Type: Boolean
         Default: 'True'
+    DetailsViewShowScreenshotUtilitiesPanel:
+        Title: 'Screenshot Utilities'
+        LocKey: LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel
+        Type: Boolean
+        Default: 'True'
     HeaderDetailsExpand:
         Title: 'Details view - sections open by default'
         LocKey: LOCHNDHeaderDetailsExpand
@@ -908,6 +948,11 @@ Variables:
     DetailsViewExpandReviewsPanel:
         Title: 'Review Viewer'
         LocKey: LOCHNDOptDetailsViewExpandReviewsPanel
+        Type: Boolean
+        Default: 'False'
+    DetailsViewExpandScreenshotUtilitiesPanel:
+        Title: 'Screenshot Utilities'
+        LocKey: LOCHNDOptDetailsViewExpandScreenshotUtilitiesPanel
         Type: Boolean
         Default: 'False'
     HeaderDetailsOrderLeft:
@@ -1067,6 +1112,15 @@ Variables:
         LocKey: LOCHNDOptDetailsViewSectionOrderReviewViewer
         Type: Int32
         Default: '5'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderScreenshotUtilities:
+        Title: 'Screenshot Utilities'
+        LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotUtilities
+        Type: Int32
+        Default: '6'
         Slider:
             Min: '0'
             Max: '18'

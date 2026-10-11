@@ -13,18 +13,20 @@ Download the latest `.pthm` file from the [Releases page](https://github.com/Yan
 
 ## Optional integrations
 
-Helium-Neon-Dune works without extensions. It includes integration hosts for the following optional extensions:
+Helium-Neon-Dune works without extensions. It includes integration hosts for these optional extensions (each one has its own setting):
 
-- **Achievements and duplicate management:** [PlayniteAchievements](https://github.com/justin-delano/PlayniteAchievements) native achievement progress, statistics, charts, icon lists, latest unlock and the full achievements grid; and [DuplicateHider](https://github.com/felixkmh/DuplicateHider) source selectors on grid covers and in the selected-game overview.
-- **Game data and media:** [HowLongToBeat](https://github.com/Lacro59/playnite-howlongtobeat-plugin), [GameActivity](https://github.com/Lacro59/playnite-gameactivity-plugin), Extra Metadata Loader, Background Changer, Screenshots Visualizer, Steam Screenshots, Play Notes, and Steam Game Status Detector.
-- **Library and game information:** CheckDLC, CheckLocalizations, SystemChecker, LibraryManagement, Game Relations, Review Viewer, News Viewer, VNDB Nexus, GOG Second Class Watcher, and Web Explorer.
-- **Interface additions:** PlayState and ThemeExtras.
+- **Achievements:** [PlayniteAchievements](https://github.com/justin-delano/PlayniteAchievements): progress, statistics, charts, icon lists, latest unlock, rare and ultra rare counts and the full achievements grid, plus chips in the artwork header.
+- **Play time and completion:** [HowLongToBeat](https://github.com/Lacro59/playnite-howlongtobeat-plugin) (section and header chips), [GameActivity](https://github.com/Lacro59/playnite-gameactivity-plugin) (charts, last session and recent activity chips), PlayState.
+- **Media:** Extra Metadata Loader (logos and trailers), Background Changer, Screenshots Visualizer, Steam Screenshots, [Screenshot Utilities](https://knarzwerk.de/en/playnite-extensions/screenshot-utilities/) (new section).
+- **Library and game information:** CheckDLC, CheckLocalizations, SystemChecker, LibraryManagement, Game Relations, Review Viewer, News Viewer, VNDB Nexus, GOG Second Class Watcher, Web Explorer, Play Notes, Steam Game Status Detector.
+- **Buttons next to Play:** Steam Shortcuts (Steam client, store and community menu), [Game Update Status](https://github.com/FunkyKwak/playnite-get-update-status) (update available dot).
+- **Interface:** ThemeExtras (favorite toggle, link icons, star rating, banners), DuplicateHider.
 
 ## Settings
 
 The theme is fully usable with its defaults. Two optional extensions unlock the settings:
 
-- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 180 settings and 12 drop-down lists, with French labels when Playnite is in French. Open it from Playnite's add-on settings. Most changes apply when you close the settings window; the accent color needs a restart.
+- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 190 settings and 12 drop-down lists, with French labels when Playnite is in French. Open it from Playnite's add-on settings. Most changes apply when you close the settings window; the accent color needs a restart.
 - **[ThemeModifier](https://github.com/Lacro59/playnite-thememodifier-plugin)**: free color pickers for about 75 theme colors.
 
 Drop-down lists (Theme Options):
@@ -44,7 +46,7 @@ Drop-down lists (Theme Options):
 
 The global style sets a starting point; every list below it, and every individual setting, overrides it.
 
-Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements), sizes and corner rounding of the buttons and chips, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
+Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session and recent activity), sizes and corner rounding of the buttons and chips, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
 
 Section order: each section needs its own number (0 to 18); two sections with the same number overlap. In the Details view the order applies within each column.
 

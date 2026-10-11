@@ -17,6 +17,11 @@ strings:
   LOCHNDChipHltbMain: {en: Main, fr: Histoire}
   LOCHNDChipHltbExtra: {en: Main + Extra, fr: Histoire + extras}
   LOCHNDChipHltbCompletionist: {en: "100%", fr: "100 %"}
+  LOCHNDChipLastSession: {en: Last session, fr: Dernière session}
+  LOCHNDChipLatestAchievement: {en: Latest, fr: Dernier succès}
+  LOCHNDChipRare: {en: Rare, fr: Rares}
+  LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
+  LOCHNDSectionScreenshotUtilities: {en: Screenshots, fr: Captures d'écran}
 
 presets:
   - group: Style
@@ -315,6 +320,8 @@ variables:
   - {key: HeroButtonCornerRadius, range: [0, 24], en: Button corner rounding, fr: Arrondi des boutons}
   - {key: DetailsViewShowEditButton, en: Show the edit button, fr: Afficher le bouton Modifier}
   - {key: DetailsViewShowFavoriteButton, en: Show the favorite button (ThemeExtras), fr: Afficher le bouton Favori (ThemeExtras)}
+  - {key: HeroShowSteamShortcuts, en: Steam shortcuts button (Steam Shortcuts), fr: Bouton de raccourcis Steam (Steam Shortcuts)}
+  - {key: HeroShowUpdateStatus, en: Update available indicator (Game Update Status), fr: Indicateur de mise à jour (Game Update Status)}
   - {key: DetailsViewAllowUseOfLogos, en: Use game logos (Extra Metadata Loader), fr: Utiliser les logos des jeux (Extra Metadata Loader)}
   - {key: DetailsViewDisplayGameNameIfLogoVisible, en: Show the game name even with a logo, fr: Afficher le nom du jeu même avec un logo}
   - {key: GameLogoMaxWidth, range: [100, 2000], en: Logo maximum width, fr: Largeur maximale du logo}
@@ -335,6 +342,10 @@ variables:
   - {key: HeroShowCommunityScore, en: Community score, fr: Note de la communauté}
   - {key: HeroShowHltb, en: HowLongToBeat times, fr: Durées HowLongToBeat}
   - {key: HeroShowAchievements, en: Achievements (PlayniteAchievements), fr: Succès (PlayniteAchievements)}
+  - {key: HeroShowLatestAchievement, en: Latest unlocked achievement (PlayniteAchievements), fr: Dernier succès débloqué (PlayniteAchievements)}
+  - {key: HeroShowRareAchievements, en: Rare and ultra rare achievements (PlayniteAchievements), fr: Succès rares et ultra rares (PlayniteAchievements)}
+  - {key: HeroShowLastSession, en: Last session length (GameActivity), fr: Durée de la dernière session (GameActivity)}
+  - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
 
   - header: HeaderBar
     en: Details view - header bar
@@ -345,6 +356,7 @@ variables:
   - {key: DetailsViewShowCompletionStatus, en: Completion status, fr: Statut de complétion}
   - {key: DetailsViewShowAchievementsSummary, en: Achievements summary, fr: Résumé des succès}
   - {key: DetailsViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
+  - {key: DetailsViewShowUserRating, en: Your rating with stars (ThemeExtras), fr: Votre note en étoiles (ThemeExtras)}
   - {key: HeaderButtonSize, range: [20, 56], en: Size of the header bar buttons, fr: Taille des boutons de la barre}
 
   - header: DetailsInfo
@@ -375,6 +387,7 @@ variables:
   - {key: DetailsViewShowVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
   - {key: DetailsViewShowScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
   - {key: DetailsViewShowReviewsPanel, en: Review Viewer, fr: Review Viewer}
+  - {key: DetailsViewShowScreenshotUtilitiesPanel, en: Screenshot Utilities, fr: Screenshot Utilities}
 
   - header: DetailsExpand
     en: Details view - sections open by default
@@ -392,6 +405,7 @@ variables:
   - {key: DetailsViewExpandVndbPanel, en: VNDB Nexus, fr: VNDB Nexus}
   - {key: DetailsViewExpandScreenshotsVisualizerPanel, en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
   - {key: DetailsViewExpandReviewsPanel, en: Review Viewer, fr: Review Viewer}
+  - {key: DetailsViewExpandScreenshotUtilitiesPanel, en: Screenshot Utilities, fr: Screenshot Utilities}
 
   - header: DetailsOrderLeft
     en: Details view - left column order (each number once, 0 to 18)
@@ -417,6 +431,7 @@ variables:
   - {key: DetailsViewSectionOrderVndb, range: [0, 18], en: VNDB Nexus, fr: VNDB Nexus}
   - {key: DetailsViewSectionOrderScreenshotsVisualizer, range: [0, 18], en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
   - {key: DetailsViewSectionOrderReviewViewer, range: [0, 18], en: Review Viewer, fr: Review Viewer}
+  - {key: DetailsViewSectionOrderScreenshotUtilities, range: [0, 18], en: Screenshot Utilities, fr: Screenshot Utilities}
 
   - header: DetailsPlugins
     en: Details view - extension details

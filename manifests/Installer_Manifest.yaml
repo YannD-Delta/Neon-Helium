@@ -1,5 +1,17 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.0
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.0/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_0.pthm
+    Changelog:
+      - "Renamed to Helium-Neon-Dune: Neon and Helium game information with the Dune Rev artwork header and buttons"
+      - "Settings moved to the Theme Options extension: about 190 settings and 12 drop-down lists, French labels"
+      - "Choose the global style, play button style (Dune, Neon, pill, glass), button location, chip style, accent color, animations, artwork shade, blur and position, header bar style"
+      - "New chips: developers, completion status, score, HowLongToBeat, achievements, latest and rare achievements, GameActivity sessions"
+      - "New integrations: Screenshot Utilities section, Steam Shortcuts and Game Update Status next to Play, ThemeExtras star rating"
+      - "Each section can be opened by default; fade-in animation when the selected game changes"
+      - "ThemeModifier now only holds the color pickers"
   - Version: 1.0
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-10-11
