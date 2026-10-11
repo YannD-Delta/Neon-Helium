@@ -131,6 +131,12 @@ def build_options(spec, constants, source: Path):
                     lines += [f"                    {key}:", f"                        Type: {kind}",
                               f"                        Value: {q(normalize(kind, value))}"]
 
+    variable_keys = {entry["key"] for entry in spec["variables"] if "key" in entry}
+    overlap = sorted(used_keys & variable_keys)
+    if overlap:
+        raise SpecError("preset constants must not be variables (Theme Options saves every value on exit, "
+                        "the preset value would stick as a user setting): " + ", ".join(overlap))
+
     lines += ["", "Variables:"]
     seen = set()
     for entry in spec["variables"]:

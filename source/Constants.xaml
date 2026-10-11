@@ -146,6 +146,9 @@
     <sys:Double x:Key="HeaderBarBlurOpacity">1</sys:Double>
     <sys:Double x:Key="HeaderBarGlassOpacity">1</sys:Double>
     <sys:Boolean x:Key="HeroShowInfoLine">True</sys:Boolean>
+    <!-- Set by presets only (presets must not set variables) -->
+    <sys:Boolean x:Key="HeroStyleShowInfoLine">True</sys:Boolean>
+    <sys:Boolean x:Key="HeaderBarStyleVisible">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowReleaseDate">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowPlatforms">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowSource">True</sys:Boolean>
@@ -161,6 +164,18 @@
     <sys:Boolean x:Key="HeroShowRareAchievements">False</sys:Boolean>
     <sys:Boolean x:Key="HeroShowSteamShortcuts">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowUpdateStatus">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowCategories">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowFeatures">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowTags">False</sys:Boolean>
+    <sys:Boolean x:Key="HltbShowOnCover">True</sys:Boolean>
+    <sys:Boolean x:Key="AchievementsShowOnCover">True</sys:Boolean>
+    <sys:Boolean x:Key="HltbShowInHeaderBar">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowHltbProgressBar">True</sys:Boolean>
+    <sys:Boolean x:Key="DemoteSectionsShownElsewhere">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewExpandGenres">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewExpandCategories">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewExpandFeatures">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewExpandTags">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowUserRating">False</sys:Boolean>
     <sys:String x:Key="LOCHNDChipAchievements">Achievements</sys:String>
     <sys:String x:Key="LOCHNDChipScore">Score</sys:String>
@@ -174,6 +189,18 @@
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
     <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
     <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
+    <sys:String x:Key="LOCHNDQuickTooltip">Quick settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickShowIn">Show in</sys:String>
+    <sys:String x:Key="LOCHNDQuickSectionGroup">Section</sys:String>
+    <sys:String x:Key="LOCHNDQuickThisSection">This section</sys:String>
+    <sys:String x:Key="LOCHNDQuickChips">Chips on the artwork</sys:String>
+    <sys:String x:Key="LOCHNDQuickCover">On the cover</sys:String>
+    <sys:String x:Key="LOCHNDQuickHeaderBar">Header bar</sys:String>
+    <sys:String x:Key="LOCHNDQuickOpen">Open by default</sys:String>
+    <sys:String x:Key="LOCHNDQuickDemote">Fold it at the bottom when shown above</sys:String>
+    <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Install the Theme Options extension to change these settings here.</sys:String>
     <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
     <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
     <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>

@@ -18,7 +18,7 @@ Presets:
                     HeroActionsLocation:
                         Type: Int32
                         Value: '1'
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'False'
                     HeroShadeOpacity:
@@ -30,9 +30,6 @@ Presets:
                 Files:
                     - 'Presets\Chips\Text.xaml'
                 Constants:
-                    HeroMinHeight:
-                        Type: Double
-                        Value: '460'
                     HeroShadeOpacity:
                         Type: Double
                         Value: '0.85'
@@ -46,10 +43,10 @@ Presets:
                 Name: 'Minimal (no chips, no header bar)'
                 LocKey: LOCHNDPresetStyleMinimal
                 Constants:
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'False'
-                    DetailsViewShowHeaderBar:
+                    HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'False'
                     HeroShadeOpacity:
@@ -116,7 +113,7 @@ Presets:
                 Files:
                     - 'Presets\Chips\Pills.xaml'
                 Constants:
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'True'
             Text:
@@ -125,7 +122,7 @@ Presets:
                 Files:
                     - 'Presets\Chips\Text.xaml'
                 Constants:
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'True'
             Outline:
@@ -134,14 +131,14 @@ Presets:
                 Files:
                     - 'Presets\Chips\Outline.xaml'
                 Constants:
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'True'
             Hidden:
                 Name: 'Hidden'
                 LocKey: LOCHNDPresetChipsHidden
                 Constants:
-                    HeroShowInfoLine:
+                    HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'False'
     Accent:
@@ -408,7 +405,7 @@ Presets:
                     HeaderBarGlassOpacity:
                         Type: Double
                         Value: '1'
-                    DetailsViewShowHeaderBar:
+                    HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'True'
             Solid:
@@ -421,7 +418,7 @@ Presets:
                     HeaderBarGlassOpacity:
                         Type: Double
                         Value: '1'
-                    DetailsViewShowHeaderBar:
+                    HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'True'
             Transparent:
@@ -434,14 +431,14 @@ Presets:
                     HeaderBarGlassOpacity:
                         Type: Double
                         Value: '0'
-                    DetailsViewShowHeaderBar:
+                    HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'True'
             Hidden:
                 Name: 'Hidden'
                 LocKey: LOCHNDPresetHeaderBarHidden
                 Constants:
-                    DetailsViewShowHeaderBar:
+                    HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'False'
     BackgroundBlur:
@@ -664,6 +661,21 @@ Variables:
         LocKey: LOCHNDOptHeroShowDevelopers
         Type: Boolean
         Default: 'False'
+    HeroShowCategories:
+        Title: 'Categories'
+        LocKey: LOCHNDOptHeroShowCategories
+        Type: Boolean
+        Default: 'False'
+    HeroShowFeatures:
+        Title: 'Features'
+        LocKey: LOCHNDOptHeroShowFeatures
+        Type: Boolean
+        Default: 'False'
+    HeroShowTags:
+        Title: 'Tags'
+        LocKey: LOCHNDOptHeroShowTags
+        Type: Boolean
+        Default: 'False'
     HeroShowCompletionStatus:
         Title: 'Completion status'
         LocKey: LOCHNDOptHeroShowCompletionStatus
@@ -704,6 +716,16 @@ Variables:
         LocKey: LOCHNDOptHeroShowRecentActivity
         Type: Boolean
         Default: 'True'
+    HltbShowOnCover:
+        Title: 'HowLongToBeat time on the cover'
+        LocKey: LOCHNDOptHltbShowOnCover
+        Type: Boolean
+        Default: 'True'
+    AchievementsShowOnCover:
+        Title: 'Achievements on the cover'
+        LocKey: LOCHNDOptAchievementsShowOnCover
+        Type: Boolean
+        Default: 'True'
     HeaderHeaderBar:
         Title: 'Details view - header bar'
         LocKey: LOCHNDHeaderHeaderBar
@@ -741,6 +763,11 @@ Variables:
     DetailsViewShowUserRating:
         Title: 'Your rating with stars (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowUserRating
+        Type: Boolean
+        Default: 'False'
+    HltbShowInHeaderBar:
+        Title: 'HowLongToBeat main story time'
+        LocKey: LOCHNDOptHltbShowInHeaderBar
         Type: Boolean
         Default: 'False'
     HeaderButtonSize:
@@ -890,11 +917,36 @@ Variables:
         Title: 'Details view - sections open by default'
         LocKey: LOCHNDHeaderDetailsExpand
         Type: Header
+    DemoteSectionsShownElsewhere:
+        Title: 'Fold sections at the bottom when their information is shown above (chips, cover, header bar)'
+        LocKey: LOCHNDOptDemoteSectionsShownElsewhere
+        Type: Boolean
+        Default: 'True'
     DetailsViewExpandNotesPanel:
         Title: 'Play Notes'
         LocKey: LOCHNDOptDetailsViewExpandNotesPanel
         Type: Boolean
         Default: 'False'
+    DetailsViewExpandGenres:
+        Title: 'Genres'
+        LocKey: LOCHNDOptDetailsViewExpandGenres
+        Type: Boolean
+        Default: 'True'
+    DetailsViewExpandCategories:
+        Title: 'Categories'
+        LocKey: LOCHNDOptDetailsViewExpandCategories
+        Type: Boolean
+        Default: 'True'
+    DetailsViewExpandFeatures:
+        Title: 'Features'
+        LocKey: LOCHNDOptDetailsViewExpandFeatures
+        Type: Boolean
+        Default: 'True'
+    DetailsViewExpandTags:
+        Title: 'Tags'
+        LocKey: LOCHNDOptDetailsViewExpandTags
+        Type: Boolean
+        Default: 'True'
     DetailsViewExpandNewsPanel:
         Title: 'News Viewer'
         LocKey: LOCHNDOptDetailsViewExpandNewsPanel
@@ -1137,6 +1189,11 @@ Variables:
     DetailsViewShowHltbDataGrid:
         Title: 'HowLongToBeat time table'
         LocKey: LOCHNDOptDetailsViewShowHltbDataGrid
+        Type: Boolean
+        Default: 'True'
+    DetailsViewShowHltbProgressBar:
+        Title: 'HowLongToBeat progress bar'
+        LocKey: LOCHNDOptDetailsViewShowHltbProgressBar
         Type: Boolean
         Default: 'True'
     WebExplorerControlHeight:

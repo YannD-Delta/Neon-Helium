@@ -46,6 +46,10 @@ Drop-down lists (Theme Options):
 
 The global style sets a starting point; every list below it, and every individual setting, overrides it.
 
+**Quick settings.** Every section of the Details view has a gear next to its fold arrow. It lists where that information shows (the section itself, chips on the artwork, the cover, the header bar), what the section contains and whether it opens by default; changes apply at once and are saved by Theme Options. Two buttons open the extension's own settings and all theme settings (both need ThemeExtras). The top panel also has buttons for the Theme Options and ThemeModifier settings.
+
+**No repeated information.** When a section's information is already shown above (genres as chips, HowLongToBeat on the cover...), the section folds at the bottom of its column instead of disappearing, so its gear stays reachable. Turn this off with "Fold sections at the bottom when their information is shown above".
+
 Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session and recent activity), sizes and corner rounding of the buttons and chips, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
 
 Section order: each section needs its own number (0 to 18); two sections with the same number overlap. In the Details view the order applies within each column.

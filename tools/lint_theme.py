@@ -7,6 +7,7 @@ of mistakes that already happened or are easy to make:
 
   * XAML files that are not well-formed XML
   * `x:Shared`, which is rejected outside compiled dictionaries
+  * Playnite binding markup extensions used as a Setter value (WPF rejects them)
   * ThemeModifier entries that point to a missing or unsupported resource
   * ThemeModifier entries whose resource is never read (dead options) or is
     only read through StaticResource (the override would not apply)
@@ -178,6 +179,11 @@ def main() -> int:
             errors.append(f"{path}: not well-formed XML ({exc})")
         if re.search(r"\bx:Shared\s*=", text):
             errors.append(f"{path}: x:Shared is rejected by Playnite's loose XAML loader")
+        # Playnite's binding markup extensions return themselves for a Setter value, and WPF only accepts
+        # a Binding or a DynamicResource there: the style would throw when it is sealed.
+        for match in re.finditer(r"<Setter\b[^>]*\bValue=\"\{(PluginSettings|PluginStatus|PluginConverter|Settings)\b", text):
+            line = text.count("\n", 0, match.start()) + 1
+            errors.append(f"{path}:{line}: {match.group(1)} cannot be a Setter value, bind an element property and use {{Binding}} instead")
 
     definitions = collect_definitions(files)
     dynamic, static = collect_usages(files)

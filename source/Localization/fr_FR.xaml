@@ -15,6 +15,18 @@
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Captures d'écran</sys:String>
     <sys:String x:Key="LOCHNDThemeOptionsButton">Réglages du thème (Theme Options)</sys:String>
     <sys:String x:Key="LOCHNDThemeColorsButton">Couleurs du thème (ThemeModifier)</sys:String>
+    <sys:String x:Key="LOCHNDQuickTooltip">Réglages rapides</sys:String>
+    <sys:String x:Key="LOCHNDQuickShowIn">Afficher dans</sys:String>
+    <sys:String x:Key="LOCHNDQuickSectionGroup">Section</sys:String>
+    <sys:String x:Key="LOCHNDQuickThisSection">Cette section</sys:String>
+    <sys:String x:Key="LOCHNDQuickChips">Puces sur l'image</sys:String>
+    <sys:String x:Key="LOCHNDQuickCover">Sur la pochette</sys:String>
+    <sys:String x:Key="LOCHNDQuickHeaderBar">Barre d'en-tête</sys:String>
+    <sys:String x:Key="LOCHNDQuickOpen">Dépliée par défaut</sys:String>
+    <sys:String x:Key="LOCHNDQuickDemote">La replier en bas quand c'est affiché en haut</sys:String>
+    <sys:String x:Key="LOCHNDQuickPluginSettings">Paramètres de l'extension</sys:String>
+    <sys:String x:Key="LOCHNDQuickThemeSettings">Tous les réglages du thème</sys:String>
+    <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Installez l'extension Theme Options pour modifier ces réglages ici.</sys:String>
     <sys:String x:Key="LOCHNDPresetStyle">Style global</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleDefault">Helium-Neon-Dune (en-tête Dune, infos Neon)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleNeon">Neon classique (boutons dans la barre)</sys:String>
@@ -107,6 +119,9 @@
     <sys:String x:Key="LOCHNDOptHeroShowSource">Source</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowDevelopers">Développeurs</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowCategories">Catégories</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowFeatures">Fonctionnalités</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowTags">Étiquettes</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowCompletionStatus">Statut de complétion</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowCommunityScore">Note de la communauté</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowHltb">Durées HowLongToBeat</sys:String>
@@ -115,6 +130,8 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Succès rares et ultra rares (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Durée de la dernière session (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Activité récente (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHltbShowOnCover">Durée HowLongToBeat sur la pochette</sys:String>
+    <sys:String x:Key="LOCHNDOptAchievementsShowOnCover">Succès sur la pochette</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Vue Détails - barre d'en-tête</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHeaderBar">Afficher la barre d'en-tête</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowLastPlayed">Dernière partie</sys:String>
@@ -123,6 +140,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowAchievementsSummary">Résumé des succès</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoButton">Bouton du panneau d'informations</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowUserRating">Votre note en étoiles (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDOptHltbShowInHeaderBar">Durée HowLongToBeat (histoire)</sys:String>
     <sys:String x:Key="LOCHNDOptHeaderButtonSize">Taille des boutons de la barre</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsInfo">Vue Détails - informations et description</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoPanelDefault">Panneau d'informations ouvert par défaut</sys:String>
@@ -149,7 +167,12 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowReviewsPanel">Review Viewer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsExpand">Vue Détails - sections dépliées par défaut</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteSectionsShownElsewhere">Replier en bas les sections dont l'info est déjà affichée en haut (puces, pochette, barre)</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNotesPanel">Play Notes</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandGenres">Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandCategories">Catégories</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandFeatures">Fonctionnalités</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandTags">Étiquettes</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNewsPanel">News Viewer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandVideoPanel">Vidéo</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandGameActivityPanel">GameActivity</sys:String>
@@ -185,6 +208,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderScreenshotUtilities">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsPlugins">Vue Détails - détails des extensions</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHltbDataGrid">Tableau des durées HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowHltbProgressBar">Barre de progression HowLongToBeat</sys:String>
     <sys:String x:Key="LOCHNDOptWebExplorerControlHeight">Hauteur de Web Explorer</sys:String>
     <sys:String x:Key="LOCHNDOptCheckDlcListHeight">Hauteur des listes CheckDlc</sys:String>
     <sys:String x:Key="LOCHNDOptGameActivityChartTimeHeight">Hauteur du graphique de temps GameActivity (0 = auto)</sys:String>

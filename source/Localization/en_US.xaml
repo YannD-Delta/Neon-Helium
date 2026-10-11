@@ -15,6 +15,18 @@
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
     <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
     <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
+    <sys:String x:Key="LOCHNDQuickTooltip">Quick settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickShowIn">Show in</sys:String>
+    <sys:String x:Key="LOCHNDQuickSectionGroup">Section</sys:String>
+    <sys:String x:Key="LOCHNDQuickThisSection">This section</sys:String>
+    <sys:String x:Key="LOCHNDQuickChips">Chips on the artwork</sys:String>
+    <sys:String x:Key="LOCHNDQuickCover">On the cover</sys:String>
+    <sys:String x:Key="LOCHNDQuickHeaderBar">Header bar</sys:String>
+    <sys:String x:Key="LOCHNDQuickOpen">Open by default</sys:String>
+    <sys:String x:Key="LOCHNDQuickDemote">Fold it at the bottom when shown above</sys:String>
+    <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
+    <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Install the Theme Options extension to change these settings here.</sys:String>
     <sys:String x:Key="LOCHNDPresetStyle">Global style</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleDefault">Helium-Neon-Dune (Dune header, Neon information)</sys:String>
     <sys:String x:Key="LOCHNDPresetStyleNeon">Neon classic (buttons in the header bar)</sys:String>
@@ -107,6 +119,9 @@
     <sys:String x:Key="LOCHNDOptHeroShowSource">Source</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowDevelopers">Developers</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowCategories">Categories</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowFeatures">Features</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowTags">Tags</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowCompletionStatus">Completion status</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowCommunityScore">Community score</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowHltb">HowLongToBeat times</sys:String>
@@ -115,6 +130,8 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Rare and ultra rare achievements (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Last session length (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Recent activity (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHltbShowOnCover">HowLongToBeat time on the cover</sys:String>
+    <sys:String x:Key="LOCHNDOptAchievementsShowOnCover">Achievements on the cover</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Details view - header bar</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHeaderBar">Show the header bar</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowLastPlayed">Last played</sys:String>
@@ -123,6 +140,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowAchievementsSummary">Achievements summary</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoButton">Information panel button</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowUserRating">Your rating with stars (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDOptHltbShowInHeaderBar">HowLongToBeat main story time</sys:String>
     <sys:String x:Key="LOCHNDOptHeaderButtonSize">Size of the header bar buttons</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsInfo">Details view - information and description</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowInfoPanelDefault">Information panel open by default</sys:String>
@@ -149,7 +167,12 @@
     <sys:String x:Key="LOCHNDOptDetailsViewShowReviewsPanel">Review Viewer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsExpand">Details view - sections open by default</sys:String>
+    <sys:String x:Key="LOCHNDOptDemoteSectionsShownElsewhere">Fold sections at the bottom when their information is shown above (chips, cover, header bar)</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNotesPanel">Play Notes</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandGenres">Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandCategories">Categories</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandFeatures">Features</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewExpandTags">Tags</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandNewsPanel">News Viewer</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandVideoPanel">Video</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewExpandGameActivityPanel">GameActivity</sys:String>
@@ -185,6 +208,7 @@
     <sys:String x:Key="LOCHNDOptDetailsViewSectionOrderScreenshotUtilities">Screenshot Utilities</sys:String>
     <sys:String x:Key="LOCHNDHeaderDetailsPlugins">Details view - extension details</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHltbDataGrid">HowLongToBeat time table</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowHltbProgressBar">HowLongToBeat progress bar</sys:String>
     <sys:String x:Key="LOCHNDOptWebExplorerControlHeight">Web Explorer height</sys:String>
     <sys:String x:Key="LOCHNDOptCheckDlcListHeight">CheckDlc list height</sys:String>
     <sys:String x:Key="LOCHNDOptGameActivityChartTimeHeight">GameActivity time chart height (0 = automatic)</sys:String>

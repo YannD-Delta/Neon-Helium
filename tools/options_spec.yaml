@@ -8,6 +8,10 @@
 #                                    source/DerivedStyles/PlayButton.xaml (templates in build_options.py)
 #
 # Types and default values are read from source/Constants.xaml, so they cannot drift.
+# Preset constants must not be variables: Theme Options saves every current value on exit,
+# so a value set by a preset would come back as a user setting and stay after the preset changes.
+# Presets use their own keys (HeroStyleShowInfoLine...), combined with the variables in the views.
+#
 # Ranges become ThemeOptions sliders. Only whole-number steps are used: ThemeOptions stores
 # slider values as text and a decimal comma would break the generated resources.
 
@@ -24,6 +28,18 @@ strings:
   LOCHNDSectionScreenshotUtilities: {en: Screenshots, fr: Captures d'écran}
   LOCHNDThemeOptionsButton: {en: Theme settings (Theme Options), fr: Réglages du thème (Theme Options)}
   LOCHNDThemeColorsButton: {en: Theme colors (ThemeModifier), fr: Couleurs du thème (ThemeModifier)}
+  LOCHNDQuickTooltip: {en: 'Quick settings', fr: 'Réglages rapides'}
+  LOCHNDQuickShowIn: {en: 'Show in', fr: 'Afficher dans'}
+  LOCHNDQuickSectionGroup: {en: 'Section', fr: 'Section'}
+  LOCHNDQuickThisSection: {en: 'This section', fr: 'Cette section'}
+  LOCHNDQuickChips: {en: 'Chips on the artwork', fr: 'Puces sur l''image'}
+  LOCHNDQuickCover: {en: 'On the cover', fr: 'Sur la pochette'}
+  LOCHNDQuickHeaderBar: {en: 'Header bar', fr: 'Barre d''en-tête'}
+  LOCHNDQuickOpen: {en: 'Open by default', fr: 'Dépliée par défaut'}
+  LOCHNDQuickDemote: {en: 'Fold it at the bottom when shown above', fr: 'La replier en bas quand c''est affiché en haut'}
+  LOCHNDQuickPluginSettings: {en: 'Extension settings', fr: 'Paramètres de l''extension'}
+  LOCHNDQuickThemeSettings: {en: 'All theme settings', fr: 'Tous les réglages du thème'}
+  LOCHNDQuickNeedsThemeOptions: {en: 'Install the Theme Options extension to change these settings here.', fr: 'Installez l''extension Theme Options pour modifier ces réglages ici.'}
 
 presets:
   - group: Style
@@ -39,14 +55,13 @@ presets:
         files: [Presets/Buttons/Neon.xaml]
         constants:
           HeroActionsLocation: 1
-          HeroShowInfoLine: False
+          HeroStyleShowInfoLine: False
           HeroShadeOpacity: 0.25
       - id: Dune
         en: Dune (large artwork, text chips, clear header bar)
         fr: Dune (grande image, infos en texte, barre transparente)
         files: [Presets/Chips/Text.xaml]
         constants:
-          HeroMinHeight: 460
           HeroShadeOpacity: 0.85
           HeaderBarBlurOpacity: 0
           HeaderBarGlassOpacity: 0
@@ -54,8 +69,8 @@ presets:
         en: Minimal (no chips, no header bar)
         fr: Minimal (sans puces ni barre)
         constants:
-          HeroShowInfoLine: False
-          DetailsViewShowHeaderBar: False
+          HeroStyleShowInfoLine: False
+          HeaderBarStyleVisible: False
           HeroShadeOpacity: 0.5
 
   - group: Buttons
@@ -112,24 +127,24 @@ presets:
         fr: Pastilles
         files: [Presets/Chips/Pills.xaml]
         constants:
-          HeroShowInfoLine: True
+          HeroStyleShowInfoLine: True
       - id: Text
         en: Plain text (Dune)
         fr: Texte simple (Dune)
         files: [Presets/Chips/Text.xaml]
         constants:
-          HeroShowInfoLine: True
+          HeroStyleShowInfoLine: True
       - id: Outline
         en: Outline
         fr: Contour
         files: [Presets/Chips/Outline.xaml]
         constants:
-          HeroShowInfoLine: True
+          HeroStyleShowInfoLine: True
       - id: Hidden
         en: Hidden
         fr: Masquées
         constants:
-          HeroShowInfoLine: False
+          HeroStyleShowInfoLine: False
 
   - group: Accent
     en: Accent color
@@ -270,19 +285,19 @@ presets:
       - id: Glass
         en: Frosted glass
         fr: Verre dépoli
-        constants: {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, DetailsViewShowHeaderBar: True}
+        constants: {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, HeaderBarStyleVisible: True}
       - id: Solid
         en: Solid
         fr: Opaque
-        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 1, DetailsViewShowHeaderBar: True}
+        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 1, HeaderBarStyleVisible: True}
       - id: Transparent
         en: Transparent
         fr: Transparente
-        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, DetailsViewShowHeaderBar: True}
+        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, HeaderBarStyleVisible: True}
       - id: Hidden
         en: Hidden
         fr: Masquée
-        constants: {DetailsViewShowHeaderBar: False}
+        constants: {HeaderBarStyleVisible: False}
 
   - group: BackgroundBlur
     en: Blurred background behind the information
@@ -341,6 +356,9 @@ variables:
   - {key: HeroShowSource, en: Source, fr: Source}
   - {key: HeroShowGenres, en: Genres, fr: Genres}
   - {key: HeroShowDevelopers, en: Developers, fr: Développeurs}
+  - {key: HeroShowCategories, en: Categories, fr: Catégories}
+  - {key: HeroShowFeatures, en: Features, fr: Fonctionnalités}
+  - {key: HeroShowTags, en: Tags, fr: Étiquettes}
   - {key: HeroShowCompletionStatus, en: Completion status, fr: Statut de complétion}
   - {key: HeroShowCommunityScore, en: Community score, fr: Note de la communauté}
   - {key: HeroShowHltb, en: HowLongToBeat times, fr: Durées HowLongToBeat}
@@ -349,6 +367,8 @@ variables:
   - {key: HeroShowRareAchievements, en: Rare and ultra rare achievements (PlayniteAchievements), fr: Succès rares et ultra rares (PlayniteAchievements)}
   - {key: HeroShowLastSession, en: Last session length (GameActivity), fr: Durée de la dernière session (GameActivity)}
   - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
+  - {key: HltbShowOnCover, en: HowLongToBeat time on the cover, fr: Durée HowLongToBeat sur la pochette}
+  - {key: AchievementsShowOnCover, en: Achievements on the cover, fr: Succès sur la pochette}
 
   - header: HeaderBar
     en: Details view - header bar
@@ -360,6 +380,7 @@ variables:
   - {key: DetailsViewShowAchievementsSummary, en: Achievements summary, fr: Résumé des succès}
   - {key: DetailsViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
   - {key: DetailsViewShowUserRating, en: Your rating with stars (ThemeExtras), fr: Votre note en étoiles (ThemeExtras)}
+  - {key: HltbShowInHeaderBar, en: HowLongToBeat main story time, fr: Durée HowLongToBeat (histoire)}
   - {key: HeaderButtonSize, range: [20, 56], en: Size of the header bar buttons, fr: Taille des boutons de la barre}
 
   - header: DetailsInfo
@@ -395,7 +416,12 @@ variables:
   - header: DetailsExpand
     en: Details view - sections open by default
     fr: Vue Détails - sections dépliées par défaut
+  - {key: DemoteSectionsShownElsewhere, en: 'Fold sections at the bottom when their information is shown above (chips, cover, header bar)', fr: 'Replier en bas les sections dont l''info est déjà affichée en haut (puces, pochette, barre)'}
   - {key: DetailsViewExpandNotesPanel, en: Play Notes, fr: Play Notes}
+  - {key: DetailsViewExpandGenres, en: Genres, fr: Genres}
+  - {key: DetailsViewExpandCategories, en: Categories, fr: Catégories}
+  - {key: DetailsViewExpandFeatures, en: Features, fr: Fonctionnalités}
+  - {key: DetailsViewExpandTags, en: Tags, fr: Étiquettes}
   - {key: DetailsViewExpandNewsPanel, en: News Viewer, fr: News Viewer}
   - {key: DetailsViewExpandVideoPanel, en: Video, fr: Vidéo}
   - {key: DetailsViewExpandGameActivityPanel, en: GameActivity, fr: GameActivity}
@@ -440,6 +466,7 @@ variables:
     en: Details view - extension details
     fr: Vue Détails - détails des extensions
   - {key: DetailsViewShowHltbDataGrid, en: HowLongToBeat time table, fr: Tableau des durées HowLongToBeat}
+  - {key: DetailsViewShowHltbProgressBar, en: HowLongToBeat progress bar, fr: Barre de progression HowLongToBeat}
   - {key: WebExplorerControlHeight, range: [400, 1800], en: Web Explorer height, fr: Hauteur de Web Explorer}
   - {key: CheckDlcListHeight, range: [100, 1600], en: CheckDlc list height, fr: Hauteur des listes CheckDlc}
   - {key: GameActivityChartTimeHeight, range: [0, 1000], en: GameActivity time chart height (0 = automatic), fr: Hauteur du graphique de temps GameActivity (0 = auto)}

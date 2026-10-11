@@ -1,5 +1,15 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.1
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.1/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_1.pthm
+    Changelog:
+      - "Quick settings gear on every Details view section: where the information shows (section, chips, cover, header bar), what the section contains, open by default, plus buttons to the extension settings and to all theme settings; changes apply at once"
+      - "Sections whose information is already shown above (chips, cover, header bar) fold at the bottom of their column instead of repeating it"
+      - "HowLongToBeat time and achievements on the game cover, HowLongToBeat in the header bar, optional category, feature and tag chips"
+      - "Top panel buttons to open Theme Options and ThemeModifier"
+      - "Fixed presets that set a value also exposed as a setting: Theme Options kept it as a user setting after a restart"
   - Version: 2.0
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-10-11
