@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:pbeh="clr-namespace:Playnite.Behaviors;assembly=Playnite" 
                     mc:Ignorable="d">
 
     <Style TargetType="{x:Type DetailsViewGameOverview}">
@@ -320,7 +321,9 @@
                                                         </Border>
                                                     </Popup>
                                                 </Grid>
-                                                <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}">
+                                                <!-- HeroStyleShowInfoLine is a Style preset constant, not a variable: read it as a resource, Theme Options can keep a stale Options[] copy of preset constants -->
+                                                <FrameworkElement x:Name="HeroInfoLineStyleProbe" Grid.Column="1" Visibility="Collapsed" Tag="{DynamicResource HeroStyleShowInfoLine}" />
+                                                <Grid Grid.Column="1" Style="{DynamicResource SectionToggleGrid}" Tag="{DynamicResource HeroStyleShowInfoLine}">
                                                     <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}">
                                                         <WrapPanel Orientation="Horizontal" Margin="0,0,0,6" MaxWidth="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}">
                                                             <!-- Each group is repeated in six slots and only shows in the slot that matches its order setting,
@@ -4106,18 +4109,6 @@
                                                         </Grid>
                                                     </DockPanel>
                                                 
-                                                    <StackPanel Margin="20,0,0,0" VerticalAlignment="Center"
-                                                                Style="{DynamicResource PluginStackpanelVisibility}"
-                                                                Tag="{PluginSettings Plugin=SteamGameStatusDetector, Path=HasData, FallbackValue=False}">
-                                                        <Label Content="{PluginSettings Plugin=SteamGameStatusDetector, Path=AppState, FallbackValue='-'}" Style="{DynamicResource HeaderLabel}"/>
-                                                        <ProgressBar FontSize="10" Margin="0,0,0,0" HorizontalAlignment="Left"
-                                                                     Maximum="{PluginSettings Plugin=SteamGameStatusDetector, Path=BytesToDownload, FallbackValue=1}"
-                                                                     Value="{PluginSettings Plugin=SteamGameStatusDetector, Path=BytesDownloaded, FallbackValue=0}"
-                                                                     Width="75" Height="6" Style="{DynamicResource RoundedProgressBar}" />
-                                                    
-                                                        <TextBlock Text="{PluginSettings Plugin=SteamGameStatusDetector, Path=DownloadProgress, FallbackValue='-'}"
-                                                                   Style="{DynamicResource HeaderTextBlock}"/>
-                                                    </StackPanel>
                                                 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowLastPlayed], FallbackValue={StaticResource DetailsViewShowLastPlayed}, TargetNullValue={StaticResource DetailsViewShowLastPlayed}}">
                                                     <DockPanel x:Name="PART_ElemLastPlayed" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0">
@@ -4558,16 +4549,17 @@
                                                                                   HtmlForeground="{DynamicResource DetailsViewContainerLabelColor}"
                                                                                   LinkForeground="{DynamicResource GlyphColor}"                                      
                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                                                  pbeh:FocusBahaviors.BlockBringIntoViewRequest="True"/>
                                                                     </StackPanel>
                                                                 </ScrollViewer>
 
                                                                 <ScrollViewer Margin="15,0,0,0" DockPanel.Dock="Left">
                                                                     <GridEx ColumnCount="2" AutoLayoutColumns="2" RowCount="8">
                                                                         <Label Name="PART_ElemRecentActivity" Content="{DynamicResource LOCRecentActivityLabel}" />
-                                                                        <TextBlock Name="PART_TextRecentActivity" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" />
+                                                                        <TextBlock Name="PART_TextRecentActivity" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" TextWrapping="Wrap" />
                                                                         <Label Name="PART_ElemAdded" Content="{DynamicResource LOCDateAddedLabel}" />
-                                                                        <TextBlock Name="PART_TextAdded" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" />
+                                                                        <TextBlock Name="PART_TextAdded" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" TextWrapping="Wrap" />
                                                                         <Label Name="PART_ElemReleaseDate" Content="{DynamicResource LOCGameReleaseDateTitle}" />
                                                                         <Button Name="PART_ButtonReleaseDate" />
                                                                         <Label Name="PART_ElemLibrary" Content="{DynamicResource LOCGameProviderTitle}" />
@@ -4585,7 +4577,7 @@
                                                                 <ScrollViewer Margin="15,0,0,0" DockPanel.Dock="Left">
                                                                     <GridEx ColumnCount="2" AutoLayoutColumns="2" RowCount="9">
                                                                         <Label Name="PART_ElemInstallSize" Content="{DynamicResource LOCInstallSizeLabel}" />
-                                                                        <TextBlock Name="PART_TextInstallSize" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" />
+                                                                        <TextBlock Name="PART_TextInstallSize" Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center" TextWrapping="Wrap" />
                                                                         
                                                                         <Label Name="PART_ElemInstallDirectory" Content="{DynamicResource LOCGameInstallDirTitle}" />
                                                                         <Button Name="PART_ButtonInstallDirectory" HorizontalAlignment="Left" MaxWidth="{PluginSettings Plugin=ThemeOptions, Path=Options[GameInfoWideValueMaxWidth], FallbackValue={StaticResource GameInfoWideValueMaxWidth}, TargetNullValue={StaticResource GameInfoWideValueMaxWidth}}" />
@@ -4850,7 +4842,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="19" />
@@ -4884,7 +4876,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -4968,7 +4960,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="20" />
@@ -5002,7 +4994,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -5086,7 +5078,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="21" />
@@ -5120,7 +5112,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -5204,7 +5196,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="22" />
@@ -5238,7 +5230,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -5492,7 +5484,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="23" />
@@ -5502,7 +5494,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="23" />
@@ -5555,7 +5547,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -5566,7 +5558,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGameActivitySection], FallbackValue={StaticResource DemoteGameActivitySection}, TargetNullValue={StaticResource DemoteGameActivitySection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -5998,7 +5990,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="19" />
@@ -6052,7 +6044,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteHltbSection], FallbackValue={StaticResource DemoteHltbSection}, TargetNullValue={StaticResource DemoteHltbSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />
@@ -6261,7 +6253,7 @@
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                         <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}" Value="True" />
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="20" />
@@ -6300,7 +6292,7 @@
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteAchievementsSection], FallbackValue={StaticResource DemoteAchievementsSection}, TargetNullValue={StaticResource DemoteAchievementsSection}}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
-                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroStyleShowInfoLine], FallbackValue={StaticResource HeroStyleShowInfoLine}, TargetNullValue={StaticResource HeroStyleShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
                                                                                 <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}" Value="True" />
                                                                             </MultiDataTrigger.Conditions>
                                                                             <Setter Property="IsChecked" Value="False" />

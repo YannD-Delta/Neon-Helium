@@ -92,6 +92,35 @@ def loc_key(*parts) -> str:
     return "LOCHND" + "".join(parts)
 
 
+
+CAPTION_PREFIX = "\u2003\u2003\u21b3 "  # indent + arrow, so captions don't read as section headers
+CAPTION_MAX = 95
+
+
+def split_sentences(text):
+    return [part.strip() for part in re.split(r"(?<=[.!?])\s+", text.strip()) if part.strip()]
+
+
+def caption_rows(key, tip, labels, english):
+    """One Theme Options Header row per sentence of the tip: the Desktop settings view shows
+    Header titles but no descriptions, and its text does not wrap."""
+    french, other = split_sentences(tip["fr"]), split_sentences(tip["en"])
+    if len(french) != len(other):
+        raise SpecError(f"tip {key}: French and English must have the same number of sentences")
+    rows = []
+    for index, (fr_text, en_text) in enumerate(zip(french, other), 1):
+        for text in (fr_text, en_text):
+            if len(text) > CAPTION_MAX:
+                raise SpecError(f"tip {key}: sentence longer than {CAPTION_MAX} characters "
+                                f"(Theme Options does not wrap captions): {text}")
+        name = f"Caption{key}{index}"
+        lkey = loc_key("Caption", f"{key}{index}")
+        labels[lkey] = CAPTION_PREFIX + fr_text
+        english[lkey] = CAPTION_PREFIX + en_text
+        rows += [f"    {name}:", f"        Title: {q(CAPTION_PREFIX + en_text)}", f"        LocKey: {lkey}",
+                 "        Type: Header"]
+    return rows
+
 def build_options(spec, constants, source: Path):
     lines = [f"# {GENERATED}", "# Read by the ThemeOptions extension (https://codeberg.org/ashpynov/ThemeOptions).", ""]
     labels = {}
@@ -171,7 +200,8 @@ def build_options(spec, constants, source: Path):
                   f"        Type: {kind}", f"        Default: {q(default)}"]
         tip = (spec.get("tips") or {}).get(key)
         if tip:
-            # Theme Options keeps Description in its model; the workshop shows the tooltip.
+            # Theme Options keeps Description in its model but never displays it; the workshop
+            # shows the tooltip, and caption rows (below) show the text in Theme Options.
             lines.append(f"        Description: {q(tip['en'])}")
             labels[loc_key("Tip", key)] = tip["fr"]
             english[loc_key("Tip", key)] = tip["en"]
@@ -188,6 +218,8 @@ def build_options(spec, constants, source: Path):
             raise SpecError(f"variable {key}: type {kind} cannot be a ThemeOptions variable")
         elif "range" in entry:
             raise SpecError(f"variable {key}: a range makes no sense for {kind}")
+        if tip:
+            lines += caption_rows(key, tip, labels, english)
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))

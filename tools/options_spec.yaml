@@ -641,7 +641,7 @@ variables:
 
 # ThemeModifier keeps the free color pickers (ThemeOptions has no color picker).
 colors:
-  - "Colors - accent and text"
+  - "Colors - accent (overrides the Theme Options Accent choice) and text"
   - [GlyphColor, 'Accent color (icons, selection)']
   - [GlyphSubColor, 'Secondary accent color']
   - [HighlightGlyphColor, 'Accent highlight (translucent)']
@@ -708,10 +708,14 @@ colors:
   - [TopPanelItemForegroundBrush, 'Top panel button icon']
   - [TopPanelItemIsMouseOverForegroundBrush, 'Top panel button icon hovered']
   - [WindowBarButtonForegroundBrush, 'Window buttons (minimize, close)']
+  - [WindowBackgroundGradientColor1, 'Window background gradient (center)']
+  - [WindowBackgroundGradientColor2, 'Window background gradient (edges)']
   - "Colors - menus and popups"
   - [MenusPopupsHoverBrush, 'Menu item hovered']
   - [MenusPopupMouseOverForegroundBrush, 'Menu item hovered text']
   - [PopupBorderBrush, 'Popup border']
+  - [PopupBackgroundGradientColor1, 'Popup background gradient (top)']
+  - [PopupBackgroundGradientColor2, 'Popup background gradient (bottom)']
   - [NormalBrush, 'Normal control border']
   - [NormalBorderBrush, 'Control border']
   - "Colors - inputs"
