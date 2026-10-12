@@ -1,5 +1,13 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.8
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.8/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_8.pthm
+    Changelog:
+      - "Tiles under the card: twelve slots, each one a Theme Options list (Tile 1 to Tile 12) with 30 informations to choose from and a preview of each"
+      - "New tile informations: play count, date added, release date, source, platforms, developers, publishers, genres, series, age rating, version, each score, achievements percentage, latest and rare achievements, every HowLongToBeat time, last session and recent activity"
+      - "The header bar switches of last played, time played, status, achievements and HowLongToBeat are replaced by the slots; sections still fold when their information shows in a tile"
   - Version: 2.7
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-13

@@ -1,0 +1,16 @@
+<StackPanel VerticalAlignment="Center" Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+    <StackPanel.Style>
+        <Style TargetType="StackPanel">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </StackPanel.Style>
+    <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCHNDChipAvgFps}" />
+    <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=StackPanel}}" />
+</StackPanel>

@@ -1,0 +1,21 @@
+<StackPanel VerticalAlignment="Center">
+    <StackPanel.Style>
+        <Style TargetType="StackPanel">
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Game.CriticScore}" Value="{x:Null}" />
+                        <Condition Binding="{Binding Game.CommunityScore}" Value="{x:Null}" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+    </StackPanel.Style>
+    <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCHNDTileScores}" />
+    <StackPanel Orientation="Horizontal">
+        <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Game.CriticScore, TargetNullValue='-'}" />
+        <TextBlock Style="{DynamicResource HeaderTextBlock}" Text=" &#183; " />
+        <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Game.CommunityScore, TargetNullValue='-'}" />
+    </StackPanel>
+</StackPanel>

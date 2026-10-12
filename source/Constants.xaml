@@ -93,10 +93,6 @@
     <sys:Boolean x:Key="DetailsViewShowScreenshotsVisualizerPanel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowReviewsPanel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowScreenshotUtilitiesPanel">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowLastPlayed">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowPlayTime">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowCompletionStatus">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowAchievementsSummary">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowEditButton">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowInfoButton">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowFavoriteButton">True</sys:Boolean>
@@ -146,9 +142,6 @@
     <sys:Double x:Key="HeroCoverWidth">230</sys:Double>
     <sys:Double x:Key="HeroCoverHeight">345</sys:Double>
     <CornerRadius x:Key="HeroCoverCornerRadius">12</CornerRadius>
-    <sys:Boolean x:Key="DetailsViewShowScoresTile">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowInstallSizeTile">True</sys:Boolean>
-    <sys:Boolean x:Key="DetailsViewShowFpsTile">True</sys:Boolean>
     <x:Null x:Key="HeroBackgroundEffect" />
     <sys:Boolean x:Key="DetailsViewShowHeaderBar">True</sys:Boolean>
     <sys:Double x:Key="HeaderBarBlurOpacity">0</sys:Double>
@@ -186,6 +179,19 @@
     <CornerRadius x:Key="HeaderTileCornerRadius">14</CornerRadius>
     <Thickness x:Key="HeaderTilePadding">16,10,16,10</Thickness>
     <Thickness x:Key="HeaderTileMargin">0,0,12,0</Thickness>
+    <!-- Header tiles: information type of each slot (tools/header_tiles.py, set by the Tile 1 to Tile 12 lists) -->
+    <sys:Int32 x:Key="HeaderTileSlot1">1</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot2">2</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot3">3</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot4">4</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot5">5</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot6">6</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot7">7</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot8">8</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot9">0</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot10">0</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot11">0</sys:Int32>
+    <sys:Int32 x:Key="HeaderTileSlot12">0</sys:Int32>
     <sys:Boolean x:Key="HeroShowReleaseDate">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowPlatforms">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowSource">True</sys:Boolean>
@@ -207,7 +213,6 @@
     <sys:Boolean x:Key="HeroShowTags">False</sys:Boolean>
     <sys:Boolean x:Key="HltbShowOnCover">True</sys:Boolean>
     <sys:Boolean x:Key="AchievementsShowOnCover">True</sys:Boolean>
-    <sys:Boolean x:Key="HltbShowInHeaderBar">False</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowHltbProgressBar">True</sys:Boolean>
     <sys:Boolean x:Key="DemoteSectionsShownElsewhere">True</sys:Boolean>
     <sys:Boolean x:Key="LibraryListShowHltb">True</sys:Boolean>
@@ -261,6 +266,10 @@
     <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
     <sys:String x:Key="LOCHNDChipAvgFps">Avg FPS</sys:String>
     <sys:String x:Key="LOCHNDTileScores">Critics · Community</sys:String>
+    <sys:String x:Key="LOCHNDTileRecentActivity">Recent activity</sys:String>
+    <sys:String x:Key="LOCHNDTileHltbExtra">HLTB · Main + Extra</sys:String>
+    <sys:String x:Key="LOCHNDTileHltbCompletionist">HLTB · 100%</sys:String>
+    <sys:String x:Key="LOCHNDTileRare">Rare · Ultra rare</sys:String>
     <sys:String x:Key="LOCHNDFavoriteButtonTooltip">Favorite (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDHiddenButtonTooltip">Hidden game (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDCollectorTooltip">Collection level (PlayniteAchievements)</sys:String>

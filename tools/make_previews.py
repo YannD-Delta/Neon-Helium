@@ -464,6 +464,82 @@ def color_profile(palette):
     return img
 
 
+def tile_preview(entry):
+    """Preview of one header tile type: the card edge, the tiles row with the slot outlined and a close-up."""
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img, "RGBA")
+    cx0, cy0, cx1, cy1 = 10, 8, W - 10, 104
+    card = artwork(cx1 - cx0, cy1 - cy0, valign="bottom").convert("RGBA")
+    soft, strong = BLUR_LEVELS["medium"]
+    card = Image.composite(card.filter(ImageFilter.GaussianBlur(soft)), card, vertical_mask(card.size, 0.2, 0.5))
+    card = Image.composite(card.filter(ImageFilter.GaussianBlur(strong)), card, vertical_mask(card.size, 0.5, 0.85))
+    layer = Image.new("RGBA", card.size, ACCENT + (0,))
+    layer.putalpha(vertical_mask(card.size, 0.2, 1.0, 70))
+    card.alpha_composite(layer)
+    mask = Image.new("L", card.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, card.width - 1, card.height - 1), radius=10, fill=255)
+    img.paste(card, (cx0, cy0), mask)
+    rounded(d, (cx0, cy0, cx1 - 1, cy1 - 1), 10, outline=(255, 255, 255, 45))
+    d.text((80, 50), "GAME TITLE", font=font(15, True), fill=(255, 255, 255, 255))
+    rounded(d, (20, 72, 66, 141), 6, fill=(74, 50, 112, 255), outline=(255, 255, 255, 120))
+    d.text((27, 100), "COVER", font=font(7, True), fill=(220, 210, 240, 255))
+
+    empty = entry["value"] == 0
+    label = entry["en"].split(" (")[0].upper()
+    value = entry.get("example", "")
+    x, y = 78, 110
+    neighbours = [("TIME", "1h 51"), ("LAST", "Thu"), (None, None), ("STATUS", "Playing"), ("SIZE", "2.3 GB")]
+    for small_label, small_value in neighbours:
+        if small_label is None:
+            w = 64
+            if empty:
+                for i in range(0, w, 6):
+                    d.line([(x + i, y + 4), (x + min(i + 3, w), y + 4)], fill=ACCENT + (255,), width=1)
+                    d.line([(x + i, y + 30), (x + min(i + 3, w), y + 30)], fill=ACCENT + (255,), width=1)
+            else:
+                rounded(d, (x, y + 4, x + w, y + 30), 5, fill=TEXT + (40,), outline=ACCENT + (255,), width=2)
+                d.text((x + 5, y + 7), label[:12], font=font(6), fill=TEXT_DIM + (255,))
+                d.text((x + 5, y + 16), value[:10], font=font(8, True), fill=TEXT + (255,))
+        else:
+            # the other slots stay neutral, so the preview never shows the same information twice
+            w = 44
+            rounded(d, (x, y + 4, x + w, y + 30), 5, fill=TEXT + (18,))
+            d.rectangle((x + 5, y + 9, x + 22, y + 11), fill=TEXT_DIM + (120,))
+            d.rectangle((x + 5, y + 18, x + 34, y + 22), fill=TEXT + (90,))
+        x += w + 6
+        if x > W - 40:
+            break
+
+    # close-up of the tile
+    bx0, by0, bx1, by1 = 70, 158, W - 70, 228
+    if empty:
+        for i in range(bx0, bx1, 8):
+            d.line([(i, by0), (min(i + 4, bx1), by0)], fill=ACCENT + (255,), width=2)
+            d.line([(i, by1), (min(i + 4, bx1), by1)], fill=ACCENT + (255,), width=2)
+        d.text((bx0 + 18, by0 + 24), "Empty slot: the next tiles move left", font=font(10), fill=TEXT_DIM + (255,))
+    else:
+        rounded(d, (bx0, by0, bx1, by1), 10, fill=TEXT + (26,), outline=ACCENT + (255,), width=2)
+        d.text((bx0 + 14, by0 + 10), label, font=font(9), fill=TEXT_DIM + (255,))
+        d.text((bx0 + 14, by0 + 26), value, font=font(20, True), fill=(255, 255, 255, 255))
+        if entry["id"] in ("Achievements", "AchievementsPercent"):
+            rounded(d, (bx0 + 14, by1 - 12, bx1 - 14, by1 - 7), 2, fill=(255, 255, 255, 40))
+            rounded(d, (bx0 + 14, by1 - 12, bx0 + 14 + int((bx1 - bx0 - 28) * 0.3), by1 - 7), 2, fill=(242, 184, 75, 255))
+        elif entry["id"] == "HltbAll":
+            span = bx1 - bx0 - 28
+            for start, part, color in ((0, 0.35, (74, 168, 255)), (0.35, 0.12, (122, 108, 255)), (0.47, 0.53, (63, 191, 79))):
+                d.rectangle((bx0 + 14 + int(span * start), by1 - 12, bx0 + 14 + int(span * (start + part)), by1 - 7),
+                            fill=color + (255,))
+    note = f"Needs {entry['needs']}" if entry.get("needs") else ("" if empty else "Hidden when the game has no value")
+    d.text((bx0, by1 + 6), note, font=font(8), fill=TEXT_DIM + (255,))
+    return img
+
+
+def tile_previews():
+    spec = yaml.safe_load(Path(__file__).with_name("options_spec.yaml").read_text(encoding="utf-8"))
+    section = spec.get("header_tiles") or {}
+    return {f"Tile_{entry['id']}": (lambda e: lambda: tile_preview(e))(entry) for entry in section.get("types", [])}
+
+
 def color_profile_previews():
     spec = yaml.safe_load(Path(__file__).with_name("options_spec.yaml").read_text(encoding="utf-8"))
     section = spec.get("color_profiles") or {}
@@ -557,11 +633,12 @@ def main():
     args = parser.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, draw in {**PRESETS, **color_profile_previews()}.items():
+    extra = {**color_profile_previews(), **tile_previews()}
+    for name, draw in {**PRESETS, **extra}.items():
         image = draw().convert("RGB")
         image = image.quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
         image.save(out / f"{name}.png", optimize=True)
-    print(f"{len(PRESETS) + len(color_profile_previews())} previews written to {out}")
+    print(f"{len(PRESETS) + len(extra)} previews written to {out}")
 
 
 if __name__ == "__main__":

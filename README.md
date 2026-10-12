@@ -27,7 +27,7 @@ Helium-Neon-Dune works without extensions. It includes integration hosts for the
 
 The theme is fully usable with its defaults. Two optional extensions unlock the settings:
 
-- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 270 settings and 19 drop-down lists with a preview image for each choice, and French labels when Playnite is in French. Open it from Playnite's add-on settings, from the gear button of the top panel or from the gear of any section (both need ThemeExtras). Most changes apply when you close the settings window; the color profile and the accent color need a restart.
+- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 260 settings and 31 drop-down lists with a preview image for each choice, and French labels when Playnite is in French. Open it from Playnite's add-on settings, from the gear button of the top panel or from the gear of any section (both need ThemeExtras). Most changes apply when you close the settings window; the color profile and the accent color need a restart.
 - **[ThemeModifier](https://github.com/Lacro59/playnite-thememodifier-plugin)**: free color pickers for 80 theme colors. Colors saved in ThemeModifier win over the color profile: reset them in ThemeModifier to see a profile as designed.
 
 Drop-down lists (Theme Options):
@@ -49,6 +49,7 @@ Drop-down lists (Theme Options):
 | Shade over the artwork | none, light, medium, strong |
 | Artwork sharpness and position | sharp or blurred, vertical and horizontal alignment |
 | Header bar | tiles, outlined tiles, compact tiles, frosted glass bar, solid bar, transparent bar, hidden |
+| Tile 1 to Tile 12 | the information shown in each tile under the card, from 30 choices (see below) |
 | Blurred background behind the information | off, light, normal, strong |
 | Top panel | Neon, Dune (view buttons centered, transparent) |
 
@@ -56,7 +57,9 @@ The global style sets a starting point; every list below it, and every individua
 
 **Color profiles.** Each profile recolors the whole theme: window and panel backgrounds, text, accent, buttons, game list, menus, popups, inputs, ratings and section cards (109 colors, derived from 13 base colors per profile, with white text kept readable on buttons). All profiles are dark, because the theme draws white text over the artwork. The Accent list can still replace the accent of any profile.
 
-**Artwork card (2.7).** The top of the Details view is a rounded card: the artwork gets sharper towards the top and blurs progressively towards the bottom, under a light accent tint instead of a dark shade, and the bottom band holds the logo or name, the information line, the chips and the buttons. The cover sits in the bottom-left corner, over the edge of the card and the row of tiles below it (last played, time played, status, achievements, HowLongToBeat, critic and community scores, install size, average FPS). Shape, blur strength, blur height, tint, cover place and tile look each have a list with previews; cover size and rounding and each tile have their own setting. "Helium-Neon-Dune 2.5" in the global style list brings back the full-width artwork.
+**Artwork card (2.7).** The top of the Details view is a rounded card: the artwork gets sharper towards the top and blurs progressively towards the bottom, under a light accent tint instead of a dark shade, and the bottom band holds the logo or name, the information line, the chips and the buttons. The cover sits in the bottom-left corner, over the edge of the card and the row of tiles below it. Shape, blur strength, blur height, tint, cover place and tile look each have a list with previews; cover size and rounding have their own settings.
+
+**Tiles.** The row under the card has twelve slots, "Tile 1" to "Tile 12" in Theme Options, from left to right. Each slot is a list of every information the theme can show there, with a preview of the tile: time played, last played, completion status (editable with ThemeExtras), play count, date added, release date, source, platforms, developers, publishers, genres, series, age rating, version, your score, critic score, community score, both scores, install size, achievements (count and bar, percentage, latest, rare and ultra rare), HowLongToBeat (main story, main + extra, 100%, all three), GameActivity (average FPS, last session, recent activity), or empty. A tile without a value for the selected game hides itself and the next tiles move left; an information chosen in two slots shows in the later one. "Helium-Neon-Dune 2.5" in the global style list brings back the full-width artwork.
 
 **Theme settings.** The gear button of the top panel and the gear of each section open Theme Options (needs ThemeExtras).
 
@@ -68,7 +71,7 @@ The global style sets a starting point; every list below it, and every individua
 
 **Chips.** A click on a chip opens or folds the matching section (HowLongToBeat, achievements, activity, genres, categories, features, tags). The chips on the artwork are grouped: game (release date, platforms, source), classification (genres, categories, features, tags), studio and status (developers, completion status, score), HowLongToBeat, achievements and activity. A line break can be added before any chip, and the groups can be reordered, in Theme Options (Details view - information chips).
 
-Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session, recent activity and average FPS), sizes and corner rounding of the buttons, chips and header cover, each header bar item and tile, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
+Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session, recent activity and average FPS), sizes and corner rounding of the buttons, chips and header cover, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
 
 Section order: each section needs its own number (0 to 18); two sections with the same number overlap. In the Details view the order applies within each column.
 

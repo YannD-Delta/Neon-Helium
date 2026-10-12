@@ -27,6 +27,7 @@ from xml.sax.saxutils import escape
 import yaml
 
 import color_profiles
+import header_tiles
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
 SYS_NS = "clr-namespace:System;assembly=mscorlib"
@@ -139,11 +140,12 @@ def build_options(spec, constants, source: Path):
         if ids[0] != "Default" or len(set(ids)) != len(ids):
             raise SpecError(f"preset group {gid}: the first option must be Default and ids must be unique")
         for option in group["options"]:
-            okey = loc_key("Preset", gid, option["id"])
+            # generated groups (header tiles) share one label per choice across their groups
+            okey = option.get("lockey") or loc_key("Preset", gid, option["id"])
             labels[okey] = option["fr"]
             english[okey] = option["en"]
             lines += [f"            {option['id']}:", f"                Name: {q(option['en'])}", f"                LocKey: {okey}"]
-            preview = f"Presets/Previews/{gid}_{option['id']}.png"
+            preview = option.get("preview") or f"Presets/Previews/{gid}_{option['id']}.png"
             if (source / preview).is_file():
                 # shown by Theme Options while the mouse is over this choice (tools/make_previews.py)
                 lines.append(f"                Preview: {q(preview.replace('/', chr(92)))}")
@@ -674,6 +676,13 @@ def main() -> int:
         add_color_profile_group(spec)
         outputs = {"DerivedStyles/PlayButton.xaml": play_button_file(source), **preset_files(),
                    **color_profile_files(spec, source)}
+        tiles = spec.get("header_tiles")
+        if tiles:
+            header_tiles.check_types(tiles, constants)
+            header_tiles.add_slot_groups(spec)
+            view = source / "Views" / "DetailsViewGameOverview.xaml"
+            outputs["Views/DetailsViewGameOverview.xaml"] = header_tiles.view_with_region(
+                view.read_text(encoding="utf-8-sig"), tiles)
         if not args.check:
             # preset files must exist before the preset file check in build_options runs
             for name, content in outputs.items():

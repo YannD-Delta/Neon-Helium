@@ -1,0 +1,17 @@
+<StackPanel VerticalAlignment="Center" Margin="0"
+            Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat, FallbackValue=''}">
+    <StackPanel.Style>
+        <Style TargetType="StackPanel">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="-">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </StackPanel.Style>
+    <Label Style="{DynamicResource HeaderLabel}" Content="HowLongToBeat" />
+    <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=StackPanel}}" />
+</StackPanel>

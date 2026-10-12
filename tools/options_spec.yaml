@@ -25,6 +25,10 @@ strings:
   LOCHNDChipLastSession: {en: Last session, fr: Dernière session}
   LOCHNDChipAvgFps: {en: Avg FPS, fr: FPS moy.}
   LOCHNDTileScores: {en: 'Critics · Community', fr: 'Critiques · Communauté'}
+  LOCHNDTileRecentActivity: {en: Recent activity, fr: Activité récente}
+  LOCHNDTileHltbExtra: {en: 'HLTB · Main + Extra', fr: 'HLTB · Histoire + extras'}
+  LOCHNDTileHltbCompletionist: {en: 'HLTB · 100%', fr: 'HLTB · 100 %'}
+  LOCHNDTileRare: {en: 'Rare · Ultra rare', fr: 'Rares · Ultra rares'}
   LOCHNDFavoriteButtonTooltip: {en: Favorite (ThemeExtras), fr: Favori (ThemeExtras)}
   LOCHNDHiddenButtonTooltip: {en: Hidden game (ThemeExtras), fr: Jeu masqué (ThemeExtras)}
   LOCHNDCollectorTooltip: {en: Collection level (PlayniteAchievements), fr: Niveau de collection (PlayniteAchievements)}
@@ -520,6 +524,48 @@ presets:
         constants: {DetailsViewBackgroundBlurOpacity: 0.5, GridViewBackgroundBlurOpacity: 0.5}
 
 
+# Header tiles: twelve slots under the artwork card, each one a Theme Options list of every
+# information type below (tools/header_tiles.py writes the tiles into the Details view and the lists).
+# A value is stored by the presets, never renumber. Constants.xaml HeaderTileSlot<n> = default of slot n.
+# Previews: Presets/Previews/Tile_<id>.png (tools/make_previews.py, from the example and needs fields).
+header_tiles:
+  insert_after: HeaderBar
+  group: {en: 'Tile {n} (from the left)', fr: 'Tuile {n} (en partant de la gauche)'}
+  default: {en: 'Default: {type}', fr: 'Par défaut : {type}'}
+  slots: [PlayTime, LastPlayed, CompletionStatus, Achievements, HltbMain, Scores, InstallSize, AvgFps, Empty, Empty, Empty, Empty]
+  types:
+    - {id: Empty, value: 0, en: Empty, fr: Vide}
+    - {id: PlayTime, value: 1, en: Time played, fr: Temps de jeu, example: 1h 51m}
+    - {id: LastPlayed, value: 2, en: Last played, fr: Dernière partie, example: 10/10/2026}
+    - {id: CompletionStatus, value: 3, en: Completion status (editable with ThemeExtras), fr: Statut de complétion (modifiable avec ThemeExtras), example: Playing}
+    - {id: Achievements, value: 4, en: 'Achievements: count and bar', fr: 'Succès : nombre et barre', example: 12 / 40, needs: PlayniteAchievements}
+    - {id: AchievementsPercent, value: 28, en: 'Achievements: percentage', fr: 'Succès : pourcentage', example: 30 %, needs: PlayniteAchievements}
+    - {id: LatestAchievement, value: 29, en: Latest unlocked achievement, fr: Dernier succès débloqué, example: Kingdom built, needs: PlayniteAchievements}
+    - {id: RareAchievements, value: 30, en: Rare and ultra rare achievements, fr: Succès rares et ultra rares, example: 3/10 · 1/4, needs: PlayniteAchievements}
+    - {id: HltbMain, value: 5, en: 'HowLongToBeat: main story', fr: 'HowLongToBeat : histoire', example: 20h, needs: HowLongToBeat}
+    - {id: HltbMainExtra, value: 25, en: 'HowLongToBeat: main + extra', fr: 'HowLongToBeat : histoire + extras', example: 27h, needs: HowLongToBeat}
+    - {id: HltbCompletionist, value: 26, en: 'HowLongToBeat: 100%', fr: 'HowLongToBeat : 100 %', example: 57h, needs: HowLongToBeat}
+    - {id: HltbAll, value: 27, en: 'HowLongToBeat: all three times', fr: 'HowLongToBeat : les trois durées', example: 20h · 27h · 57h, needs: HowLongToBeat}
+    - {id: Scores, value: 6, en: Critic and community scores, fr: Notes des critiques et de la communauté, example: 89 · 80}
+    - {id: CriticScore, value: 23, en: Critic score, fr: Note des critiques, example: '89'}
+    - {id: CommunityScore, value: 24, en: Community score, fr: Note de la communauté, example: '80'}
+    - {id: UserScore, value: 22, en: Your score, fr: Votre note, example: '95'}
+    - {id: InstallSize, value: 7, en: Install size, fr: Taille installée, example: 2.27 GB}
+    - {id: AvgFps, value: 8, en: Average FPS, fr: FPS moyen, example: '60', needs: GameActivity}
+    - {id: LastSession, value: 9, en: Last session length, fr: Durée de la dernière session, example: 1h 12m, needs: GameActivity}
+    - {id: RecentActivity, value: 10, en: Recent activity, fr: Activité récente, example: 3h 40m (14 days), needs: GameActivity}
+    - {id: PlayCount, value: 11, en: Play count, fr: Nombre de lancements, example: '37'}
+    - {id: Added, value: 12, en: Date added, fr: Date d'ajout, example: 24/03/2022}
+    - {id: ReleaseDate, value: 13, en: Release date, fr: Date de sortie, example: 11/12/2018}
+    - {id: Source, value: 14, en: Source (library), fr: Source (bibliothèque), example: Steam}
+    - {id: Platforms, value: 15, en: Platforms, fr: Plateformes, example: 'PC (Windows), Switch'}
+    - {id: Developers, value: 16, en: Developers, fr: Développeurs, example: Coatsink}
+    - {id: Publishers, value: 17, en: Publishers, fr: Éditeurs, example: Raw Fury}
+    - {id: Genres, value: 18, en: Genres, fr: Genres, example: 'Strategy, Indie'}
+    - {id: Series, value: 19, en: Series, fr: Série, example: Kingdom}
+    - {id: AgeRatings, value: 20, en: Age rating, fr: Classification d'âge, example: PEGI 7}
+    - {id: Version, value: 21, en: Version, fr: Version, example: '1.4.2'}
+
 # Color profiles: complete palettes. tools/color_profiles.py derives every color of Constants.xaml
 # from the 13 base colors and build_options.py writes Presets/Colors/<id>.xaml plus the
 # "Color profile" drop-down (placed before the Accent list, which can still override the accent).
@@ -726,16 +772,8 @@ variables:
     en: Details view - header bar
     fr: Vue Détails - barre d'en-tête
   - {key: DetailsViewShowHeaderBar, en: Show the header bar, fr: Afficher la barre d'en-tête}
-  - {key: DetailsViewShowLastPlayed, en: Last played, fr: Dernière partie}
-  - {key: DetailsViewShowPlayTime, en: Time played, fr: Temps de jeu}
-  - {key: DetailsViewShowCompletionStatus, en: Completion status, fr: Statut de complétion}
-  - {key: DetailsViewShowAchievementsSummary, en: Achievements summary, fr: Résumé des succès}
   - {key: DetailsViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
   - {key: DetailsViewShowUserRating, en: Your rating with stars (ThemeExtras), fr: Votre note en étoiles (ThemeExtras)}
-  - {key: HltbShowInHeaderBar, en: HowLongToBeat main story time, fr: Durée HowLongToBeat (histoire)}
-  - {key: DetailsViewShowScoresTile, en: Critic and community scores, fr: Notes des critiques et de la communauté}
-  - {key: DetailsViewShowInstallSizeTile, en: Install size, fr: Taille installée}
-  - {key: DetailsViewShowFpsTile, en: Average FPS (GameActivity), fr: FPS moyen (GameActivity)}
   - {key: HeaderButtonSize, range: [20, 56], en: Size of the header bar buttons, fr: Taille des boutons de la barre}
 
   - header: DetailsInfo
@@ -1068,11 +1106,6 @@ tips:
   HeroShowInfoLine: {en: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.', fr: 'Les puces sous le titre (date, plateformes, genres, durées...). L''engrenage au début de la ligne règle chaque puce.'}
   HeroInfoLineMaxWidth: {en: 'Width after which the chips wrap to a new line.', fr: 'Largeur au-delà de laquelle les puces passent à la ligne.'}
   DetailsViewShowHeaderBar: {en: 'The bar under the artwork with the last played date, time played and completion status.', fr: 'La barre sous l''image avec la dernière partie, le temps de jeu et le statut.'}
-  DetailsViewShowLastPlayed: {en: 'Date of the last session.', fr: 'Date de la dernière session.'}
-  DetailsViewShowPlayTime: {en: 'Total time played.', fr: 'Temps de jeu total.'}
-  DetailsViewShowCompletionStatus: {en: 'Completion status, which ThemeExtras lets you change from here.', fr: 'Statut de complétion, modifiable ici avec ThemeExtras.'}
-  DetailsViewShowAchievementsSummary: {en: 'Unlocked achievements with a progress bar. Needs PlayniteAchievements.', fr: 'Succès débloqués avec une barre de progression. Demande PlayniteAchievements.'}
-  HltbShowInHeaderBar: {en: 'HowLongToBeat main story time in the bar.', fr: 'Durée HowLongToBeat de l''histoire dans la barre.'}
   DetailsViewShowUserRating: {en: 'Your rating as clickable stars. Needs ThemeExtras.', fr: 'Votre note en étoiles cliquables. Demande ThemeExtras.'}
   DetailsViewShowInfoButton: {en: 'Button that shows or hides the information panel (cover, description, details).', fr: 'Bouton qui affiche ou masque le panneau d''informations (pochette, description, détails).'}
   HeaderButtonSize: {en: 'Size of the round buttons in the header bar.', fr: 'Taille des boutons ronds de la barre d''en-tête.'}
@@ -1103,6 +1136,3 @@ tips:
   HeroCoverWidth: {en: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork header" list.', fr: 'Jaquette affichée en bas à gauche de la carte. Sa place se règle dans la liste « Jaquette dans l''en-tête ».'}
   HeroCoverHeight: {en: 'A 2:3 ratio (230 x 345) fits most covers.', fr: 'Un rapport 2:3 (230 x 345) convient à la plupart des jaquettes.'}
   HeroCoverCornerRadius: {en: 'Applies after a Playnite restart.', fr: 'S''applique après un redémarrage de Playnite.'}
-  DetailsViewShowScoresTile: {en: 'Critic score and community score, for example 89 · 80. Hidden when the game has neither.', fr: 'Note des critiques et de la communauté, par exemple 89 · 80. Masquée si le jeu n''a aucune des deux.'}
-  DetailsViewShowInstallSizeTile: {en: 'Disk space of installed games, from the Playnite install size scan.', fr: 'Place sur le disque des jeux installés, d''après le calcul de taille de Playnite.'}
-  DetailsViewShowFpsTile: {en: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.', fr: 'FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.'}

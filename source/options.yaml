@@ -1294,6 +1294,3078 @@ Presets:
                     HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'False'
+    TileSlot1:
+        Name: 'Tile 1 (from the left)'
+        LocKey: LOCHNDPresetTileSlot1
+        Presets:
+            Default:
+                Name: 'Default: Time played'
+                LocKey: LOCHNDPresetTileSlot1Default
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot1:
+                        Type: Int32
+                        Value: '21'
+    TileSlot2:
+        Name: 'Tile 2 (from the left)'
+        LocKey: LOCHNDPresetTileSlot2
+        Presets:
+            Default:
+                Name: 'Default: Last played'
+                LocKey: LOCHNDPresetTileSlot2Default
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot2:
+                        Type: Int32
+                        Value: '21'
+    TileSlot3:
+        Name: 'Tile 3 (from the left)'
+        LocKey: LOCHNDPresetTileSlot3
+        Presets:
+            Default:
+                Name: 'Default: Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDPresetTileSlot3Default
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot3:
+                        Type: Int32
+                        Value: '21'
+    TileSlot4:
+        Name: 'Tile 4 (from the left)'
+        LocKey: LOCHNDPresetTileSlot4
+        Presets:
+            Default:
+                Name: 'Default: Achievements: count and bar'
+                LocKey: LOCHNDPresetTileSlot4Default
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot4:
+                        Type: Int32
+                        Value: '21'
+    TileSlot5:
+        Name: 'Tile 5 (from the left)'
+        LocKey: LOCHNDPresetTileSlot5
+        Presets:
+            Default:
+                Name: 'Default: HowLongToBeat: main story'
+                LocKey: LOCHNDPresetTileSlot5Default
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot5:
+                        Type: Int32
+                        Value: '21'
+    TileSlot6:
+        Name: 'Tile 6 (from the left)'
+        LocKey: LOCHNDPresetTileSlot6
+        Presets:
+            Default:
+                Name: 'Default: Critic and community scores'
+                LocKey: LOCHNDPresetTileSlot6Default
+                Preview: 'Presets\Previews\Tile_Scores.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot6:
+                        Type: Int32
+                        Value: '21'
+    TileSlot7:
+        Name: 'Tile 7 (from the left)'
+        LocKey: LOCHNDPresetTileSlot7
+        Presets:
+            Default:
+                Name: 'Default: Install size'
+                LocKey: LOCHNDPresetTileSlot7Default
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot7:
+                        Type: Int32
+                        Value: '21'
+    TileSlot8:
+        Name: 'Tile 8 (from the left)'
+        LocKey: LOCHNDPresetTileSlot8
+        Presets:
+            Default:
+                Name: 'Default: Average FPS'
+                LocKey: LOCHNDPresetTileSlot8Default
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot8:
+                        Type: Int32
+                        Value: '21'
+    TileSlot9:
+        Name: 'Tile 9 (from the left)'
+        LocKey: LOCHNDPresetTileSlot9
+        Presets:
+            Default:
+                Name: 'Default: Empty'
+                LocKey: LOCHNDPresetTileSlot9Default
+                Preview: 'Presets\Previews\Tile_Empty.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot9:
+                        Type: Int32
+                        Value: '21'
+    TileSlot10:
+        Name: 'Tile 10 (from the left)'
+        LocKey: LOCHNDPresetTileSlot10
+        Presets:
+            Default:
+                Name: 'Default: Empty'
+                LocKey: LOCHNDPresetTileSlot10Default
+                Preview: 'Presets\Previews\Tile_Empty.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot10:
+                        Type: Int32
+                        Value: '21'
+    TileSlot11:
+        Name: 'Tile 11 (from the left)'
+        LocKey: LOCHNDPresetTileSlot11
+        Presets:
+            Default:
+                Name: 'Default: Empty'
+                LocKey: LOCHNDPresetTileSlot11Default
+                Preview: 'Presets\Previews\Tile_Empty.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot11:
+                        Type: Int32
+                        Value: '21'
+    TileSlot12:
+        Name: 'Tile 12 (from the left)'
+        LocKey: LOCHNDPresetTileSlot12
+        Presets:
+            Default:
+                Name: 'Default: Empty'
+                LocKey: LOCHNDPresetTileSlot12Default
+                Preview: 'Presets\Previews\Tile_Empty.png'
+            Empty:
+                Name: 'Empty'
+                LocKey: LOCHNDTileTypeEmpty
+                Preview: 'Presets\Previews\Tile_Empty.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '0'
+            PlayTime:
+                Name: 'Time played'
+                LocKey: LOCHNDTileTypePlayTime
+                Preview: 'Presets\Previews\Tile_PlayTime.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '1'
+            LastPlayed:
+                Name: 'Last played'
+                LocKey: LOCHNDTileTypeLastPlayed
+                Preview: 'Presets\Previews\Tile_LastPlayed.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '2'
+            CompletionStatus:
+                Name: 'Completion status (editable with ThemeExtras)'
+                LocKey: LOCHNDTileTypeCompletionStatus
+                Preview: 'Presets\Previews\Tile_CompletionStatus.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '3'
+            Achievements:
+                Name: 'Achievements: count and bar'
+                LocKey: LOCHNDTileTypeAchievements
+                Preview: 'Presets\Previews\Tile_Achievements.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '4'
+            AchievementsPercent:
+                Name: 'Achievements: percentage'
+                LocKey: LOCHNDTileTypeAchievementsPercent
+                Preview: 'Presets\Previews\Tile_AchievementsPercent.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '28'
+            LatestAchievement:
+                Name: 'Latest unlocked achievement'
+                LocKey: LOCHNDTileTypeLatestAchievement
+                Preview: 'Presets\Previews\Tile_LatestAchievement.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '29'
+            RareAchievements:
+                Name: 'Rare and ultra rare achievements'
+                LocKey: LOCHNDTileTypeRareAchievements
+                Preview: 'Presets\Previews\Tile_RareAchievements.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '30'
+            HltbMain:
+                Name: 'HowLongToBeat: main story'
+                LocKey: LOCHNDTileTypeHltbMain
+                Preview: 'Presets\Previews\Tile_HltbMain.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '5'
+            HltbMainExtra:
+                Name: 'HowLongToBeat: main + extra'
+                LocKey: LOCHNDTileTypeHltbMainExtra
+                Preview: 'Presets\Previews\Tile_HltbMainExtra.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '25'
+            HltbCompletionist:
+                Name: 'HowLongToBeat: 100%'
+                LocKey: LOCHNDTileTypeHltbCompletionist
+                Preview: 'Presets\Previews\Tile_HltbCompletionist.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '26'
+            HltbAll:
+                Name: 'HowLongToBeat: all three times'
+                LocKey: LOCHNDTileTypeHltbAll
+                Preview: 'Presets\Previews\Tile_HltbAll.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '27'
+            Scores:
+                Name: 'Critic and community scores'
+                LocKey: LOCHNDTileTypeScores
+                Preview: 'Presets\Previews\Tile_Scores.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '6'
+            CriticScore:
+                Name: 'Critic score'
+                LocKey: LOCHNDTileTypeCriticScore
+                Preview: 'Presets\Previews\Tile_CriticScore.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '23'
+            CommunityScore:
+                Name: 'Community score'
+                LocKey: LOCHNDTileTypeCommunityScore
+                Preview: 'Presets\Previews\Tile_CommunityScore.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '24'
+            UserScore:
+                Name: 'Your score'
+                LocKey: LOCHNDTileTypeUserScore
+                Preview: 'Presets\Previews\Tile_UserScore.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '22'
+            InstallSize:
+                Name: 'Install size'
+                LocKey: LOCHNDTileTypeInstallSize
+                Preview: 'Presets\Previews\Tile_InstallSize.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '7'
+            AvgFps:
+                Name: 'Average FPS'
+                LocKey: LOCHNDTileTypeAvgFps
+                Preview: 'Presets\Previews\Tile_AvgFps.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '8'
+            LastSession:
+                Name: 'Last session length'
+                LocKey: LOCHNDTileTypeLastSession
+                Preview: 'Presets\Previews\Tile_LastSession.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '9'
+            RecentActivity:
+                Name: 'Recent activity'
+                LocKey: LOCHNDTileTypeRecentActivity
+                Preview: 'Presets\Previews\Tile_RecentActivity.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '10'
+            PlayCount:
+                Name: 'Play count'
+                LocKey: LOCHNDTileTypePlayCount
+                Preview: 'Presets\Previews\Tile_PlayCount.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '11'
+            Added:
+                Name: 'Date added'
+                LocKey: LOCHNDTileTypeAdded
+                Preview: 'Presets\Previews\Tile_Added.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '12'
+            ReleaseDate:
+                Name: 'Release date'
+                LocKey: LOCHNDTileTypeReleaseDate
+                Preview: 'Presets\Previews\Tile_ReleaseDate.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '13'
+            Source:
+                Name: 'Source (library)'
+                LocKey: LOCHNDTileTypeSource
+                Preview: 'Presets\Previews\Tile_Source.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '14'
+            Platforms:
+                Name: 'Platforms'
+                LocKey: LOCHNDTileTypePlatforms
+                Preview: 'Presets\Previews\Tile_Platforms.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '15'
+            Developers:
+                Name: 'Developers'
+                LocKey: LOCHNDTileTypeDevelopers
+                Preview: 'Presets\Previews\Tile_Developers.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '16'
+            Publishers:
+                Name: 'Publishers'
+                LocKey: LOCHNDTileTypePublishers
+                Preview: 'Presets\Previews\Tile_Publishers.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '17'
+            Genres:
+                Name: 'Genres'
+                LocKey: LOCHNDTileTypeGenres
+                Preview: 'Presets\Previews\Tile_Genres.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '18'
+            Series:
+                Name: 'Series'
+                LocKey: LOCHNDTileTypeSeries
+                Preview: 'Presets\Previews\Tile_Series.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '19'
+            AgeRatings:
+                Name: 'Age rating'
+                LocKey: LOCHNDTileTypeAgeRatings
+                Preview: 'Presets\Previews\Tile_AgeRatings.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '20'
+            Version:
+                Name: 'Version'
+                LocKey: LOCHNDTileTypeVersion
+                Preview: 'Presets\Previews\Tile_Version.png'
+                Constants:
+                    HeaderTileSlot12:
+                        Type: Int32
+                        Value: '21'
     BackgroundBlur:
         Name: 'Blurred background behind the information'
         LocKey: LOCHNDPresetBackgroundBlur
@@ -2200,50 +5272,6 @@ Variables:
         Title: '  ↳ The bar under the artwork with the last played date, time played and completion status.'
         LocKey: LOCHNDCaptionDetailsViewShowHeaderBar1
         Type: Header
-    DetailsViewShowLastPlayed:
-        Title: 'Last played'
-        LocKey: LOCHNDOptDetailsViewShowLastPlayed
-        Type: Boolean
-        Default: 'True'
-        Description: 'Date of the last session.'
-    CaptionDetailsViewShowLastPlayed1:
-        Title: '  ↳ Date of the last session.'
-        LocKey: LOCHNDCaptionDetailsViewShowLastPlayed1
-        Type: Header
-    DetailsViewShowPlayTime:
-        Title: 'Time played'
-        LocKey: LOCHNDOptDetailsViewShowPlayTime
-        Type: Boolean
-        Default: 'True'
-        Description: 'Total time played.'
-    CaptionDetailsViewShowPlayTime1:
-        Title: '  ↳ Total time played.'
-        LocKey: LOCHNDCaptionDetailsViewShowPlayTime1
-        Type: Header
-    DetailsViewShowCompletionStatus:
-        Title: 'Completion status'
-        LocKey: LOCHNDOptDetailsViewShowCompletionStatus
-        Type: Boolean
-        Default: 'True'
-        Description: 'Completion status, which ThemeExtras lets you change from here.'
-    CaptionDetailsViewShowCompletionStatus1:
-        Title: '  ↳ Completion status, which ThemeExtras lets you change from here.'
-        LocKey: LOCHNDCaptionDetailsViewShowCompletionStatus1
-        Type: Header
-    DetailsViewShowAchievementsSummary:
-        Title: 'Achievements summary'
-        LocKey: LOCHNDOptDetailsViewShowAchievementsSummary
-        Type: Boolean
-        Default: 'True'
-        Description: 'Unlocked achievements with a progress bar. Needs PlayniteAchievements.'
-    CaptionDetailsViewShowAchievementsSummary1:
-        Title: '  ↳ Unlocked achievements with a progress bar.'
-        LocKey: LOCHNDCaptionDetailsViewShowAchievementsSummary1
-        Type: Header
-    CaptionDetailsViewShowAchievementsSummary2:
-        Title: '  ↳ Needs PlayniteAchievements.'
-        LocKey: LOCHNDCaptionDetailsViewShowAchievementsSummary2
-        Type: Header
     DetailsViewShowInfoButton:
         Title: 'Information panel button'
         LocKey: LOCHNDOptDetailsViewShowInfoButton
@@ -2267,54 +5295,6 @@ Variables:
     CaptionDetailsViewShowUserRating2:
         Title: '  ↳ Needs ThemeExtras.'
         LocKey: LOCHNDCaptionDetailsViewShowUserRating2
-        Type: Header
-    HltbShowInHeaderBar:
-        Title: 'HowLongToBeat main story time'
-        LocKey: LOCHNDOptHltbShowInHeaderBar
-        Type: Boolean
-        Default: 'False'
-        Description: 'HowLongToBeat main story time in the bar.'
-    CaptionHltbShowInHeaderBar1:
-        Title: '  ↳ HowLongToBeat main story time in the bar.'
-        LocKey: LOCHNDCaptionHltbShowInHeaderBar1
-        Type: Header
-    DetailsViewShowScoresTile:
-        Title: 'Critic and community scores'
-        LocKey: LOCHNDOptDetailsViewShowScoresTile
-        Type: Boolean
-        Default: 'True'
-        Description: 'Critic score and community score, for example 89 · 80. Hidden when the game has neither.'
-    CaptionDetailsViewShowScoresTile1:
-        Title: '  ↳ Critic score and community score, for example 89 · 80.'
-        LocKey: LOCHNDCaptionDetailsViewShowScoresTile1
-        Type: Header
-    CaptionDetailsViewShowScoresTile2:
-        Title: '  ↳ Hidden when the game has neither.'
-        LocKey: LOCHNDCaptionDetailsViewShowScoresTile2
-        Type: Header
-    DetailsViewShowInstallSizeTile:
-        Title: 'Install size'
-        LocKey: LOCHNDOptDetailsViewShowInstallSizeTile
-        Type: Boolean
-        Default: 'True'
-        Description: 'Disk space of installed games, from the Playnite install size scan.'
-    CaptionDetailsViewShowInstallSizeTile1:
-        Title: '  ↳ Disk space of installed games, from the Playnite install size scan.'
-        LocKey: LOCHNDCaptionDetailsViewShowInstallSizeTile1
-        Type: Header
-    DetailsViewShowFpsTile:
-        Title: 'Average FPS (GameActivity)'
-        LocKey: LOCHNDOptDetailsViewShowFpsTile
-        Type: Boolean
-        Default: 'True'
-        Description: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.'
-    CaptionDetailsViewShowFpsTile1:
-        Title: '  ↳ Average FPS over all recorded sessions.'
-        LocKey: LOCHNDCaptionDetailsViewShowFpsTile1
-        Type: Header
-    CaptionDetailsViewShowFpsTile2:
-        Title: '  ↳ Needs GameActivity with FPS logging.'
-        LocKey: LOCHNDCaptionDetailsViewShowFpsTile2
         Type: Header
     HeaderButtonSize:
         Title: 'Size of the header bar buttons'
