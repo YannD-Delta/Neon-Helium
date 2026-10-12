@@ -18,7 +18,7 @@
                                   x:Name="PART_ScrollViewHost">
                         <Grid Margin="0,0,0,40">
                             <StackPanel Name="BackgroundBlurPanel">
-                                <Border Height="{Binding ElementName=HeaderImagesGrid, Path=ActualHeight}" />
+                                <Border Height="{Binding ElementName=HeaderImagesGrid, Path=ActualHeight}" Margin="{DynamicResource HeroCardMargin}" />
                                 <Border Name="FastBlurGrid" Opacity="{DynamicResource DetailsViewBackgroundBlurOpacity}" VerticalAlignment="Top">
                                     <Border.OpacityMask>
                                         <LinearGradientBrush StartPoint="0.5, 0.0" EndPoint="0.5, 1.0" >
@@ -58,70 +58,118 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Height="{Binding ElementName=DetailsTop, Path=ActualHeight}"
-                                      Name="BorderImageBackground">
+                                <!-- Artwork card: the black mask drawn first is also the opacity mask, so every layer gets the rounded corners -->
+                                <Grid Grid.Row="0" Height="{Binding ElementName=HeaderImagesGrid, Path=ActualHeight}" VerticalAlignment="Top"
+                                      Margin="{DynamicResource HeroCardMargin}" Name="BorderImageBackground">
                                     <Grid.OpacityMask>
-                                        <LinearGradientBrush StartPoint="0.5, 0.0" EndPoint="0.5, 1.0" >
-                                            <GradientStop Color="Black" Offset="0.90"/>
-                                            <GradientStop Color="Transparent" Offset="1"/>
-                                        </LinearGradientBrush>
+                                        <VisualBrush Visual="{Binding ElementName=HeroCardMask}" />
                                     </Grid.OpacityMask>
-                                    <Grid Background="#141414" Height="{Binding ElementName=DetailsTop, Path=ActualHeight}">
-                                        <Grid.Style>
-                                            <Style TargetType="Grid">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Settings DetailsVisibility.BackgroundImage}" Value="False">
-                                                        <Setter Property="Visibility" Value="Hidden"/>
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Game.BackgroundImage}" Value="{x:Null}">
-                                                        <Setter Property="Visibility" Value="Hidden"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Grid.Style>
-                                    </Grid>
-                                    <Border>
-                                        <Border.Style>
-                                            <Style TargetType="{x:Type Border}">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                                <Style.Triggers>
-                                                    <MultiDataTrigger>
-                                                        <MultiDataTrigger.Conditions>
-                                                            <Condition Binding="{PluginSettings Plugin=BackgroundChanger, Path=HasDataBackground, FallbackValue=False}" Value="True" />
-                                                            <Condition Binding="{PluginSettings Plugin=BackgroundChanger, Path=EnableBackgroundImage, FallbackValue=False}" Value="True" />
-                                                        </MultiDataTrigger.Conditions>
-                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                    </MultiDataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Border.Style>
-                                        <FadeImage x:Name="PART_ImageBackground" Stretch="UniformToFill" Effect="{DynamicResource HeroBackgroundEffect}"
-                                                   HorizontalAlignment="{DynamicResource DetailsViewBackgroundHorizontalAlignment}"
-                                                   VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}">
-                                            <FadeImage.OpacityMask>
-                                                <LinearGradientBrush StartPoint="0.5, 0.0" EndPoint="0.5, 1.0" >
-                                                    <GradientStop Color="Black" Offset="0.75"/>
-                                                    <GradientStop Color="Transparent" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </FadeImage.OpacityMask>
-                                        </FadeImage>
-                                    </Border>
+                                    <Border x:Name="HeroCardMask" Background="Black" CornerRadius="{DynamicResource HeroCardCornerRadius}" />
+                                    <!-- Clipped with a background so its bounds are exactly the card: the blur copies below map 1:1 onto it -->
+                                    <Grid x:Name="HeroArtworkLayer" ClipToBounds="True" Background="Transparent">
+                                        <Grid.OpacityMask>
+                                            <LinearGradientBrush StartPoint="0.5, 0.0" EndPoint="0.5, 1.0" >
+                                                <GradientStop Color="Black" Offset="{DynamicResource HeroFadeStart}"/>
+                                                <GradientStop Color="Transparent" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Grid.OpacityMask>
+                                        <Grid Background="#141414">
+                                            <Grid.Style>
+                                                <Style TargetType="Grid">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Settings DetailsVisibility.BackgroundImage}" Value="False">
+                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Game.BackgroundImage}" Value="{x:Null}">
+                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
+                                        </Grid>
+                                        <Border>
+                                            <Border.Style>
+                                                <Style TargetType="{x:Type Border}">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                    <Style.Triggers>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{PluginSettings Plugin=BackgroundChanger, Path=HasDataBackground, FallbackValue=False}" Value="True" />
+                                                                <Condition Binding="{PluginSettings Plugin=BackgroundChanger, Path=EnableBackgroundImage, FallbackValue=False}" Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <FadeImage x:Name="PART_ImageBackground" Stretch="UniformToFill" Effect="{DynamicResource HeroBackgroundEffect}"
+                                                       HorizontalAlignment="{DynamicResource DetailsViewBackgroundHorizontalAlignment}"
+                                                       VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}" />
+                                        </Border>
 
-                                    <!-- BackgroundChanger plugin background -->
-                                    <ContentControl x:Name="BackgroundChanger_PluginBackgroundImage"
-                                                    HorizontalAlignment="{DynamicResource DetailsViewBackgroundHorizontalAlignment}"
-                                                    VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}" />
+                                        <!-- BackgroundChanger plugin background -->
+                                        <ContentControl x:Name="BackgroundChanger_PluginBackgroundImage"
+                                                        HorizontalAlignment="{DynamicResource DetailsViewBackgroundHorizontalAlignment}"
+                                                        VerticalAlignment="{DynamicResource DetailsViewBackgroundVerticalAlignment}" />
+                                    </Grid>
+                                    <!-- Progressive blur: a light and a strong blurred copy of the artwork, faded in towards the bottom -->
+                                    <Border x:Name="HeroBlurSoft" IsHitTestVisible="False" Opacity="{DynamicResource HeroBlurOpacity}">
+                                        <Border.Background>
+                                            <VisualBrush Visual="{Binding ElementName=HeroArtworkLayer}" Stretch="Fill" />
+                                        </Border.Background>
+                                        <Border.Effect>
+                                            <BlurEffect Radius="{DynamicResource HeroBlurRadiusSoft}" KernelType="Gaussian" RenderingBias="Performance" />
+                                        </Border.Effect>
+                                        <Border.OpacityMask>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="Transparent" Offset="{DynamicResource HeroBlurStart}" />
+                                                <GradientStop Color="Black" Offset="{DynamicResource HeroBlurMid}" />
+                                            </LinearGradientBrush>
+                                        </Border.OpacityMask>
+                                    </Border>
+                                    <Border x:Name="HeroBlurStrong" IsHitTestVisible="False" Opacity="{DynamicResource HeroBlurOpacity}">
+                                        <Border.Background>
+                                            <VisualBrush Visual="{Binding ElementName=HeroArtworkLayer}" Stretch="Fill" />
+                                        </Border.Background>
+                                        <Border.Effect>
+                                            <BlurEffect Radius="{DynamicResource HeroBlurRadius}" KernelType="Gaussian" RenderingBias="Performance" />
+                                        </Border.Effect>
+                                        <Border.OpacityMask>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="Transparent" Offset="{DynamicResource HeroBlurMid}" />
+                                                <GradientStop Color="Black" Offset="{DynamicResource HeroBlurFull}" />
+                                            </LinearGradientBrush>
+                                        </Border.OpacityMask>
+                                    </Border>
+                                    <!-- Tint over the blurred band: accent color and white frost -->
+                                    <Border Background="{DynamicResource GlyphBrush}" Opacity="{DynamicResource HeroTintAccentOpacity}" IsHitTestVisible="False">
+                                        <Border.OpacityMask>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="Transparent" Offset="{DynamicResource HeroBlurStart}" />
+                                                <GradientStop Color="Black" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Border.OpacityMask>
+                                    </Border>
+                                    <Border Background="White" Opacity="{DynamicResource HeroTintLightOpacity}" IsHitTestVisible="False">
+                                        <Border.OpacityMask>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="Transparent" Offset="{DynamicResource HeroBlurStart}" />
+                                                <GradientStop Color="Black" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Border.OpacityMask>
+                                    </Border>
                                 </Grid>
 
-                                <Grid Grid.Row="0" Name="DetailsTop" VerticalAlignment="Top">
+                                <Grid Grid.Row="0" Name="DetailsTop" VerticalAlignment="Top" Margin="{DynamicResource HeroCardMargin}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid Name="HeaderImagesGrid" Height="{Settings CalculatedGameDetailsIndentation}" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroMinHeight], FallbackValue={StaticResource HeroMinHeight}, TargetNullValue={StaticResource HeroMinHeight}}">
                                         <!-- Dune-style shade so the actions stay readable on bright artwork -->
-                                        <Border Background="Black" Opacity="{DynamicResource HeroShadeOpacity}" IsHitTestVisible="False">
+                                        <Border Background="Black" Opacity="{DynamicResource HeroShadeOpacity}" IsHitTestVisible="False"
+                                                CornerRadius="{DynamicResource HeroCardCornerRadius}">
                                             <Border.OpacityMask>
                                                 <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
                                                     <GradientStop Color="White" Offset="0" />
@@ -129,6 +177,8 @@
                                                 </LinearGradientBrush>
                                             </Border.OpacityMask>
                                         </Border>
+                                        <Border BorderBrush="White" BorderThickness="{DynamicResource HeroCardBorderThickness}" Opacity="{DynamicResource HeroCardBorderOpacity}"
+                                                CornerRadius="{DynamicResource HeroCardCornerRadius}" IsHitTestVisible="False" />
                                         <Border Panel.ZIndex="99">
                                             <Border.Style>
                                                 <Style TargetType="Border">
@@ -142,11 +192,33 @@
                                             </Border.Style>
                                             <ContentControl x:Name="ExtraMetadataLoader_VideoLoaderControlAlternative" Margin="10" HorizontalAlignment="Left"/>
                                         </Border>
-                                        <ContentControl x:Name="ExtraMetadataLoader_LogoLoaderControl"
-                                                        Margin="20,20,30,20" MaxWidth="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxWidth], FallbackValue={StaticResource GameLogoMaxWidth}, TargetNullValue={StaticResource GameLogoMaxWidth}}" MaxHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxHeight], FallbackValue={StaticResource GameLogoMaxHeight}, TargetNullValue={StaticResource GameLogoMaxHeight}}"
-                                                        Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewAllowUseOfLogos], FallbackValue={StaticResource DetailsViewAllowUseOfLogos}, TargetNullValue={StaticResource DetailsViewAllowUseOfLogos}}" 
-                                                        Style="{DynamicResource ControlPanelBoolTagToVisibility}"/>
+                                        <DockPanel>
+                                            <Border DockPanel.Dock="Left" Margin="20,0,0,0" Width="{Binding ElementName=HeroCoverHost, Path=ActualWidth}"
+                                                    Visibility="{Binding ElementName=HeroCoverHost, Path=Visibility}" />
+                                            <ContentControl x:Name="ExtraMetadataLoader_LogoLoaderControl"
+                                                            Margin="20,20,30,20" MaxWidth="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxWidth], FallbackValue={StaticResource GameLogoMaxWidth}, TargetNullValue={StaticResource GameLogoMaxWidth}}" MaxHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxHeight], FallbackValue={StaticResource GameLogoMaxHeight}, TargetNullValue={StaticResource GameLogoMaxHeight}}"
+                                                            Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewAllowUseOfLogos], FallbackValue={StaticResource DetailsViewAllowUseOfLogos}, TargetNullValue={StaticResource DetailsViewAllowUseOfLogos}}" 
+                                                            Style="{DynamicResource ControlPanelBoolTagToVisibility}"/>
+                                        </DockPanel>
 
+                                        <!-- Information band: room for the header cover on the left and for the buttons on the right (actions location 2) -->
+                                        <DockPanel VerticalAlignment="Bottom">
+                                        <Border x:Name="HeroBandCoverSpacer" DockPanel.Dock="Left" Margin="20,0,0,0"
+                                                Width="{Binding ElementName=HeroCoverHost, Path=ActualWidth}"
+                                                Visibility="{Binding ElementName=HeroCoverHost, Path=Visibility}" />
+                                        <Border x:Name="HeroBandActionsSpacer" DockPanel.Dock="Right" Margin="20,0,28,0"
+                                                Width="{Binding ElementName=HeroActionsHost, Path=ActualWidth}" Tag="{DynamicResource HeroActionsLocation}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                        </Border>
                                         <StackPanel Margin="20,0,10,20" VerticalAlignment="Bottom"
                                                     Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
                                             <StackPanel.RenderTransform>
@@ -5685,11 +5757,15 @@
                                                             <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
                                                                 <Setter Property="Visibility" Value="Collapsed" />
                                                             </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
+                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                            </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Border.Style>
                                             </Border>
                                         </StackPanel>
+                                        </DockPanel>
                                         <StackPanel Margin="20,20,0,0"
                                                     HorizontalAlignment="Left" VerticalAlignment="Top">
                                             <ContentControl x:Name="CheckLocalizations_PluginFlags" Height="30"
@@ -5738,7 +5814,8 @@
                                                 </Border.Effect>
                                             </Border>
                                             <Border Background="{DynamicResource BackdropGlass1}" Opacity="{DynamicResource HeaderBarGlassOpacity}"/>
-                                            <Border Padding="20,10,30,10" x:Name="HeaderRow" Background="{DynamicResource DetailsSectionBackgroundBrush}">
+                                            <Border Background="{DynamicResource DetailsSectionBackgroundBrush}" Opacity="{DynamicResource HeaderRowBackgroundOpacity}" IsHitTestVisible="False" />
+                                            <Border Padding="{DynamicResource HeaderRowPadding}" x:Name="HeaderRow" Background="Transparent">
                                                 <DockPanel>
                                                     <DockPanel.Resources>
                                                         <Style x:Key="RoundedProgressBar" TargetType="ProgressBar">
@@ -5765,6 +5842,20 @@
                                                             </Setter>
                                                         </Style>
                                                     </DockPanel.Resources>
+                                                    <!-- Room for the header cover when it goes over the tiles row -->
+                                                    <Border x:Name="HeaderCoverSpacer" DockPanel.Dock="Left" Margin="20,0,20,0"
+                                                            Width="{Binding ElementName=HeroCoverHost, Path=ActualWidth}">
+                                                        <Border.Style>
+                                                            <Style TargetType="Border">
+                                                                <Setter Property="Visibility" Value="{Binding ElementName=HeroCoverHost, Path=Visibility}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=HeroCoverPlacementProbe, Path=Tag}" Value="1">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                    </Border>
                                                     <Border x:Name="HeaderActionsSpacer" DockPanel.Dock="Left" Margin="0,0,10,0"
                                                             Width="{Binding ElementName=HeroActionsHost, Path=ActualWidth}"
                                                             Height="{Binding ElementName=HeroActionsHost, Path=ActualHeight}"
@@ -5801,16 +5892,19 @@
                                                 
                                                 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowLastPlayed], FallbackValue={StaticResource DetailsViewShowLastPlayed}, TargetNullValue={StaticResource DetailsViewShowLastPlayed}}">
-                                                    <DockPanel x:Name="PART_ElemLastPlayed" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                                                    <Border Style="{DynamicResource HeaderTile}">
+                                                    <DockPanel x:Name="PART_ElemLastPlayed" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0">
                                                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0">
                                                             <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCLastPlayed}"/>
                                                             <TextBlock x:Name="PART_TextLastActivity" Style="{DynamicResource HeaderTextBlock}"/>
                                                         </StackPanel>
                                                     </DockPanel>
+                                                    </Border>
                                                     </Grid>
 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowPlayTime], FallbackValue={StaticResource DetailsViewShowPlayTime}, TargetNullValue={StaticResource DetailsViewShowPlayTime}}">
-                                                    <DockPanel x:Name="PART_ElemPlayTime" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                                                    <Border Style="{DynamicResource HeaderTile}">
+                                                    <DockPanel x:Name="PART_ElemPlayTime" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0">
 
                                                         <Viewbox Height="25">
                                                             <Canvas Width="256" Height="256" Canvas.Left="0" Canvas.Top="0">
@@ -5834,10 +5928,12 @@
                                                             <TextBlock x:Name="PART_TextPlayTime" Style="{DynamicResource HeaderTextBlock}"/>
                                                         </StackPanel>
                                                     </DockPanel>
+                                                    </Border>
                                                     </Grid>
                                                 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowCompletionStatus], FallbackValue={StaticResource DetailsViewShowCompletionStatus}, TargetNullValue={StaticResource DetailsViewShowCompletionStatus}}">
-                                                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                                                    <Border Style="{DynamicResource HeaderTile}">
+                                                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0">
                                                         <StackPanel.Style>
                                                             <Style TargetType="StackPanel">
                                                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -5868,10 +5964,12 @@
                                                             </ContentControl.Resources>
                                                         </ContentControl>
                                                     </StackPanel>
+                                                    </Border>
                                                     </Grid>
                                                 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], FallbackValue={StaticResource DetailsViewShowAchievementsSummary}, TargetNullValue={StaticResource DetailsViewShowAchievementsSummary}}">
-                                                    <DockPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0"
+                                                    <Border Style="{DynamicResource HeaderTile}">
+                                                    <DockPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0"
                                                                Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                         <Viewbox Stretch="Uniform" Height="32" Margin="-2,3,-2,0">
                                                             <Viewbox.Style>
@@ -5981,10 +6079,12 @@
                                                             </DockPanel>
                                                         </StackPanel>
                                                     </DockPanel>
+                                                    </Border>
                                                     </Grid>
 
                                                     <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], FallbackValue={StaticResource HltbShowInHeaderBar}, TargetNullValue={StaticResource HltbShowInHeaderBar}}">
-                                                        <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,0,0"
+                                                    <Border Style="{DynamicResource HeaderTile}">
+                                                        <StackPanel DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0"
                                                                     Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat, FallbackValue=''}">
                                                             <StackPanel.Style>
                                                                 <Style TargetType="StackPanel">
@@ -6001,18 +6101,125 @@
                                                             <Label Style="{DynamicResource HeaderLabel}" Content="HowLongToBeat" />
                                                             <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=StackPanel}}" />
                                                         </StackPanel>
+                                                    </Border>
+                                                    </Grid>
+
+                                                    <!-- Critic and community scores -->
+                                                    <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowScoresTile], FallbackValue={StaticResource DetailsViewShowScoresTile}, TargetNullValue={StaticResource DetailsViewShowScoresTile}}">
+                                                        <Border Style="{DynamicResource HeaderTile}">
+                                                            <StackPanel VerticalAlignment="Center">
+                                                                <StackPanel.Style>
+                                                                    <Style TargetType="StackPanel">
+                                                                        <Style.Triggers>
+                                                                            <MultiDataTrigger>
+                                                                                <MultiDataTrigger.Conditions>
+                                                                                    <Condition Binding="{Binding Game.CriticScore}" Value="{x:Null}" />
+                                                                                    <Condition Binding="{Binding Game.CommunityScore}" Value="{x:Null}" />
+                                                                                </MultiDataTrigger.Conditions>
+                                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                            </MultiDataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </StackPanel.Style>
+                                                                <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCHNDTileScores}" />
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Game.CriticScore, TargetNullValue='-'}" />
+                                                                    <TextBlock Style="{DynamicResource HeaderTextBlock}" Text=" &#183; " />
+                                                                    <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Game.CommunityScore, TargetNullValue='-'}" />
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+
+                                                    <!-- Install size, installed games only -->
+                                                    <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInstallSizeTile], FallbackValue={StaticResource DetailsViewShowInstallSizeTile}, TargetNullValue={StaticResource DetailsViewShowInstallSizeTile}}">
+                                                        <Border Style="{DynamicResource HeaderTile}">
+                                                            <StackPanel VerticalAlignment="Center">
+                                                                <StackPanel.Style>
+                                                                    <Style TargetType="StackPanel">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Game.InstallSize}" Value="{x:Null}">
+                                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding Game.IsInstalled}" Value="False">
+                                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </StackPanel.Style>
+                                                                <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCInstallSizeLabel}" />
+                                                                <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Game.InstallSize, Converter={StaticResource NullableUlongBytesSizeToStringConverter}}" />
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+
+                                                    <!-- Average FPS (GameActivity) -->
+                                                    <Grid DockPanel.Dock="Left" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowFpsTile], FallbackValue={StaticResource DetailsViewShowFpsTile}, TargetNullValue={StaticResource DetailsViewShowFpsTile}}">
+                                                        <Border Style="{DynamicResource HeaderTile}">
+                                                            <StackPanel VerticalAlignment="Center" Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                <StackPanel.Style>
+                                                                    <Style TargetType="StackPanel">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                <Setter Property="Visibility" Value="Collapsed" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </StackPanel.Style>
+                                                                <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCHNDChipAvgFps}" />
+                                                                <TextBlock Style="{DynamicResource HeaderTextBlock}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=StackPanel}}" />
+                                                            </StackPanel>
+                                                        </Border>
                                                     </Grid>
 
                                                 </DockPanel>
                                             </Border>
                                         </Grid>
                                     </Grid>
-                                    <!-- Action buttons: in the hero (Dune) or in the header bar (Neon) -->
-                                    <Grid x:Name="HeroActionsHost" HorizontalAlignment="Left" Tag="{DynamicResource HeroActionsLocation}">
+                                    <!-- Cover in the header: over the card edge and the tiles row (0), inside the card (1) or hidden (2) -->
+                                    <FrameworkElement x:Name="HeroCoverPlacementProbe" Visibility="Collapsed" Tag="{DynamicResource HeroCoverPlacement}" />
+                                    <Grid x:Name="HeroCoverHost" HorizontalAlignment="Left" VerticalAlignment="Bottom" Panel.ZIndex="5"
+                                          Tag="{DynamicResource HeroCoverPlacement}">
                                         <Grid.Style>
                                             <Style TargetType="Grid">
                                                 <Setter Property="Grid.Row" Value="0" />
+                                                <Setter Property="Grid.RowSpan" Value="2" />
+                                                <Setter Property="Margin" Value="20,0,0,6" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
+                                                        <Setter Property="Grid.RowSpan" Value="1" />
+                                                        <Setter Property="Margin" Value="20,0,0,20" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Game.CoverImage}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+                                        <Border BorderBrush="#59FFFFFF" BorderThickness="2" CornerRadius="{DynamicResource HeroCoverCornerRadius}"
+                                                Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroCoverWidth], FallbackValue={StaticResource HeroCoverWidth}, TargetNullValue={StaticResource HeroCoverWidth}}"
+                                                Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroCoverHeight], FallbackValue={StaticResource HeroCoverHeight}, TargetNullValue={StaticResource HeroCoverHeight}}">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Game.CoverImageObjectCached}" Stretch="UniformToFill" />
+                                            </Border.Background>
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="30" ShadowDepth="10" Direction="270" Opacity="0.55" RenderingBias="Performance" />
+                                            </Border.Effect>
+                                        </Border>
+                                    </Grid>
+                                    <!-- Action buttons: in the hero under the chips (0), in the header bar (1) or at the right of the band (2) -->
+                                    <DockPanel x:Name="HeroActionsDock" Tag="{DynamicResource HeroActionsLocation}">
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Grid.Row" Value="0" />
                                                 <Setter Property="VerticalAlignment" Value="Bottom" />
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
                                                 <Setter Property="Margin" Value="20,0,0,20" />
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
@@ -6020,9 +6227,34 @@
                                                         <Setter Property="VerticalAlignment" Value="Center" />
                                                         <Setter Property="Margin" Value="20,10,0,10" />
                                                     </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
+                                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                                        <Setter Property="Margin" Value="0,0,28,22" />
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
-                                        </Grid.Style>
+                                        </DockPanel.Style>
+                                        <Border x:Name="HeroActionsCoverSpacer" DockPanel.Dock="Left" Margin="0,0,20,0"
+                                                Width="{Binding ElementName=HeroCoverHost, Path=ActualWidth}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Visibility" Value="{Binding ElementName=HeroCoverHost, Path=Visibility}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=HeroActionsDock, Path=Tag}" Value="2">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding ElementName=HeroActionsDock, Path=Tag}" Value="1" />
+                                                                <Condition Binding="{Binding ElementName=HeroCoverPlacementProbe, Path=Tag}" Value="1" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                        </Border>
+                                    <Grid x:Name="HeroActionsHost" HorizontalAlignment="Left">
                                         <Grid x:Name="HeroActions" HorizontalAlignment="Left" MinWidth="200"
                                               Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonWidth], FallbackValue={StaticResource HeroActionButtonWidth}, TargetNullValue={StaticResource HeroActionButtonWidth}}"
                                               Style="{DynamicResource HeroFadeInStyle}" AutomationProperties.HelpText="{Binding Game.Id, NotifyOnTargetUpdated=True}">
@@ -6077,6 +6309,7 @@
                                             </Grid>
                                         </Grid>
                                     </Grid>
+                                    </DockPanel>
                                 </Grid>
 
                                 <Grid Name="GameDetailsSection" Grid.Row="1">
@@ -6124,11 +6357,18 @@
                                                         <Border DockPanel.Dock="Left" Name="ContainerHeightBorder"
                                                                 Height="{Settings GameDetailsCoverHeight}" MinHeight="150"/>
 
-                                                        <Grid DockPanel.Dock="Left" Margin="0,0,15,0">
+                                                        <Grid DockPanel.Dock="Left" Margin="0,0,15,0" Tag="{DynamicResource InfoPanelStyleShowCover}">
                                                             <Grid.Style>
                                                                 <Style TargetType="Grid">
                                                                     <Setter Property="Visibility" Value="Visible" />
                                                                     <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="False" />
+                                                                                <Condition Binding="{Binding ElementName=HeroCoverHost, Path=Visibility}" Value="Visible" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                                        </MultiDataTrigger>
                                                                         <DataTrigger Binding="{Binding ElementName=PART_ImageCover, Path=Source}" Value="{x:Null}">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>

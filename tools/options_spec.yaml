@@ -24,6 +24,7 @@ strings:
   LOCHNDChipHltbCompletionist: {en: "100%", fr: "100 %"}
   LOCHNDChipLastSession: {en: Last session, fr: Dernière session}
   LOCHNDChipAvgFps: {en: Avg FPS, fr: FPS moy.}
+  LOCHNDTileScores: {en: 'Critics · Community', fr: 'Critiques · Communauté'}
   LOCHNDFavoriteButtonTooltip: {en: Favorite (ThemeExtras), fr: Favori (ThemeExtras)}
   LOCHNDHiddenButtonTooltip: {en: Hidden game (ThemeExtras), fr: Jeu masqué (ThemeExtras)}
   LOCHNDCollectorTooltip: {en: Collection level (PlayniteAchievements), fr: Niveau de collection (PlayniteAchievements)}
@@ -44,31 +45,199 @@ presets:
     fr: Style global
     options:
       - id: Default
-        en: Helium-Neon-Dune (Dune header, Neon information)
-        fr: Helium-Neon-Dune (en-tête Dune, infos Neon)
+        en: Helium-Neon-Dune 2.7 (rounded card, progressive blur, cover, tiles)
+        fr: Helium-Neon-Dune 2.7 (carte arrondie, flou progressif, jaquette, tuiles)
+      - id: Dune
+        en: Dune (rounded card, text chips, taller and stronger blur)
+        fr: Dune (carte arrondie, infos en texte, flou plus haut et plus fort)
+        files: [Presets/Chips/Text.xaml]
+        constants:
+          HeroShadeOpacity: 0.5
+          HeroBlurRadiusSoft: 14
+          HeroBlurRadius: 48
+          HeroBlurStart: 0.3
+          HeroBlurMid: 0.5
+          HeroBlurFull: 0.8
+      - id: Classic
+        en: Helium-Neon-Dune 2.5 (full-width artwork, frosted header bar)
+        fr: Helium-Neon-Dune 2.5 (image pleine largeur, barre en verre dépoli)
+        constants: &classic_look
+          HeroCardMargin: 0
+          HeroCardCornerRadius: 0
+          HeroCardBorderThickness: 0
+          HeroFadeStart: 0.75
+          HeroBlurOpacity: 0
+          HeroTintAccentOpacity: 0
+          HeroTintLightOpacity: 0
+          HeroCoverPlacement: 2
+          InfoPanelStyleShowCover: True
+          HeroShadeOpacity: 0.65
+          HeroActionsLocation: 0
+          HeaderBarBlurOpacity: 1
+          HeaderBarGlassOpacity: 1
+          HeaderRowBackgroundOpacity: 1
+          HeaderRowPadding: 20,10,30,10
+          HeaderTileBackgroundOpacity: 0
+          HeaderTileCornerRadius: 0
+          HeaderTilePadding: 0
+          HeaderTileMargin: 20,0,0,0
       - id: Neon
-        en: Neon classic (buttons in the header bar)
-        fr: Neon classique (boutons dans la barre)
+        en: Neon classic (full width, buttons in the header bar)
+        fr: Neon classique (pleine largeur, boutons dans la barre)
         files: [Presets/Buttons/Neon.xaml]
         constants:
+          <<: *classic_look
           HeroActionsLocation: 1
           HeroStyleShowInfoLine: False
           HeroShadeOpacity: 0.25
-      - id: Dune
-        en: Dune (large artwork, text chips, clear header bar)
-        fr: Dune (grande image, infos en texte, barre transparente)
+      - id: DuneClassic
+        en: Dune 2.5 (full width, large artwork, text chips, clear header bar)
+        fr: Dune 2.5 (pleine largeur, grande image, infos en texte, barre transparente)
         files: [Presets/Chips/Text.xaml]
         constants:
+          <<: *classic_look
           HeroShadeOpacity: 0.85
           HeaderBarBlurOpacity: 0
           HeaderBarGlassOpacity: 0
       - id: Minimal
-        en: Minimal (no chips, no header bar)
-        fr: Minimal (sans puces ni barre)
+        en: Minimal (card without chips or tiles)
+        fr: Minimal (carte sans puces ni tuiles)
         constants:
           HeroStyleShowInfoLine: False
           HeaderBarStyleVisible: False
           HeroShadeOpacity: 0.5
+
+  - group: HeroCard
+    en: Artwork header shape
+    fr: Forme de l'en-tête avec image
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Card
+        en: Rounded card (20 px corners)
+        fr: Carte arrondie (coins de 20 px)
+        constants: {HeroCardMargin: '20,16,20,0', HeroCardCornerRadius: 20, HeroCardBorderThickness: 1, HeroFadeStart: 1}
+      - id: Soft
+        en: Very rounded card, wide spacing (32 px)
+        fr: Carte très arrondie, espacée (32 px)
+        constants: {HeroCardMargin: '40,24,40,0', HeroCardCornerRadius: 32, HeroCardBorderThickness: 1, HeroFadeStart: 1}
+      - id: Tight
+        en: Slightly rounded card, close to the edges (10 px)
+        fr: Carte peu arrondie, près des bords (10 px)
+        constants: {HeroCardMargin: '8,8,8,0', HeroCardCornerRadius: 10, HeroCardBorderThickness: 1, HeroFadeStart: 1}
+      - id: Frameless
+        en: Rounded card without outline
+        fr: Carte arrondie sans contour
+        constants: {HeroCardMargin: '20,16,20,0', HeroCardCornerRadius: 20, HeroCardBorderThickness: 0, HeroFadeStart: 1}
+      - id: FullWidth
+        en: Full width, fading into the page (2.5)
+        fr: Pleine largeur, fondu dans la page (2.5)
+        constants: {HeroCardMargin: 0, HeroCardCornerRadius: 0, HeroCardBorderThickness: 0, HeroFadeStart: 0.75}
+
+  - group: HeroBlur
+    en: Progressive blur at the bottom of the artwork
+    fr: Flou progressif en bas de l'image
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: "Off"
+        en: Off (sharp artwork)
+        fr: Désactivé (image nette)
+        constants: {HeroBlurOpacity: 0}
+      - id: Light
+        en: Light
+        fr: Léger
+        constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 4, HeroBlurRadius: 14}
+      - id: Medium
+        en: Medium
+        fr: Moyen
+        constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 8, HeroBlurRadius: 28}
+      - id: Strong
+        en: Strong
+        fr: Fort
+        constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 14, HeroBlurRadius: 48}
+      - id: Extreme
+        en: Very strong (frosted glass)
+        fr: Très fort (verre dépoli)
+        constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 24, HeroBlurRadius: 80}
+
+  - group: HeroBlurHeight
+    en: Height of the blurred band
+    fr: Hauteur de la bande floutée
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Small
+        en: Small (bottom quarter)
+        fr: Petite (quart du bas)
+        constants: {HeroBlurStart: 0.6, HeroBlurMid: 0.75, HeroBlurFull: 0.92}
+      - id: Medium
+        en: Medium (bottom half)
+        fr: Moyenne (moitié du bas)
+        constants: {HeroBlurStart: 0.45, HeroBlurMid: 0.65, HeroBlurFull: 0.9}
+      - id: Large
+        en: Large (two thirds)
+        fr: Grande (deux tiers)
+        constants: {HeroBlurStart: 0.3, HeroBlurMid: 0.5, HeroBlurFull: 0.8}
+      - id: Full
+        en: Whole artwork, blurrier towards the bottom
+        fr: Toute l'image, de plus en plus floue vers le bas
+        constants: {HeroBlurStart: 0, HeroBlurMid: 0.35, HeroBlurFull: 0.7}
+
+  - group: HeroTint
+    en: Color over the blurred band
+    fr: Couleur sur la bande floutée
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: None
+        en: None (artwork colors)
+        fr: Aucune (couleurs de l'image)
+        constants: {HeroTintAccentOpacity: 0, HeroTintLightOpacity: 0}
+      - id: Accent
+        en: Accent color, light
+        fr: Couleur d'accent, légère
+        constants: {HeroTintAccentOpacity: 0.3, HeroTintLightOpacity: 0}
+      - id: AccentStrong
+        en: Accent color, strong
+        fr: Couleur d'accent, forte
+        constants: {HeroTintAccentOpacity: 0.55, HeroTintLightOpacity: 0}
+      - id: Frost
+        en: White frost
+        fr: Givre blanc
+        constants: {HeroTintAccentOpacity: 0, HeroTintLightOpacity: 0.12}
+      - id: AccentFrost
+        en: Accent color and frost
+        fr: Couleur d'accent et givre
+        constants: {HeroTintAccentOpacity: 0.25, HeroTintLightOpacity: 0.08}
+
+  - group: HeroCover
+    en: Cover in the artwork header
+    fr: Jaquette dans l'en-tête
+    options:
+      - id: Default
+        en: From the global style
+        fr: Selon le style global
+      - id: Overlap
+        en: Over the card edge and the tiles
+        fr: À cheval sur la carte et les tuiles
+        constants: {HeroCoverPlacement: 0, InfoPanelStyleShowCover: False}
+      - id: Inside
+        en: Inside the card
+        fr: Dans la carte
+        constants: {HeroCoverPlacement: 1, InfoPanelStyleShowCover: False}
+      - id: InsideKeepPanel
+        en: Inside the card, also in the information panel
+        fr: Dans la carte, et aussi dans le panneau d'informations
+        constants: {HeroCoverPlacement: 1, InfoPanelStyleShowCover: True}
+      - id: Hidden
+        en: Hidden (cover in the information panel only)
+        fr: Masquée (jaquette dans le panneau d'informations seulement)
+        constants: {HeroCoverPlacement: 2, InfoPanelStyleShowCover: True}
 
   - group: Buttons
     en: Play button style
@@ -101,9 +270,14 @@ presets:
       - id: Default
         en: From the global style
         fr: Selon le style global
+      - id: HeroRight
+        en: In the artwork, at the right of the information
+        fr: Dans l'image, à droite des informations
+        constants:
+          HeroActionsLocation: 2
       - id: Hero
-        en: In the artwork (Dune)
-        fr: Dans l'image (Dune)
+        en: In the artwork, under the chips (Dune)
+        fr: Dans l'image, sous les puces (Dune)
         constants:
           HeroActionsLocation: 0
       - id: HeaderBar
@@ -292,18 +466,34 @@ presets:
       - id: Default
         en: From the global style
         fr: Selon le style global
+      - id: Tiles
+        en: Tiles (rounded boxes under the card)
+        fr: Tuiles (cases arrondies sous la carte)
+        constants: &tiles_look {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, HeaderRowBackgroundOpacity: 0, HeaderRowPadding: '0,14,0,0',
+                                HeaderTileBackgroundOpacity: 0.08, HeaderTileCornerRadius: 14, HeaderTilePadding: '16,10,16,10',
+                                HeaderTileMargin: '0,0,12,0', HeaderBarStyleVisible: True}
+      - id: TilesOutline
+        en: Outlined tiles
+        fr: Tuiles à contour léger
+        constants: {<<: *tiles_look, HeaderTileBackgroundOpacity: 0.04, HeaderTileCornerRadius: 10}
+      - id: TilesCompact
+        en: Compact tiles
+        fr: Tuiles compactes
+        constants: {<<: *tiles_look, HeaderTilePadding: '10,6,10,6', HeaderTileMargin: '0,0,8,0', HeaderTileCornerRadius: 10, HeaderRowPadding: '0,10,0,0'}
       - id: Glass
-        en: Frosted glass
-        fr: Verre dépoli
-        constants: {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, HeaderBarStyleVisible: True}
+        en: Frosted glass bar
+        fr: Barre en verre dépoli
+        constants: &plain_bar {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, HeaderRowBackgroundOpacity: 1, HeaderRowPadding: '20,10,30,10',
+                               HeaderTileBackgroundOpacity: 0, HeaderTileCornerRadius: 0, HeaderTilePadding: 0, HeaderTileMargin: '20,0,0,0',
+                               HeaderBarStyleVisible: True}
       - id: Solid
-        en: Solid
-        fr: Opaque
-        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 1, HeaderBarStyleVisible: True}
+        en: Solid bar
+        fr: Barre opaque
+        constants: {<<: *plain_bar, HeaderBarBlurOpacity: 0}
       - id: Transparent
-        en: Transparent
-        fr: Transparente
-        constants: {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, HeaderBarStyleVisible: True}
+        en: Transparent bar
+        fr: Barre transparente
+        constants: {<<: *plain_bar, HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0}
       - id: Hidden
         en: Hidden
         fr: Masquée
@@ -449,6 +639,9 @@ variables:
   - {key: DetailsViewDisplayGameNameIfLogoVisible, en: Show the game name even with a logo, fr: Afficher le nom du jeu même avec un logo}
   - {key: GameLogoMaxWidth, range: [100, 2000], en: Logo maximum width, fr: Largeur maximale du logo}
   - {key: GameLogoMaxHeight, range: [50, 1000], en: Logo maximum height, fr: Hauteur maximale du logo}
+  - {key: HeroCoverWidth, range: [100, 500], en: Width of the cover in the header, fr: Largeur de la jaquette dans l'en-tête}
+  - {key: HeroCoverHeight, range: [150, 600], en: Height of the cover in the header, fr: Hauteur de la jaquette dans l'en-tête}
+  - {key: HeroCoverCornerRadius, range: [0, 40], en: Cover corner rounding, fr: Arrondi de la jaquette}
 
   - header: HeroChips
     en: Details view - information chips
@@ -540,6 +733,9 @@ variables:
   - {key: DetailsViewShowInfoButton, en: Information panel button, fr: Bouton du panneau d'informations}
   - {key: DetailsViewShowUserRating, en: Your rating with stars (ThemeExtras), fr: Votre note en étoiles (ThemeExtras)}
   - {key: HltbShowInHeaderBar, en: HowLongToBeat main story time, fr: Durée HowLongToBeat (histoire)}
+  - {key: DetailsViewShowScoresTile, en: Critic and community scores, fr: Notes des critiques et de la communauté}
+  - {key: DetailsViewShowInstallSizeTile, en: Install size, fr: Taille installée}
+  - {key: DetailsViewShowFpsTile, en: Average FPS (GameActivity), fr: FPS moyen (GameActivity)}
   - {key: HeaderButtonSize, range: [20, 56], en: Size of the header bar buttons, fr: Taille des boutons de la barre}
 
   - header: DetailsInfo
@@ -904,7 +1100,9 @@ tips:
   LinkIconSize: {en: 'Size of the link icons (favicons).', fr: 'Taille des icônes de liens (favicons).'}
   TopPanelHeight: {en: 'Height of the bar at the top of the window.', fr: 'Hauteur de la barre en haut de la fenêtre.'}
   ShowNavigationButtons: {en: 'Back and forward buttons. Need ThemeExtras.', fr: 'Boutons précédent et suivant. Demandent ThemeExtras.'}
-
-# Settings panel: one panel with a page list on the left, generated into the Details view
-# (opened by the section gears) and into both top panels (opened by the workshop button).
-# Booleans become switches, Doubles with a range become sliders.
+  HeroCoverWidth: {en: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork header" list.', fr: 'Jaquette affichée en bas à gauche de la carte. Sa place se règle dans la liste « Jaquette dans l''en-tête ».'}
+  HeroCoverHeight: {en: 'A 2:3 ratio (230 x 345) fits most covers.', fr: 'Un rapport 2:3 (230 x 345) convient à la plupart des jaquettes.'}
+  HeroCoverCornerRadius: {en: 'Applies after a Playnite restart.', fr: 'S''applique après un redémarrage de Playnite.'}
+  DetailsViewShowScoresTile: {en: 'Critic score and community score, for example 89 · 80. Hidden when the game has neither.', fr: 'Note des critiques et de la communauté, par exemple 89 · 80. Masquée si le jeu n''a aucune des deux.'}
+  DetailsViewShowInstallSizeTile: {en: 'Disk space of installed games, from the Playnite install size scan.', fr: 'Place sur le disque des jeux installés, d''après le calcul de taille de Playnite.'}
+  DetailsViewShowFpsTile: {en: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.', fr: 'FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.'}

@@ -138,19 +138,54 @@
     <sys:Double x:Key="HeroActionButtonHeight">40</sys:Double>
     <sys:Double x:Key="HeroActionButtonWidth">252</sys:Double>
     <sys:Double x:Key="HeroMinHeight">400</sys:Double>
-    <sys:Double x:Key="HeroShadeOpacity">0.65</sys:Double>
-    <sys:Int32 x:Key="HeroActionsLocation">0</sys:Int32>
+    <sys:Double x:Key="HeroShadeOpacity">0.35</sys:Double>
+    <sys:Int32 x:Key="HeroActionsLocation">2</sys:Int32>
     <sys:Double x:Key="HeroInfoLineMaxWidth">900</sys:Double>
     <CornerRadius x:Key="HeroButtonCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="HeroChipCornerRadius">12</CornerRadius>
+    <sys:Double x:Key="HeroCoverWidth">230</sys:Double>
+    <sys:Double x:Key="HeroCoverHeight">345</sys:Double>
+    <CornerRadius x:Key="HeroCoverCornerRadius">12</CornerRadius>
+    <sys:Boolean x:Key="DetailsViewShowScoresTile">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowInstallSizeTile">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowFpsTile">True</sys:Boolean>
     <x:Null x:Key="HeroBackgroundEffect" />
     <sys:Boolean x:Key="DetailsViewShowHeaderBar">True</sys:Boolean>
-    <sys:Double x:Key="HeaderBarBlurOpacity">1</sys:Double>
-    <sys:Double x:Key="HeaderBarGlassOpacity">1</sys:Double>
+    <sys:Double x:Key="HeaderBarBlurOpacity">0</sys:Double>
+    <sys:Double x:Key="HeaderBarGlassOpacity">0</sys:Double>
     <sys:Boolean x:Key="HeroShowInfoLine">True</sys:Boolean>
     <!-- Set by presets only (presets must not set variables) -->
     <sys:Boolean x:Key="HeroStyleShowInfoLine">True</sys:Boolean>
     <sys:Boolean x:Key="HeaderBarStyleVisible">True</sys:Boolean>
+    <!-- Artwork card (2.7): spacing around the card, corners and outline -->
+    <Thickness x:Key="HeroCardMargin">20,16,20,0</Thickness>
+    <CornerRadius x:Key="HeroCardCornerRadius">20</CornerRadius>
+    <Thickness x:Key="HeroCardBorderThickness">1</Thickness>
+    <sys:Double x:Key="HeroCardBorderOpacity">0.16</sys:Double>
+    <!-- Where the artwork starts fading into the page (1 = no fade, used by the card) -->
+    <sys:Double x:Key="HeroFadeStart">1</sys:Double>
+    <!-- Progressive blur: two blurred copies of the artwork faded in between Start, Mid and Full (0 = top, 1 = bottom) -->
+    <sys:Double x:Key="HeroBlurOpacity">1</sys:Double>
+    <sys:Double x:Key="HeroBlurRadiusSoft">8</sys:Double>
+    <sys:Double x:Key="HeroBlurRadius">28</sys:Double>
+    <sys:Double x:Key="HeroBlurStart">0.45</sys:Double>
+    <sys:Double x:Key="HeroBlurMid">0.65</sys:Double>
+    <sys:Double x:Key="HeroBlurFull">0.9</sys:Double>
+    <!-- Tint over the blurred band: accent color and white frost -->
+    <sys:Double x:Key="HeroTintAccentOpacity">0.3</sys:Double>
+    <sys:Double x:Key="HeroTintLightOpacity">0</sys:Double>
+    <!-- Cover in the header: 0 = over the card edge and the tiles row, 1 = inside the card, 2 = hidden -->
+    <sys:Int32 x:Key="HeroCoverPlacement">0</sys:Int32>
+    <sys:Boolean x:Key="InfoPanelStyleShowCover">False</sys:Boolean>
+    <!-- Header bar items drawn as tiles (transparent tile and 20 px gap = classic bar) -->
+    <sys:Double x:Key="HeaderRowBackgroundOpacity">0</sys:Double>
+    <Thickness x:Key="HeaderRowPadding">0,14,0,0</Thickness>
+    <sys:Double x:Key="HeaderTileBackgroundOpacity">0.08</sys:Double>
+    <!-- Tile color follows the text color of the color profile -->
+    <SolidColorBrush x:Key="HeaderTileBackground" Color="{DynamicResource TextColor}" Opacity="{DynamicResource HeaderTileBackgroundOpacity}" />
+    <CornerRadius x:Key="HeaderTileCornerRadius">14</CornerRadius>
+    <Thickness x:Key="HeaderTilePadding">16,10,16,10</Thickness>
+    <Thickness x:Key="HeaderTileMargin">0,0,12,0</Thickness>
     <sys:Boolean x:Key="HeroShowReleaseDate">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowPlatforms">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowSource">True</sys:Boolean>
@@ -225,6 +260,7 @@
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100%</sys:String>
     <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
     <sys:String x:Key="LOCHNDChipAvgFps">Avg FPS</sys:String>
+    <sys:String x:Key="LOCHNDTileScores">Critics · Community</sys:String>
     <sys:String x:Key="LOCHNDFavoriteButtonTooltip">Favorite (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDHiddenButtonTooltip">Hidden game (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDCollectorTooltip">Collection level (PlayniteAchievements)</sys:String>
@@ -304,6 +340,19 @@
     <Style x:Key="SectionToggleGrid" TargetType="Grid">
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Header bar item drawn as a tile; hides itself when the item inside is collapsed-->
+    <Style x:Key="HeaderTile" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource HeaderTileBackground}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource HeaderTileCornerRadius}" />
+        <Setter Property="Padding" Value="{DynamicResource HeaderTilePadding}" />
+        <Setter Property="Margin" Value="{DynamicResource HeaderTileMargin}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Child.Visibility}" Value="Collapsed">
                 <Setter Property="Visibility" Value="Collapsed" />
             </DataTrigger>
         </Style.Triggers>

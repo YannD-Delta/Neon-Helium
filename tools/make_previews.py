@@ -182,6 +182,163 @@ def scene(chips_style="pills", buttons_style="dune", actions="hero", bar="glass"
     return img
 
 
+def vertical_mask(size, start, end, peak=255):
+    """L mask: 0 above `start`, rising to `peak` at `end` (fractions of the height)."""
+    w, h = size
+    mask = Image.new("L", size, 0)
+    d = ImageDraw.Draw(mask)
+    for y in range(h):
+        t = y / max(1, h - 1)
+        if t <= start:
+            v = 0
+        elif t >= end:
+            v = peak
+        else:
+            v = int(peak * (t - start) / max(1e-6, end - start))
+        d.line([(0, y), (w, y)], fill=v)
+    return mask
+
+
+BLUR_LEVELS = {"off": None, "light": (1, 3), "medium": (2, 6), "strong": (3, 10), "extreme": (5, 16)}
+BLUR_HEIGHTS = {"small": (0.6, 0.75, 0.92), "medium": (0.45, 0.65, 0.9), "large": (0.3, 0.5, 0.8), "full": (0.0, 0.35, 0.7)}
+CARD_SHAPES = {"card": (10, 8, 10, True), "soft": (18, 12, 16, True), "tight": (4, 4, 5, True),
+               "frameless": (10, 8, 10, False), "full": (0, 0, 0, False)}
+
+
+def tile_row(d, x, y, style, actions_inside=False):
+    """Row of information tiles (or the classic bar) under the card; returns the row height."""
+    if style == "hidden":
+        return 0
+    labels = [("TIME", "1h 51"), ("LAST", "Thu"), ("STATUS", "Playing"), ("HLTB", "20h"),
+              ("ACHIEV.", "12/40"), ("SCORES", "89 · 80"), ("SIZE", "2.3 GB")]
+    if actions_inside:
+        buttons(d, x, y + 5, "dune", 0.85)
+        x += 130
+    if style in ("glass", "solid", "transparent"):
+        if style == "solid":
+            d.rectangle((0, y, W, y + BAR_H), fill=(26, 31, 40, 255))
+        elif style == "glass":
+            d.rectangle((0, y, W, y + BAR_H), fill=(36, 44, 56, 200))
+        for label, value in labels[:5]:
+            if x > W - 40:
+                break
+            d.text((x, y + 4), label, font=font(6), fill=TEXT_DIM + (255,))
+            d.text((x, y + 12), value, font=font(8, True), fill=TEXT + (255,))
+            x += 50
+        return BAR_H
+    pad, gap, radius, alpha = {"tiles": (5, 5, 5, 26), "outline": (5, 5, 4, 12), "compact": (3, 3, 4, 26)}[style]
+    h = 28 if style != "compact" else 22
+    for label, value in labels:
+        f = font(8, True)
+        w = max(int(d.textlength(value, font=f)), int(d.textlength(label, font=font(6)))) + pad * 2 + 2
+        if x + w > W - 8:
+            break
+        rounded(d, (x, y + 4, x + w, y + 4 + h), radius, fill=TEXT + (alpha,),
+                outline=(255, 255, 255, 40) if style == "outline" else None)
+        d.text((x + pad, y + 4 + pad - 1), label, font=font(6), fill=TEXT_DIM + (255,))
+        d.text((x + pad, y + 4 + pad + 7), value, font=f, fill=TEXT + (255,))
+        x += w + gap
+    return h + 6
+
+
+def card_scene(shape="card", blur="medium", blur_height="medium", tint=(0.3, 0.0), cover=0, tiles="tiles",
+               actions=2, chips_style="pills", shade_level=0.35, art_blur=0, valign="center", halign="left",
+               info_blur=0.25, info_cover=False):
+    """The 2.7 Details view: rounded artwork card, progressive blur band, cover and tiles.
+
+    Drawn on an RGB image so the translucent fills blend (Pillow replaces RGBA pixels instead)."""
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img, "RGBA")
+    d.rectangle((0, 0, W, HERO_TOP), fill=TOP + (255,))
+    for i in range(5):
+        d.ellipse((8 + i * 16, 5, 16 + i * 16, 13), fill=TEXT_DIM + (255,))
+    rounded(d, (110, 4, 230, 14), 4, fill=(40, 46, 56, 255))
+
+    side, top, radius, outline = CARD_SHAPES[shape]
+    cx0, cy0, cx1, cy1 = side, HERO_TOP + top, W - side, 146
+    cw, ch = cx1 - cx0, cy1 - cy0
+    card = artwork(cw, ch, blur=art_blur, valign=valign, halign=halign).convert("RGBA")
+    if BLUR_LEVELS[blur]:
+        soft, strong = BLUR_LEVELS[blur]
+        start, mid, full = BLUR_HEIGHTS[blur_height]
+        card = Image.composite(card.filter(ImageFilter.GaussianBlur(soft)), card, vertical_mask(card.size, start, mid))
+        card = Image.composite(card.filter(ImageFilter.GaussianBlur(strong)), card, vertical_mask(card.size, mid, full))
+    start = BLUR_HEIGHTS[blur_height][0]
+    for color, opacity in ((ACCENT, tint[0]), ((255, 255, 255), tint[1])):
+        if opacity > 0:
+            layer = Image.new("RGBA", card.size, color + (0,))
+            layer.putalpha(vertical_mask(card.size, start, 1.0, int(255 * opacity)))
+            card.alpha_composite(layer)
+    shade(card, 0, ch, shade_level)
+    mask = Image.new("L", card.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, cw - 1, ch - 1), radius=radius, fill=255)
+    if shape == "full":
+        mask = vertical_mask(card.size, 0.75, 1.0)
+        mask = Image.eval(mask, lambda v: 255 - v)
+    img.paste(card, (cx0, cy0), mask)
+    if outline:
+        rounded(d, (cx0, cy0, cx1 - 1, cy1 - 1), radius, outline=(255, 255, 255, 45))
+
+    row_y = cy1 + 2
+    cover_w, cover_h = 46, 69
+    left = cx0 + 10
+    # tiles first: the cover goes over the tiles row, like Panel.ZIndex in the view
+    tiles_x = (left + cover_w + 12) if (cover == 0 and tiles != "hidden") else left
+    row_h = tile_row(d, tiles_x, row_y, tiles, actions_inside=(actions == 1))
+    if cover != 2:
+        bottom = row_y + 30 if (cover == 0 and tiles != "hidden") else cy1 - 8
+        box = (left, bottom - cover_h, left + cover_w, bottom)
+        rounded(d, (box[0] + 2, box[1] + 5, box[2] + 2, box[3] + 5), 6, fill=(0, 0, 0, 110))
+        cov = Image.new("RGBA", (cover_w, cover_h))
+        cd = ImageDraw.Draw(cov)
+        for yy in range(cover_h):
+            t = yy / cover_h
+            cd.line([(0, yy), (cover_w, yy)], fill=(int(90 - 50 * t), int(61 - 30 * t), int(134 - 80 * t), 255))
+        cd.text((6, 28), "COVER", font=font(7, True), fill=(220, 210, 240, 255))
+        cmask = Image.new("L", cov.size, 0)
+        ImageDraw.Draw(cmask).rounded_rectangle((0, 0, cover_w - 1, cover_h - 1), 6, fill=255)
+        img.paste(cov, box[:2], cmask)
+        rounded(d, box, 6, outline=(255, 255, 255, 120), width=1)
+        band_x = box[2] + 10
+    else:
+        band_x = left + 4
+
+    title_y = cy1 - (70 if chips_style != "hidden" else 52)
+    if actions == 0:
+        title_y -= 18
+    d.text((band_x, title_y), "GAME TITLE", font=font(17, True), fill=(255, 255, 255, 255))
+    y = title_y + 24
+    d.text((band_x, y), "Studio · 2018 · PC · Steam", font=font(7), fill=(235, 235, 245, 230))
+    y += 12
+    if chips_style != "hidden":
+        chips(d, band_x, y, chips_style, count=4 if actions == 2 else 6)
+        y += 18
+    if actions == 0:
+        buttons(d, band_x, y + 2, "dune", 0.9)
+    elif actions == 2:
+        buttons(d, cx1 - 150, cy1 - 30, "dune", 1.0)
+
+    info_y = row_y + max(row_h, 34 if cover == 0 and tiles != "hidden" else 0) + 6
+    if info_blur > 0:
+        band = img.crop((cx0, cy0, cx1, cy1)).resize((W, H - info_y)).filter(ImageFilter.GaussianBlur(14))
+        band = Image.blend(Image.new("RGBA", band.size, BG + (255,)), band.convert("RGBA"), min(1.0, info_blur * 1.4))
+        img.paste(band.convert("RGB"), (0, info_y))
+        d = ImageDraw.Draw(img, "RGBA")
+    x = 10
+    if info_cover:
+        rounded(d, (x, info_y + 6, x + 34, info_y + 56), 4, fill=(60, 90, 140, 255))
+        x += 42
+    widths = (3, 3, 2)
+    total = W - x - 10 - 16
+    for i, part in enumerate(widths):
+        w = int(total * part / sum(widths))
+        rounded(d, (x, info_y + 6, x + w, H - 8), 6, fill=(255, 255, 255, 14))
+        for j in range(4):
+            d.rectangle((x + 8, info_y + 14 + j * 9, x + w - 12 - (j % 2) * 20, info_y + 17 + j * 9), fill=TEXT_DIM + (170,))
+        x += w + 8
+    return img
+
+
 def closeup(draw_fn, background="art"):
     img = Image.new("RGBA", (W, 110), BG + (255,))
     if background == "art":
@@ -318,20 +475,46 @@ def color_profile_previews():
 PRESETS = {
     "TopPanel_Default": lambda: top_panel("neon"),
     "TopPanel_Dune": lambda: top_panel("dune"),
-    "Style_Default": lambda: scene(),
+    "Style_Default": lambda: card_scene(),
+    "Style_Dune": lambda: card_scene(blur="strong", blur_height="large", chips_style="text", shade_level=0.5),
+    "Style_Classic": lambda: scene(),
     "Style_Neon": lambda: scene(chips_style="hidden", buttons_style="neon", actions="bar", shade_level=0.25),
-    "Style_Dune": lambda: scene(chips_style="text", bar="transparent", shade_level=0.85, hero_bottom=165),
-    "Style_Minimal": lambda: scene(chips_style="hidden", bar="hidden", shade_level=0.5),
+    "Style_DuneClassic": lambda: scene(chips_style="text", bar="transparent", shade_level=0.85, hero_bottom=165),
+    "Style_Minimal": lambda: card_scene(chips_style="hidden", tiles="hidden", shade_level=0.5),
+    "HeroCard_Card": lambda: card_scene(shape="card"),
+    "HeroCard_Soft": lambda: card_scene(shape="soft"),
+    "HeroCard_Tight": lambda: card_scene(shape="tight"),
+    "HeroCard_Frameless": lambda: card_scene(shape="frameless"),
+    "HeroCard_FullWidth": lambda: card_scene(shape="full"),
+    "HeroBlur_Off": lambda: card_scene(blur="off"),
+    "HeroBlur_Light": lambda: card_scene(blur="light"),
+    "HeroBlur_Medium": lambda: card_scene(blur="medium"),
+    "HeroBlur_Strong": lambda: card_scene(blur="strong"),
+    "HeroBlur_Extreme": lambda: card_scene(blur="extreme"),
+    "HeroBlurHeight_Small": lambda: card_scene(blur="strong", blur_height="small"),
+    "HeroBlurHeight_Medium": lambda: card_scene(blur="strong", blur_height="medium"),
+    "HeroBlurHeight_Large": lambda: card_scene(blur="strong", blur_height="large"),
+    "HeroBlurHeight_Full": lambda: card_scene(blur="strong", blur_height="full"),
+    "HeroTint_None": lambda: card_scene(tint=(0, 0)),
+    "HeroTint_Accent": lambda: card_scene(tint=(0.3, 0)),
+    "HeroTint_AccentStrong": lambda: card_scene(tint=(0.55, 0)),
+    "HeroTint_Frost": lambda: card_scene(tint=(0, 0.12)),
+    "HeroTint_AccentFrost": lambda: card_scene(tint=(0.25, 0.08)),
+    "HeroCover_Overlap": lambda: card_scene(cover=0),
+    "HeroCover_Inside": lambda: card_scene(cover=1),
+    "HeroCover_InsideKeepPanel": lambda: card_scene(cover=1, info_cover=True),
+    "HeroCover_Hidden": lambda: card_scene(cover=2, info_cover=True),
     "Buttons_Dune": lambda: closeup(lambda d: buttons(d, 40, 30, "dune", 2.2)),
     "Buttons_Neon": lambda: closeup(lambda d: buttons(d, 40, 30, "neon", 2.2)),
     "Buttons_Pill": lambda: closeup(lambda d: buttons(d, 40, 30, "pill", 2.2)),
     "Buttons_Glass": lambda: closeup(lambda d: buttons(d, 40, 30, "glass", 2.2)),
-    "ActionsLocation_Hero": lambda: scene(),
-    "ActionsLocation_HeaderBar": lambda: scene(actions="bar"),
+    "ActionsLocation_HeroRight": lambda: card_scene(actions=2),
+    "ActionsLocation_Hero": lambda: card_scene(actions=0),
+    "ActionsLocation_HeaderBar": lambda: card_scene(actions=1),
     "Chips_Pills": lambda: closeup(lambda d: chips(d, 20, 48, "pills")),
     "Chips_Text": lambda: closeup(lambda d: chips(d, 20, 48, "text")),
     "Chips_Outline": lambda: closeup(lambda d: chips(d, 20, 48, "outline")),
-    "Chips_Hidden": lambda: scene(chips_style="hidden"),
+    "Chips_Hidden": lambda: card_scene(chips_style="hidden"),
     "Accent_Default": lambda: accent((26, 159, 255)),
     "Accent_Amber": lambda: accent((255, 181, 71)),
     "Accent_Violet": lambda: accent((167, 139, 250)),
@@ -341,27 +524,30 @@ PRESETS = {
     "Accent_Cyan": lambda: accent((34, 211, 238)),
     "Accent_Gold": lambda: accent((250, 204, 21)),
     "Accent_Linkin": lambda: accent((230, 57, 70)),
-    "HeroShade_None": lambda: scene(shade_level=0),
-    "HeroShade_Light": lambda: scene(shade_level=0.35),
-    "HeroShade_Medium": lambda: scene(shade_level=0.65),
-    "HeroShade_Strong": lambda: scene(shade_level=0.85),
-    "HeroBackground_Default": lambda: scene(),
-    "HeroBackground_Soft": lambda: scene(blur=4),
-    "HeroBackground_Strong": lambda: scene(blur=10),
-    "BackgroundVertical_Default": lambda: scene(valign="center"),
-    "BackgroundVertical_Top": lambda: scene(valign="top"),
-    "BackgroundVertical_Bottom": lambda: scene(valign="bottom"),
-    "BackgroundHorizontal_Default": lambda: scene(halign="left"),
-    "BackgroundHorizontal_Center": lambda: scene(halign="center"),
-    "BackgroundHorizontal_Right": lambda: scene(halign="right"),
-    "HeaderBar_Glass": lambda: scene(bar="glass"),
-    "HeaderBar_Solid": lambda: scene(bar="solid"),
-    "HeaderBar_Transparent": lambda: scene(bar="transparent"),
-    "HeaderBar_Hidden": lambda: scene(bar="hidden"),
-    "BackgroundBlur_Default": lambda: scene(info_blur=0.25),
-    "BackgroundBlur_Off": lambda: scene(info_blur=0),
-    "BackgroundBlur_Light": lambda: scene(info_blur=0.15),
-    "BackgroundBlur_Strong": lambda: scene(info_blur=0.5),
+    "HeroShade_None": lambda: card_scene(shade_level=0),
+    "HeroShade_Light": lambda: card_scene(shade_level=0.35),
+    "HeroShade_Medium": lambda: card_scene(shade_level=0.65),
+    "HeroShade_Strong": lambda: card_scene(shade_level=0.85),
+    "HeroBackground_Default": lambda: card_scene(),
+    "HeroBackground_Soft": lambda: card_scene(art_blur=4),
+    "HeroBackground_Strong": lambda: card_scene(art_blur=10),
+    "BackgroundVertical_Default": lambda: card_scene(valign="center"),
+    "BackgroundVertical_Top": lambda: card_scene(valign="top"),
+    "BackgroundVertical_Bottom": lambda: card_scene(valign="bottom"),
+    "BackgroundHorizontal_Default": lambda: card_scene(halign="left"),
+    "BackgroundHorizontal_Center": lambda: card_scene(halign="center"),
+    "BackgroundHorizontal_Right": lambda: card_scene(halign="right"),
+    "HeaderBar_Tiles": lambda: card_scene(tiles="tiles"),
+    "HeaderBar_TilesOutline": lambda: card_scene(tiles="outline"),
+    "HeaderBar_TilesCompact": lambda: card_scene(tiles="compact"),
+    "HeaderBar_Glass": lambda: card_scene(tiles="glass"),
+    "HeaderBar_Solid": lambda: card_scene(tiles="solid"),
+    "HeaderBar_Transparent": lambda: card_scene(tiles="transparent"),
+    "HeaderBar_Hidden": lambda: card_scene(tiles="hidden"),
+    "BackgroundBlur_Default": lambda: card_scene(info_blur=0.25),
+    "BackgroundBlur_Off": lambda: card_scene(info_blur=0),
+    "BackgroundBlur_Light": lambda: card_scene(info_blur=0.15),
+    "BackgroundBlur_Strong": lambda: card_scene(info_blur=0.5),
 }
 
 

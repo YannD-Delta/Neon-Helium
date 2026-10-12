@@ -1,5 +1,16 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.7
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.7/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_7.pthm
+    Changelog:
+      - "Artwork card: rounded corners, progressive blur towards the bottom with an accent tint, logo, information, chips and buttons in the blurred band"
+      - "Cover in the bottom-left corner of the card, over the edge and the tiles row; the information panel hides its own cover meanwhile"
+      - "Header bar items drawn as tiles, with new tiles for critic and community scores, install size and average FPS"
+      - "New Theme Options lists with previews: header shape, blur strength, blur height, tint, cover place; new tile looks and a button place at the right of the information"
+      - "Theme Options is the only settings window: the top panel gear and the section gears open it (ThemeExtras), the custom settings panel is gone"
+      - "Helium-Neon-Dune 2.5 and Dune 2.5 styles bring back the full-width artwork"
   - Version: 2.5.3
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-12
