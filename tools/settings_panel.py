@@ -141,7 +141,8 @@ class Panel:
             if page.get("kind") == "chips":
                 body = self.chips_page(page)
             elif page.get("kind") == "colors":
-                body = self.colors_page()
+                body = "\n".join([self.colors_page()] + [self.card(self.loc_key("PanelCard", page["id"], str(i)), g["items"])
+                                                          for i, g in enumerate(page.get("groups", []))])
             else:
                 body = "\n".join(self.card(self.loc_key("PanelCard", page["id"], str(i)), g["items"])
                                  for i, g in enumerate(page["groups"]))
@@ -170,7 +171,11 @@ class Panel:
         none_radio = ""
         if host == "details":
             none_radio = (f'\n<RadioButton x:Name="{self.name("PageNone")}" GroupName="{group}" Visibility="Collapsed" IsChecked="True" />')
-        return f'''<Border Style="{{DynamicResource HndPanelFrame}}">
+        return f'''<Grid Width="{opt('SettingsPanelWidth')}" Height="{opt('SettingsPanelHeight')}">
+<!-- look (Theme Options list "Settings panel"): profile popup colors under an optional dark or glass overlay -->
+<Border Background="{{DynamicResource PopupBackgroundBrush}}" CornerRadius="{{DynamicResource SettingsPanelCornerRadius}}"
+        Opacity="{{DynamicResource SettingsPanelProfileOpacity}}" />
+<Border Style="{{DynamicResource HndPanelFrame}}">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
             <ToggleButton DockPanel.Dock="Right" Style="{{DynamicResource HndPanelClose}}" ToolTip="{{DynamicResource LOCHNDPanelClose}}"
@@ -190,7 +195,8 @@ class Panel:
             </Grid>
         </ScrollViewer>
     </DockPanel>
-</Border>''', [p[0] for p in pages]
+</Border>
+</Grid>''', [p[0] for p in pages]
 
     def details_host(self):
         frame, ids = self.frame("details", f"{{Binding IsChecked, ElementName={self.name('PageNone')}, Mode=TwoWay}}", False)

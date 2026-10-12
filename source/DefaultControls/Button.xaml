@@ -600,15 +600,18 @@
     </Style>
 
 
+    <!-- Theme Options row hidden because the settings panel shows that setting (Variable Style in options.yaml) -->
+    <Style x:Key="HndHiddenOption" TargetType="{x:Type DockPanel}">
+        <Setter Property="Visibility" Value="Collapsed" />
+    </Style>
+
     <!-- Settings panel (tools/settings_panel.py) -->
     <Style x:Key="HndPanelFrame" TargetType="{x:Type Border}">
-        <Setter Property="Width" Value="900" />
-        <Setter Property="Height" Value="680" />
         <Setter Property="Padding" Value="20,16,14,16" />
-        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SettingsPanelCornerRadius}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
-        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SettingsPanelOverlayBrush}" />
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect Color="Black" BlurRadius="24" ShadowDepth="0" Opacity="0.6" RenderingBias="Performance" />

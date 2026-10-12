@@ -97,6 +97,10 @@
     <sys:String x:Key="LOCHNDPresetAccentCyan">Cyan</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentGold">Or</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentLinkin">Rouge Hybrid (Linkin Park)</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLook">Aspect du panneau de réglages</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookDefault">Couleurs du profil</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookDark">Sombre</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookGlass">Verre (transparent)</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimations">Animations</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimationsDefault">Douces</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimationsFast">Rapides</sys:String>
@@ -130,6 +134,7 @@
     <sys:String x:Key="LOCHNDPresetBackgroundBlurOff">Désactivé</sys:String>
     <sys:String x:Key="LOCHNDPresetBackgroundBlurLight">Léger</sys:String>
     <sys:String x:Key="LOCHNDPresetBackgroundBlurStrong">Fort</sys:String>
+    <sys:String x:Key="LOCHNDHeaderPanelNote">La plupart des réglages sont dans le panneau du thème : engrenage de chaque section, ou bouton atelier de la barre du haut</sys:String>
     <sys:String x:Key="LOCHNDHeaderTopPanel">Barre du haut et barre latérale</sys:String>
     <sys:String x:Key="LOCHNDOptShowNavigationButtons">Afficher les boutons de navigation</sys:String>
     <sys:String x:Key="LOCHNDTipShowNavigationButtons">Boutons précédent et suivant. Demandent ThemeExtras.</sys:String>
@@ -147,6 +152,8 @@
     <sys:String x:Key="LOCHNDOptTopPanelAutoHide">Masquer la barre du haut jusqu'au passage de la souris</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelAutoHide">La barre du haut se réduit à une fine bande et revient au passage de la souris.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelAutoHide1">  ↳ La barre du haut se réduit à une fine bande et revient au passage de la souris.</sys:String>
+    <sys:String x:Key="LOCHNDOptSettingsPanelWidth">Largeur du panneau de réglages</sys:String>
+    <sys:String x:Key="LOCHNDOptSettingsPanelHeight">Hauteur du panneau de réglages</sys:String>
     <sys:String x:Key="LOCHNDOptSidebarAutoHide">Masquer la barre latérale jusqu'au passage de la souris</sys:String>
     <sys:String x:Key="LOCHNDTipSidebarAutoHide">La barre latérale se réduit à une fine bande et revient au passage de la souris. Barre à gauche ou à droite seulement.</sys:String>
     <sys:String x:Key="LOCHNDCaptionSidebarAutoHide1">  ↳ La barre latérale se réduit à une fine bande et revient au passage de la souris.</sys:String>
@@ -543,7 +550,8 @@
     <sys:String x:Key="LOCHNDPanelCardLayout0">Sections</sys:String>
     <sys:String x:Key="LOCHNDPanelPageTopPanel">Barre du haut</sys:String>
     <sys:String x:Key="LOCHNDPanelCardTopPanel0">Barre du haut et barre latérale</sys:String>
-    <sys:String x:Key="LOCHNDPanelPageColors">Couleurs</sys:String>
+    <sys:String x:Key="LOCHNDPanelPageColors">Couleurs et panneau</sys:String>
+    <sys:String x:Key="LOCHNDPanelCardColors0">Ce panneau</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionNotes">Notes</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionCategories">Catégories</sys:String>
@@ -608,7 +616,7 @@
     <sys:String x:Key="LOCHNDPanelGroupActivity">Activité</sys:String>
     <sys:String x:Key="LOCHNDPanelPreview">Aperçu (en direct)</sys:String>
     <sys:String x:Key="LOCHNDPanelBreakTip">Retour à la ligne avant cette puce</sys:String>
-    <sys:String x:Key="LOCHNDPanelColorsText">Le profil de couleurs et l'accent sont des menus déroulants dans les réglages de Theme Options et demandent un redémarrage. ThemeModifier modifie les couleurs une par une, et ses couleurs enregistrées passent avant le profil.</sys:String>
+    <sys:String x:Key="LOCHNDPanelColorsText">Le profil de couleurs, l'accent et l'aspect de ce panneau (couleurs du profil, sombre, verre) sont des menus déroulants dans les réglages de Theme Options et demandent un redémarrage. ThemeModifier modifie les couleurs une par une, et ses couleurs enregistrées passent avant le profil.</sys:String>
     <sys:String x:Key="LOCHNDPanelSections">Sections</sys:String>
     <sys:String x:Key="LOCHNDPanelClose">Fermer</sys:String>
 </ResourceDictionary>

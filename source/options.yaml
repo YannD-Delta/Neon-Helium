@@ -438,6 +438,39 @@ Presets:
                     HoverColor:
                         Type: Color
                         Value: '#780000'
+    PanelLook:
+        Name: 'Settings panel look'
+        LocKey: LOCHNDPresetPanelLook
+        Presets:
+            Default:
+                Name: 'Colors of the color profile'
+                LocKey: LOCHNDPresetPanelLookDefault
+                NeedRestart: True
+            Dark:
+                Name: 'Dark'
+                LocKey: LOCHNDPresetPanelLookDark
+                NeedRestart: True
+                Constants:
+                    SettingsPanelProfileOpacity:
+                        Type: Double
+                        Value: '0'
+                    SettingsPanelOverlayBrush:
+                        Type: SolidColorBrush
+                        Value: '#F20D1014'
+            Glass:
+                Name: 'Glass (see-through)'
+                LocKey: LOCHNDPresetPanelLookGlass
+                NeedRestart: True
+                Constants:
+                    SettingsPanelProfileOpacity:
+                        Type: Double
+                        Value: '0.72'
+                    SettingsPanelOverlayBrush:
+                        Type: SolidColorBrush
+                        Value: '#33000000'
+                    SettingsPanelCornerRadius:
+                        Type: CornerRadius
+                        Value: '16'
     Animations:
         Name: 'Animations'
         LocKey: LOCHNDPresetAnimations
@@ -654,6 +687,11 @@ Presets:
                         Value: '0.5'
 
 Variables:
+    HeaderPanelNote:
+        Title: 'Most settings are in the theme panel: gear on each section, or the workshop button in the top panel'
+        LocKey: LOCHNDHeaderPanelNote
+        Type: Header
+        Style: HndHiddenOption
     HeaderTopPanel:
         Title: 'Top panel and sidebar'
         LocKey: LOCHNDHeaderTopPanel
@@ -663,71 +701,106 @@ Variables:
         LocKey: LOCHNDOptShowNavigationButtons
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Back and forward buttons. Need ThemeExtras.'
     CaptionShowNavigationButtons1:
         Title: '  ↳ Back and forward buttons.'
         LocKey: LOCHNDCaptionShowNavigationButtons1
         Type: Header
+        Style: HndHiddenOption
     CaptionShowNavigationButtons2:
         Title: '  ↳ Need ThemeExtras.'
         LocKey: LOCHNDCaptionShowNavigationButtons2
         Type: Header
+        Style: HndHiddenOption
     TopPanelShowThemeSettingsButtons:
         Title: 'Theme settings and colors buttons (ThemeExtras)'
         LocKey: LOCHNDOptTopPanelShowThemeSettingsButtons
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Buttons for Theme Options and ThemeModifier. Need ThemeExtras. The workshop button stays.'
     CaptionTopPanelShowThemeSettingsButtons1:
         Title: '  ↳ Buttons for Theme Options and ThemeModifier.'
         LocKey: LOCHNDCaptionTopPanelShowThemeSettingsButtons1
         Type: Header
+        Style: HndHiddenOption
     CaptionTopPanelShowThemeSettingsButtons2:
         Title: '  ↳ Need ThemeExtras.'
         LocKey: LOCHNDCaptionTopPanelShowThemeSettingsButtons2
         Type: Header
+        Style: HndHiddenOption
     CaptionTopPanelShowThemeSettingsButtons3:
         Title: '  ↳ The workshop button stays.'
         LocKey: LOCHNDCaptionTopPanelShowThemeSettingsButtons3
         Type: Header
+        Style: HndHiddenOption
     TopPanelShowCollectorLevel:
         Title: 'Collection level badge (PlayniteAchievements)'
         LocKey: LOCHNDOptTopPanelShowCollectorLevel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Collection level of your library, with its progress. Click to open the achievements overview.'
     CaptionTopPanelShowCollectorLevel1:
         Title: '  ↳ Collection level of your library, with its progress.'
         LocKey: LOCHNDCaptionTopPanelShowCollectorLevel1
         Type: Header
+        Style: HndHiddenOption
     CaptionTopPanelShowCollectorLevel2:
         Title: '  ↳ Click to open the achievements overview.'
         LocKey: LOCHNDCaptionTopPanelShowCollectorLevel2
         Type: Header
+        Style: HndHiddenOption
     TopPanelAutoHide:
         Title: 'Hide the top panel until the mouse comes over it'
         LocKey: LOCHNDOptTopPanelAutoHide
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'The top panel shrinks to a thin strip and comes back when the mouse is over it.'
     CaptionTopPanelAutoHide1:
         Title: '  ↳ The top panel shrinks to a thin strip and comes back when the mouse is over it.'
         LocKey: LOCHNDCaptionTopPanelAutoHide1
         Type: Header
+        Style: HndHiddenOption
+    SettingsPanelWidth:
+        Title: 'Settings panel width'
+        LocKey: LOCHNDOptSettingsPanelWidth
+        Type: Double
+        Default: '900'
+        Style: HndHiddenOption
+        Slider:
+            Min: '700'
+            Max: '1400'
+            Step: '1'
+    SettingsPanelHeight:
+        Title: 'Settings panel height'
+        LocKey: LOCHNDOptSettingsPanelHeight
+        Type: Double
+        Default: '680'
+        Style: HndHiddenOption
+        Slider:
+            Min: '500'
+            Max: '1000'
+            Step: '1'
     SidebarAutoHide:
         Title: 'Hide the sidebar until the mouse comes over it'
         LocKey: LOCHNDOptSidebarAutoHide
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.'
     CaptionSidebarAutoHide1:
         Title: '  ↳ The sidebar shrinks to a thin strip and comes back when the mouse is over it.'
         LocKey: LOCHNDCaptionSidebarAutoHide1
         Type: Header
+        Style: HndHiddenOption
     CaptionSidebarAutoHide2:
         Title: '  ↳ Left or right sidebar only.'
         LocKey: LOCHNDCaptionSidebarAutoHide2
         Type: Header
+        Style: HndHiddenOption
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
@@ -742,6 +815,7 @@ Variables:
         LocKey: LOCHNDOptTopPanelHeight
         Type: Double
         Default: '50'
+        Style: HndHiddenOption
         Description: 'Height of the bar at the top of the window.'
         Slider:
             Min: '36'
@@ -751,6 +825,7 @@ Variables:
         Title: '  ↳ Height of the bar at the top of the window.'
         LocKey: LOCHNDCaptionTopPanelHeight1
         Type: Header
+        Style: HndHiddenOption
     SidebarItemSize:
         Title: 'Sidebar icon size'
         LocKey: LOCHNDOptSidebarItemSize
@@ -769,6 +844,7 @@ Variables:
         LocKey: LOCHNDOptHeroMinHeight
         Type: Double
         Default: '400'
+        Style: HndHiddenOption
         Description: 'Minimum height of the artwork header at the top of the Details view.'
         Slider:
             Min: '300'
@@ -778,11 +854,13 @@ Variables:
         Title: '  ↳ Minimum height of the artwork header at the top of the Details view.'
         LocKey: LOCHNDCaptionHeroMinHeight1
         Type: Header
+        Style: HndHiddenOption
     HeroActionButtonWidth:
         Title: 'Width of the button row'
         LocKey: LOCHNDOptHeroActionButtonWidth
         Type: Double
         Default: '252'
+        Style: HndHiddenOption
         Description: 'Total width of the Play, Edit and Favorite row.'
         Slider:
             Min: '200'
@@ -792,11 +870,13 @@ Variables:
         Title: '  ↳ Total width of the Play, Edit and Favorite row.'
         LocKey: LOCHNDCaptionHeroActionButtonWidth1
         Type: Header
+        Style: HndHiddenOption
     HeroActionButtonHeight:
         Title: 'Height of the buttons'
         LocKey: LOCHNDOptHeroActionButtonHeight
         Type: Double
         Default: '40'
+        Style: HndHiddenOption
         Description: 'Height of the Play button and of the square buttons next to it.'
         Slider:
             Min: '28'
@@ -806,6 +886,7 @@ Variables:
         Title: '  ↳ Height of the Play button and of the square buttons next to it.'
         LocKey: LOCHNDCaptionHeroActionButtonHeight1
         Type: Header
+        Style: HndHiddenOption
     HeroButtonCornerRadius:
         Title: 'Button corner rounding'
         LocKey: LOCHNDOptHeroButtonCornerRadius
@@ -820,92 +901,111 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowEditButton
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Pencil button that opens the game editor.'
     CaptionDetailsViewShowEditButton1:
         Title: '  ↳ Pencil button that opens the game editor.'
         LocKey: LOCHNDCaptionDetailsViewShowEditButton1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowFavoriteButton:
         Title: 'Show the favorite button (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowFavoriteButton
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Star button that adds or removes the game from favorites. Needs ThemeExtras.'
     CaptionDetailsViewShowFavoriteButton1:
         Title: '  ↳ Star button that adds or removes the game from favorites.'
         LocKey: LOCHNDCaptionDetailsViewShowFavoriteButton1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewShowFavoriteButton2:
         Title: '  ↳ Needs ThemeExtras.'
         LocKey: LOCHNDCaptionDetailsViewShowFavoriteButton2
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowHiddenButton:
         Title: 'Show the hide button (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowHiddenButton
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.'
     CaptionDetailsViewShowHiddenButton1:
         Title: '  ↳ Eye button that hides the game from the library or shows it again.'
         LocKey: LOCHNDCaptionDetailsViewShowHiddenButton1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewShowHiddenButton2:
         Title: '  ↳ Needs ThemeExtras.'
         LocKey: LOCHNDCaptionDetailsViewShowHiddenButton2
         Type: Header
+        Style: HndHiddenOption
     HeroShowSteamShortcuts:
         Title: 'Steam shortcuts button (Steam Shortcuts)'
         LocKey: LOCHNDOptHeroShowSteamShortcuts
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.'
     CaptionHeroShowSteamShortcuts1:
         Title: '  ↳ Button with the Steam client, store, community and guides pages.'
         LocKey: LOCHNDCaptionHeroShowSteamShortcuts1
         Type: Header
+        Style: HndHiddenOption
     CaptionHeroShowSteamShortcuts2:
         Title: '  ↳ Needs Steam Shortcuts.'
         LocKey: LOCHNDCaptionHeroShowSteamShortcuts2
         Type: Header
+        Style: HndHiddenOption
     HeroShowUpdateStatus:
         Title: 'Update available indicator (Game Update Status)'
         LocKey: LOCHNDOptHeroShowUpdateStatus
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Dot that shows when a Steam or Epic update is available. Needs Game Update Status.'
     CaptionHeroShowUpdateStatus1:
         Title: '  ↳ Dot that shows when a Steam or Epic update is available.'
         LocKey: LOCHNDCaptionHeroShowUpdateStatus1
         Type: Header
+        Style: HndHiddenOption
     CaptionHeroShowUpdateStatus2:
         Title: '  ↳ Needs Game Update Status.'
         LocKey: LOCHNDCaptionHeroShowUpdateStatus2
         Type: Header
+        Style: HndHiddenOption
     DetailsViewAllowUseOfLogos:
         Title: 'Use game logos (Extra Metadata Loader)'
         LocKey: LOCHNDOptDetailsViewAllowUseOfLogos
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Shows the game logo instead of its name when Extra Metadata Loader has one.'
     CaptionDetailsViewAllowUseOfLogos1:
         Title: '  ↳ Shows the game logo instead of its name when Extra Metadata Loader has one.'
         LocKey: LOCHNDCaptionDetailsViewAllowUseOfLogos1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewDisplayGameNameIfLogoVisible:
         Title: 'Show the game name even with a logo'
         LocKey: LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'Keeps the game name under the logo.'
     CaptionDetailsViewDisplayGameNameIfLogoVisible1:
         Title: '  ↳ Keeps the game name under the logo.'
         LocKey: LOCHNDCaptionDetailsViewDisplayGameNameIfLogoVisible1
         Type: Header
+        Style: HndHiddenOption
     GameLogoMaxWidth:
         Title: 'Logo maximum width'
         LocKey: LOCHNDOptGameLogoMaxWidth
         Type: Double
         Default: '1000'
+        Style: HndHiddenOption
         Description: 'Largest width of the game logo (Extra Metadata Loader).'
         Slider:
             Min: '100'
@@ -915,11 +1015,13 @@ Variables:
         Title: '  ↳ Largest width of the game logo (Extra Metadata Loader).'
         LocKey: LOCHNDCaptionGameLogoMaxWidth1
         Type: Header
+        Style: HndHiddenOption
     GameLogoMaxHeight:
         Title: 'Logo maximum height'
         LocKey: LOCHNDOptGameLogoMaxHeight
         Type: Double
         Default: '400'
+        Style: HndHiddenOption
         Description: 'Largest height of the game logo (Extra Metadata Loader).'
         Slider:
             Min: '50'
@@ -929,6 +1031,7 @@ Variables:
         Title: '  ↳ Largest height of the game logo (Extra Metadata Loader).'
         LocKey: LOCHNDCaptionGameLogoMaxHeight1
         Type: Header
+        Style: HndHiddenOption
     HeaderHeroChips:
         Title: 'Details view - information chips'
         LocKey: LOCHNDHeaderHeroChips
@@ -938,20 +1041,24 @@ Variables:
         LocKey: LOCHNDOptHeroShowInfoLine
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.'
     CaptionHeroShowInfoLine1:
         Title: '  ↳ The chips under the title (date, platforms, genres, times...).'
         LocKey: LOCHNDCaptionHeroShowInfoLine1
         Type: Header
+        Style: HndHiddenOption
     CaptionHeroShowInfoLine2:
         Title: '  ↳ The gear at the start of the chips line sets each chip.'
         LocKey: LOCHNDCaptionHeroShowInfoLine2
         Type: Header
+        Style: HndHiddenOption
     HeroInfoLineMaxWidth:
         Title: 'Maximum width of the chips line'
         LocKey: LOCHNDOptHeroInfoLineMaxWidth
         Type: Double
         Default: '900'
+        Style: HndHiddenOption
         Description: 'Width after which the chips wrap to a new line.'
         Slider:
             Min: '300'
@@ -961,6 +1068,7 @@ Variables:
         Title: '  ↳ Width after which the chips wrap to a new line.'
         LocKey: LOCHNDCaptionHeroInfoLineMaxWidth1
         Type: Header
+        Style: HndHiddenOption
     HeroChipCornerRadius:
         Title: 'Chip corner rounding'
         LocKey: LOCHNDOptHeroChipCornerRadius
@@ -975,209 +1083,251 @@ Variables:
         LocKey: LOCHNDOptHeroShowReleaseDate
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowPlatforms:
         Title: 'Platforms'
         LocKey: LOCHNDOptHeroShowPlatforms
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowSource:
         Title: 'Source'
         LocKey: LOCHNDOptHeroShowSource
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowGenres:
         Title: 'Genres'
         LocKey: LOCHNDOptHeroShowGenres
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowDevelopers:
         Title: 'Developers'
         LocKey: LOCHNDOptHeroShowDevelopers
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroShowCategories:
         Title: 'Categories'
         LocKey: LOCHNDOptHeroShowCategories
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroShowFeatures:
         Title: 'Features'
         LocKey: LOCHNDOptHeroShowFeatures
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroShowTags:
         Title: 'Tags'
         LocKey: LOCHNDOptHeroShowTags
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroShowCompletionStatus:
         Title: 'Completion status'
         LocKey: LOCHNDOptHeroShowCompletionStatus
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowCommunityScore:
         Title: 'Community score'
         LocKey: LOCHNDOptHeroShowCommunityScore
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowHltb:
         Title: 'HowLongToBeat times'
         LocKey: LOCHNDOptHeroShowHltb
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowAchievements:
         Title: 'Achievements (PlayniteAchievements)'
         LocKey: LOCHNDOptHeroShowAchievements
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowLatestAchievement:
         Title: 'Latest unlocked achievement (PlayniteAchievements)'
         LocKey: LOCHNDOptHeroShowLatestAchievement
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowRareAchievements:
         Title: 'Rare and ultra rare achievements (PlayniteAchievements)'
         LocKey: LOCHNDOptHeroShowRareAchievements
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroShowLastSession:
         Title: 'Last session length (GameActivity)'
         LocKey: LOCHNDOptHeroShowLastSession
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowRecentActivity:
         Title: 'Recent activity (GameActivity)'
         LocKey: LOCHNDOptHeroShowRecentActivity
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroShowAvgFps:
         Title: 'Average FPS (GameActivity)'
         LocKey: LOCHNDOptHeroShowAvgFps
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.'
     CaptionHeroShowAvgFps1:
         Title: '  ↳ Average FPS over all recorded sessions.'
         LocKey: LOCHNDCaptionHeroShowAvgFps1
         Type: Header
+        Style: HndHiddenOption
     CaptionHeroShowAvgFps2:
         Title: '  ↳ Needs GameActivity with FPS logging.'
         LocKey: LOCHNDCaptionHeroShowAvgFps2
         Type: Header
+        Style: HndHiddenOption
     HeroChipsOpenSections:
         Title: 'Clicking a chip opens or folds its section'
         LocKey: LOCHNDOptHeroChipsOpenSections
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.'
     CaptionHeroChipsOpenSections1:
         Title: '  ↳ A click on a chip opens or folds the matching section below.'
         LocKey: LOCHNDCaptionHeroChipsOpenSections1
         Type: Header
+        Style: HndHiddenOption
     CaptionHeroChipsOpenSections2:
         Title: '  ↳ Times, achievements, activity, genres and tags.'
         LocKey: LOCHNDCaptionHeroChipsOpenSections2
         Type: Header
+        Style: HndHiddenOption
     HeroChipBreakReleaseDate:
         Title: 'New line before: Release date'
         LocKey: LOCHNDOptHeroChipBreakReleaseDate
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakPlatforms:
         Title: 'New line before: Platforms'
         LocKey: LOCHNDOptHeroChipBreakPlatforms
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakSource:
         Title: 'New line before: Source'
         LocKey: LOCHNDOptHeroChipBreakSource
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakGenres:
         Title: 'New line before: Genres'
         LocKey: LOCHNDOptHeroChipBreakGenres
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakCategories:
         Title: 'New line before: Categories'
         LocKey: LOCHNDOptHeroChipBreakCategories
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakFeatures:
         Title: 'New line before: Features'
         LocKey: LOCHNDOptHeroChipBreakFeatures
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakTags:
         Title: 'New line before: Tags'
         LocKey: LOCHNDOptHeroChipBreakTags
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakDevelopers:
         Title: 'New line before: Developers'
         LocKey: LOCHNDOptHeroChipBreakDevelopers
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakCompletionStatus:
         Title: 'New line before: Completion status'
         LocKey: LOCHNDOptHeroChipBreakCompletionStatus
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakCommunityScore:
         Title: 'New line before: Community score'
         LocKey: LOCHNDOptHeroChipBreakCommunityScore
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakHltbMain:
         Title: 'New line before: HowLongToBeat main story'
         LocKey: LOCHNDOptHeroChipBreakHltbMain
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakHltbExtra:
         Title: 'New line before: HowLongToBeat main + extra'
         LocKey: LOCHNDOptHeroChipBreakHltbExtra
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakHltbCompletionist:
         Title: 'New line before: HowLongToBeat 100%'
         LocKey: LOCHNDOptHeroChipBreakHltbCompletionist
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakAchievements:
         Title: 'New line before: Achievements'
         LocKey: LOCHNDOptHeroChipBreakAchievements
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakLatestAchievement:
         Title: 'New line before: Latest achievement'
         LocKey: LOCHNDOptHeroChipBreakLatestAchievement
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakRareAchievements:
         Title: 'New line before: Rare achievements'
         LocKey: LOCHNDOptHeroChipBreakRareAchievements
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakLastSession:
         Title: 'New line before: Last session'
         LocKey: LOCHNDOptHeroChipBreakLastSession
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeroChipBreakRecentActivity:
         Title: 'New line before: Recent activity'
         LocKey: LOCHNDOptHeroChipBreakRecentActivity
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipBreakAvgFps:
         Title: 'New line before: Average FPS'
         LocKey: LOCHNDOptHeroChipBreakAvgFps
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeroChipsOrderGame:
         Title: 'Order: date, platforms, source'
         LocKey: LOCHNDOptHeroChipsOrderGame
         Type: Double
         Default: '0'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1187,6 +1337,7 @@ Variables:
         LocKey: LOCHNDOptHeroChipsOrderClassification
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1196,6 +1347,7 @@ Variables:
         LocKey: LOCHNDOptHeroChipsOrderStudio
         Type: Double
         Default: '2'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1205,6 +1357,7 @@ Variables:
         LocKey: LOCHNDOptHeroChipsOrderHltb
         Type: Double
         Default: '3'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1214,6 +1367,7 @@ Variables:
         LocKey: LOCHNDOptHeroChipsOrderAchievements
         Type: Double
         Default: '4'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1223,6 +1377,7 @@ Variables:
         LocKey: LOCHNDOptHeroChipsOrderActivity
         Type: Double
         Default: '5'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '5'
@@ -1232,92 +1387,111 @@ Variables:
         LocKey: LOCHNDOptHltbShowOnCover
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'HowLongToBeat main story time in a corner of the cover.'
     CaptionHltbShowOnCover1:
         Title: '  ↳ HowLongToBeat main story time in a corner of the cover.'
         LocKey: LOCHNDCaptionHltbShowOnCover1
         Type: Header
+        Style: HndHiddenOption
     AchievementsShowOnCover:
         Title: 'Achievements on the cover'
         LocKey: LOCHNDOptAchievementsShowOnCover
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Unlocked and total achievements in a corner of the cover.'
     CaptionAchievementsShowOnCover1:
         Title: '  ↳ Unlocked and total achievements in a corner of the cover.'
         LocKey: LOCHNDCaptionAchievementsShowOnCover1
         Type: Header
+        Style: HndHiddenOption
     LibraryListShowHltb:
         Title: 'HowLongToBeat time in the game list'
         LocKey: LOCHNDOptLibraryListShowHltb
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'HowLongToBeat time at the end of each game in the list. Turn on "view item" in the HowLongToBeat settings.'
     CaptionLibraryListShowHltb1:
         Title: '  ↳ HowLongToBeat time at the end of each game in the list.'
         LocKey: LOCHNDCaptionLibraryListShowHltb1
         Type: Header
+        Style: HndHiddenOption
     CaptionLibraryListShowHltb2:
         Title: '  ↳ Turn on "view item" in the HowLongToBeat settings.'
         LocKey: LOCHNDCaptionLibraryListShowHltb2
         Type: Header
+        Style: HndHiddenOption
     LibraryListShowAchievements:
         Title: 'Achievements in the game list'
         LocKey: LOCHNDOptLibraryListShowAchievements
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Unlocked and total achievements at the end of each game in the list. Can slow down very large libraries.'
     CaptionLibraryListShowAchievements1:
         Title: '  ↳ Unlocked and total achievements at the end of each game in the list.'
         LocKey: LOCHNDCaptionLibraryListShowAchievements1
         Type: Header
+        Style: HndHiddenOption
     CaptionLibraryListShowAchievements2:
         Title: '  ↳ Can slow down very large libraries.'
         LocKey: LOCHNDCaptionLibraryListShowAchievements2
         Type: Header
+        Style: HndHiddenOption
     GridCoverShowHltb:
         Title: 'HowLongToBeat time on Grid view covers'
         LocKey: LOCHNDOptGridCoverShowHltb
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'HowLongToBeat time on each cover of the Grid view.'
     CaptionGridCoverShowHltb1:
         Title: '  ↳ HowLongToBeat time on each cover of the Grid view.'
         LocKey: LOCHNDCaptionGridCoverShowHltb1
         Type: Header
+        Style: HndHiddenOption
     GridCoverShowAchievements:
         Title: 'Achievements on Grid view covers'
         LocKey: LOCHNDOptGridCoverShowAchievements
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Achievements on each cover of the Grid view.'
     CaptionGridCoverShowAchievements1:
         Title: '  ↳ Achievements on each cover of the Grid view.'
         LocKey: LOCHNDCaptionGridCoverShowAchievements1
         Type: Header
+        Style: HndHiddenOption
     HeaderTabs:
         Title: 'Details view - tabs'
         LocKey: LOCHNDHeaderTabs
         Type: Header
+        Style: HndHiddenOption
     DetailsViewTabsMode:
         Title: 'Show the sections in tabs'
         LocKey: LOCHNDOptDetailsViewTabsMode
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.'
     CaptionDetailsViewTabsMode1:
         Title: '  ↳ Tabs above the sections: All, About, Media, Stats, Community.'
         LocKey: LOCHNDCaptionDetailsViewTabsMode1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewTabsMode2:
         Title: '  ↳ The gear of each section sets its tab, 0 = every tab.'
         LocKey: LOCHNDCaptionDetailsViewTabsMode2
         Type: Header
+        Style: HndHiddenOption
     DetailsViewTabNotes:
         Title: 'Tab: Notes'
         LocKey: LOCHNDOptDetailsViewTabNotes
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1327,6 +1501,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabGenres
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1336,6 +1511,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabCategories
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1345,6 +1521,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabFeatures
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1354,6 +1531,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabTags
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1363,6 +1541,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabNewsViewer
         Type: Double
         Default: '4'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1372,6 +1551,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabVideo
         Type: Double
         Default: '2'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1381,6 +1561,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabGameActivity
         Type: Double
         Default: '3'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1390,6 +1571,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabCheckDlc
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1399,6 +1581,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabGameRelations
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1408,6 +1591,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabWeb
         Type: Double
         Default: '4'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1417,6 +1601,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabHowLongToBeat
         Type: Double
         Default: '3'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1426,6 +1611,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabAchievements
         Type: Double
         Default: '3'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1435,6 +1621,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabSteamScreenshots
         Type: Double
         Default: '2'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1444,6 +1631,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabVndb
         Type: Double
         Default: '1'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1453,6 +1641,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabScreenshotsVisualizer
         Type: Double
         Default: '2'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1462,6 +1651,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabReviewViewer
         Type: Double
         Default: '4'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1471,6 +1661,7 @@ Variables:
         LocKey: LOCHNDOptDetailsViewTabScreenshotUtilities
         Type: Double
         Default: '2'
+        Style: HndHiddenOption
         Slider:
             Min: '0'
             Max: '4'
@@ -1479,99 +1670,119 @@ Variables:
         Title: 'Details view - header bar'
         LocKey: LOCHNDHeaderHeaderBar
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowHeaderBar:
         Title: 'Show the header bar'
         LocKey: LOCHNDOptDetailsViewShowHeaderBar
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'The bar under the artwork with the last played date, time played and completion status.'
     CaptionDetailsViewShowHeaderBar1:
         Title: '  ↳ The bar under the artwork with the last played date, time played and completion status.'
         LocKey: LOCHNDCaptionDetailsViewShowHeaderBar1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowLastPlayed:
         Title: 'Last played'
         LocKey: LOCHNDOptDetailsViewShowLastPlayed
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Date of the last session.'
     CaptionDetailsViewShowLastPlayed1:
         Title: '  ↳ Date of the last session.'
         LocKey: LOCHNDCaptionDetailsViewShowLastPlayed1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowPlayTime:
         Title: 'Time played'
         LocKey: LOCHNDOptDetailsViewShowPlayTime
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Total time played.'
     CaptionDetailsViewShowPlayTime1:
         Title: '  ↳ Total time played.'
         LocKey: LOCHNDCaptionDetailsViewShowPlayTime1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowCompletionStatus:
         Title: 'Completion status'
         LocKey: LOCHNDOptDetailsViewShowCompletionStatus
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Completion status, which ThemeExtras lets you change from here.'
     CaptionDetailsViewShowCompletionStatus1:
         Title: '  ↳ Completion status, which ThemeExtras lets you change from here.'
         LocKey: LOCHNDCaptionDetailsViewShowCompletionStatus1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowAchievementsSummary:
         Title: 'Achievements summary'
         LocKey: LOCHNDOptDetailsViewShowAchievementsSummary
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Unlocked achievements with a progress bar. Needs PlayniteAchievements.'
     CaptionDetailsViewShowAchievementsSummary1:
         Title: '  ↳ Unlocked achievements with a progress bar.'
         LocKey: LOCHNDCaptionDetailsViewShowAchievementsSummary1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewShowAchievementsSummary2:
         Title: '  ↳ Needs PlayniteAchievements.'
         LocKey: LOCHNDCaptionDetailsViewShowAchievementsSummary2
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowInfoButton:
         Title: 'Information panel button'
         LocKey: LOCHNDOptDetailsViewShowInfoButton
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Button that shows or hides the information panel (cover, description, details).'
     CaptionDetailsViewShowInfoButton1:
         Title: '  ↳ Button that shows or hides the information panel (cover, description, details).'
         LocKey: LOCHNDCaptionDetailsViewShowInfoButton1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowUserRating:
         Title: 'Your rating with stars (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowUserRating
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'Your rating as clickable stars. Needs ThemeExtras.'
     CaptionDetailsViewShowUserRating1:
         Title: '  ↳ Your rating as clickable stars.'
         LocKey: LOCHNDCaptionDetailsViewShowUserRating1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewShowUserRating2:
         Title: '  ↳ Needs ThemeExtras.'
         LocKey: LOCHNDCaptionDetailsViewShowUserRating2
         Type: Header
+        Style: HndHiddenOption
     HltbShowInHeaderBar:
         Title: 'HowLongToBeat main story time'
         LocKey: LOCHNDOptHltbShowInHeaderBar
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'HowLongToBeat main story time in the bar.'
     CaptionHltbShowInHeaderBar1:
         Title: '  ↳ HowLongToBeat main story time in the bar.'
         LocKey: LOCHNDCaptionHltbShowInHeaderBar1
         Type: Header
+        Style: HndHiddenOption
     HeaderButtonSize:
         Title: 'Size of the header bar buttons'
         LocKey: LOCHNDOptHeaderButtonSize
         Type: Double
         Default: '32'
+        Style: HndHiddenOption
         Description: 'Size of the round buttons in the header bar.'
         Slider:
             Min: '20'
@@ -1581,6 +1792,7 @@ Variables:
         Title: '  ↳ Size of the round buttons in the header bar.'
         LocKey: LOCHNDCaptionHeaderButtonSize1
         Type: Header
+        Style: HndHiddenOption
     HeaderDetailsInfo:
         Title: 'Details view - information and description'
         LocKey: LOCHNDHeaderDetailsInfo
@@ -1590,16 +1802,19 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowInfoPanelDefault
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Information panel (cover, description, details) open when a game is selected.'
     CaptionDetailsViewShowInfoPanelDefault1:
         Title: '  ↳ Information panel (cover, description, details) open when a game is selected.'
         LocKey: LOCHNDCaptionDetailsViewShowInfoPanelDefault1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewDescriptionWidth:
         Title: 'Description width'
         LocKey: LOCHNDOptDetailsViewDescriptionWidth
         Type: Double
         Default: '400'
+        Style: HndHiddenOption
         Description: 'Width of the game description.'
         Slider:
             Min: '150'
@@ -1609,11 +1824,13 @@ Variables:
         Title: '  ↳ Width of the game description.'
         LocKey: LOCHNDCaptionDetailsViewDescriptionWidth1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewDescriptionMaxHeight:
         Title: 'Description maximum height'
         LocKey: LOCHNDOptDetailsViewDescriptionMaxHeight
         Type: Double
         Default: '2000'
+        Style: HndHiddenOption
         Description: 'Height after which the description scrolls.'
         Slider:
             Min: '110'
@@ -1623,6 +1840,7 @@ Variables:
         Title: '  ↳ Height after which the description scrolls.'
         LocKey: LOCHNDCaptionDetailsViewDescriptionMaxHeight1
         Type: Header
+        Style: HndHiddenOption
     DetailsViewDescriptionDockToRight:
         Title: 'Description on the right'
         LocKey: LOCHNDOptDetailsViewDescriptionDockToRight
@@ -1660,233 +1878,280 @@ Variables:
         Title: 'Details view - sections shown'
         LocKey: LOCHNDHeaderDetailsSections
         Type: Header
+        Style: HndHiddenOption
     DetailsViewShowNotesPanel:
         Title: 'Play Notes'
         LocKey: LOCHNDOptDetailsViewShowNotesPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowNewsPanel:
         Title: 'News Viewer'
         LocKey: LOCHNDOptDetailsViewShowNewsPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowVideoPanel:
         Title: 'Video (Extra Metadata Loader)'
         LocKey: LOCHNDOptDetailsViewShowVideoPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowGameActivityPanel:
         Title: 'GameActivity'
         LocKey: LOCHNDOptDetailsViewShowGameActivityPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowCheckDlcPanel:
         Title: 'CheckDlc'
         LocKey: LOCHNDOptDetailsViewShowCheckDlcPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowGameRelationsPanel:
         Title: 'Game Relations'
         LocKey: LOCHNDOptDetailsViewShowGameRelationsPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowWebExplorerPanel:
         Title: 'Web Explorer'
         LocKey: LOCHNDOptDetailsViewShowWebExplorerPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowHltbPanel:
         Title: 'HowLongToBeat'
         LocKey: LOCHNDOptDetailsViewShowHltbPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowAchievementsPanel:
         Title: 'PlayniteAchievements'
         LocKey: LOCHNDOptDetailsViewShowAchievementsPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowSteamScreenshotsPanel:
         Title: 'Steam Screenshots'
         LocKey: LOCHNDOptDetailsViewShowSteamScreenshotsPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowVndbPanel:
         Title: 'VNDB Nexus'
         LocKey: LOCHNDOptDetailsViewShowVndbPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowScreenshotsVisualizerPanel:
         Title: 'ScreenshotsVisualizer'
         LocKey: LOCHNDOptDetailsViewShowScreenshotsVisualizerPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowReviewsPanel:
         Title: 'Review Viewer'
         LocKey: LOCHNDOptDetailsViewShowReviewsPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowScreenshotUtilitiesPanel:
         Title: 'Screenshot Utilities'
         LocKey: LOCHNDOptDetailsViewShowScreenshotUtilitiesPanel
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeaderDetailsExpand:
         Title: 'Details view - sections open by default'
         LocKey: LOCHNDHeaderDetailsExpand
         Type: Header
+        Style: HndHiddenOption
     DemoteSectionsShownElsewhere:
         Title: 'Fold sections at the bottom when their information is shown above (chips, cover, header bar)'
         LocKey: LOCHNDOptDemoteSectionsShownElsewhere
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.'
     CaptionDemoteSectionsShownElsewhere1:
         Title: '  ↳ A section whose information is already shown above folds at the bottom of its column.'
         LocKey: LOCHNDCaptionDemoteSectionsShownElsewhere1
         Type: Header
+        Style: HndHiddenOption
     CaptionDemoteSectionsShownElsewhere2:
         Title: '  ↳ Each section can opt out in its gear.'
         LocKey: LOCHNDCaptionDemoteSectionsShownElsewhere2
         Type: Header
+        Style: HndHiddenOption
     DetailsViewUseMetadataUtilities:
         Title: 'Group genres and tags by prefix (Metadata Utilities)'
         LocKey: LOCHNDOptDetailsViewUseMetadataUtilities
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
         Description: 'Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.'
     CaptionDetailsViewUseMetadataUtilities1:
         Title: '  ↳ Genres, categories, features and tags grouped by prefix.'
         LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities1
         Type: Header
+        Style: HndHiddenOption
     CaptionDetailsViewUseMetadataUtilities2:
         Title: '  ↳ Needs Metadata Utilities and its prefixes.'
         LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities2
         Type: Header
+        Style: HndHiddenOption
     DemoteGenresSection:
         Title: '... including Genres'
         LocKey: LOCHNDOptDemoteGenresSection
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DemoteCategoriesSection:
         Title: '... including Categories'
         LocKey: LOCHNDOptDemoteCategoriesSection
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DemoteFeaturesSection:
         Title: '... including Features'
         LocKey: LOCHNDOptDemoteFeaturesSection
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DemoteTagsSection:
         Title: '... including Tags'
         LocKey: LOCHNDOptDemoteTagsSection
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DemoteHltbSection:
         Title: '... including HowLongToBeat'
         LocKey: LOCHNDOptDemoteHltbSection
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DemoteAchievementsSection:
         Title: '... including PlayniteAchievements'
         LocKey: LOCHNDOptDemoteAchievementsSection
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DemoteGameActivitySection:
         Title: '... including GameActivity'
         LocKey: LOCHNDOptDemoteGameActivitySection
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandNotesPanel:
         Title: 'Play Notes'
         LocKey: LOCHNDOptDetailsViewExpandNotesPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandGenres:
         Title: 'Genres'
         LocKey: LOCHNDOptDetailsViewExpandGenres
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewExpandCategories:
         Title: 'Categories'
         LocKey: LOCHNDOptDetailsViewExpandCategories
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewExpandFeatures:
         Title: 'Features'
         LocKey: LOCHNDOptDetailsViewExpandFeatures
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewExpandTags:
         Title: 'Tags'
         LocKey: LOCHNDOptDetailsViewExpandTags
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewExpandNewsPanel:
         Title: 'News Viewer'
         LocKey: LOCHNDOptDetailsViewExpandNewsPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandVideoPanel:
         Title: 'Video'
         LocKey: LOCHNDOptDetailsViewExpandVideoPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandGameActivityPanel:
         Title: 'GameActivity'
         LocKey: LOCHNDOptDetailsViewExpandGameActivityPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandCheckDlcPanel:
         Title: 'CheckDlc'
         LocKey: LOCHNDOptDetailsViewExpandCheckDlcPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandGameRelationsPanel:
         Title: 'Game Relations'
         LocKey: LOCHNDOptDetailsViewExpandGameRelationsPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandWebExplorerPanel:
         Title: 'Web Explorer'
         LocKey: LOCHNDOptDetailsViewExpandWebExplorerPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewShowHltbPanelDefault:
         Title: 'HowLongToBeat'
         LocKey: LOCHNDOptDetailsViewShowHltbPanelDefault
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewShowAchievementsPanelDefault:
         Title: 'PlayniteAchievements'
         LocKey: LOCHNDOptDetailsViewShowAchievementsPanelDefault
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandSteamScreenshotsPanel:
         Title: 'Steam Screenshots'
         LocKey: LOCHNDOptDetailsViewExpandSteamScreenshotsPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandVndbPanel:
         Title: 'VNDB Nexus'
         LocKey: LOCHNDOptDetailsViewExpandVndbPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandScreenshotsVisualizerPanel:
         Title: 'ScreenshotsVisualizer'
         LocKey: LOCHNDOptDetailsViewExpandScreenshotsVisualizerPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandReviewsPanel:
         Title: 'Review Viewer'
         LocKey: LOCHNDOptDetailsViewExpandReviewsPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewExpandScreenshotUtilitiesPanel:
         Title: 'Screenshot Utilities'
         LocKey: LOCHNDOptDetailsViewExpandScreenshotUtilitiesPanel
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     HeaderDetailsOrderLeft:
         Title: 'Details view - left column order (each number once, 0 to 18)'
         LocKey: LOCHNDHeaderDetailsOrderLeft
@@ -2066,11 +2331,13 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowHltbDataGrid
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewShowHltbProgressBar:
         Title: 'HowLongToBeat progress bar'
         LocKey: LOCHNDOptDetailsViewShowHltbProgressBar
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     WebExplorerControlHeight:
         Title: 'Web Explorer height'
         LocKey: LOCHNDOptWebExplorerControlHeight
@@ -2111,56 +2378,67 @@ Variables:
         Title: 'Details view - achievements (PlayniteAchievements)'
         LocKey: LOCHNDHeaderDetailsAchievements
         Type: Header
+        Style: HndHiddenOption
     DetailsViewAchievementsShowProgressBar:
         Title: 'Progress bar'
         LocKey: LOCHNDOptDetailsViewAchievementsShowProgressBar
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowUnlockedList:
         Title: 'Unlocked icons'
         LocKey: LOCHNDOptDetailsViewAchievementsShowUnlockedList
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowLockedList:
         Title: 'Locked icons'
         LocKey: LOCHNDOptDetailsViewAchievementsShowLockedList
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowCompactList:
         Title: 'All icons'
         LocKey: LOCHNDOptDetailsViewAchievementsShowCompactList
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowLatest:
         Title: 'Latest unlocked'
         LocKey: LOCHNDOptDetailsViewAchievementsShowLatest
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowStats:
         Title: 'Statistics'
         LocKey: LOCHNDOptDetailsViewAchievementsShowStats
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowBarChart:
         Title: 'Bar chart'
         LocKey: LOCHNDOptDetailsViewAchievementsShowBarChart
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowPieChart:
         Title: 'Pie chart'
         LocKey: LOCHNDOptDetailsViewAchievementsShowPieChart
         Type: Boolean
         Default: 'False'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowDataGrid:
         Title: 'Full table'
         LocKey: LOCHNDOptDetailsViewAchievementsShowDataGrid
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     DetailsViewAchievementsShowButton:
         Title: 'Button to open the achievements window'
         LocKey: LOCHNDOptDetailsViewAchievementsShowButton
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
     HeaderGridDetails:
         Title: 'Grid view - game panel'
         LocKey: LOCHNDHeaderGridDetails
@@ -2556,6 +2834,7 @@ Variables:
         LocKey: LOCHNDOptAchievementsDataGridMaxHeight
         Type: Double
         Default: '450'
+        Style: HndHiddenOption
         Description: 'Height after which the full achievements table scrolls.'
         Slider:
             Min: '100'
@@ -2565,6 +2844,7 @@ Variables:
         Title: '  ↳ Height after which the full achievements table scrolls.'
         LocKey: LOCHNDCaptionAchievementsDataGridMaxHeight1
         Type: Header
+        Style: HndHiddenOption
     HeaderGridCovers:
         Title: 'Grid view - covers'
         LocKey: LOCHNDHeaderGridCovers
@@ -2628,6 +2908,7 @@ Variables:
         LocKey: LOCHNDOptSectionHeaderMinHeight
         Type: Double
         Default: '34'
+        Style: HndHiddenOption
         Description: 'Height of the section titles with their fold arrow and gear.'
         Slider:
             Min: '24'
@@ -2637,6 +2918,7 @@ Variables:
         Title: '  ↳ Height of the section titles with their fold arrow and gear.'
         LocKey: LOCHNDCaptionSectionHeaderMinHeight1
         Type: Header
+        Style: HndHiddenOption
     SectionContainerMinHeight:
         Title: 'Section minimum height'
         LocKey: LOCHNDOptSectionContainerMinHeight
@@ -2651,20 +2933,24 @@ Variables:
         LocKey: LOCHNDOptLinksShowNames
         Type: Boolean
         Default: 'True'
+        Style: HndHiddenOption
         Description: 'Shows the name next to each link icon. Off: icons only.'
     CaptionLinksShowNames1:
         Title: '  ↳ Shows the name next to each link icon.'
         LocKey: LOCHNDCaptionLinksShowNames1
         Type: Header
+        Style: HndHiddenOption
     CaptionLinksShowNames2:
         Title: '  ↳ Off: icons only.'
         LocKey: LOCHNDCaptionLinksShowNames2
         Type: Header
+        Style: HndHiddenOption
     LinkIconSize:
         Title: 'Link icon size'
         LocKey: LOCHNDOptLinkIconSize
         Type: Double
         Default: '18'
+        Style: HndHiddenOption
         Description: 'Size of the link icons (favicons).'
         Slider:
             Min: '12'
@@ -2674,6 +2960,7 @@ Variables:
         Title: '  ↳ Size of the link icons (favicons).'
         LocKey: LOCHNDCaptionLinkIconSize1
         Type: Header
+        Style: HndHiddenOption
     FontSizeSmall:
         Title: 'Small text'
         LocKey: LOCHNDOptFontSizeSmall

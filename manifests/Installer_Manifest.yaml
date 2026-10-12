@@ -1,5 +1,14 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.5
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5.pthm
+    Changelog:
+      - "One large settings panel replaces the workshop and the section menus: pages on the left, cards with switches and sliders, help on hover; each section gear opens its page"
+      - "Chips page with a live preview, a show switch and a line break toggle for every chip, and the group order"
+      - "Line break possible before any chip; the group line breaks are gone"
+      - "Settings panel look (profile colors, dark, glass) and size are adjustable; Theme Options now lists only what the panel does not show"
   - Version: 2.4
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-12

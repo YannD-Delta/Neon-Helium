@@ -97,6 +97,10 @@
     <sys:String x:Key="LOCHNDPresetAccentCyan">Cyan</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentGold">Gold</sys:String>
     <sys:String x:Key="LOCHNDPresetAccentLinkin">Hybrid red (Linkin Park)</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLook">Settings panel look</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookDefault">Colors of the color profile</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookDark">Dark</sys:String>
+    <sys:String x:Key="LOCHNDPresetPanelLookGlass">Glass (see-through)</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimations">Animations</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimationsDefault">Smooth</sys:String>
     <sys:String x:Key="LOCHNDPresetAnimationsFast">Fast</sys:String>
@@ -130,6 +134,7 @@
     <sys:String x:Key="LOCHNDPresetBackgroundBlurOff">False</sys:String>
     <sys:String x:Key="LOCHNDPresetBackgroundBlurLight">Light</sys:String>
     <sys:String x:Key="LOCHNDPresetBackgroundBlurStrong">Strong</sys:String>
+    <sys:String x:Key="LOCHNDHeaderPanelNote">Most settings are in the theme panel: gear on each section, or the workshop button in the top panel</sys:String>
     <sys:String x:Key="LOCHNDHeaderTopPanel">Top panel and sidebar</sys:String>
     <sys:String x:Key="LOCHNDOptShowNavigationButtons">Show navigation buttons</sys:String>
     <sys:String x:Key="LOCHNDTipShowNavigationButtons">Back and forward buttons. Need ThemeExtras.</sys:String>
@@ -147,6 +152,8 @@
     <sys:String x:Key="LOCHNDOptTopPanelAutoHide">Hide the top panel until the mouse comes over it</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelAutoHide">The top panel shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelAutoHide1">  ↳ The top panel shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
+    <sys:String x:Key="LOCHNDOptSettingsPanelWidth">Settings panel width</sys:String>
+    <sys:String x:Key="LOCHNDOptSettingsPanelHeight">Settings panel height</sys:String>
     <sys:String x:Key="LOCHNDOptSidebarAutoHide">Hide the sidebar until the mouse comes over it</sys:String>
     <sys:String x:Key="LOCHNDTipSidebarAutoHide">The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.</sys:String>
     <sys:String x:Key="LOCHNDCaptionSidebarAutoHide1">  ↳ The sidebar shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
@@ -543,7 +550,8 @@
     <sys:String x:Key="LOCHNDPanelCardLayout0">Sections</sys:String>
     <sys:String x:Key="LOCHNDPanelPageTopPanel">Top panel</sys:String>
     <sys:String x:Key="LOCHNDPanelCardTopPanel0">Top panel and sidebar</sys:String>
-    <sys:String x:Key="LOCHNDPanelPageColors">Colors</sys:String>
+    <sys:String x:Key="LOCHNDPanelPageColors">Colors and panel</sys:String>
+    <sys:String x:Key="LOCHNDPanelCardColors0">This panel</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionNotes">Notes</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionGenres">Genres</sys:String>
     <sys:String x:Key="LOCHNDPanelSectionCategories">Categories</sys:String>
@@ -608,7 +616,7 @@
     <sys:String x:Key="LOCHNDPanelGroupActivity">Activity</sys:String>
     <sys:String x:Key="LOCHNDPanelPreview">Preview (live)</sys:String>
     <sys:String x:Key="LOCHNDPanelBreakTip">New line before this chip</sys:String>
-    <sys:String x:Key="LOCHNDPanelColorsText">The color profile and the accent are drop-down lists in the Theme Options settings and need a restart. ThemeModifier edits single colors, and its saved colors win over the profile.</sys:String>
+    <sys:String x:Key="LOCHNDPanelColorsText">The color profile, the accent and the look of this panel (profile colors, dark, glass) are drop-down lists in the Theme Options settings and need a restart. ThemeModifier edits single colors, and its saved colors win over the profile.</sys:String>
     <sys:String x:Key="LOCHNDPanelSections">Sections</sys:String>
     <sys:String x:Key="LOCHNDPanelClose">Close</sys:String>
 </ResourceDictionary>

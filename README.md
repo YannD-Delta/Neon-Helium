@@ -27,7 +27,7 @@ Helium-Neon-Dune works without extensions. It includes integration hosts for the
 
 The theme is fully usable with its defaults. Two optional extensions unlock the settings:
 
-- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 250 settings and 14 drop-down lists, with French labels when Playnite is in French. Open it from Playnite's add-on settings. Most changes apply when you close the settings window; the color profile and the accent color need a restart.
+- **[Theme Options](https://codeberg.org/ashpynov/ThemeOptions)** (recommended): about 270 settings and 15 drop-down lists, with French labels when Playnite is in French. Open it from Playnite's add-on settings. Most changes apply when you close the settings window; the color profile and the accent color need a restart.
 - **[ThemeModifier](https://github.com/Lacro59/playnite-thememodifier-plugin)**: free color pickers for 80 theme colors. Colors saved in ThemeModifier win over the color profile: reset them in ThemeModifier to see a profile as designed.
 
 Drop-down lists (Theme Options):
@@ -51,9 +51,7 @@ The global style sets a starting point; every list below it, and every individua
 
 **Color profiles.** Each profile recolors the whole theme: window and panel backgrounds, text, accent, buttons, game list, menus, popups, inputs, ratings and section cards (109 colors, derived from 13 base colors per profile, with white text kept readable on buttons). All profiles are dark, because the theme draws white text over the artwork. The Accent list can still replace the accent of any profile.
 
-**Theme workshop.** The top panel has a workshop button: sliders and switches for the sizes, the header bar, the chips, the cover badges, the game list badges, the sections, the links and the top panel, each with a tooltip. The theme changes while you drag. Theme Options shows a preview image next to every drop-down choice.
-
-**Quick settings.** Every section of the Details view has a gear next to its fold arrow. It lists where that information shows (the section itself, chips on the artwork, the cover, the header bar), what the section contains and whether it opens by default; changes apply at once and are saved by Theme Options. Two buttons open the extension's own settings and all theme settings (both need ThemeExtras). The top panel also has buttons for the Theme Options and ThemeModifier settings.
+**Settings panel.** One large panel holds the theme settings: pages on the left (chips, artwork header, header bar, cover and lists, sections layout, top panel, colors and panel, then one page per section), cards with switches and sliders on the right, and help on the info icons. The gear of each section opens its page; the workshop button in the top panel opens the same panel. The chips page shows a live preview, a show switch and a line break toggle for every chip, and the group order. Changes apply while you click and are saved by Theme Options, which only lists the settings the panel does not show. The panel look (profile colors, dark, glass) is a Theme Options list; its size is in the panel.
 
 **No repeated information.** When a section's information is already shown above (genres as chips, HowLongToBeat on the cover...), the section folds at the bottom of its column instead of disappearing, so its gear stays reachable. Each foldable section has its own switch in its gear (PlayniteAchievements and GameActivity stay in place by default, their sections show much more than the chips), and "Fold sections at the bottom when their information is shown above" turns folding off everywhere.
 
@@ -61,7 +59,7 @@ The global style sets a starting point; every list below it, and every individua
 
 **Auto-hide.** The top panel and a left or right sidebar can shrink to a thin strip and come back when the mouse is over them (off by default).
 
-**Chips.** A click on a chip opens or folds the matching section (HowLongToBeat, achievements, activity, genres, categories, features, tags). The chips on the artwork are grouped: game (release date, platforms, source), classification (genres, categories, features, tags), studio and status (developers, completion status, score), HowLongToBeat, achievements and activity. A line break can be added before each group, and the groups can be reordered. The gear at the start of the chips line lists every chip and every line break.
+**Chips.** A click on a chip opens or folds the matching section (HowLongToBeat, achievements, activity, genres, categories, features, tags). The chips on the artwork are grouped: game (release date, platforms, source), classification (genres, categories, features, tags), studio and status (developers, completion status, score), HowLongToBeat, achievements and activity. A line break can be added before any chip, and the groups can be reordered, from the chips page of the settings panel.
 
 Individual settings cover: each information chip in the artwork (release date, platforms, source, genres, developers, completion status, community score, HowLongToBeat times, achievements, latest and rare achievements, last session, recent activity and average FPS), sizes and corner rounding of the buttons and chips, each header bar item, every extension section in the Details and Grid views (shown, open by default, order), the achievements controls, covers, links and text sizes.
 

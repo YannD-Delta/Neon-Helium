@@ -103,6 +103,10 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Popup.Style>
+                                <Grid Width="{PluginSettings Plugin=ThemeOptions, Path=Options[SettingsPanelWidth], FallbackValue={StaticResource SettingsPanelWidth}, TargetNullValue={StaticResource SettingsPanelWidth}}" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SettingsPanelHeight], FallbackValue={StaticResource SettingsPanelHeight}, TargetNullValue={StaticResource SettingsPanelHeight}}">
+                                <!-- look (Theme Options list "Settings panel"): profile popup colors under an optional dark or glass overlay -->
+                                <Border Background="{DynamicResource PopupBackgroundBrush}" CornerRadius="{DynamicResource SettingsPanelCornerRadius}"
+                                        Opacity="{DynamicResource SettingsPanelProfileOpacity}" />
                                 <Border Style="{DynamicResource HndPanelFrame}">
                                     <DockPanel>
                                         <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
@@ -807,6 +811,25 @@
                                                             </WrapPanel>
                                                         </StackPanel>
                                                     </Border>
+                                                    <Border Style="{DynamicResource HndPanelCard}">
+                                                        <StackPanel>
+                                                            <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardColors0}" />
+                                                            <DockPanel Style="{DynamicResource HndPanelRow}">
+                                                                <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptSettingsPanelWidth}" />
+                                                                <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
+                                                                           Text="{Binding Value, ElementName=HndPanelSliderSettingsPanelWidth, StringFormat={}{0:0}}" />
+                                                                <Slider x:Name="HndPanelSliderSettingsPanelWidth" Minimum="700" Maximum="1400" SmallChange="1" LargeChange="10" TickFrequency="1"
+                                                                        IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[SettingsPanelWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource SettingsPanelWidth}}" />
+                                                            </DockPanel>
+                                                            <DockPanel Style="{DynamicResource HndPanelRow}">
+                                                                <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptSettingsPanelHeight}" />
+                                                                <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
+                                                                           Text="{Binding Value, ElementName=HndPanelSliderSettingsPanelHeight, StringFormat={}{0:0}}" />
+                                                                <Slider x:Name="HndPanelSliderSettingsPanelHeight" Minimum="500" Maximum="1000" SmallChange="1" LargeChange="10" TickFrequency="1"
+                                                                        IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[SettingsPanelHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource SettingsPanelHeight}}" />
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </Border>
                                                 </StackPanel>
                                                 <StackPanel Visibility="{Binding IsChecked, ElementName=HndPanelPageSectionNotes, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                     <TextBlock Style="{DynamicResource HndPanelPageTitle}" Text="{DynamicResource LOCHNDPanelSectionNotes}" />
@@ -1475,6 +1498,7 @@
                                         </ScrollViewer>
                                     </DockPanel>
                                 </Border>
+                                </Grid>
                             </Popup>
                             <!-- END generated settings panel -->
                             <StackPanel Name="BackgroundBlurPanel">

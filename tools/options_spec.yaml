@@ -219,6 +219,23 @@ presets:
         fr: Rouge Hybrid (Linkin Park)
         constants: {GlyphColor: "#E63946", GlyphSubColor: "#C1121F", HighlightGlyphColor: "#88FF6B6B", HoverColor: "#780000"}
 
+  - group: PanelLook
+    en: Settings panel look
+    fr: Aspect du panneau de réglages
+    restart: True
+    options:
+      - id: Default
+        en: Colors of the color profile
+        fr: Couleurs du profil
+      - id: Dark
+        en: Dark
+        fr: Sombre
+        constants: {SettingsPanelProfileOpacity: 0, SettingsPanelOverlayBrush: "#F20D1014"}
+      - id: Glass
+        en: Glass (see-through)
+        fr: Verre (transparent)
+        constants: {SettingsPanelProfileOpacity: 0.72, SettingsPanelOverlayBrush: "#33000000", SettingsPanelCornerRadius: 16}
+
   - group: Animations
     en: Animations
     fr: Animations
@@ -444,6 +461,9 @@ color_profiles:
                     accent: "#1A9FFF", accent2: "#2A71D8", play: "#2BB943", positive: "#78FFA0", mixed: "#FFFCA1", negative: "#FF6B6B", orange: "#FFA500"}
 
 variables:
+  - header: PanelNote
+    en: 'Most settings are in the theme panel: gear on each section, or the workshop button in the top panel'
+    fr: 'La plupart des réglages sont dans le panneau du thème : engrenage de chaque section, ou bouton atelier de la barre du haut'
   - header: TopPanel
     en: Top panel and sidebar
     fr: Barre du haut et barre latérale
@@ -451,6 +471,8 @@ variables:
   - {key: TopPanelShowThemeSettingsButtons, en: Theme settings and colors buttons (ThemeExtras), fr: Boutons des réglages et couleurs du thème (ThemeExtras)}
   - {key: TopPanelShowCollectorLevel, en: Collection level badge (PlayniteAchievements), fr: Badge de niveau de collection (PlayniteAchievements)}
   - {key: TopPanelAutoHide, en: Hide the top panel until the mouse comes over it, fr: Masquer la barre du haut jusqu'au passage de la souris}
+  - {key: SettingsPanelWidth, range: [700, 1400], en: Settings panel width, fr: Largeur du panneau de réglages}
+  - {key: SettingsPanelHeight, range: [500, 1000], en: Settings panel height, fr: Hauteur du panneau de réglages}
   - {key: SidebarAutoHide, en: Hide the sidebar until the mouse comes over it, fr: Masquer la barre latérale jusqu'au passage de la souris}
   - {key: TopPanelSearchBoxWidthHelium, range: [80, 600], en: Search box width, fr: Largeur de la recherche}
   - {key: TopPanelHeight, range: [36, 100], en: Top panel height, fr: Hauteur de la barre du haut}
@@ -1036,10 +1058,16 @@ panel:
       - TopPanelAutoHide
       - SidebarAutoHide
   - id: Colors
-    en: Colors
-    fr: Couleurs
+    en: Colors and panel
+    fr: Couleurs et panneau
     glyph: 
     kind: colors
+    groups:
+    - en: This panel
+      fr: Ce panneau
+      items:
+      - SettingsPanelWidth
+      - SettingsPanelHeight
   chips:
   - id: ReleaseDate
     group: Game
@@ -1439,10 +1467,11 @@ panel:
       en: New line before this chip
       fr: Retour à la ligne avant cette puce
     LOCHNDPanelColorsText:
-      en: The color profile and the accent are drop-down lists in the Theme Options settings and need a restart. ThemeModifier edits single colors,
-        and its saved colors win over the profile.
-      fr: Le profil de couleurs et l'accent sont des menus déroulants dans les réglages de Theme Options et demandent un redémarrage. ThemeModifier
-        modifie les couleurs une par une, et ses couleurs enregistrées passent avant le profil.
+      en: The color profile, the accent and the look of this panel (profile colors, dark, glass) are drop-down lists in the Theme Options settings
+        and need a restart. ThemeModifier edits single colors, and its saved colors win over the profile.
+      fr: Le profil de couleurs, l'accent et l'aspect de ce panneau (couleurs du profil, sombre, verre) sont des menus déroulants dans les réglages
+        de Theme Options et demandent un redémarrage. ThemeModifier modifie les couleurs une par une, et ses couleurs enregistrées passent avant
+        le profil.
     LOCHNDPanelSections:
       en: Sections
       fr: Sections

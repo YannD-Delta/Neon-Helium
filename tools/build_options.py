@@ -105,7 +105,25 @@ def split_sentences(text):
     return [part.strip() for part in re.split(r"(?<=[.!?])\s+", text.strip()) if part.strip()]
 
 
-def caption_rows(key, tip, labels, english):
+HIDDEN_STYLE = "HndHiddenOption"  # DockPanel style that collapses a Theme Options row (Variable.Style)
+
+
+def panel_keys(spec):
+    """Variables the settings panel shows: their Theme Options rows are hidden."""
+    panel = spec.get("panel") or {}
+    keys = set()
+    for page in panel.get("pages", []):
+        for group in page.get("groups", []):
+            keys.update(group["items"])
+    for chip in panel.get("chips", []):
+        keys.update([chip["show"], chip["break"]])
+    keys.update(g["order"] for g in panel.get("chip_groups", []))
+    for section in panel.get("sections", []):
+        keys.update(section["show_in"] + section["section"])
+    return keys
+
+
+def caption_rows(key, tip, labels, english, hidden=False):
     """One Theme Options Header row per sentence of the tip: the Desktop settings view shows
     Header titles but no descriptions, and its text does not wrap."""
     french, other = split_sentences(tip["fr"]), split_sentences(tip["en"])
@@ -122,7 +140,7 @@ def caption_rows(key, tip, labels, english):
         labels[lkey] = CAPTION_PREFIX + fr_text
         english[lkey] = CAPTION_PREFIX + en_text
         rows += [f"    {name}:", f"        Title: {q(CAPTION_PREFIX + en_text)}", f"        LocKey: {lkey}",
-                 "        Type: Header"]
+                 "        Type: Header"] + ([f"        Style: {HIDDEN_STYLE}"] if hidden else [])
     return rows
 
 def build_options(spec, constants, source: Path):
@@ -178,6 +196,15 @@ def build_options(spec, constants, source: Path):
 
     lines += ["", "Variables:"]
     seen = set()
+    hidden_keys = panel_keys(spec)
+    header_hidden = {}
+    current = None
+    for entry in spec["variables"]:
+        if "header" in entry:
+            current = entry["header"]
+            header_hidden[current] = True
+        elif current and entry["key"] not in hidden_keys:
+            header_hidden[current] = False
     for entry in spec["variables"]:
         if "header" in entry:
             name = "Header" + entry["header"]
@@ -185,6 +212,8 @@ def build_options(spec, constants, source: Path):
             labels[key] = entry["fr"]
             english[key] = entry["en"]
             lines += [f"    {name}:", f"        Title: {q(entry['en'])}", f"        LocKey: {key}", "        Type: Header"]
+            if header_hidden.get(entry["header"]):
+                lines.append(f"        Style: {HIDDEN_STYLE}")
             continue
         extra = set(entry) - {"key", "en", "fr", "range"}
         if extra or not {"key", "en", "fr"} <= set(entry):
@@ -202,6 +231,8 @@ def build_options(spec, constants, source: Path):
         english[lkey] = entry["en"]
         lines += [f"    {key}:", f"        Title: {q(entry['en'])}", f"        LocKey: {lkey}",
                   f"        Type: {kind}", f"        Default: {q(default)}"]
+        if key in hidden_keys:
+            lines.append(f"        Style: {HIDDEN_STYLE}")
         tip = (spec.get("tips") or {}).get(key)
         if tip:
             # Theme Options keeps Description in its model but never displays it; the workshop
@@ -223,7 +254,7 @@ def build_options(spec, constants, source: Path):
         elif "range" in entry:
             raise SpecError(f"variable {key}: a range makes no sense for {kind}")
         if tip:
-            lines += caption_rows(key, tip, labels, english)
+            lines += caption_rows(key, tip, labels, english, key in hidden_keys)
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))

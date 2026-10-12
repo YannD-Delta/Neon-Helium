@@ -292,6 +292,11 @@
     <sys:Boolean x:Key="HeroChipsOpenSections">True</sys:Boolean>
     <sys:Boolean x:Key="TopPanelAutoHide">False</sys:Boolean>
     <sys:Boolean x:Key="SidebarAutoHide">False</sys:Boolean>
+    <sys:Double x:Key="SettingsPanelWidth">900</sys:Double>
+    <sys:Double x:Key="SettingsPanelHeight">680</sys:Double>
+    <sys:Double x:Key="SettingsPanelProfileOpacity">1</sys:Double>
+    <SolidColorBrush x:Key="SettingsPanelOverlayBrush" Color="Transparent" />
+    <CornerRadius x:Key="SettingsPanelCornerRadius">12</CornerRadius>
     <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>
