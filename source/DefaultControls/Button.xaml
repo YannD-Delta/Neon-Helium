@@ -799,4 +799,45 @@
         <Setter Property="TextElement.Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="TextElement.FontSize" Value="12" />
     </Style>
+    <!-- chips page: arrows that move a chip (tools/chips_line.py) -->
+    <Style x:Key="HndPanelArrow" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0,0,4,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Back" Width="26" Height="26" CornerRadius="6" BorderThickness="1"
+                            BorderBrush="{DynamicResource HeroSecondaryButtonBorderBrush}" Background="Transparent">
+                        <TextBlock x:Name="Icon" Text="{TemplateBinding Content}" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="11"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource TextBrushDarker}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource TextBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+                            <Setter TargetName="Back" Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- chips page: example of what a chip shows -->
+    <Style x:Key="HndPanelSample" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Margin" Value="10,0,12,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="MaxWidth" Value="220" />
+    </Style>
+
+    <!-- Theme Options: a Double variable without Slider gets the template DOUBLE_PanelTemplate, which its
+         settings view does not define and looks up here. Empty: the chip positions (HeroChipPos*) take no row,
+         the arrows of the settings panel set them. -->
+    <DataTemplate x:Key="DOUBLE_PanelTemplate" />
 </ResourceDictionary>

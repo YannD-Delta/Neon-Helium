@@ -32,4 +32,1570 @@
         <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource PopupBorderThickness}" />
     </Style>
+    <!-- Rows of the chips page in the settings panel, shared by every host (tools/chips_line.py) -->
+    <!-- BEGIN generated chip rows: tools/chips_line.py, run tools/build_options.py -->
+    <!-- each sorted item shows the template it carries, with the DataContext of the list (the game in the Details view) -->
+    <DataTemplate x:Key="HndChipItem">
+        <ContentControl Focusable="False" ContentTemplate="{Binding ToolTip}"
+                        Content="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowReleaseDate">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([1]&lt;[0]?[1]:null),([2]&lt;[0]?[2]:null),([3]&lt;[0]?[3]:null),([4]&lt;[0]?[4]:null),([5]&lt;[0]?[5]:null),([6]&lt;[0]?[6]:null),([7]&lt;[0]?[7]:null),([8]&lt;[0]?[8]:null),([9]&lt;[0]?[9]:null),([10]&lt;[0]?[10]:null),([11]&lt;[0]?[11]:null),([12]&lt;[0]?[12]:null),([13]&lt;[0]?[13]:null),([14]&lt;[0]?[14]:null),([15]&lt;[0]?[15]:null),([16]&lt;[0]?[16]:null),([17]&lt;[0]?[17]:null),([18]&lt;[0]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([1]&gt;=[0]?[1]:null),([2]&gt;=[0]?[2]:null),([3]&gt;=[0]?[3]:null),([4]&gt;=[0]?[4]:null),([5]&gt;=[0]?[5]:null),([6]&gt;=[0]?[6]:null),([7]&gt;=[0]?[7]:null),([8]&gt;=[0]?[8]:null),([9]&gt;=[0]?[9]:null),([10]&gt;=[0]?[10]:null),([11]&gt;=[0]?[11]:null),([12]&gt;=[0]?[12]:null),([13]&gt;=[0]?[13]:null),([14]&gt;=[0]?[14]:null),([15]&gt;=[0]?[15]:null),([16]&gt;=[0]?[16]:null),([17]&gt;=[0]?[17]:null),([18]&gt;=[0]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosReleaseDate}, TargetNullValue={StaticResource HeroChipPosReleaseDate}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[0].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosReleaseDate}, TargetNullValue={StaticResource HeroChipPosReleaseDate}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[0].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakReleaseDate}, TargetNullValue={StaticResource HeroChipBreakReleaseDate}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipReleaseDate}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroShowReleaseDate}, TargetNullValue={StaticResource HeroShowReleaseDate}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameReleaseDate}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowPlatforms">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[1]?[0]:null),([2]&lt;[1]?[2]:null),([3]&lt;[1]?[3]:null),([4]&lt;[1]?[4]:null),([5]&lt;[1]?[5]:null),([6]&lt;[1]?[6]:null),([7]&lt;[1]?[7]:null),([8]&lt;[1]?[8]:null),([9]&lt;[1]?[9]:null),([10]&lt;[1]?[10]:null),([11]&lt;[1]?[11]:null),([12]&lt;[1]?[12]:null),([13]&lt;[1]?[13]:null),([14]&lt;[1]?[14]:null),([15]&lt;[1]?[15]:null),([16]&lt;[1]?[16]:null),([17]&lt;[1]?[17]:null),([18]&lt;[1]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[1]?[0]:null),([2]&gt;=[1]?[2]:null),([3]&gt;=[1]?[3]:null),([4]&gt;=[1]?[4]:null),([5]&gt;=[1]?[5]:null),([6]&gt;=[1]?[6]:null),([7]&gt;=[1]?[7]:null),([8]&gt;=[1]?[8]:null),([9]&gt;=[1]?[9]:null),([10]&gt;=[1]?[10]:null),([11]&gt;=[1]?[11]:null),([12]&gt;=[1]?[12]:null),([13]&gt;=[1]?[13]:null),([14]&gt;=[1]?[14]:null),([15]&gt;=[1]?[15]:null),([16]&gt;=[1]?[16]:null),([17]&gt;=[1]?[17]:null),([18]&gt;=[1]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosPlatforms], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosPlatforms}, TargetNullValue={StaticResource HeroChipPosPlatforms}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[1].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosPlatforms], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosPlatforms}, TargetNullValue={StaticResource HeroChipPosPlatforms}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[1].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakPlatforms], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakPlatforms}, TargetNullValue={StaticResource HeroChipBreakPlatforms}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipPlatforms}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowPlatforms], Mode=TwoWay, FallbackValue={StaticResource HeroShowPlatforms}, TargetNullValue={StaticResource HeroShowPlatforms}}"
+                      Content="{DynamicResource LOCHNDPanelChipNamePlatforms}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowSource">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[2]?[0]:null),([1]&lt;=[2]?[1]:null),([3]&lt;[2]?[3]:null),([4]&lt;[2]?[4]:null),([5]&lt;[2]?[5]:null),([6]&lt;[2]?[6]:null),([7]&lt;[2]?[7]:null),([8]&lt;[2]?[8]:null),([9]&lt;[2]?[9]:null),([10]&lt;[2]?[10]:null),([11]&lt;[2]?[11]:null),([12]&lt;[2]?[12]:null),([13]&lt;[2]?[13]:null),([14]&lt;[2]?[14]:null),([15]&lt;[2]?[15]:null),([16]&lt;[2]?[16]:null),([17]&lt;[2]?[17]:null),([18]&lt;[2]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[2]?[0]:null),([1]&gt;[2]?[1]:null),([3]&gt;=[2]?[3]:null),([4]&gt;=[2]?[4]:null),([5]&gt;=[2]?[5]:null),([6]&gt;=[2]?[6]:null),([7]&gt;=[2]?[7]:null),([8]&gt;=[2]?[8]:null),([9]&gt;=[2]?[9]:null),([10]&gt;=[2]?[10]:null),([11]&gt;=[2]?[11]:null),([12]&gt;=[2]?[12]:null),([13]&gt;=[2]?[13]:null),([14]&gt;=[2]?[14]:null),([15]&gt;=[2]?[15]:null),([16]&gt;=[2]?[16]:null),([17]&gt;=[2]?[17]:null),([18]&gt;=[2]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosSource], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosSource}, TargetNullValue={StaticResource HeroChipPosSource}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[2].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosSource], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosSource}, TargetNullValue={StaticResource HeroChipPosSource}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[2].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakSource], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakSource}, TargetNullValue={StaticResource HeroChipBreakSource}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipSource}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSource], Mode=TwoWay, FallbackValue={StaticResource HeroShowSource}, TargetNullValue={StaticResource HeroShowSource}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameSource}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowGenres">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[3]?[0]:null),([1]&lt;=[3]?[1]:null),([2]&lt;=[3]?[2]:null),([4]&lt;[3]?[4]:null),([5]&lt;[3]?[5]:null),([6]&lt;[3]?[6]:null),([7]&lt;[3]?[7]:null),([8]&lt;[3]?[8]:null),([9]&lt;[3]?[9]:null),([10]&lt;[3]?[10]:null),([11]&lt;[3]?[11]:null),([12]&lt;[3]?[12]:null),([13]&lt;[3]?[13]:null),([14]&lt;[3]?[14]:null),([15]&lt;[3]?[15]:null),([16]&lt;[3]?[16]:null),([17]&lt;[3]?[17]:null),([18]&lt;[3]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[3]?[0]:null),([1]&gt;[3]?[1]:null),([2]&gt;[3]?[2]:null),([4]&gt;=[3]?[4]:null),([5]&gt;=[3]?[5]:null),([6]&gt;=[3]?[6]:null),([7]&gt;=[3]?[7]:null),([8]&gt;=[3]?[8]:null),([9]&gt;=[3]?[9]:null),([10]&gt;=[3]?[10]:null),([11]&gt;=[3]?[11]:null),([12]&gt;=[3]?[12]:null),([13]&gt;=[3]?[13]:null),([14]&gt;=[3]?[14]:null),([15]&gt;=[3]?[15]:null),([16]&gt;=[3]?[16]:null),([17]&gt;=[3]?[17]:null),([18]&gt;=[3]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosGenres}, TargetNullValue={StaticResource HeroChipPosGenres}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[3].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosGenres}, TargetNullValue={StaticResource HeroChipPosGenres}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[3].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakGenres}, TargetNullValue={StaticResource HeroChipBreakGenres}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipGenres}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], Mode=TwoWay, FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameGenres}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowCategories">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[4]?[0]:null),([1]&lt;=[4]?[1]:null),([2]&lt;=[4]?[2]:null),([3]&lt;=[4]?[3]:null),([5]&lt;[4]?[5]:null),([6]&lt;[4]?[6]:null),([7]&lt;[4]?[7]:null),([8]&lt;[4]?[8]:null),([9]&lt;[4]?[9]:null),([10]&lt;[4]?[10]:null),([11]&lt;[4]?[11]:null),([12]&lt;[4]?[12]:null),([13]&lt;[4]?[13]:null),([14]&lt;[4]?[14]:null),([15]&lt;[4]?[15]:null),([16]&lt;[4]?[16]:null),([17]&lt;[4]?[17]:null),([18]&lt;[4]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[4]?[0]:null),([1]&gt;[4]?[1]:null),([2]&gt;[4]?[2]:null),([3]&gt;[4]?[3]:null),([5]&gt;=[4]?[5]:null),([6]&gt;=[4]?[6]:null),([7]&gt;=[4]?[7]:null),([8]&gt;=[4]?[8]:null),([9]&gt;=[4]?[9]:null),([10]&gt;=[4]?[10]:null),([11]&gt;=[4]?[11]:null),([12]&gt;=[4]?[12]:null),([13]&gt;=[4]?[13]:null),([14]&gt;=[4]?[14]:null),([15]&gt;=[4]?[15]:null),([16]&gt;=[4]?[16]:null),([17]&gt;=[4]?[17]:null),([18]&gt;=[4]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCategories], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCategories}, TargetNullValue={StaticResource HeroChipPosCategories}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[4].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCategories], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCategories}, TargetNullValue={StaticResource HeroChipPosCategories}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[4].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakCategories], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakCategories}, TargetNullValue={StaticResource HeroChipBreakCategories}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipCategories}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], Mode=TwoWay, FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameCategories}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowFeatures">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[5]?[0]:null),([1]&lt;=[5]?[1]:null),([2]&lt;=[5]?[2]:null),([3]&lt;=[5]?[3]:null),([4]&lt;=[5]?[4]:null),([6]&lt;[5]?[6]:null),([7]&lt;[5]?[7]:null),([8]&lt;[5]?[8]:null),([9]&lt;[5]?[9]:null),([10]&lt;[5]?[10]:null),([11]&lt;[5]?[11]:null),([12]&lt;[5]?[12]:null),([13]&lt;[5]?[13]:null),([14]&lt;[5]?[14]:null),([15]&lt;[5]?[15]:null),([16]&lt;[5]?[16]:null),([17]&lt;[5]?[17]:null),([18]&lt;[5]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[5]?[0]:null),([1]&gt;[5]?[1]:null),([2]&gt;[5]?[2]:null),([3]&gt;[5]?[3]:null),([4]&gt;[5]?[4]:null),([6]&gt;=[5]?[6]:null),([7]&gt;=[5]?[7]:null),([8]&gt;=[5]?[8]:null),([9]&gt;=[5]?[9]:null),([10]&gt;=[5]?[10]:null),([11]&gt;=[5]?[11]:null),([12]&gt;=[5]?[12]:null),([13]&gt;=[5]?[13]:null),([14]&gt;=[5]?[14]:null),([15]&gt;=[5]?[15]:null),([16]&gt;=[5]?[16]:null),([17]&gt;=[5]?[17]:null),([18]&gt;=[5]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosFeatures], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosFeatures}, TargetNullValue={StaticResource HeroChipPosFeatures}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[5].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosFeatures], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosFeatures}, TargetNullValue={StaticResource HeroChipPosFeatures}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[5].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakFeatures], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakFeatures}, TargetNullValue={StaticResource HeroChipBreakFeatures}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipFeatures}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], Mode=TwoWay, FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameFeatures}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowTags">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[6]?[0]:null),([1]&lt;=[6]?[1]:null),([2]&lt;=[6]?[2]:null),([3]&lt;=[6]?[3]:null),([4]&lt;=[6]?[4]:null),([5]&lt;=[6]?[5]:null),([7]&lt;[6]?[7]:null),([8]&lt;[6]?[8]:null),([9]&lt;[6]?[9]:null),([10]&lt;[6]?[10]:null),([11]&lt;[6]?[11]:null),([12]&lt;[6]?[12]:null),([13]&lt;[6]?[13]:null),([14]&lt;[6]?[14]:null),([15]&lt;[6]?[15]:null),([16]&lt;[6]?[16]:null),([17]&lt;[6]?[17]:null),([18]&lt;[6]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[6]?[0]:null),([1]&gt;[6]?[1]:null),([2]&gt;[6]?[2]:null),([3]&gt;[6]?[3]:null),([4]&gt;[6]?[4]:null),([5]&gt;[6]?[5]:null),([7]&gt;=[6]?[7]:null),([8]&gt;=[6]?[8]:null),([9]&gt;=[6]?[9]:null),([10]&gt;=[6]?[10]:null),([11]&gt;=[6]?[11]:null),([12]&gt;=[6]?[12]:null),([13]&gt;=[6]?[13]:null),([14]&gt;=[6]?[14]:null),([15]&gt;=[6]?[15]:null),([16]&gt;=[6]?[16]:null),([17]&gt;=[6]?[17]:null),([18]&gt;=[6]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosTags], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosTags}, TargetNullValue={StaticResource HeroChipPosTags}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[6].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosTags], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosTags}, TargetNullValue={StaticResource HeroChipPosTags}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[6].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakTags], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakTags}, TargetNullValue={StaticResource HeroChipBreakTags}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipTags}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], Mode=TwoWay, FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameTags}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowDevelopers">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[7]?[0]:null),([1]&lt;=[7]?[1]:null),([2]&lt;=[7]?[2]:null),([3]&lt;=[7]?[3]:null),([4]&lt;=[7]?[4]:null),([5]&lt;=[7]?[5]:null),([6]&lt;=[7]?[6]:null),([8]&lt;[7]?[8]:null),([9]&lt;[7]?[9]:null),([10]&lt;[7]?[10]:null),([11]&lt;[7]?[11]:null),([12]&lt;[7]?[12]:null),([13]&lt;[7]?[13]:null),([14]&lt;[7]?[14]:null),([15]&lt;[7]?[15]:null),([16]&lt;[7]?[16]:null),([17]&lt;[7]?[17]:null),([18]&lt;[7]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[7]?[0]:null),([1]&gt;[7]?[1]:null),([2]&gt;[7]?[2]:null),([3]&gt;[7]?[3]:null),([4]&gt;[7]?[4]:null),([5]&gt;[7]?[5]:null),([6]&gt;[7]?[6]:null),([8]&gt;=[7]?[8]:null),([9]&gt;=[7]?[9]:null),([10]&gt;=[7]?[10]:null),([11]&gt;=[7]?[11]:null),([12]&gt;=[7]?[12]:null),([13]&gt;=[7]?[13]:null),([14]&gt;=[7]?[14]:null),([15]&gt;=[7]?[15]:null),([16]&gt;=[7]?[16]:null),([17]&gt;=[7]?[17]:null),([18]&gt;=[7]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosDevelopers], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosDevelopers}, TargetNullValue={StaticResource HeroChipPosDevelopers}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[7].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosDevelopers], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosDevelopers}, TargetNullValue={StaticResource HeroChipPosDevelopers}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[7].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakDevelopers], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakDevelopers}, TargetNullValue={StaticResource HeroChipBreakDevelopers}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipDevelopers}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowDevelopers], Mode=TwoWay, FallbackValue={StaticResource HeroShowDevelopers}, TargetNullValue={StaticResource HeroShowDevelopers}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameDevelopers}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowCompletionStatus">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[8]?[0]:null),([1]&lt;=[8]?[1]:null),([2]&lt;=[8]?[2]:null),([3]&lt;=[8]?[3]:null),([4]&lt;=[8]?[4]:null),([5]&lt;=[8]?[5]:null),([6]&lt;=[8]?[6]:null),([7]&lt;=[8]?[7]:null),([9]&lt;[8]?[9]:null),([10]&lt;[8]?[10]:null),([11]&lt;[8]?[11]:null),([12]&lt;[8]?[12]:null),([13]&lt;[8]?[13]:null),([14]&lt;[8]?[14]:null),([15]&lt;[8]?[15]:null),([16]&lt;[8]?[16]:null),([17]&lt;[8]?[17]:null),([18]&lt;[8]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[8]?[0]:null),([1]&gt;[8]?[1]:null),([2]&gt;[8]?[2]:null),([3]&gt;[8]?[3]:null),([4]&gt;[8]?[4]:null),([5]&gt;[8]?[5]:null),([6]&gt;[8]?[6]:null),([7]&gt;[8]?[7]:null),([9]&gt;=[8]?[9]:null),([10]&gt;=[8]?[10]:null),([11]&gt;=[8]?[11]:null),([12]&gt;=[8]?[12]:null),([13]&gt;=[8]?[13]:null),([14]&gt;=[8]?[14]:null),([15]&gt;=[8]?[15]:null),([16]&gt;=[8]?[16]:null),([17]&gt;=[8]?[17]:null),([18]&gt;=[8]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCompletionStatus}, TargetNullValue={StaticResource HeroChipPosCompletionStatus}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[8].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCompletionStatus}, TargetNullValue={StaticResource HeroChipPosCompletionStatus}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[8].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakCompletionStatus}, TargetNullValue={StaticResource HeroChipBreakCompletionStatus}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipCompletionStatus}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource HeroShowCompletionStatus}, TargetNullValue={StaticResource HeroShowCompletionStatus}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameCompletionStatus}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowCommunityScore">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[9]?[0]:null),([1]&lt;=[9]?[1]:null),([2]&lt;=[9]?[2]:null),([3]&lt;=[9]?[3]:null),([4]&lt;=[9]?[4]:null),([5]&lt;=[9]?[5]:null),([6]&lt;=[9]?[6]:null),([7]&lt;=[9]?[7]:null),([8]&lt;=[9]?[8]:null),([10]&lt;[9]?[10]:null),([11]&lt;[9]?[11]:null),([12]&lt;[9]?[12]:null),([13]&lt;[9]?[13]:null),([14]&lt;[9]?[14]:null),([15]&lt;[9]?[15]:null),([16]&lt;[9]?[16]:null),([17]&lt;[9]?[17]:null),([18]&lt;[9]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[9]?[0]:null),([1]&gt;[9]?[1]:null),([2]&gt;[9]?[2]:null),([3]&gt;[9]?[3]:null),([4]&gt;[9]?[4]:null),([5]&gt;[9]?[5]:null),([6]&gt;[9]?[6]:null),([7]&gt;[9]?[7]:null),([8]&gt;[9]?[8]:null),([10]&gt;=[9]?[10]:null),([11]&gt;=[9]?[11]:null),([12]&gt;=[9]?[12]:null),([13]&gt;=[9]?[13]:null),([14]&gt;=[9]?[14]:null),([15]&gt;=[9]?[15]:null),([16]&gt;=[9]?[16]:null),([17]&gt;=[9]?[17]:null),([18]&gt;=[9]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCommunityScore], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCommunityScore}, TargetNullValue={StaticResource HeroChipPosCommunityScore}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[9].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosCommunityScore], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosCommunityScore}, TargetNullValue={StaticResource HeroChipPosCommunityScore}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[9].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakCommunityScore], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakCommunityScore}, TargetNullValue={StaticResource HeroChipBreakCommunityScore}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipCommunityScore}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCommunityScore], Mode=TwoWay, FallbackValue={StaticResource HeroShowCommunityScore}, TargetNullValue={StaticResource HeroShowCommunityScore}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameCommunityScore}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowHltbMain">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[10]?[0]:null),([1]&lt;=[10]?[1]:null),([2]&lt;=[10]?[2]:null),([3]&lt;=[10]?[3]:null),([4]&lt;=[10]?[4]:null),([5]&lt;=[10]?[5]:null),([6]&lt;=[10]?[6]:null),([7]&lt;=[10]?[7]:null),([8]&lt;=[10]?[8]:null),([9]&lt;=[10]?[9]:null),([11]&lt;[10]?[11]:null),([12]&lt;[10]?[12]:null),([13]&lt;[10]?[13]:null),([14]&lt;[10]?[14]:null),([15]&lt;[10]?[15]:null),([16]&lt;[10]?[16]:null),([17]&lt;[10]?[17]:null),([18]&lt;[10]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[10]?[0]:null),([1]&gt;[10]?[1]:null),([2]&gt;[10]?[2]:null),([3]&gt;[10]?[3]:null),([4]&gt;[10]?[4]:null),([5]&gt;[10]?[5]:null),([6]&gt;[10]?[6]:null),([7]&gt;[10]?[7]:null),([8]&gt;[10]?[8]:null),([9]&gt;[10]?[9]:null),([11]&gt;=[10]?[11]:null),([12]&gt;=[10]?[12]:null),([13]&gt;=[10]?[13]:null),([14]&gt;=[10]?[14]:null),([15]&gt;=[10]?[15]:null),([16]&gt;=[10]?[16]:null),([17]&gt;=[10]?[17]:null),([18]&gt;=[10]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbMain], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbMain}, TargetNullValue={StaticResource HeroChipPosHltbMain}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[10].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbMain], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbMain}, TargetNullValue={StaticResource HeroChipPosHltbMain}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[10].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakHltbMain], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakHltbMain}, TargetNullValue={StaticResource HeroChipBreakHltbMain}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipHltbMain}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], Mode=TwoWay, FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameHltbMain}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowHltbExtra">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[11]?[0]:null),([1]&lt;=[11]?[1]:null),([2]&lt;=[11]?[2]:null),([3]&lt;=[11]?[3]:null),([4]&lt;=[11]?[4]:null),([5]&lt;=[11]?[5]:null),([6]&lt;=[11]?[6]:null),([7]&lt;=[11]?[7]:null),([8]&lt;=[11]?[8]:null),([9]&lt;=[11]?[9]:null),([10]&lt;=[11]?[10]:null),([12]&lt;[11]?[12]:null),([13]&lt;[11]?[13]:null),([14]&lt;[11]?[14]:null),([15]&lt;[11]?[15]:null),([16]&lt;[11]?[16]:null),([17]&lt;[11]?[17]:null),([18]&lt;[11]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[11]?[0]:null),([1]&gt;[11]?[1]:null),([2]&gt;[11]?[2]:null),([3]&gt;[11]?[3]:null),([4]&gt;[11]?[4]:null),([5]&gt;[11]?[5]:null),([6]&gt;[11]?[6]:null),([7]&gt;[11]?[7]:null),([8]&gt;[11]?[8]:null),([9]&gt;[11]?[9]:null),([10]&gt;[11]?[10]:null),([12]&gt;=[11]?[12]:null),([13]&gt;=[11]?[13]:null),([14]&gt;=[11]?[14]:null),([15]&gt;=[11]?[15]:null),([16]&gt;=[11]?[16]:null),([17]&gt;=[11]?[17]:null),([18]&gt;=[11]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbExtra], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbExtra}, TargetNullValue={StaticResource HeroChipPosHltbExtra}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[11].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbExtra], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbExtra}, TargetNullValue={StaticResource HeroChipPosHltbExtra}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[11].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakHltbExtra], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakHltbExtra}, TargetNullValue={StaticResource HeroChipBreakHltbExtra}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipHltbExtra}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], Mode=TwoWay, FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameHltbExtra}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowHltbCompletionist">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[12]?[0]:null),([1]&lt;=[12]?[1]:null),([2]&lt;=[12]?[2]:null),([3]&lt;=[12]?[3]:null),([4]&lt;=[12]?[4]:null),([5]&lt;=[12]?[5]:null),([6]&lt;=[12]?[6]:null),([7]&lt;=[12]?[7]:null),([8]&lt;=[12]?[8]:null),([9]&lt;=[12]?[9]:null),([10]&lt;=[12]?[10]:null),([11]&lt;=[12]?[11]:null),([13]&lt;[12]?[13]:null),([14]&lt;[12]?[14]:null),([15]&lt;[12]?[15]:null),([16]&lt;[12]?[16]:null),([17]&lt;[12]?[17]:null),([18]&lt;[12]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[12]?[0]:null),([1]&gt;[12]?[1]:null),([2]&gt;[12]?[2]:null),([3]&gt;[12]?[3]:null),([4]&gt;[12]?[4]:null),([5]&gt;[12]?[5]:null),([6]&gt;[12]?[6]:null),([7]&gt;[12]?[7]:null),([8]&gt;[12]?[8]:null),([9]&gt;[12]?[9]:null),([10]&gt;[12]?[10]:null),([11]&gt;[12]?[11]:null),([13]&gt;=[12]?[13]:null),([14]&gt;=[12]?[14]:null),([15]&gt;=[12]?[15]:null),([16]&gt;=[12]?[16]:null),([17]&gt;=[12]?[17]:null),([18]&gt;=[12]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbCompletionist], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbCompletionist}, TargetNullValue={StaticResource HeroChipPosHltbCompletionist}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[12].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosHltbCompletionist], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosHltbCompletionist}, TargetNullValue={StaticResource HeroChipPosHltbCompletionist}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[12].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakHltbCompletionist], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakHltbCompletionist}, TargetNullValue={StaticResource HeroChipBreakHltbCompletionist}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipHltbCompletionist}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], Mode=TwoWay, FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameHltbCompletionist}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowAchievements">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[13]?[0]:null),([1]&lt;=[13]?[1]:null),([2]&lt;=[13]?[2]:null),([3]&lt;=[13]?[3]:null),([4]&lt;=[13]?[4]:null),([5]&lt;=[13]?[5]:null),([6]&lt;=[13]?[6]:null),([7]&lt;=[13]?[7]:null),([8]&lt;=[13]?[8]:null),([9]&lt;=[13]?[9]:null),([10]&lt;=[13]?[10]:null),([11]&lt;=[13]?[11]:null),([12]&lt;=[13]?[12]:null),([14]&lt;[13]?[14]:null),([15]&lt;[13]?[15]:null),([16]&lt;[13]?[16]:null),([17]&lt;[13]?[17]:null),([18]&lt;[13]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[13]?[0]:null),([1]&gt;[13]?[1]:null),([2]&gt;[13]?[2]:null),([3]&gt;[13]?[3]:null),([4]&gt;[13]?[4]:null),([5]&gt;[13]?[5]:null),([6]&gt;[13]?[6]:null),([7]&gt;[13]?[7]:null),([8]&gt;[13]?[8]:null),([9]&gt;[13]?[9]:null),([10]&gt;[13]?[10]:null),([11]&gt;[13]?[11]:null),([12]&gt;[13]?[12]:null),([14]&gt;=[13]?[14]:null),([15]&gt;=[13]?[15]:null),([16]&gt;=[13]?[16]:null),([17]&gt;=[13]?[17]:null),([18]&gt;=[13]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosAchievements}, TargetNullValue={StaticResource HeroChipPosAchievements}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[13].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosAchievements}, TargetNullValue={StaticResource HeroChipPosAchievements}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[13].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakAchievements}, TargetNullValue={StaticResource HeroChipBreakAchievements}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipAchievements}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroShowAchievements}, TargetNullValue={StaticResource HeroShowAchievements}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameAchievements}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowLatestAchievement">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[14]?[0]:null),([1]&lt;=[14]?[1]:null),([2]&lt;=[14]?[2]:null),([3]&lt;=[14]?[3]:null),([4]&lt;=[14]?[4]:null),([5]&lt;=[14]?[5]:null),([6]&lt;=[14]?[6]:null),([7]&lt;=[14]?[7]:null),([8]&lt;=[14]?[8]:null),([9]&lt;=[14]?[9]:null),([10]&lt;=[14]?[10]:null),([11]&lt;=[14]?[11]:null),([12]&lt;=[14]?[12]:null),([13]&lt;=[14]?[13]:null),([15]&lt;[14]?[15]:null),([16]&lt;[14]?[16]:null),([17]&lt;[14]?[17]:null),([18]&lt;[14]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[14]?[0]:null),([1]&gt;[14]?[1]:null),([2]&gt;[14]?[2]:null),([3]&gt;[14]?[3]:null),([4]&gt;[14]?[4]:null),([5]&gt;[14]?[5]:null),([6]&gt;[14]?[6]:null),([7]&gt;[14]?[7]:null),([8]&gt;[14]?[8]:null),([9]&gt;[14]?[9]:null),([10]&gt;[14]?[10]:null),([11]&gt;[14]?[11]:null),([12]&gt;[14]?[12]:null),([13]&gt;[14]?[13]:null),([15]&gt;=[14]?[15]:null),([16]&gt;=[14]?[16]:null),([17]&gt;=[14]?[17]:null),([18]&gt;=[14]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosLatestAchievement], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosLatestAchievement}, TargetNullValue={StaticResource HeroChipPosLatestAchievement}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[14].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosLatestAchievement], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosLatestAchievement}, TargetNullValue={StaticResource HeroChipPosLatestAchievement}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[14].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakLatestAchievement], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakLatestAchievement}, TargetNullValue={StaticResource HeroChipBreakLatestAchievement}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipLatestAchievement}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLatestAchievement], Mode=TwoWay, FallbackValue={StaticResource HeroShowLatestAchievement}, TargetNullValue={StaticResource HeroShowLatestAchievement}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameLatestAchievement}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowRareAchievements">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[15]?[0]:null),([1]&lt;=[15]?[1]:null),([2]&lt;=[15]?[2]:null),([3]&lt;=[15]?[3]:null),([4]&lt;=[15]?[4]:null),([5]&lt;=[15]?[5]:null),([6]&lt;=[15]?[6]:null),([7]&lt;=[15]?[7]:null),([8]&lt;=[15]?[8]:null),([9]&lt;=[15]?[9]:null),([10]&lt;=[15]?[10]:null),([11]&lt;=[15]?[11]:null),([12]&lt;=[15]?[12]:null),([13]&lt;=[15]?[13]:null),([14]&lt;=[15]?[14]:null),([16]&lt;[15]?[16]:null),([17]&lt;[15]?[17]:null),([18]&lt;[15]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[15]?[0]:null),([1]&gt;[15]?[1]:null),([2]&gt;[15]?[2]:null),([3]&gt;[15]?[3]:null),([4]&gt;[15]?[4]:null),([5]&gt;[15]?[5]:null),([6]&gt;[15]?[6]:null),([7]&gt;[15]?[7]:null),([8]&gt;[15]?[8]:null),([9]&gt;[15]?[9]:null),([10]&gt;[15]?[10]:null),([11]&gt;[15]?[11]:null),([12]&gt;[15]?[12]:null),([13]&gt;[15]?[13]:null),([14]&gt;[15]?[14]:null),([16]&gt;=[15]?[16]:null),([17]&gt;=[15]?[17]:null),([18]&gt;=[15]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosRareAchievements}, TargetNullValue={StaticResource HeroChipPosRareAchievements}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[15].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosRareAchievements}, TargetNullValue={StaticResource HeroChipPosRareAchievements}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[15].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakRareAchievements}, TargetNullValue={StaticResource HeroChipBreakRareAchievements}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipRareAchievements}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroShowRareAchievements}, TargetNullValue={StaticResource HeroShowRareAchievements}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameRareAchievements}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowLastSession">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[16]?[0]:null),([1]&lt;=[16]?[1]:null),([2]&lt;=[16]?[2]:null),([3]&lt;=[16]?[3]:null),([4]&lt;=[16]?[4]:null),([5]&lt;=[16]?[5]:null),([6]&lt;=[16]?[6]:null),([7]&lt;=[16]?[7]:null),([8]&lt;=[16]?[8]:null),([9]&lt;=[16]?[9]:null),([10]&lt;=[16]?[10]:null),([11]&lt;=[16]?[11]:null),([12]&lt;=[16]?[12]:null),([13]&lt;=[16]?[13]:null),([14]&lt;=[16]?[14]:null),([15]&lt;=[16]?[15]:null),([17]&lt;[16]?[17]:null),([18]&lt;[16]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[16]?[0]:null),([1]&gt;[16]?[1]:null),([2]&gt;[16]?[2]:null),([3]&gt;[16]?[3]:null),([4]&gt;[16]?[4]:null),([5]&gt;[16]?[5]:null),([6]&gt;[16]?[6]:null),([7]&gt;[16]?[7]:null),([8]&gt;[16]?[8]:null),([9]&gt;[16]?[9]:null),([10]&gt;[16]?[10]:null),([11]&gt;[16]?[11]:null),([12]&gt;[16]?[12]:null),([13]&gt;[16]?[13]:null),([14]&gt;[16]?[14]:null),([15]&gt;[16]?[15]:null),([17]&gt;=[16]?[17]:null),([18]&gt;=[16]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosLastSession}, TargetNullValue={StaticResource HeroChipPosLastSession}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[16].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosLastSession}, TargetNullValue={StaticResource HeroChipPosLastSession}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[16].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakLastSession}, TargetNullValue={StaticResource HeroChipBreakLastSession}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipLastSession}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroShowLastSession}, TargetNullValue={StaticResource HeroShowLastSession}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameLastSession}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowRecentActivity">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[17]?[0]:null),([1]&lt;=[17]?[1]:null),([2]&lt;=[17]?[2]:null),([3]&lt;=[17]?[3]:null),([4]&lt;=[17]?[4]:null),([5]&lt;=[17]?[5]:null),([6]&lt;=[17]?[6]:null),([7]&lt;=[17]?[7]:null),([8]&lt;=[17]?[8]:null),([9]&lt;=[17]?[9]:null),([10]&lt;=[17]?[10]:null),([11]&lt;=[17]?[11]:null),([12]&lt;=[17]?[12]:null),([13]&lt;=[17]?[13]:null),([14]&lt;=[17]?[14]:null),([15]&lt;=[17]?[15]:null),([16]&lt;=[17]?[16]:null),([18]&lt;[17]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[17]?[0]:null),([1]&gt;[17]?[1]:null),([2]&gt;[17]?[2]:null),([3]&gt;[17]?[3]:null),([4]&gt;[17]?[4]:null),([5]&gt;[17]?[5]:null),([6]&gt;[17]?[6]:null),([7]&gt;[17]?[7]:null),([8]&gt;[17]?[8]:null),([9]&gt;[17]?[9]:null),([10]&gt;[17]?[10]:null),([11]&gt;[17]?[11]:null),([12]&gt;[17]?[12]:null),([13]&gt;[17]?[13]:null),([14]&gt;[17]?[14]:null),([15]&gt;[17]?[15]:null),([16]&gt;[17]?[16]:null),([18]&gt;=[17]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosRecentActivity}, TargetNullValue={StaticResource HeroChipPosRecentActivity}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[17].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosRecentActivity}, TargetNullValue={StaticResource HeroChipPosRecentActivity}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[17].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakRecentActivity}, TargetNullValue={StaticResource HeroChipBreakRecentActivity}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipRecentActivity}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameRecentActivity}" />
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="HndChipRowAvgFps">
+        <DockPanel Style="{DynamicResource HndPanelRow}">
+            <Grid x:Name="Calc" DockPanel.Dock="Left" Width="0" Height="0"
+                  DataContext="{Binding ItemsSource.SourceCollection, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
+                <FrameworkElement x:Name="Prev" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;=[18]?[0]:null),([1]&lt;=[18]?[1]:null),([2]&lt;=[18]?[2]:null),([3]&lt;=[18]?[3]:null),([4]&lt;=[18]?[4]:null),([5]&lt;=[18]?[5]:null),([6]&lt;=[18]?[6]:null),([7]&lt;=[18]?[7]:null),([8]&lt;=[18]?[8]:null),([9]&lt;=[18]?[9]:null),([10]&lt;=[18]?[10]:null),([11]&lt;=[18]?[11]:null),([12]&lt;=[18]?[12]:null),([13]&lt;=[18]?[13]:null),([14]&lt;=[18]?[14]:null),([15]&lt;=[18]?[15]:null),([16]&lt;=[18]?[16]:null),([17]&lt;=[18]?[17]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[18]?[0]:null),([1]&gt;[18]?[1]:null),([2]&gt;[18]?[2]:null),([3]&gt;[18]?[3]:null),([4]&gt;[18]?[4]:null),([5]&gt;[18]?[5]:null),([6]&gt;[18]?[6]:null),([7]&gt;[18]?[7]:null),([8]&gt;[18]?[8]:null),([9]&gt;[18]?[9]:null),([10]&gt;[18]?[10]:null),([11]&gt;[18]?[11]:null),([12]&gt;[18]?[12]:null),([13]&gt;[18]?[13]:null),([14]&gt;[18]?[14]:null),([15]&gt;[18]?[15]:null),([16]&gt;[18]?[16]:null),([17]&gt;[18]?[17]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/>
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Prev2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(([0]&lt;[19]?[0]:null),([1]&lt;[19]?[1]:null),([2]&lt;[19]?[2]:null),([3]&lt;[19]?[3]:null),([4]&lt;[19]?[4]:null),([5]&lt;[19]?[5]:null),([6]&lt;[19]?[6]:null),([7]&lt;[19]?[7]:null),([8]&lt;[19]?[8]:null),([9]&lt;[19]?[9]:null),([10]&lt;[19]?[10]:null),([11]&lt;[19]?[11]:null),([12]&lt;[19]?[12]:null),([13]&lt;[19]?[13]:null),([14]&lt;[19]?[14]:null),([15]&lt;[19]?[15]:null),([16]&lt;[19]?[16]:null),([17]&lt;[19]?[17]:null),([18]&lt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <FrameworkElement x:Name="Next2" Visibility="Collapsed">
+                    <FrameworkElement.Tag>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Min(([0]&gt;[19]?[0]:null),([1]&gt;[19]?[1]:null),([2]&gt;[19]?[2]:null),([3]&gt;[19]?[3]:null),([4]&gt;[19]?[4]:null),([5]&gt;[19]?[5]:null),([6]&gt;[19]?[6]:null),([7]&gt;[19]?[7]:null),([8]&gt;[19]?[8]:null),([9]&gt;[19]?[9]:null),([10]&gt;[19]?[10]:null),([11]&gt;[19]?[11]:null),([12]&gt;[19]?[12]:null),([13]&gt;[19]?[13]:null),([14]&gt;[19]?[14]:null),([15]&gt;[19]?[15]:null),([16]&gt;[19]?[16]:null),([17]&gt;[19]?[17]:null),([18]&gt;[19]?[18]:null))">
+                            <Binding Path="[0].Tag"/><Binding Path="[1].Tag"/><Binding Path="[2].Tag"/><Binding Path="[3].Tag"/><Binding Path="[4].Tag"/><Binding Path="[5].Tag"/><Binding Path="[6].Tag"/><Binding Path="[7].Tag"/><Binding Path="[8].Tag"/><Binding Path="[9].Tag"/><Binding Path="[10].Tag"/><Binding Path="[11].Tag"/><Binding Path="[12].Tag"/><Binding Path="[13].Tag"/><Binding Path="[14].Tag"/><Binding Path="[15].Tag"/><Binding Path="[16].Tag"/><Binding Path="[17].Tag"/><Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" />
+                        </MultiBinding>
+                    </FrameworkElement.Tag>
+                </FrameworkElement>
+                <Slider x:Name="Up" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosAvgFps}, TargetNullValue={StaticResource HeroChipPosAvgFps}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, x - (z == null ? y - 10 : (y + z) / 2))" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[18].Tag"/><Binding ElementName="Prev" Path="Tag" /><Binding ElementName="Prev2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+                <Slider x:Name="Down" Width="0" Height="0" Opacity="0" IsHitTestVisible="False" Focusable="False" IsTabStop="False"
+                        Minimum="-1000000" Maximum="1000000" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipPosAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroChipPosAvgFps}, TargetNullValue={StaticResource HeroChipPosAvgFps}}">
+                    <Slider.SmallChange>
+                        <MultiBinding Converter="{StaticResource MathConverter}" ConverterParameter="Max(0, (z == null ? y + 10 : (y + z) / 2) - x)" FallbackValue="0" TargetNullValue="0">
+                            <Binding Path="[18].Tag"/><Binding ElementName="Next" Path="Tag" /><Binding ElementName="Next2" Path="Tag" />
+                        </MultiBinding>
+                    </Slider.SmallChange>
+                </Slider>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,10,0" VerticalAlignment="Center">
+                <Button Content="&#xE70E;" Command="Slider.DecreaseSmall" CommandTarget="{Binding ElementName=Up}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveUp}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Prev}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="&#xE70D;" Command="Slider.IncreaseSmall" CommandTarget="{Binding ElementName=Down}"
+                        ToolTip="{DynamicResource LOCHNDPanelMoveDown}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource HndPanelArrow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag, ElementName=Next}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+            <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource HndPanelBreakToggle}" ToolTip="{DynamicResource LOCHNDPanelBreakTip}"
+                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakAvgFps}, TargetNullValue={StaticResource HeroChipBreakAvgFps}}" />
+            <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelSample}" Text="{DynamicResource LOCHNDPanelChipAvgFps}" />
+            <CheckBox Style="{DynamicResource HndPanelSwitch}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}"
+                      Content="{DynamicResource LOCHNDPanelChipNameAvgFps}" />
+        </DockPanel>
+    </DataTemplate>
+    <!-- END generated chip rows -->
 </ResourceDictionary>

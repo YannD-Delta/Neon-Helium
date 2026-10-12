@@ -1847,60 +1847,6 @@ Variables:
         LocKey: LOCHNDOptHeroChipBreakAvgFps
         Type: Boolean
         Default: 'False'
-    HeroChipsOrderGame:
-        Title: 'Order: date, platforms, source'
-        LocKey: LOCHNDOptHeroChipsOrderGame
-        Type: Double
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
-    HeroChipsOrderClassification:
-        Title: 'Order: genres, categories, features, tags'
-        LocKey: LOCHNDOptHeroChipsOrderClassification
-        Type: Double
-        Default: '1'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
-    HeroChipsOrderStudio:
-        Title: 'Order: developers, status, score'
-        LocKey: LOCHNDOptHeroChipsOrderStudio
-        Type: Double
-        Default: '2'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
-    HeroChipsOrderHltb:
-        Title: 'Order: HowLongToBeat'
-        LocKey: LOCHNDOptHeroChipsOrderHltb
-        Type: Double
-        Default: '3'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
-    HeroChipsOrderAchievements:
-        Title: 'Order: achievements'
-        LocKey: LOCHNDOptHeroChipsOrderAchievements
-        Type: Double
-        Default: '4'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
-    HeroChipsOrderActivity:
-        Title: 'Order: GameActivity'
-        LocKey: LOCHNDOptHeroChipsOrderActivity
-        Type: Double
-        Default: '5'
-        Slider:
-            Min: '0'
-            Max: '5'
-            Step: '1'
     HltbShowOnCover:
         Title: 'HowLongToBeat time on the cover'
         LocKey: LOCHNDOptHltbShowOnCover
@@ -2528,3 +2474,79 @@ Variables:
             Min: '12'
             Max: '48'
             Step: '1'
+    HeroChipPosReleaseDate:
+        Title: 'HeroChipPosReleaseDate'
+        Type: Double
+        Default: '10'
+    HeroChipPosPlatforms:
+        Title: 'HeroChipPosPlatforms'
+        Type: Double
+        Default: '20'
+    HeroChipPosSource:
+        Title: 'HeroChipPosSource'
+        Type: Double
+        Default: '30'
+    HeroChipPosGenres:
+        Title: 'HeroChipPosGenres'
+        Type: Double
+        Default: '40'
+    HeroChipPosCategories:
+        Title: 'HeroChipPosCategories'
+        Type: Double
+        Default: '50'
+    HeroChipPosFeatures:
+        Title: 'HeroChipPosFeatures'
+        Type: Double
+        Default: '60'
+    HeroChipPosTags:
+        Title: 'HeroChipPosTags'
+        Type: Double
+        Default: '70'
+    HeroChipPosDevelopers:
+        Title: 'HeroChipPosDevelopers'
+        Type: Double
+        Default: '80'
+    HeroChipPosCompletionStatus:
+        Title: 'HeroChipPosCompletionStatus'
+        Type: Double
+        Default: '90'
+    HeroChipPosCommunityScore:
+        Title: 'HeroChipPosCommunityScore'
+        Type: Double
+        Default: '100'
+    HeroChipPosHltbMain:
+        Title: 'HeroChipPosHltbMain'
+        Type: Double
+        Default: '110'
+    HeroChipPosHltbExtra:
+        Title: 'HeroChipPosHltbExtra'
+        Type: Double
+        Default: '120'
+    HeroChipPosHltbCompletionist:
+        Title: 'HeroChipPosHltbCompletionist'
+        Type: Double
+        Default: '130'
+    HeroChipPosAchievements:
+        Title: 'HeroChipPosAchievements'
+        Type: Double
+        Default: '140'
+    HeroChipPosLatestAchievement:
+        Title: 'HeroChipPosLatestAchievement'
+        Type: Double
+        Default: '150'
+    HeroChipPosRareAchievements:
+        Title: 'HeroChipPosRareAchievements'
+        Type: Double
+        Default: '160'
+    HeroChipPosLastSession:
+        Title: 'HeroChipPosLastSession'
+        Type: Double
+        Default: '170'
+    HeroChipPosRecentActivity:
+        Title: 'HeroChipPosRecentActivity'
+        Type: Double
+        Default: '180'
+    HeroChipPosAvgFps:
+        Title: 'HeroChipPosAvgFps'
+        Type: Double
+        Default: '190'

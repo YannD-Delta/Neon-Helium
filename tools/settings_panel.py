@@ -8,6 +8,8 @@ Every control is bound TwoWay to Theme Options Options[...], so the theme change
 """
 import re
 
+import chips_line
+
 THEME_OPTIONS_ADDON = "ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef"
 THEME_OPTIONS_GUID = "904cbf3b-573f-48f8-9642-0a09d05c64ef"
 THEME_MODIFIER_GUID = "ec2f4013-17e6-428a-b8a9-5e34a3b80009"
@@ -25,7 +27,8 @@ def opt(key):
 
 def twoway(key, delay=False):
     extra = ", Delay=150" if delay else ""
-    return f"{{PluginSettings Plugin=ThemeOptions, Path=Options[{key}], Mode=TwoWay{extra}, FallbackValue={{StaticResource {key}}}}}"
+    return (f"{{PluginSettings Plugin=ThemeOptions, Path=Options[{key}], Mode=TwoWay{extra}, "
+            f"FallbackValue={{StaticResource {key}}}, TargetNullValue={{StaticResource {key}}}}}")
 
 
 def indent(text, spaces):
@@ -83,43 +86,19 @@ class Panel:
 
     # ------------------------------------------------------------------ pages
     def chips_page(self, page):
-        groups = self.panel["chip_groups"]
-        chips = self.panel["chips"]
-        # live preview of the shown chips and line breaks, in the default group order
-        # (the six order slots of the real line would make the panel several times larger)
-        pills = []
-        for group in groups:
-            for chip in [c for c in chips if c["group"] == group["id"]]:
-                pills.append(
-                    f'<Grid Style="{{DynamicResource SectionToggleGrid}}" Tag="{opt(chip["show"])}">\n'
-                    f'    <Grid Height="0" Width="560" Style="{{DynamicResource SectionToggleGrid}}" Tag="{opt(chip["break"])}" />\n'
-                    f'</Grid>\n'
-                    f'<Border Style="{{DynamicResource HndPanelPreviewPill}}" Tag="{opt(chip["show"])}"\n'
-                    f'        Visibility="{{Binding Tag, RelativeSource={{RelativeSource Self}}, Converter={{StaticResource BooleanToVisibilityConverter}}}}">\n'
-                    f'    <TextBlock Text="{{DynamicResource {self.loc_key("PanelChip", chip["id"])}}}" />\n'
-                    f'</Border>')
+        # live preview in the chip order, then one row per chip in that order: arrows on the left move it
+        # (and the real line), the switch shows it, the toggle on the right starts a new line before it
         preview = (f'<Border Style="{{DynamicResource HndPanelPreview}}">\n    <StackPanel>\n'
                    f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource LOCHNDPanelPreview}}" />\n'
-                   f'        <WrapPanel Width="560" HorizontalAlignment="Left">\n{indent(chr(10).join(pills), 12)}\n        </WrapPanel>\n'
+                   f'{indent(chips_line.panel_preview(self.prefix), 8)}\n'
                    f'    </StackPanel>\n</Border>')
-        # table: one card per group, a row per chip with show switch and line break toggle
-        cards = []
-        for group in groups:
-            rows = []
-            for chip in [c for c in chips if c["group"] == group["id"]]:
-                rows.append(
-                    f'<DockPanel Style="{{DynamicResource HndPanelRow}}">\n'
-                    f'    <ToggleButton DockPanel.Dock="Right" Style="{{DynamicResource HndPanelBreakToggle}}" ToolTip="{{DynamicResource LOCHNDPanelBreakTip}}"\n'
-                    f'                  IsChecked="{twoway(chip["break"])}" />\n'
-                    f'    <CheckBox Style="{{DynamicResource HndPanelSwitch}}" IsChecked="{twoway(chip["show"])}"\n'
-                    f'              Content="{{DynamicResource {self.loc_key("PanelChipName", chip["id"])}}}" />\n'
-                    f'</DockPanel>')
-            order = self.control(group["order"])
-            cards.append(f'<Border Style="{{DynamicResource HndPanelCard}}">\n    <StackPanel>\n'
-                         f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource {self.loc_key("PanelGroup", group["id"])}}}" />\n'
-                         f'{indent(chr(10).join(rows), 8)}\n{indent(order, 8)}\n    </StackPanel>\n</Border>')
+        rows = (f'<Border Style="{{DynamicResource HndPanelCard}}">\n    <StackPanel>\n'
+                f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource LOCHNDPanelChipOrder}}" />\n'
+                f'        <TextBlock Style="{{DynamicResource HndPanelText}}" Text="{{DynamicResource LOCHNDPanelChipOrderText}}" />\n'
+                f'{indent(chips_line.rows_list(self.prefix), 8)}\n'
+                f'    </StackPanel>\n</Border>')
         general = [self.card(self.loc_key("PanelCard", page["id"], str(i)), g["items"]) for i, g in enumerate(page.get("groups", []))]
-        return "\n".join([preview] + general + cards)
+        return "\n".join([preview, rows] + general)
 
     def colors_page(self):
         text = (f'<TextBlock Style="{{DynamicResource HndPanelText}}" Text="{{DynamicResource LOCHNDPanelColorsText}}" />\n'
@@ -165,13 +144,38 @@ class Panel:
             tag = f' Tag="{icon}"' if icon else ""
             nav.append(f'<RadioButton x:Name="{radio}" GroupName="{group}" Style="{{DynamicResource HndPanelNavButton}}"{checked}{tag}\n'
                        f'             Content="{{DynamicResource {title}}}" />')
-            content.append(f'<StackPanel Visibility="{{Binding IsChecked, ElementName={radio}, Converter={{StaticResource BooleanToVisibilityConverter}}}}">\n'
-                           f'    <TextBlock Style="{{DynamicResource HndPanelPageTitle}}" Text="{{DynamicResource {title}}}" />\n'
-                           f'{indent(body, 4)}\n</StackPanel>')
+            # the page is built only while its radio button is checked (ContentTemplate set by the trigger):
+            # a closed panel costs its page list, not twenty pages of controls
+            page = (f'<StackPanel>\n'
+                    f'    <TextBlock Style="{{DynamicResource HndPanelPageTitle}}" Text="{{DynamicResource {title}}}" />\n'
+                    f'{indent(body, 4)}\n</StackPanel>')
+            content.append(f'<ContentControl Focusable="False" Content="{{Binding}}">\n'
+                           f'    <ContentControl.Style>\n'
+                           f'        <Style TargetType="ContentControl">\n'
+                           f'            <Setter Property="Visibility" Value="Collapsed" />\n'
+                           f'            <Style.Triggers>\n'
+                           f'                <DataTrigger Binding="{{Binding IsChecked, ElementName={radio}}}" Value="True">\n'
+                           f'                    <Setter Property="Visibility" Value="Visible" />\n'
+                           f'                    <Setter Property="ContentTemplate">\n'
+                           f'                        <Setter.Value>\n'
+                           f'                            <DataTemplate>\n'
+                           f'{indent(page, 32)}\n'
+                           f'                            </DataTemplate>\n'
+                           f'                        </Setter.Value>\n'
+                           f'                    </Setter>\n'
+                           f'                </DataTrigger>\n'
+                           f'            </Style.Triggers>\n'
+                           f'        </Style>\n'
+                           f'    </ContentControl.Style>\n'
+                           f'</ContentControl>')
         none_radio = ""
         if host == "details":
             none_radio = (f'\n<RadioButton x:Name="{self.name("PageNone")}" GroupName="{group}" Visibility="Collapsed" IsChecked="True" />')
+        resources = chips_line.panel_resources(self.prefix, self.panel["chips"], self.loc_key, host == "details")
         return f'''<Grid Width="{opt('SettingsPanelWidth')}" Height="{opt('SettingsPanelHeight')}">
+<Grid.Resources>
+{indent(resources, 4)}
+</Grid.Resources>
 <!-- look (Theme Options list "Settings panel"): profile popup colors under an optional dark or glass overlay -->
 <Border Background="{{DynamicResource PopupBackgroundBrush}}" CornerRadius="{{DynamicResource SettingsPanelCornerRadius}}"
         Opacity="{{DynamicResource SettingsPanelProfileOpacity}}" />
@@ -238,8 +242,6 @@ def panel_labels(spec, loc_key):
     for chip in panel["chips"]:
         add(loc_key("PanelChip", chip["id"]), chip)
         add(loc_key("PanelChipName", chip["id"]), panel["chip_names"][chip["id"]])
-    for group in panel["chip_groups"]:
-        add(loc_key("PanelGroup", group["id"]), group)
     for key, entry in panel["strings"].items():
         add(key, entry)
     return labels
