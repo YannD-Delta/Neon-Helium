@@ -929,26 +929,523 @@ tips:
   ShowNavigationButtons: {en: 'Back and forward buttons. Need ThemeExtras.', fr: 'Boutons précédent et suivant. Demandent ThemeExtras.'}
   TopPanelShowThemeSettingsButtons: {en: 'Buttons for Theme Options and ThemeModifier. Need ThemeExtras. The workshop button stays.', fr: 'Boutons vers Theme Options et ThemeModifier. Demandent ThemeExtras. Le bouton de l''atelier reste.'}
 
-# Theme workshop: popup opened from the top panel, generated into Views/TopPanel.xaml.
-# Booleans become check boxes, Doubles with a range become sliders. Changes apply while you drag.
-workshop:
-  - title: {en: Artwork header, fr: En-tête avec image}
-    items: [HeroMinHeight, HeroActionButtonWidth, HeroActionButtonHeight, GameLogoMaxWidth, GameLogoMaxHeight,
-            DetailsViewShowEditButton, DetailsViewShowFavoriteButton, DetailsViewShowHiddenButton, HeroShowSteamShortcuts, HeroShowUpdateStatus,
-            DetailsViewAllowUseOfLogos, DetailsViewDisplayGameNameIfLogoVisible]
-  - title: {en: Chips, fr: Puces}
-    items: [HeroShowInfoLine, HeroInfoLineMaxWidth, HeroChipsOpenSections]
-  - title: {en: Header bar, fr: Barre d'en-tête}
-    items: [DetailsViewShowHeaderBar, DetailsViewShowLastPlayed, DetailsViewShowPlayTime, DetailsViewShowCompletionStatus,
-            DetailsViewShowAchievementsSummary, HltbShowInHeaderBar, DetailsViewShowUserRating, DetailsViewShowInfoButton, HeaderButtonSize]
-  - title: {en: Cover, fr: Pochette}
-    items: [HltbShowOnCover, AchievementsShowOnCover]
-  - title: {en: Game list and covers, fr: Liste des jeux et jaquettes}
-    items: [LibraryListShowHltb, LibraryListShowAchievements, GridCoverShowHltb, GridCoverShowAchievements]
-  - title: {en: Sections, fr: Sections}
-    items: [DetailsViewTabsMode, DemoteSectionsShownElsewhere, DetailsViewUseMetadataUtilities, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
-            DetailsViewDescriptionMaxHeight, AchievementsDataGridMaxHeight]
-  - title: {en: Links, fr: Liens}
-    items: [LinksShowNames, LinkIconSize]
-  - title: {en: Top panel, fr: Barre du haut}
-    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons, TopPanelShowCollectorLevel, TopPanelAutoHide, SidebarAutoHide]
+# Settings panel: one panel with a page list on the left, generated into the Details view
+# (opened by the section gears) and into both top panels (opened by the workshop button).
+# Booleans become switches, Doubles with a range become sliders.
+panel:
+  pages:
+  - id: Chips
+    en: Chips
+    fr: Puces
+    glyph: 
+    kind: chips
+    groups:
+    - en: Chips line
+      fr: Ligne de puces
+      items:
+      - HeroShowInfoLine
+      - HeroInfoLineMaxWidth
+      - HeroChipsOpenSections
+  - id: Header
+    en: Artwork header
+    fr: En-tête avec image
+    glyph: 
+    groups:
+    - en: Size and buttons
+      fr: Taille et boutons
+      items:
+      - HeroMinHeight
+      - HeroActionButtonWidth
+      - HeroActionButtonHeight
+      - GameLogoMaxWidth
+      - GameLogoMaxHeight
+      - DetailsViewShowEditButton
+      - DetailsViewShowFavoriteButton
+      - DetailsViewShowHiddenButton
+      - HeroShowSteamShortcuts
+      - HeroShowUpdateStatus
+      - DetailsViewAllowUseOfLogos
+      - DetailsViewDisplayGameNameIfLogoVisible
+  - id: HeaderBar
+    en: Header bar
+    fr: Barre d'en-tête
+    glyph: 
+    groups:
+    - en: Items
+      fr: Éléments
+      items:
+      - DetailsViewShowHeaderBar
+      - DetailsViewShowLastPlayed
+      - DetailsViewShowPlayTime
+      - DetailsViewShowCompletionStatus
+      - DetailsViewShowAchievementsSummary
+      - HltbShowInHeaderBar
+      - DetailsViewShowUserRating
+      - DetailsViewShowInfoButton
+      - HeaderButtonSize
+  - id: Covers
+    en: Cover and lists
+    fr: Pochette et listes
+    glyph: 
+    groups:
+    - en: Cover
+      fr: Pochette
+      items:
+      - HltbShowOnCover
+      - AchievementsShowOnCover
+    - en: Game list and covers
+      fr: Liste des jeux et jaquettes
+      items:
+      - LibraryListShowHltb
+      - LibraryListShowAchievements
+      - GridCoverShowHltb
+      - GridCoverShowAchievements
+    - en: Links
+      fr: Liens
+      items:
+      - LinksShowNames
+      - LinkIconSize
+  - id: Layout
+    en: Sections layout
+    fr: Disposition des sections
+    glyph: 
+    groups:
+    - en: Sections
+      fr: Sections
+      items:
+      - DetailsViewTabsMode
+      - DemoteSectionsShownElsewhere
+      - DetailsViewUseMetadataUtilities
+      - DetailsViewShowInfoPanelDefault
+      - SectionHeaderMinHeight
+      - DetailsViewDescriptionWidth
+      - DetailsViewDescriptionMaxHeight
+      - AchievementsDataGridMaxHeight
+  - id: TopPanel
+    en: Top panel
+    fr: Barre du haut
+    glyph: 
+    groups:
+    - en: Top panel and sidebar
+      fr: Barre du haut et barre latérale
+      items:
+      - TopPanelHeight
+      - ShowNavigationButtons
+      - TopPanelShowThemeSettingsButtons
+      - TopPanelShowCollectorLevel
+      - TopPanelAutoHide
+      - SidebarAutoHide
+  - id: Colors
+    en: Colors
+    fr: Couleurs
+    glyph: 
+    kind: colors
+  chips:
+  - id: ReleaseDate
+    group: Game
+    show: HeroShowReleaseDate
+    break: HeroChipBreakReleaseDate
+    en: '2024'
+    fr: '2024'
+  - id: Platforms
+    group: Game
+    show: HeroShowPlatforms
+    break: HeroChipBreakPlatforms
+    en: PC
+    fr: PC
+  - id: Source
+    group: Game
+    show: HeroShowSource
+    break: HeroChipBreakSource
+    en: Steam
+    fr: Steam
+  - id: Genres
+    group: Classification
+    show: HeroShowGenres
+    break: HeroChipBreakGenres
+    en: RPG
+    fr: RPG
+  - id: Categories
+    group: Classification
+    show: HeroShowCategories
+    break: HeroChipBreakCategories
+    en: Favorites
+    fr: Favoris
+  - id: Features
+    group: Classification
+    show: HeroShowFeatures
+    break: HeroChipBreakFeatures
+    en: Co-op
+    fr: Coop
+  - id: Tags
+    group: Classification
+    show: HeroShowTags
+    break: HeroChipBreakTags
+    en: Open world
+    fr: Monde ouvert
+  - id: Developers
+    group: Studio
+    show: HeroShowDevelopers
+    break: HeroChipBreakDevelopers
+    en: Studio
+    fr: Studio
+  - id: CompletionStatus
+    group: Studio
+    show: HeroShowCompletionStatus
+    break: HeroChipBreakCompletionStatus
+    en: Playing
+    fr: En cours
+  - id: CommunityScore
+    group: Studio
+    show: HeroShowCommunityScore
+    break: HeroChipBreakCommunityScore
+    en: Score 85
+    fr: Note 85
+  - id: HltbMain
+    group: Hltb
+    show: HeroShowHltb
+    break: HeroChipBreakHltbMain
+    en: Main 25h
+    fr: Histoire 25h
+  - id: HltbExtra
+    group: Hltb
+    show: HeroShowHltb
+    break: HeroChipBreakHltbExtra
+    en: Extra 40h
+    fr: Extras 40h
+  - id: HltbCompletionist
+    group: Hltb
+    show: HeroShowHltb
+    break: HeroChipBreakHltbCompletionist
+    en: 100% 60h
+    fr: 100 % 60h
+  - id: Achievements
+    group: Achievements
+    show: HeroShowAchievements
+    break: HeroChipBreakAchievements
+    en: 42 / 60
+    fr: 42 / 60
+  - id: LatestAchievement
+    group: Achievements
+    show: HeroShowLatestAchievement
+    break: HeroChipBreakLatestAchievement
+    en: Latest
+    fr: Dernier
+  - id: RareAchievements
+    group: Achievements
+    show: HeroShowRareAchievements
+    break: HeroChipBreakRareAchievements
+    en: Rare 3
+    fr: Rares 3
+  - id: LastSession
+    group: Activity
+    show: HeroShowLastSession
+    break: HeroChipBreakLastSession
+    en: Session 2h
+    fr: Session 2h
+  - id: RecentActivity
+    group: Activity
+    show: HeroShowRecentActivity
+    break: HeroChipBreakRecentActivity
+    en: This week
+    fr: Cette semaine
+  - id: AvgFps
+    group: Activity
+    show: HeroShowAvgFps
+    break: HeroChipBreakAvgFps
+    en: 60 FPS
+    fr: 60 FPS
+  chip_groups:
+  - id: Game
+    order: HeroChipsOrderGame
+    en: Game
+    fr: Jeu
+  - id: Classification
+    order: HeroChipsOrderClassification
+    en: Classification
+    fr: Classement
+  - id: Studio
+    order: HeroChipsOrderStudio
+    en: Studio and status
+    fr: Studio et statut
+  - id: Hltb
+    order: HeroChipsOrderHltb
+    en: HowLongToBeat
+    fr: HowLongToBeat
+  - id: Achievements
+    order: HeroChipsOrderAchievements
+    en: Achievements
+    fr: Succès
+  - id: Activity
+    order: HeroChipsOrderActivity
+    en: Activity
+    fr: Activité
+  sections:
+  - id: Notes
+    en: Notes
+    fr: Notes
+    show_in:
+    - DetailsViewShowNotesPanel
+    section:
+    - DetailsViewTabNotes
+    - DetailsViewExpandNotesPanel
+    plugin: 4208657d-4f78-42d2-968f-39f24de275e1
+  - id: Genres
+    en: Genres
+    fr: Genres
+    show_in:
+    - HeroShowGenres
+    section:
+    - DetailsViewTabGenres
+    - DetailsViewExpandGenres
+    - DemoteGenresSection
+    - DetailsViewUseMetadataUtilities
+  - id: Categories
+    en: Categories
+    fr: Catégories
+    show_in:
+    - HeroShowCategories
+    section:
+    - DetailsViewTabCategories
+    - DetailsViewExpandCategories
+    - DemoteCategoriesSection
+    - DetailsViewUseMetadataUtilities
+  - id: Features
+    en: Features
+    fr: Fonctionnalités
+    show_in:
+    - HeroShowFeatures
+    section:
+    - DetailsViewTabFeatures
+    - DetailsViewExpandFeatures
+    - DemoteFeaturesSection
+    - DetailsViewUseMetadataUtilities
+  - id: Tags
+    en: Tags
+    fr: Étiquettes
+    show_in:
+    - HeroShowTags
+    section:
+    - DetailsViewTabTags
+    - DetailsViewExpandTags
+    - DemoteTagsSection
+    - DetailsViewUseMetadataUtilities
+  - id: News
+    en: News
+    fr: Actualités
+    show_in:
+    - DetailsViewShowNewsPanel
+    section:
+    - DetailsViewTabNewsViewer
+    - DetailsViewExpandNewsPanel
+    plugin: 15e03ffe-90f6-4e8e-bd4d-94514777481d
+  - id: Video
+    en: Video
+    fr: Vidéo
+    show_in:
+    - DetailsViewShowVideoPanel
+    section:
+    - DetailsViewTabVideo
+    - DetailsViewExpandVideoPanel
+    plugin: 705fdbca-e1fc-4004-b839-1d040b8b4429
+  - id: GameActivity
+    en: Game activity
+    fr: Activité de jeu
+    show_in:
+    - DetailsViewShowGameActivityPanel
+    - HeroShowLastSession
+    - HeroShowRecentActivity
+    - HeroShowAvgFps
+    section:
+    - DetailsViewTabGameActivity
+    - DetailsViewExpandGameActivityPanel
+    - DemoteGameActivitySection
+    plugin: afbb1a0d-04a1-4d0c-9afa-c6e42ca855b4
+  - id: CheckDlc
+    en: DLC
+    fr: DLC
+    show_in:
+    - DetailsViewShowCheckDlcPanel
+    section:
+    - DetailsViewTabCheckDlc
+    - DetailsViewExpandCheckDlcPanel
+    plugin: bf78d9af-6e79-4c73-aca6-c23a11a485ae
+  - id: GameRelations
+    en: Similar games
+    fr: Jeux similaires
+    show_in:
+    - DetailsViewShowGameRelationsPanel
+    section:
+    - DetailsViewTabGameRelations
+    - DetailsViewExpandGameRelationsPanel
+    plugin: a4c15d63-9ab4-4d96-9a0c-8f9b35d43a1f
+  - id: Web
+    en: Web
+    fr: Web
+    show_in:
+    - DetailsViewShowWebExplorerPanel
+    section:
+    - DetailsViewTabWeb
+    - DetailsViewExpandWebExplorerPanel
+    plugin: 181ddd05-2168-4162-a116-b9c2a20c652c
+  - id: Hltb
+    en: HowLongToBeat
+    fr: HowLongToBeat
+    show_in:
+    - DetailsViewShowHltbPanel
+    - HeroShowHltb
+    - HltbShowOnCover
+    - HltbShowInHeaderBar
+    section:
+    - DetailsViewTabHowLongToBeat
+    - DetailsViewShowHltbProgressBar
+    - DetailsViewShowHltbDataGrid
+    - DetailsViewShowHltbPanelDefault
+    - DemoteHltbSection
+    plugin: e08cd51f-9c9a-4ee3-a094-fde03b55492f
+  - id: Achievements
+    en: Achievements
+    fr: Succès
+    show_in:
+    - DetailsViewShowAchievementsPanel
+    - HeroShowAchievements
+    - HeroShowLatestAchievement
+    - HeroShowRareAchievements
+    - AchievementsShowOnCover
+    - DetailsViewShowAchievementsSummary
+    section:
+    - DetailsViewTabAchievements
+    - DetailsViewAchievementsShowProgressBar
+    - DetailsViewAchievementsShowUnlockedList
+    - DetailsViewAchievementsShowLockedList
+    - DetailsViewAchievementsShowCompactList
+    - DetailsViewAchievementsShowLatest
+    - DetailsViewAchievementsShowStats
+    - DetailsViewAchievementsShowBarChart
+    - DetailsViewAchievementsShowPieChart
+    - DetailsViewAchievementsShowDataGrid
+    - DetailsViewAchievementsShowButton
+    - DetailsViewShowAchievementsPanelDefault
+    - DemoteAchievementsSection
+    plugin: e6aad2c9-6e06-4d8d-ac55-ac3b252b5f7b
+  - id: SteamScreenshots
+    en: Steam screenshots
+    fr: Captures Steam
+    show_in:
+    - DetailsViewShowSteamScreenshotsPanel
+    section:
+    - DetailsViewTabSteamScreenshots
+    - DetailsViewExpandSteamScreenshotsPanel
+    plugin: 8e77fe31-5e62-41e2-8fa2-64844cfd5b6b
+  - id: ScreenshotUtilities
+    en: Screenshots (Screenshot Utilities)
+    fr: Captures (Screenshot Utilities)
+    show_in:
+    - DetailsViewShowScreenshotUtilitiesPanel
+    section:
+    - DetailsViewTabScreenshotUtilities
+    - DetailsViewExpandScreenshotUtilitiesPanel
+    plugin: 485d682f-73e9-4d54-b16f-b8dd49e88f90
+  - id: Vndb
+    en: VNDB
+    fr: VNDB
+    show_in:
+    - DetailsViewShowVndbPanel
+    section:
+    - DetailsViewTabVndb
+    - DetailsViewExpandVndbPanel
+    plugin: 39229206-1199-4fee-a014-e8478ea4cd77
+  - id: ScreenshotsVisualizer
+    en: Screenshots (ScreenshotsVisualizer)
+    fr: Captures (ScreenshotsVisualizer)
+    show_in:
+    - DetailsViewShowScreenshotsVisualizerPanel
+    section:
+    - DetailsViewTabScreenshotsVisualizer
+    - DetailsViewExpandScreenshotsVisualizerPanel
+    plugin: c6c8276f-91bf-48e5-a1d1-4bee0b493488
+  - id: Reviews
+    en: Reviews
+    fr: Critiques
+    show_in:
+    - DetailsViewShowReviewsPanel
+    section:
+    - DetailsViewTabReviewViewer
+    - DetailsViewExpandReviewsPanel
+    plugin: ca24e37a-76d9-49bf-89ab-d3cba4a54bd1
+  chip_names:
+    ReleaseDate:
+      en: Release date
+      fr: Date de sortie
+    Platforms:
+      en: Platforms
+      fr: Plateformes
+    Source:
+      en: Source
+      fr: Source
+    Genres:
+      en: Genres
+      fr: Genres
+    Categories:
+      en: Categories
+      fr: Catégories
+    Features:
+      en: Features
+      fr: Fonctionnalités
+    Tags:
+      en: Tags
+      fr: Étiquettes
+    Developers:
+      en: Developers
+      fr: Développeurs
+    CompletionStatus:
+      en: Completion status
+      fr: Statut de complétion
+    CommunityScore:
+      en: Community score
+      fr: Note de la communauté
+    HltbMain:
+      en: HowLongToBeat main story (the 3 times show together)
+      fr: HowLongToBeat histoire (les 3 durées vont ensemble)
+    HltbExtra:
+      en: HowLongToBeat main + extra
+      fr: HowLongToBeat histoire + extras
+    HltbCompletionist:
+      en: HowLongToBeat 100%
+      fr: HowLongToBeat 100 %
+    Achievements:
+      en: Achievements
+      fr: Succès
+    LatestAchievement:
+      en: Latest achievement
+      fr: Dernier succès
+    RareAchievements:
+      en: Rare achievements
+      fr: Succès rares
+    LastSession:
+      en: Last session
+      fr: Dernière session
+    RecentActivity:
+      en: Recent activity
+      fr: Activité récente
+    AvgFps:
+      en: Average FPS
+      fr: FPS moyen
+  strings:
+    LOCHNDPanelPreview:
+      en: Preview (live)
+      fr: Aperçu (en direct)
+    LOCHNDPanelBreakTip:
+      en: New line before this chip
+      fr: Retour à la ligne avant cette puce
+    LOCHNDPanelColorsText:
+      en: The color profile and the accent are drop-down lists in the Theme Options settings and need a restart. ThemeModifier edits single colors,
+        and its saved colors win over the profile.
+      fr: Le profil de couleurs et l'accent sont des menus déroulants dans les réglages de Theme Options et demandent un redémarrage. ThemeModifier
+        modifie les couleurs une par une, et ses couleurs enregistrées passent avant le profil.
+    LOCHNDPanelSections:
+      en: Sections
+      fr: Sections
+    LOCHNDPanelClose:
+      en: Close
+      fr: Fermer

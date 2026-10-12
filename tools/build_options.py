@@ -29,6 +29,7 @@ from xml.sax.saxutils import escape
 import yaml
 
 import color_profiles
+import settings_panel
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
 SYS_NS = "clr-namespace:System;assembly=mscorlib"
@@ -646,68 +647,36 @@ THEME_MODIFIER_GUID = "ec2f4013-17e6-428a-b8a9-5e34a3b80009"
 
 
 def workshop_block(spec, constants, indent_text):
-    ranges = {e["key"]: e.get("range") for e in spec["variables"] if "key" in e}
-    tips = spec.get("tips") or {}
-    body = []
-    for group in spec.get("workshop") or []:
-        body.append('<TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource %s}" />'
-                    % loc_key("Workshop", re.sub(r"\W", "", group["title"]["en"])))
-        for key in group["items"]:
-            if key not in ranges:
-                raise SpecError(f"workshop item {key} is not a variable")
-            kind = constants[key][0]
-            tip = ' ToolTip="{DynamicResource %s}"' % loc_key("Tip", key) if key in tips else ""
-            if kind == "Boolean":
-                body.append('<CheckBox Margin="0,3,0,3" Content="{DynamicResource %s}"%s\n'
-                            '          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[%s], Mode=TwoWay, FallbackValue={StaticResource %s}}" />'
-                            % (loc_key("Opt", key), tip, key, key))
-            elif kind == "Double" and ranges[key]:
-                low, high = ranges[key]
-                name = "Workshop%sSlider" % key
-                body.append(f'''<DockPanel Margin="0,4,0,4" Background="Transparent"{tip}>
-    <TextBlock DockPanel.Dock="Top" Style="{{DynamicResource BaseTextBlockStyle}}" Text="{{DynamicResource {loc_key("Opt", key)}}}" Margin="0,0,0,2" />
-    <TextBlock DockPanel.Dock="Right" Style="{{DynamicResource BaseTextBlockStyle}}" Width="48" TextAlignment="Right" VerticalAlignment="Center"
-               Text="{{Binding Value, ElementName={name}, StringFormat={{}}{{0:0}}}}" />
-    <Slider x:Name="{name}" Minimum="{low}" Maximum="{high}" SmallChange="1" LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True"
-            VerticalAlignment="Center"
-            Value="{{PluginSettings Plugin=ThemeOptions, Path=Options[{key}], Mode=TwoWay, Delay=150, FallbackValue={{StaticResource {key}}}}}" />
-</DockPanel>''')
-            else:
-                raise SpecError(f"workshop item {key}: only Booleans and Doubles with a range are supported ({kind})")
-    items = "\n".join(body)
+    """Top panel toggle and the settings panel popup (tools/settings_panel.py)."""
+    frame = settings_panel.Panel(spec, constants, loc_key, "HndTop").top_host("ThemeWorkshopToggle")
+    frame = "\n".join("        " + line if line.strip() else line for line in frame.split("\n"))
     block = f'''{WS_BEGIN}
 <Grid VerticalAlignment="Center" Margin="{{Binding ElementName=PART_ToggleNotifications, Path=Margin}}">
     <ToggleButton x:Name="ThemeWorkshopToggle" Style="{{DynamicResource TopPanelWorkshopToggleStyle}}"
                   ToolTip="{{DynamicResource LOCHNDWorkshopTooltip}}" />
     <Popup IsOpen="{{Binding IsChecked, ElementName=ThemeWorkshopToggle, Mode=TwoWay}}" StaysOpen="False" AllowsTransparency="True"
            PlacementTarget="{{Binding ElementName=ThemeWorkshopToggle}}" Placement="Bottom" VerticalOffset="6">
-        <Border Style="{{DynamicResource QuickSettingsPanel}}" Width="460" MaxWidth="460">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="760">
-                <StackPanel Margin="0,0,6,0">
-                    <TextBlock Style="{{DynamicResource QuickSettingsTitle}}" Text="{{DynamicResource LOCHNDWorkshopTitle}}" />
-                    <TextBlock Style="{{DynamicResource QuickSettingsHint}}" Text="{{DynamicResource LOCHNDQuickNeedsThemeOptions}}"
-                               Visibility="{{PluginStatus Plugin={THEME_OPTIONS_ADDON}, Status=Installed, Converter={{StaticResource InvertedBooleanToVisibilityConverter}}}}" />
-                    <TextBlock Style="{{DynamicResource BaseTextBlockStyle}}" Text="{{DynamicResource LOCHNDWorkshopIntro}}" TextWrapping="Wrap"
-                               Foreground="{{DynamicResource TextBrushDarker}}" FontSize="{{DynamicResource FontSizeSmall}}" Margin="0,0,0,4" />
-                    <StackPanel IsEnabled="{{PluginStatus Plugin={THEME_OPTIONS_ADDON}, Status=Installed}}">
-{"\n".join("                        " + line if line.strip() else line for line in items.split("\n"))}
-                    </StackPanel>
-                    <WrapPanel Margin="0,12,0,0" Visibility="{{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}}">
-                        <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{{DynamicResource LOCHNDQuickThemeSettings}}"
-                                Command="{{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={{x:Null}}}}"
-                                CommandParameter="{THEME_OPTIONS_GUID}" />
-                        <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{{DynamicResource LOCHNDWorkshopColors}}"
-                                Visibility="{{PluginStatus Plugin=playnite-thememodifier-plugin, Status=Installed}}"
-                                Command="{{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={{x:Null}}}}"
-                                CommandParameter="{THEME_MODIFIER_GUID}" />
-                    </WrapPanel>
-                </StackPanel>
-            </ScrollViewer>
-        </Border>
+{frame}
     </Popup>
 </Grid>
 {WS_END}'''
     return "\n".join(indent_text + line if line.strip() else line for line in block.split("\n"))
+
+
+DP_BEGIN = "<!-- BEGIN generated settings panel: edit tools/options_spec.yaml (panel), then run tools/build_options.py -->"
+DP_END = "<!-- END generated settings panel -->"
+
+
+def details_panel_file(source: Path, spec, constants, name="Views/DetailsViewGameOverview.xaml"):
+    text = (source / name).read_text(encoding="utf-8-sig")
+    start, end = text.find(DP_BEGIN), text.find(DP_END)
+    if start < 0 or end < 0:
+        raise SpecError(f"{name} must contain the generated settings panel markers")
+    line_start = text.rfind("\n", 0, start) + 1
+    pad = text[line_start:start]
+    block = DP_BEGIN + "\n" + settings_panel.Panel(spec, constants, loc_key, "HndPanel").details_host() + "\n" + DP_END
+    block = "\n".join((pad + line if line.strip() else line) if i else line for i, line in enumerate(block.split("\n")))
+    return text[:start] + block + text[end + len(DP_END):]
 
 
 def workshop_labels(spec):
@@ -775,7 +744,8 @@ def main() -> int:
         outputs["options.yaml"] = options
         for name in WORKSHOP_FILES:
             outputs[name] = top_panel_file(source, spec, constants, name)
-        for language, extra in workshop_labels(spec).items():
+        outputs["Views/DetailsViewGameOverview.xaml"] = details_panel_file(source, spec, constants)
+        for language, extra in settings_panel.panel_labels(spec, loc_key).items():
             labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.
         outputs["Localization/en_US.xaml"] = build_localization(spec, labels["en"], constants, "en")

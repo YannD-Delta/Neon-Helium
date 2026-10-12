@@ -599,4 +599,205 @@
         <Setter Property="Padding" Value="12,4,12,4" />
     </Style>
 
+
+    <!-- Settings panel (tools/settings_panel.py) -->
+    <Style x:Key="HndPanelFrame" TargetType="{x:Type Border}">
+        <Setter Property="Width" Value="900" />
+        <Setter Property="Height" Value="680" />
+        <Setter Property="Padding" Value="20,16,14,16" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="Black" BlurRadius="24" ShadowDepth="0" Opacity="0.6" RenderingBias="Performance" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HndPanelTitle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="HndPanelHint" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource WarningBrush}" />
+        <Setter Property="Margin" Value="16,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    <Style x:Key="HndPanelClose" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Back" Width="34" Height="34" CornerRadius="17" Background="Transparent">
+                        <TextBlock Text="&#xE711;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="14"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HndPanelNavHeading" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Margin" Value="12,16,0,6" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+    </Style>
+    <Style x:Key="HndPanelNavButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0,1,0,1" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border x:Name="Back" CornerRadius="8" Padding="12,7,10,7" Background="Transparent">
+                        <DockPanel>
+                            <Border x:Name="Mark" DockPanel.Dock="Left" Width="3" Margin="-8,0,8,0" CornerRadius="1.5" Background="Transparent" />
+                            <TextBlock DockPanel.Dock="Left" Width="24" Text="{TemplateBinding Tag}" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                       FontSize="15" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" />
+                            <ContentPresenter VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+                            <Setter TargetName="Mark" Property="Background" Value="{DynamicResource GlyphBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HndPanelPageTitle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Margin" Value="2,0,0,10" />
+    </Style>
+    <Style x:Key="HndPanelCard" TargetType="{x:Type Border}">
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="Padding" Value="16,12,16,12" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style x:Key="HndPanelPreview" TargetType="{x:Type Border}" BasedOn="{StaticResource HndPanelCard}">
+        <Setter Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+    </Style>
+    <Style x:Key="HndPanelCardTitle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+        <Setter Property="Margin" Value="0,0,0,8" />
+    </Style>
+    <Style x:Key="HndPanelText" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+    </Style>
+    <Style x:Key="HndPanelRow" TargetType="{x:Type DockPanel}">
+        <Setter Property="Margin" Value="0,3,0,3" />
+        <Setter Property="LastChildFill" Value="True" />
+    </Style>
+    <Style x:Key="HndPanelLabel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Margin" Value="0,2,0,2" />
+    </Style>
+    <Style x:Key="HndPanelValue" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Width" Value="52" />
+        <Setter Property="TextAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+    </Style>
+    <Style x:Key="HndPanelInfo" TargetType="{x:Type TextBlock}">
+        <Setter Property="Text" Value="&#xE946;" />
+        <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Help" />
+        <Setter Property="ToolTipService.InitialShowDelay" Value="150" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+    </Style>
+    <!-- check box drawn as a switch -->
+    <Style x:Key="HndPanelSwitch" TargetType="{x:Type CheckBox}">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <DockPanel Background="Transparent">
+                        <Border x:Name="Track" DockPanel.Dock="Left" Width="40" Height="22" CornerRadius="11" Margin="0,0,12,0"
+                                Background="{DynamicResource ProgressBarBackgroundBrush}" BorderBrush="{DynamicResource NormalBrush}" BorderThickness="1">
+                            <Ellipse x:Name="Knob" Width="16" Height="16" Margin="3,0,0,0" HorizontalAlignment="Left" Fill="{DynamicResource TextBrushDarker}" />
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Track" Property="Background" Value="{DynamicResource GlyphBrush}" />
+                            <Setter TargetName="Knob" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="Knob" Property="Margin" Value="0,0,3,0" />
+                            <Setter TargetName="Knob" Property="Fill" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- line break toggle in the chips table -->
+    <Style x:Key="HndPanelBreakToggle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Back" Width="44" Height="26" CornerRadius="6" BorderThickness="1"
+                            BorderBrush="{DynamicResource HeroSecondaryButtonBorderBrush}" Background="Transparent">
+                        <TextBlock x:Name="Icon" Text="&#xE751;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="13"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource TextBrushDarker}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Back" Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+                            <Setter TargetName="Back" Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource TextBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HndPanelButton" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Margin" Value="0,4,8,0" />
+        <Setter Property="Padding" Value="12,6,12,6" />
+    </Style>
+    <Style x:Key="HndPanelPreviewPill" TargetType="{x:Type Border}">
+        <Setter Property="Margin" Value="0,0,6,6" />
+        <Setter Property="Padding" Value="9,2,9,3" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="TextElement.FontSize" Value="12" />
+    </Style>
 </ResourceDictionary>
