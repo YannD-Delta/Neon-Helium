@@ -20,18 +20,18 @@
                           x:Name="ItemGrid">
                         <TextBlock x:Name="DropShadowVisibilityProxy"
                                    Visibility="Collapsed"
-                                   Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverDisplayDropShadowEffect], FallbackValue={StaticResource GridViewCoverDisplayDropShadowEffect}, TargetNullValue={StaticResource GridViewCoverDisplayDropShadowEffect}}" />
+                                   Tag="{DynamicResource GridViewCoverDisplayDropShadowEffect}" />
                         <Border Style="{DynamicResource DropShadowBorderStyle}"
                                 Width="{Binding ElementName=Content, Path=Width}" Height="{Binding ElementName=Content, Path=Height}"
                                 Visibility="{Binding ElementName=DropShadowVisibilityProxy, Path=Tag, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverUseRoundedCorners], FallbackValue={StaticResource GridViewCoverUseRoundedCorners}, TargetNullValue={StaticResource GridViewCoverUseRoundedCorners}}" />
+                                Tag="{DynamicResource GridViewCoverUseRoundedCorners}" />
                         <ContentPresenter x:Name="Content" />
                         <TextBlock x:Name="ZoomOnHoverProxy" Visibility="Collapsed"
-                                   Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverZoomOnHover], FallbackValue={StaticResource GridViewCoverZoomOnHover}, TargetNullValue={StaticResource GridViewCoverZoomOnHover}}" />
+                                   Tag="{DynamicResource GridViewCoverZoomOnHover}" />
                         <TextBlock x:Name="SelectionBorderProxy" Visibility="Collapsed"
-                                   Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverShowSelectionBorder], FallbackValue={StaticResource GridViewCoverShowSelectionBorder}, TargetNullValue={StaticResource GridViewCoverShowSelectionBorder}}" />
+                                   Tag="{DynamicResource GridViewCoverShowSelectionBorder}" />
                         <Border x:Name="SelectionBorder" BorderThickness="3" Margin="-3"
-                                Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[GridViewCoverUseRoundedCorners], FallbackValue={StaticResource GridViewCoverUseRoundedCorners}, TargetNullValue={StaticResource GridViewCoverUseRoundedCorners}}">
+                                Tag="{DynamicResource GridViewCoverUseRoundedCorners}">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="0" />

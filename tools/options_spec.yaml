@@ -535,6 +535,12 @@ variables:
   - {key: HeroChipBreakLastSession, en: 'New line before: Last session', fr: 'Retour à la ligne avant : Dernière session'}
   - {key: HeroChipBreakRecentActivity, en: 'New line before: Recent activity', fr: 'Retour à la ligne avant : Activité récente'}
   - {key: HeroChipBreakAvgFps, en: 'New line before: Average FPS', fr: 'Retour à la ligne avant : FPS moyen'}
+  - {key: HeroChipsOrderGame, range: [0, 5], en: 'Order: date, platforms, source', fr: 'Ordre : date, plateformes, source'}
+  - {key: HeroChipsOrderClassification, range: [0, 5], en: 'Order: genres, categories, features, tags', fr: 'Ordre : genres, catégories, fonctionnalités, étiquettes'}
+  - {key: HeroChipsOrderStudio, range: [0, 5], en: 'Order: developers, status, score', fr: 'Ordre : développeurs, statut, note'}
+  - {key: HeroChipsOrderHltb, range: [0, 5], en: 'Order: HowLongToBeat', fr: 'Ordre : HowLongToBeat'}
+  - {key: HeroChipsOrderAchievements, range: [0, 5], en: 'Order: achievements', fr: 'Ordre : succès'}
+  - {key: HeroChipsOrderActivity, range: [0, 5], en: 'Order: GameActivity', fr: 'Ordre : GameActivity'}
   - {key: HltbShowOnCover, en: HowLongToBeat time on the cover, fr: Durée HowLongToBeat sur la pochette}
   - {key: AchievementsShowOnCover, en: Achievements on the cover, fr: Succès sur la pochette}
   - {key: LibraryListShowHltb, en: HowLongToBeat time in the game list, fr: Durée HowLongToBeat dans la liste des jeux}
@@ -949,12 +955,6 @@ panel:
   - id: Chips
     en: Chips
     fr: Puces
-    desc:
-      en: 'The pills on the artwork: which ones, in which order, and where a new line starts.'
-      fr: "Les puces sur l'illustration : lesquelles, dans quel ordre, et où commence une nouvelle ligne."
-    desc:
-      en: 'The bar under the artwork: last played, play time, status, ratings and its round buttons.'
-      fr: "La barre sous l'illustration : dernière partie, temps de jeu, statut, notes et ses boutons ronds."
     glyph: 
     kind: chips
     groups:
@@ -967,9 +967,6 @@ panel:
   - id: Header
     en: Artwork header
     fr: En-tête avec image
-    desc:
-      en: 'Height of the artwork header, the game logo and the buttons next to Play.'
-      fr: "Hauteur de l'en-tête illustré, logo du jeu et boutons à côté de Jouer."
     glyph: 
     groups:
     - en: Size and buttons
@@ -1007,9 +1004,6 @@ panel:
   - id: Covers
     en: Cover and lists
     fr: Pochette et listes
-    desc:
-      en: 'Badges on the cover, in the game list and on the Grid view covers, and the look of the links.'
-      fr: 'Badges sur la pochette, dans la liste des jeux et sur les jaquettes de la vue Grille, et aspect des liens.'
     glyph: 
     groups:
     - en: Cover
@@ -1032,9 +1026,6 @@ panel:
   - id: Layout
     en: Sections layout
     fr: Disposition des sections
-    desc:
-      en: 'How the Details view sections are arranged: tabs, widths, the information panel and the order of each column.'
-      fr: "Organisation des sections de la vue Détails : onglets, largeurs, panneau d'informations et ordre de chaque colonne."
     glyph: 
     groups:
     - en: Sections
@@ -1048,51 +1039,9 @@ panel:
       - DetailsViewDescriptionWidth
       - DetailsViewDescriptionMaxHeight
       - AchievementsDataGridMaxHeight
-    - en: Information panel
-      fr: Panneau d'informations
-      items:
-      - DetailsViewDescriptionDockToRight
-      - GameInfoNarrowValueMaxWidth
-      - GameInfoWideValueMaxWidth
-      - DetailsViewEnablePanelsDropShadowEffect
-      - DetailsViewLibraryGameShowFavorite
-    - en: Order of the left column (lowest first)
-      fr: Ordre de la colonne de gauche (le plus petit en premier)
-      items:
-      - DetailsViewSectionOrderNotes
-      - DetailsViewSectionOrderGenres
-      - DetailsViewSectionOrderCategories
-      - DetailsViewSectionOrderFeatures
-      - DetailsViewSectionOrderTags
-      - DetailsViewSectionOrderNewsViewer
-      - DetailsViewSectionOrderVideo
-      - DetailsViewSectionOrderGameActivity
-      - DetailsViewSectionOrderCheckDlc
-      - DetailsViewSectionOrderGameRelations
-      - DetailsViewSectionOrderWeb
-    - en: Order of the right column (lowest first)
-      fr: Ordre de la colonne de droite (le plus petit en premier)
-      items:
-      - DetailsViewSectionOrderHowLongToBeat
-      - DetailsViewSectionOrderAchievements
-      - DetailsViewSectionOrderSteamScreenshots
-      - DetailsViewSectionOrderVndb
-      - DetailsViewSectionOrderScreenshotsVisualizer
-      - DetailsViewSectionOrderReviewViewer
-      - DetailsViewSectionOrderScreenshotUtilities
-    - en: Extension heights
-      fr: Hauteur des extensions
-      items:
-      - WebExplorerControlHeight
-      - CheckDlcListHeight
-      - GameActivityChartTimeHeight
-      - GameActivityChartLogHeight
   - id: TopPanel
     en: Top panel
     fr: Barre du haut
-    desc:
-      en: 'The bar at the top of Playnite and the sidebar.'
-      fr: 'La barre en haut de Playnite et la barre latérale.'
     glyph: 
     groups:
     - en: Top panel and sidebar
@@ -1103,137 +1052,9 @@ panel:
       - TopPanelShowCollectorLevel
       - TopPanelAutoHide
       - SidebarAutoHide
-      - TopPanelSearchBoxWidthHelium
-      - SidebarItemSize
-  - id: GridView
-    en: Grid view
-    fr: Vue Grille
-    desc:
-      en: The game details beside the covers in Grid view, its sections and their order.
-      fr: Les détails du jeu à côté des jaquettes en vue Grille, ses sections et leur ordre.
-    glyph: 
-    groups:
-    - en: Game details
-      fr: Détails du jeu
-      items:
-      - GridViewAllowUseOfLogos
-      - GridViewDisplayGameNameIfLogoVisible
-      - GridViewPlayButtonMinWidth
-      - GridViewPlayButtonHeight
-      - GridViewShowLastPlayed
-      - GridViewShowPlayTime
-      - GridViewShowCompletionStatus
-      - GridViewShowAchievementsSummary
-      - GridViewShowEditButton
-      - GridViewShowInfoButton
-      - GridViewShowFavoriteButton
-      - GridViewShowHltbDataGrid
-      - GridViewShowMetadataDetailsDefault
-    - en: Sections shown
-      fr: Sections affichées
-      items:
-      - GridViewShowAchievementsPanel
-      - GridViewShowGameActivityPanel
-      - GridViewShowHltbPanel
-      - GridViewShowNotesPanel
-      - GridViewShowVideoPanel
-      - GridViewShowScreenshotsVisualizerPanel
-      - GridViewShowReviewsPanel
-      - GridViewShowNewsPanel
-      - GridViewShowVndbPanel
-      - GridViewShowCheckDlcPanel
-      - GridViewShowGameRelationsPanel
-      - GridViewShowSteamScreenshotsPanel
-      - GridViewShowWebExplorerPanel
-    - en: Sections unfolded at first
-      fr: Sections dépliées au départ
-      items:
-      - GridViewShowAchievementsPanelDefault
-      - GridViewExpandGameActivityPanel
-      - GridViewShowHltbPanelDefault
-      - GridViewExpandNotesPanel
-      - GridViewExpandVideoPanel
-      - GridViewExpandScreenshotsVisualizerPanel
-      - GridViewExpandReviewsPanel
-      - GridViewExpandNewsPanel
-      - GridViewExpandVndbPanel
-      - GridViewExpandCheckDlcPanel
-      - GridViewExpandGameRelationsPanel
-      - GridViewExpandSteamScreenshotsPanel
-      - GridViewExpandWebExplorerPanel
-    - en: Order of the sections (lowest first)
-      fr: Ordre des sections (le plus petit en premier)
-      items:
-      - GridViewSectionOrderAchievements
-      - GridViewSectionOrderGameActivity
-      - GridViewSectionOrderHowLongToBeat
-      - GridViewSectionOrderNotes
-      - GridViewSectionOrderVideo
-      - GridViewSectionOrderScreenshotsVisualizer
-      - GridViewSectionOrderReviewViewer
-      - GridViewSectionOrderNewsViewer
-      - GridViewSectionOrderVndb
-      - GridViewSectionOrderCheckDlc
-      - GridViewSectionOrderGameRelations
-      - GridViewSectionOrderSteamScreenshots
-      - GridViewSectionOrderWeb
-    - en: PlayniteAchievements in Grid view
-      fr: PlayniteAchievements en vue Grille
-      items:
-      - GridViewAchievementsShowProgressBar
-      - GridViewAchievementsShowUnlockedList
-      - GridViewAchievementsShowLockedList
-      - GridViewAchievementsShowCompactList
-      - GridViewAchievementsShowLatest
-      - GridViewAchievementsShowStats
-      - GridViewAchievementsShowBarChart
-      - GridViewAchievementsShowPieChart
-      - GridViewAchievementsShowDataGrid
-      - GridViewAchievementsShowButton
-  - id: GridCovers
-    en: Grid covers
-    fr: Jaquettes de la Grille
-    desc:
-      en: How the covers of the Grid view look and react. The slower effects are marked.
-      fr: Aspect et réactions des jaquettes de la vue Grille. Les effets plus lents sont signalés.
-    glyph: 
-    groups:
-    - en: Covers
-      fr: Jaquettes
-      items:
-      - GridViewCoverZoomOnHover
-      - GridViewCoverShowSelectionBorder
-      - GridViewCoverSubtitleVisibility
-      - GridViewCoverCompStatusSubtitleVisibility
-      - GridViewEnableCoverShineAnimation
-      - GridViewEnablePlayingGlowBorder
-      - GridViewLibraryGameShowFavorite
-      - GridViewCoverDisplayLibraryBanner
-      - GridViewCoverUseRoundedCorners
-      - GridViewCoverDisplayDropShadowEffect
-  - id: Text
-    en: Text sizes
-    fr: Tailles de texte
-    desc:
-      en: Text sizes of the whole theme. Playnite reads them when it starts, so they apply after a restart.
-      fr: Tailles de texte de tout le thème. Playnite les lit au démarrage, elles s'appliquent donc après un redémarrage.
-    glyph: 
-    groups:
-    - en: Text
-      fr: Texte
-      items:
-      - FontSizeSmall
-      - FontSize
-      - FontSizeLarge
-      - FontSizeLarger
-      - FontSizeLargest
-      - SectionContainerMinHeight
   - id: Colors
     en: Colors and panel
     fr: Couleurs et panneau
-    desc:
-      en: 'Color profile, ThemeModifier and the look of this panel.'
-      fr: 'Profil de couleurs, ThemeModifier et aspect de ce panneau.'
     glyph: 
     kind: colors
     groups:
@@ -1357,6 +1178,31 @@ panel:
     break: HeroChipBreakAvgFps
     en: 60 FPS
     fr: 60 FPS
+  chip_groups:
+  - id: Game
+    order: HeroChipsOrderGame
+    en: Game
+    fr: Jeu
+  - id: Classification
+    order: HeroChipsOrderClassification
+    en: Classification
+    fr: Classement
+  - id: Studio
+    order: HeroChipsOrderStudio
+    en: Studio and status
+    fr: Studio et statut
+  - id: Hltb
+    order: HeroChipsOrderHltb
+    en: HowLongToBeat
+    fr: HowLongToBeat
+  - id: Achievements
+    order: HeroChipsOrderAchievements
+    en: Achievements
+    fr: Succès
+  - id: Activity
+    order: HeroChipsOrderActivity
+    en: Activity
+    fr: Activité
   sections:
   - id: Notes
     en: Notes
@@ -1609,42 +1455,6 @@ panel:
       en: Average FPS
       fr: FPS moyen
   strings:
-    LOCHNDPanelChipOrder:
-      en: Chips, in their order
-      fr: Puces, dans leur ordre
-    LOCHNDPanelChipOrderText:
-      en: Arrows on the left move a chip, the switch shows it, the button on the right starts a new line before it. The preview and the artwork follow at once.
-      fr: Les flèches à gauche déplacent une puce, l'interrupteur l'affiche, le bouton à droite fait un retour à la ligne avant elle. L'aperçu et l'illustration suivent aussitôt.
-    LOCHNDPanelRestart:
-      en: after restart
-      fr: au redémarrage
-    LOCHNDPanelRestartTip:
-      en: Playnite reads this setting when it starts.
-      fr: Playnite lit ce réglage au démarrage.
-    LOCHNDPanelTextSection:
-      en: Section title
-      fr: Titre de section
-    LOCHNDPanelTextLarge:
-      en: Large text, game name in lists
-      fr: Grand texte, nom du jeu dans les listes
-    LOCHNDPanelTextNormal:
-      en: Normal text, descriptions and values
-      fr: Texte normal, descriptions et valeurs
-    LOCHNDPanelTextSmall:
-      en: Small text, notes and captions
-      fr: Petit texte, notes et légendes
-    LOCHNDPanelShow:
-      en: Show
-      fr: Afficher
-    LOCHNDPanelHide:
-      en: Hide
-      fr: Masquer
-    LOCHNDPanelMoveUp:
-      en: Move before the previous chip
-      fr: Placer avant la puce précédente
-    LOCHNDPanelMoveDown:
-      en: Move after the next chip
-      fr: Placer après la puce suivante
     LOCHNDPanelPreview:
       en: Preview (live)
       fr: Aperçu (en direct)

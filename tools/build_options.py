@@ -29,7 +29,6 @@ from xml.sax.saxutils import escape
 import yaml
 
 import color_profiles
-import chips_line
 import settings_panel
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
@@ -115,7 +114,7 @@ def panel_keys(spec):
             keys.update(group["items"])
     for chip in panel.get("chips", []):
         keys.update([chip["show"], chip["break"]])
-    keys.update(chips_line.pos_key(chip) for chip in panel.get("chips", []))
+    keys.update(g["order"] for g in panel.get("chip_groups", []))
     for section in panel.get("sections", []):
         keys.update(section["show_in"] + section["section"])
     return keys
@@ -264,15 +263,6 @@ def build_options(spec, constants, source: Path):
                 lines += header_rows(pending, "Header" + pending["header"] + ("Panel" if in_panel else ""))
                 pending = None
             lines += variable_rows(entry, not in_panel)
-    # chip positions: Doubles without Slider. Theme Options looks up a DOUBLE_PanelTemplate for them, which
-    # the theme defines empty (DefaultControls/Button.xaml), so they take no row; the panel arrows set them.
-    for chip in spec["panel"]["chips"]:
-        key = chips_line.pos_key(chip)
-        kind, default = constants.get(key, (None, None))
-        if kind != "Double":
-            raise SpecError(f"{key} must be a sys:Double in Constants.xaml")
-        seen.add(key)
-        lines += [f"    {key}:", f"        Title: {q(key)}", "        Type: Double", f"        Default: {q(normalize(kind, default))}"]
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))
@@ -716,63 +706,16 @@ DP_BEGIN = "<!-- BEGIN generated settings panel: edit tools/options_spec.yaml (p
 DP_END = "<!-- END generated settings panel -->"
 
 
-HERO_RES_BEGIN = "<!-- BEGIN generated chip line resources: tools/chips_line.py, run tools/build_options.py -->"
-HERO_RES_END = "<!-- END generated chip line resources -->"
-ROWS_BEGIN = "<!-- BEGIN generated chip rows: tools/chips_line.py, run tools/build_options.py -->"
-ROWS_END = "<!-- END generated chip rows -->"
-HERO_LINE_BEGIN = "<!-- BEGIN generated chip line: tools/chips_line.py, run tools/build_options.py -->"
-HERO_LINE_END = "<!-- END generated chip line -->"
-NAMESPACES = {
-    "sys": "clr-namespace:System;assembly=mscorlib",
-    "scm": "clr-namespace:System.ComponentModel;assembly=WindowsBase",
-}
-
-
-def restart_keys(source: Path, spec):
-    """Variables read as {DynamicResource Key} in a theme file: Theme Options sets those resources at startup."""
-    keys = {entry["key"] for entry in spec["variables"] if "key" in entry}
-    dynamic, live = set(), set()
-    for path in source.rglob("*.xaml"):
-        # Common.xaml holds the generated panel pages: only the theme views decide when a setting applies
-        if path.name in ("Constants.xaml", "Common.xaml") or "Localization" in path.parts:
-            continue
-        text = path.read_text(encoding="utf-8-sig")
-        dynamic.update(k for k in re.findall(r"\{DynamicResource (\w+)\}", text) if k in keys)
-        live.update(k for k in re.findall(r"Path=Options\[(\w+)\]", text) if k in keys)
-    # a setting also bound with PluginSettings somewhere already changes the theme while the panel is open,
-    # unless Playnite's own styles read it too (FontSize...): those follow the resource only
-    default_keys = Path(__file__).with_name("playnite_default_keys.txt").read_text(encoding="utf-8").split()
-    return (dynamic - live) | (keys & set(default_keys))
-
-
-def replace_block(text, name, begin, end, body):
-    """Replace what lies between two marker comments, indenting the body like the begin marker."""
-    start, stop = text.find(begin), text.find(end)
-    if start < 0 or stop < 0:
-        raise SpecError(f"{name} must contain the markers {begin}")
-    pad = text[text.rfind("\n", 0, start) + 1:start]
-    block = begin + "\n" + body + "\n" + end
-    block = "\n".join((pad + line if line.strip() else line) if i else line for i, line in enumerate(block.split("\n")))
-    return text[:start] + block + text[stop + len(end):]
-
-
-def with_namespaces(text):
-    """The sorted chip views need sys: and scm: on the root ResourceDictionary."""
-    head_end = text.index(">", text.index("<ResourceDictionary"))
-    head = text[:head_end]
-    for prefix, uri in NAMESPACES.items():
-        if f"xmlns:{prefix}=" not in head:
-            head += f'\n                    xmlns:{prefix}="{uri}"'
-    return head + text[head_end:]
-
-
 def details_panel_file(source: Path, spec, constants, name="Views/DetailsViewGameOverview.xaml"):
-    text = with_namespaces((source / name).read_text(encoding="utf-8-sig"))
-    chips = spec["panel"]["chips"]
-    text = replace_block(text, name, HERO_RES_BEGIN, HERO_RES_END, chips_line.hero_resources(chips))
-    text = replace_block(text, name, HERO_LINE_BEGIN, HERO_LINE_END, chips_line.hero_line())
-    return replace_block(text, name, DP_BEGIN, DP_END,
-                         settings_panel.Panel(spec, constants, loc_key, "HndPanel").details_host())
+    text = (source / name).read_text(encoding="utf-8-sig")
+    start, end = text.find(DP_BEGIN), text.find(DP_END)
+    if start < 0 or end < 0:
+        raise SpecError(f"{name} must contain the generated settings panel markers")
+    line_start = text.rfind("\n", 0, start) + 1
+    pad = text[line_start:start]
+    block = DP_BEGIN + "\n" + settings_panel.Panel(spec, constants, loc_key, "HndPanel").details_host() + "\n" + DP_END
+    block = "\n".join((pad + line if line.strip() else line) if i else line for i, line in enumerate(block.split("\n")))
+    return text[:start] + block + text[end + len(DP_END):]
 
 
 def workshop_labels(spec):
@@ -789,7 +732,7 @@ WORKSHOP_FILES = ["Views/TopPanel.xaml", "Presets/TopPanel/Dune.xaml"]
 
 
 def top_panel_file(source: Path, spec, constants, name="Views/TopPanel.xaml"):
-    text = with_namespaces((source / name).read_text(encoding="utf-8-sig"))
+    text = (source / name).read_text(encoding="utf-8-sig")
     start = text.find(WS_BEGIN)
     end = text.find(WS_END)
     if start < 0 or end < 0:
@@ -840,12 +783,7 @@ def main() -> int:
         outputs["options.yaml"] = options
         for name in WORKSHOP_FILES:
             outputs[name] = top_panel_file(source, spec, constants, name)
-        settings_panel.RESTART_KEYS = restart_keys(source, spec)
         outputs["Views/DetailsViewGameOverview.xaml"] = details_panel_file(source, spec, constants)
-        common = (source / "Common.xaml").read_text(encoding="utf-8-sig")
-        outputs["Common.xaml"] = replace_block(with_namespaces(common), "Common.xaml", ROWS_BEGIN, ROWS_END,
-                                               chips_line.shared_resources(spec["panel"]["chips"], loc_key) + "\n"
-                                               + settings_panel.Panel(spec, constants, loc_key, "HndPage").page_templates())
         for language, extra in settings_panel.panel_labels(spec, loc_key).items():
             labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.

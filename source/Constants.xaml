@@ -206,26 +206,12 @@
     <sys:Boolean x:Key="HeroChipBreakRecentActivity">False</sys:Boolean>
     <sys:Boolean x:Key="HeroChipBreakAvgFps">False</sys:Boolean>
     <!-- Chip group order (Double so live sliders can write it; each group shows in the slot equal to its value) -->
-    <!-- artwork chip positions (tools/chips_line.py): sorted ascending, set by the panel arrows -->
-    <sys:Double x:Key="HeroChipPosReleaseDate">10</sys:Double>
-    <sys:Double x:Key="HeroChipPosPlatforms">20</sys:Double>
-    <sys:Double x:Key="HeroChipPosSource">30</sys:Double>
-    <sys:Double x:Key="HeroChipPosGenres">40</sys:Double>
-    <sys:Double x:Key="HeroChipPosCategories">50</sys:Double>
-    <sys:Double x:Key="HeroChipPosFeatures">60</sys:Double>
-    <sys:Double x:Key="HeroChipPosTags">70</sys:Double>
-    <sys:Double x:Key="HeroChipPosDevelopers">80</sys:Double>
-    <sys:Double x:Key="HeroChipPosCompletionStatus">90</sys:Double>
-    <sys:Double x:Key="HeroChipPosCommunityScore">100</sys:Double>
-    <sys:Double x:Key="HeroChipPosHltbMain">110</sys:Double>
-    <sys:Double x:Key="HeroChipPosHltbExtra">120</sys:Double>
-    <sys:Double x:Key="HeroChipPosHltbCompletionist">130</sys:Double>
-    <sys:Double x:Key="HeroChipPosAchievements">140</sys:Double>
-    <sys:Double x:Key="HeroChipPosLatestAchievement">150</sys:Double>
-    <sys:Double x:Key="HeroChipPosRareAchievements">160</sys:Double>
-    <sys:Double x:Key="HeroChipPosLastSession">170</sys:Double>
-    <sys:Double x:Key="HeroChipPosRecentActivity">180</sys:Double>
-    <sys:Double x:Key="HeroChipPosAvgFps">190</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderGame">0</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderClassification">1</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderStudio">2</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderHltb">3</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderAchievements">4</sys:Double>
+    <sys:Double x:Key="HeroChipsOrderActivity">5</sys:Double>
     <sys:Boolean x:Key="DetailsViewExpandGenres">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandCategories">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandFeatures">True</sys:Boolean>

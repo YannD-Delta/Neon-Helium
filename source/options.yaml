@@ -687,6 +687,28 @@ Presets:
                         Value: '0.5'
 
 Variables:
+    HeaderTopPanel:
+        Title: 'Top panel and sidebar'
+        LocKey: LOCHNDHeaderTopPanel
+        Type: Header
+    TopPanelSearchBoxWidthHelium:
+        Title: 'Search box width'
+        LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
+        Type: Double
+        Default: '500'
+        Slider:
+            Min: '80'
+            Max: '600'
+            Step: '1'
+    SidebarItemSize:
+        Title: 'Sidebar icon size'
+        LocKey: LOCHNDOptSidebarItemSize
+        Type: Double
+        Default: '38'
+        Slider:
+            Min: '24'
+            Max: '64'
+            Step: '1'
     HeaderHero:
         Title: 'Details view - artwork header (Dune)'
         LocKey: LOCHNDHeaderHero
@@ -712,6 +734,755 @@ Variables:
         Slider:
             Min: '0'
             Max: '20'
+            Step: '1'
+    HeaderDetailsInfo:
+        Title: 'Details view - information and description'
+        LocKey: LOCHNDHeaderDetailsInfo
+        Type: Header
+    DetailsViewDescriptionDockToRight:
+        Title: 'Description on the right'
+        LocKey: LOCHNDOptDetailsViewDescriptionDockToRight
+        Type: Boolean
+        Default: 'False'
+    GameInfoNarrowValueMaxWidth:
+        Title: 'Maximum width of developers and publishers'
+        LocKey: LOCHNDOptGameInfoNarrowValueMaxWidth
+        Type: Double
+        Default: '180'
+        Slider:
+            Min: '80'
+            Max: '600'
+            Step: '1'
+    GameInfoWideValueMaxWidth:
+        Title: 'Maximum width of series and install folder'
+        LocKey: LOCHNDOptGameInfoWideValueMaxWidth
+        Type: Double
+        Default: '200'
+        Slider:
+            Min: '80'
+            Max: '600'
+            Step: '1'
+    DetailsViewEnablePanelsDropShadowEffect:
+        Title: 'Shadow under panels (slower)'
+        LocKey: LOCHNDOptDetailsViewEnablePanelsDropShadowEffect
+        Type: Boolean
+        Default: 'False'
+    DetailsViewLibraryGameShowFavorite:
+        Title: 'Favorite icon in the game list'
+        LocKey: LOCHNDOptDetailsViewLibraryGameShowFavorite
+        Type: Boolean
+        Default: 'True'
+    HeaderDetailsOrderLeft:
+        Title: 'Details view - left column order (each number once, 0 to 18)'
+        LocKey: LOCHNDHeaderDetailsOrderLeft
+        Type: Header
+    DetailsViewSectionOrderNotes:
+        Title: 'Play Notes'
+        LocKey: LOCHNDOptDetailsViewSectionOrderNotes
+        Type: Int32
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderGenres:
+        Title: 'Genres'
+        LocKey: LOCHNDOptDetailsViewSectionOrderGenres
+        Type: Int32
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderCategories:
+        Title: 'Categories'
+        LocKey: LOCHNDOptDetailsViewSectionOrderCategories
+        Type: Int32
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderFeatures:
+        Title: 'Features'
+        LocKey: LOCHNDOptDetailsViewSectionOrderFeatures
+        Type: Int32
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderTags:
+        Title: 'Tags'
+        LocKey: LOCHNDOptDetailsViewSectionOrderTags
+        Type: Int32
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderNewsViewer:
+        Title: 'News Viewer'
+        LocKey: LOCHNDOptDetailsViewSectionOrderNewsViewer
+        Type: Int32
+        Default: '5'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderVideo:
+        Title: 'Video'
+        LocKey: LOCHNDOptDetailsViewSectionOrderVideo
+        Type: Int32
+        Default: '6'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderGameActivity:
+        Title: 'GameActivity'
+        LocKey: LOCHNDOptDetailsViewSectionOrderGameActivity
+        Type: Int32
+        Default: '7'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderCheckDlc:
+        Title: 'CheckDlc'
+        LocKey: LOCHNDOptDetailsViewSectionOrderCheckDlc
+        Type: Int32
+        Default: '8'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderGameRelations:
+        Title: 'Game Relations'
+        LocKey: LOCHNDOptDetailsViewSectionOrderGameRelations
+        Type: Int32
+        Default: '9'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderWeb:
+        Title: 'Web Explorer'
+        LocKey: LOCHNDOptDetailsViewSectionOrderWeb
+        Type: Int32
+        Default: '10'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    HeaderDetailsOrderRight:
+        Title: 'Details view - right column order (each number once, 0 to 18)'
+        LocKey: LOCHNDHeaderDetailsOrderRight
+        Type: Header
+    DetailsViewSectionOrderHowLongToBeat:
+        Title: 'HowLongToBeat'
+        LocKey: LOCHNDOptDetailsViewSectionOrderHowLongToBeat
+        Type: Int32
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderAchievements:
+        Title: 'PlayniteAchievements'
+        LocKey: LOCHNDOptDetailsViewSectionOrderAchievements
+        Type: Int32
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderSteamScreenshots:
+        Title: 'Steam Screenshots'
+        LocKey: LOCHNDOptDetailsViewSectionOrderSteamScreenshots
+        Type: Int32
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderVndb:
+        Title: 'VNDB Nexus'
+        LocKey: LOCHNDOptDetailsViewSectionOrderVndb
+        Type: Int32
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderScreenshotsVisualizer:
+        Title: 'ScreenshotsVisualizer'
+        LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotsVisualizer
+        Type: Int32
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderReviewViewer:
+        Title: 'Review Viewer'
+        LocKey: LOCHNDOptDetailsViewSectionOrderReviewViewer
+        Type: Int32
+        Default: '5'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderScreenshotUtilities:
+        Title: 'Screenshot Utilities'
+        LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotUtilities
+        Type: Int32
+        Default: '6'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    HeaderDetailsPlugins:
+        Title: 'Details view - extension details'
+        LocKey: LOCHNDHeaderDetailsPlugins
+        Type: Header
+    WebExplorerControlHeight:
+        Title: 'Web Explorer height'
+        LocKey: LOCHNDOptWebExplorerControlHeight
+        Type: Double
+        Default: '800'
+        Slider:
+            Min: '400'
+            Max: '1800'
+            Step: '10'
+    CheckDlcListHeight:
+        Title: 'CheckDlc list height'
+        LocKey: LOCHNDOptCheckDlcListHeight
+        Type: Double
+        Default: '700'
+        Slider:
+            Min: '100'
+            Max: '1600'
+            Step: '10'
+    GameActivityChartTimeHeight:
+        Title: 'GameActivity time chart height (0 = automatic)'
+        LocKey: LOCHNDOptGameActivityChartTimeHeight
+        Type: Double
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '1000'
+            Step: '1'
+    GameActivityChartLogHeight:
+        Title: 'GameActivity log chart height (0 = automatic)'
+        LocKey: LOCHNDOptGameActivityChartLogHeight
+        Type: Double
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '1000'
+            Step: '1'
+    HeaderGridDetails:
+        Title: 'Grid view - game panel'
+        LocKey: LOCHNDHeaderGridDetails
+        Type: Header
+    GridViewAllowUseOfLogos:
+        Title: 'Use game logos (Extra Metadata Loader)'
+        LocKey: LOCHNDOptGridViewAllowUseOfLogos
+        Type: Boolean
+        Default: 'True'
+    GridViewDisplayGameNameIfLogoVisible:
+        Title: 'Show the game name even with a logo'
+        LocKey: LOCHNDOptGridViewDisplayGameNameIfLogoVisible
+        Type: Boolean
+        Default: 'True'
+    GridViewPlayButtonMinWidth:
+        Title: 'Play button minimum width'
+        LocKey: LOCHNDOptGridViewPlayButtonMinWidth
+        Type: Double
+        Default: '190'
+        Slider:
+            Min: '120'
+            Max: '400'
+            Step: '1'
+    GridViewPlayButtonHeight:
+        Title: 'Play button height'
+        LocKey: LOCHNDOptGridViewPlayButtonHeight
+        Type: Double
+        Default: '45'
+        Slider:
+            Min: '30'
+            Max: '80'
+            Step: '1'
+    GridViewShowLastPlayed:
+        Title: 'Last played'
+        LocKey: LOCHNDOptGridViewShowLastPlayed
+        Type: Boolean
+        Default: 'True'
+    GridViewShowPlayTime:
+        Title: 'Time played'
+        LocKey: LOCHNDOptGridViewShowPlayTime
+        Type: Boolean
+        Default: 'True'
+    GridViewShowCompletionStatus:
+        Title: 'Completion status'
+        LocKey: LOCHNDOptGridViewShowCompletionStatus
+        Type: Boolean
+        Default: 'True'
+    GridViewShowAchievementsSummary:
+        Title: 'Achievements summary'
+        LocKey: LOCHNDOptGridViewShowAchievementsSummary
+        Type: Boolean
+        Default: 'True'
+    GridViewShowEditButton:
+        Title: 'Edit button'
+        LocKey: LOCHNDOptGridViewShowEditButton
+        Type: Boolean
+        Default: 'True'
+    GridViewShowInfoButton:
+        Title: 'Information panel button'
+        LocKey: LOCHNDOptGridViewShowInfoButton
+        Type: Boolean
+        Default: 'True'
+    GridViewShowFavoriteButton:
+        Title: 'Favorite button (ThemeExtras)'
+        LocKey: LOCHNDOptGridViewShowFavoriteButton
+        Type: Boolean
+        Default: 'True'
+    GridViewShowHltbDataGrid:
+        Title: 'HowLongToBeat time table'
+        LocKey: LOCHNDOptGridViewShowHltbDataGrid
+        Type: Boolean
+        Default: 'True'
+    GridViewShowMetadataDetailsDefault:
+        Title: 'Platforms, tags and categories open by default'
+        LocKey: LOCHNDOptGridViewShowMetadataDetailsDefault
+        Type: Boolean
+        Default: 'True'
+    HeaderGridSections:
+        Title: 'Grid view - sections shown'
+        LocKey: LOCHNDHeaderGridSections
+        Type: Header
+    GridViewShowAchievementsPanel:
+        Title: 'PlayniteAchievements'
+        LocKey: LOCHNDOptGridViewShowAchievementsPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowGameActivityPanel:
+        Title: 'GameActivity'
+        LocKey: LOCHNDOptGridViewShowGameActivityPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowHltbPanel:
+        Title: 'HowLongToBeat'
+        LocKey: LOCHNDOptGridViewShowHltbPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowNotesPanel:
+        Title: 'Play Notes'
+        LocKey: LOCHNDOptGridViewShowNotesPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowVideoPanel:
+        Title: 'Video (Extra Metadata Loader)'
+        LocKey: LOCHNDOptGridViewShowVideoPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowScreenshotsVisualizerPanel:
+        Title: 'ScreenshotsVisualizer'
+        LocKey: LOCHNDOptGridViewShowScreenshotsVisualizerPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowReviewsPanel:
+        Title: 'Review Viewer'
+        LocKey: LOCHNDOptGridViewShowReviewsPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowNewsPanel:
+        Title: 'News Viewer'
+        LocKey: LOCHNDOptGridViewShowNewsPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowVndbPanel:
+        Title: 'VNDB Nexus'
+        LocKey: LOCHNDOptGridViewShowVndbPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowCheckDlcPanel:
+        Title: 'CheckDlc'
+        LocKey: LOCHNDOptGridViewShowCheckDlcPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowGameRelationsPanel:
+        Title: 'Game Relations'
+        LocKey: LOCHNDOptGridViewShowGameRelationsPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowSteamScreenshotsPanel:
+        Title: 'Steam Screenshots'
+        LocKey: LOCHNDOptGridViewShowSteamScreenshotsPanel
+        Type: Boolean
+        Default: 'True'
+    GridViewShowWebExplorerPanel:
+        Title: 'Web Explorer'
+        LocKey: LOCHNDOptGridViewShowWebExplorerPanel
+        Type: Boolean
+        Default: 'True'
+    HeaderGridExpand:
+        Title: 'Grid view - sections open by default'
+        LocKey: LOCHNDHeaderGridExpand
+        Type: Header
+    GridViewShowAchievementsPanelDefault:
+        Title: 'PlayniteAchievements'
+        LocKey: LOCHNDOptGridViewShowAchievementsPanelDefault
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandGameActivityPanel:
+        Title: 'GameActivity'
+        LocKey: LOCHNDOptGridViewExpandGameActivityPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewShowHltbPanelDefault:
+        Title: 'HowLongToBeat'
+        LocKey: LOCHNDOptGridViewShowHltbPanelDefault
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandNotesPanel:
+        Title: 'Play Notes'
+        LocKey: LOCHNDOptGridViewExpandNotesPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandVideoPanel:
+        Title: 'Video'
+        LocKey: LOCHNDOptGridViewExpandVideoPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandScreenshotsVisualizerPanel:
+        Title: 'ScreenshotsVisualizer'
+        LocKey: LOCHNDOptGridViewExpandScreenshotsVisualizerPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandReviewsPanel:
+        Title: 'Review Viewer'
+        LocKey: LOCHNDOptGridViewExpandReviewsPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandNewsPanel:
+        Title: 'News Viewer'
+        LocKey: LOCHNDOptGridViewExpandNewsPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandVndbPanel:
+        Title: 'VNDB Nexus'
+        LocKey: LOCHNDOptGridViewExpandVndbPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandCheckDlcPanel:
+        Title: 'CheckDlc'
+        LocKey: LOCHNDOptGridViewExpandCheckDlcPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandGameRelationsPanel:
+        Title: 'Game Relations'
+        LocKey: LOCHNDOptGridViewExpandGameRelationsPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandSteamScreenshotsPanel:
+        Title: 'Steam Screenshots'
+        LocKey: LOCHNDOptGridViewExpandSteamScreenshotsPanel
+        Type: Boolean
+        Default: 'False'
+    GridViewExpandWebExplorerPanel:
+        Title: 'Web Explorer'
+        LocKey: LOCHNDOptGridViewExpandWebExplorerPanel
+        Type: Boolean
+        Default: 'False'
+    HeaderGridOrder:
+        Title: 'Grid view - sections order (each number once, 0 to 18)'
+        LocKey: LOCHNDHeaderGridOrder
+        Type: Header
+    GridViewSectionOrderAchievements:
+        Title: 'PlayniteAchievements'
+        LocKey: LOCHNDOptGridViewSectionOrderAchievements
+        Type: Int32
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderGameActivity:
+        Title: 'GameActivity'
+        LocKey: LOCHNDOptGridViewSectionOrderGameActivity
+        Type: Int32
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderHowLongToBeat:
+        Title: 'HowLongToBeat'
+        LocKey: LOCHNDOptGridViewSectionOrderHowLongToBeat
+        Type: Int32
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderNotes:
+        Title: 'Notes'
+        LocKey: LOCHNDOptGridViewSectionOrderNotes
+        Type: Int32
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderVideo:
+        Title: 'Video'
+        LocKey: LOCHNDOptGridViewSectionOrderVideo
+        Type: Int32
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderScreenshotsVisualizer:
+        Title: 'ScreenshotsVisualizer'
+        LocKey: LOCHNDOptGridViewSectionOrderScreenshotsVisualizer
+        Type: Int32
+        Default: '5'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderReviewViewer:
+        Title: 'Review Viewer'
+        LocKey: LOCHNDOptGridViewSectionOrderReviewViewer
+        Type: Int32
+        Default: '6'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderNewsViewer:
+        Title: 'News Viewer'
+        LocKey: LOCHNDOptGridViewSectionOrderNewsViewer
+        Type: Int32
+        Default: '7'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderVndb:
+        Title: 'VNDB Nexus'
+        LocKey: LOCHNDOptGridViewSectionOrderVndb
+        Type: Int32
+        Default: '8'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderCheckDlc:
+        Title: 'CheckDlc'
+        LocKey: LOCHNDOptGridViewSectionOrderCheckDlc
+        Type: Int32
+        Default: '9'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderGameRelations:
+        Title: 'Game Relations'
+        LocKey: LOCHNDOptGridViewSectionOrderGameRelations
+        Type: Int32
+        Default: '10'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderSteamScreenshots:
+        Title: 'Steam Screenshots'
+        LocKey: LOCHNDOptGridViewSectionOrderSteamScreenshots
+        Type: Int32
+        Default: '11'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    GridViewSectionOrderWeb:
+        Title: 'Web Explorer'
+        LocKey: LOCHNDOptGridViewSectionOrderWeb
+        Type: Int32
+        Default: '12'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    HeaderGridAchievements:
+        Title: 'Grid view - achievements (PlayniteAchievements)'
+        LocKey: LOCHNDHeaderGridAchievements
+        Type: Header
+    GridViewAchievementsShowProgressBar:
+        Title: 'Progress bar'
+        LocKey: LOCHNDOptGridViewAchievementsShowProgressBar
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowUnlockedList:
+        Title: 'Unlocked icons'
+        LocKey: LOCHNDOptGridViewAchievementsShowUnlockedList
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowLockedList:
+        Title: 'Locked icons'
+        LocKey: LOCHNDOptGridViewAchievementsShowLockedList
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowCompactList:
+        Title: 'All icons'
+        LocKey: LOCHNDOptGridViewAchievementsShowCompactList
+        Type: Boolean
+        Default: 'False'
+    GridViewAchievementsShowLatest:
+        Title: 'Latest unlocked'
+        LocKey: LOCHNDOptGridViewAchievementsShowLatest
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowStats:
+        Title: 'Statistics'
+        LocKey: LOCHNDOptGridViewAchievementsShowStats
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowBarChart:
+        Title: 'Bar chart'
+        LocKey: LOCHNDOptGridViewAchievementsShowBarChart
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowPieChart:
+        Title: 'Pie chart'
+        LocKey: LOCHNDOptGridViewAchievementsShowPieChart
+        Type: Boolean
+        Default: 'False'
+    GridViewAchievementsShowDataGrid:
+        Title: 'Full table'
+        LocKey: LOCHNDOptGridViewAchievementsShowDataGrid
+        Type: Boolean
+        Default: 'True'
+    GridViewAchievementsShowButton:
+        Title: 'Button to open the achievements window'
+        LocKey: LOCHNDOptGridViewAchievementsShowButton
+        Type: Boolean
+        Default: 'True'
+    HeaderGridCovers:
+        Title: 'Grid view - covers'
+        LocKey: LOCHNDHeaderGridCovers
+        Type: Header
+    GridViewCoverZoomOnHover:
+        Title: 'Zoom when hovered'
+        LocKey: LOCHNDOptGridViewCoverZoomOnHover
+        Type: Boolean
+        Default: 'True'
+    GridViewCoverShowSelectionBorder:
+        Title: 'Border on hovered and selected covers'
+        LocKey: LOCHNDOptGridViewCoverShowSelectionBorder
+        Type: Boolean
+        Default: 'True'
+    GridViewCoverSubtitleVisibility:
+        Title: 'Time played under covers'
+        LocKey: LOCHNDOptGridViewCoverSubtitleVisibility
+        Type: Visibility
+        Default: 'Collapsed'
+    GridViewCoverCompStatusSubtitleVisibility:
+        Title: 'Completion status under covers'
+        LocKey: LOCHNDOptGridViewCoverCompStatusSubtitleVisibility
+        Type: Visibility
+        Default: 'Collapsed'
+    GridViewEnableCoverShineAnimation:
+        Title: 'Shine animation on hover'
+        LocKey: LOCHNDOptGridViewEnableCoverShineAnimation
+        Type: Boolean
+        Default: 'True'
+    GridViewEnablePlayingGlowBorder:
+        Title: 'Glow while the game is running'
+        LocKey: LOCHNDOptGridViewEnablePlayingGlowBorder
+        Type: Boolean
+        Default: 'True'
+    GridViewLibraryGameShowFavorite:
+        Title: 'Favorite icon'
+        LocKey: LOCHNDOptGridViewLibraryGameShowFavorite
+        Type: Boolean
+        Default: 'True'
+    GridViewCoverDisplayLibraryBanner:
+        Title: 'Library banners (ThemeExtras)'
+        LocKey: LOCHNDOptGridViewCoverDisplayLibraryBanner
+        Type: Boolean
+        Default: 'True'
+    GridViewCoverUseRoundedCorners:
+        Title: 'Rounded corners (slower)'
+        LocKey: LOCHNDOptGridViewCoverUseRoundedCorners
+        Type: Boolean
+        Default: 'False'
+    GridViewCoverDisplayDropShadowEffect:
+        Title: 'Shadow (slower)'
+        LocKey: LOCHNDOptGridViewCoverDisplayDropShadowEffect
+        Type: Boolean
+        Default: 'False'
+    HeaderCommon:
+        Title: 'Sizes, links and text'
+        LocKey: LOCHNDHeaderCommon
+        Type: Header
+    SectionContainerMinHeight:
+        Title: 'Section minimum height'
+        LocKey: LOCHNDOptSectionContainerMinHeight
+        Type: Double
+        Default: '45'
+        Slider:
+            Min: '20'
+            Max: '160'
+            Step: '1'
+    FontSizeSmall:
+        Title: 'Small text'
+        LocKey: LOCHNDOptFontSizeSmall
+        Type: Double
+        Default: '12'
+        Slider:
+            Min: '8'
+            Max: '24'
+            Step: '1'
+    FontSize:
+        Title: 'Normal text'
+        LocKey: LOCHNDOptFontSize
+        Type: Double
+        Default: '14'
+        Slider:
+            Min: '10'
+            Max: '28'
+            Step: '1'
+    FontSizeLarge:
+        Title: 'Large text'
+        LocKey: LOCHNDOptFontSizeLarge
+        Type: Double
+        Default: '15'
+        Slider:
+            Min: '10'
+            Max: '32'
+            Step: '1'
+    FontSizeLarger:
+        Title: 'Section titles'
+        LocKey: LOCHNDOptFontSizeLarger
+        Type: Double
+        Default: '20'
+        Slider:
+            Min: '12'
+            Max: '40'
+            Step: '1'
+    FontSizeLargest:
+        Title: 'Largest text'
+        LocKey: LOCHNDOptFontSizeLargest
+        Type: Double
+        Default: '29'
+        Slider:
+            Min: '16'
+            Max: '64'
             Step: '1'
     HeaderPanelNote:
         Title: '— Below: settings of the theme panel (top panel button, section gears). Change them there —'
@@ -763,15 +1534,6 @@ Variables:
         Type: Boolean
         Default: 'False'
         Description: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.'
-    TopPanelSearchBoxWidthHelium:
-        Title: 'Search box width'
-        LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
-        Type: Double
-        Default: '500'
-        Slider:
-            Min: '80'
-            Max: '600'
-            Step: '1'
     TopPanelHeight:
         Title: 'Top panel height'
         LocKey: LOCHNDOptTopPanelHeight
@@ -781,15 +1543,6 @@ Variables:
         Slider:
             Min: '36'
             Max: '100'
-            Step: '1'
-    SidebarItemSize:
-        Title: 'Sidebar icon size'
-        LocKey: LOCHNDOptSidebarItemSize
-        Type: Double
-        Default: '38'
-        Slider:
-            Min: '24'
-            Max: '64'
             Step: '1'
     HeaderHeroPanel:
         Title: 'Details view - artwork header (Dune)'
@@ -1094,6 +1847,60 @@ Variables:
         LocKey: LOCHNDOptHeroChipBreakAvgFps
         Type: Boolean
         Default: 'False'
+    HeroChipsOrderGame:
+        Title: 'Order: date, platforms, source'
+        LocKey: LOCHNDOptHeroChipsOrderGame
+        Type: Double
+        Default: '0'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderClassification:
+        Title: 'Order: genres, categories, features, tags'
+        LocKey: LOCHNDOptHeroChipsOrderClassification
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderStudio:
+        Title: 'Order: developers, status, score'
+        LocKey: LOCHNDOptHeroChipsOrderStudio
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderHltb:
+        Title: 'Order: HowLongToBeat'
+        LocKey: LOCHNDOptHeroChipsOrderHltb
+        Type: Double
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderAchievements:
+        Title: 'Order: achievements'
+        LocKey: LOCHNDOptHeroChipsOrderAchievements
+        Type: Double
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
+    HeroChipsOrderActivity:
+        Title: 'Order: GameActivity'
+        LocKey: LOCHNDOptHeroChipsOrderActivity
+        Type: Double
+        Default: '5'
+        Slider:
+            Min: '0'
+            Max: '5'
+            Step: '1'
     HltbShowOnCover:
         Title: 'HowLongToBeat time on the cover'
         LocKey: LOCHNDOptHltbShowOnCover
@@ -1394,39 +2201,6 @@ Variables:
             Min: '110'
             Max: '2000'
             Step: '10'
-    DetailsViewDescriptionDockToRight:
-        Title: 'Description on the right'
-        LocKey: LOCHNDOptDetailsViewDescriptionDockToRight
-        Type: Boolean
-        Default: 'False'
-    GameInfoNarrowValueMaxWidth:
-        Title: 'Maximum width of developers and publishers'
-        LocKey: LOCHNDOptGameInfoNarrowValueMaxWidth
-        Type: Double
-        Default: '180'
-        Slider:
-            Min: '80'
-            Max: '600'
-            Step: '1'
-    GameInfoWideValueMaxWidth:
-        Title: 'Maximum width of series and install folder'
-        LocKey: LOCHNDOptGameInfoWideValueMaxWidth
-        Type: Double
-        Default: '200'
-        Slider:
-            Min: '80'
-            Max: '600'
-            Step: '1'
-    DetailsViewEnablePanelsDropShadowEffect:
-        Title: 'Shadow under panels (slower)'
-        LocKey: LOCHNDOptDetailsViewEnablePanelsDropShadowEffect
-        Type: Boolean
-        Default: 'False'
-    DetailsViewLibraryGameShowFavorite:
-        Title: 'Favorite icon in the game list'
-        LocKey: LOCHNDOptDetailsViewLibraryGameShowFavorite
-        Type: Boolean
-        Default: 'True'
     HeaderDetailsSectionsPanel:
         Title: 'Details view - sections shown'
         LocKey: LOCHNDHeaderDetailsSections
@@ -1642,176 +2416,6 @@ Variables:
         LocKey: LOCHNDOptDetailsViewExpandScreenshotUtilitiesPanel
         Type: Boolean
         Default: 'False'
-    HeaderDetailsOrderLeftPanel:
-        Title: 'Details view - left column order (each number once, 0 to 18)'
-        LocKey: LOCHNDHeaderDetailsOrderLeft
-        Type: Header
-    DetailsViewSectionOrderNotes:
-        Title: 'Play Notes'
-        LocKey: LOCHNDOptDetailsViewSectionOrderNotes
-        Type: Int32
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderGenres:
-        Title: 'Genres'
-        LocKey: LOCHNDOptDetailsViewSectionOrderGenres
-        Type: Int32
-        Default: '1'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderCategories:
-        Title: 'Categories'
-        LocKey: LOCHNDOptDetailsViewSectionOrderCategories
-        Type: Int32
-        Default: '2'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderFeatures:
-        Title: 'Features'
-        LocKey: LOCHNDOptDetailsViewSectionOrderFeatures
-        Type: Int32
-        Default: '3'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderTags:
-        Title: 'Tags'
-        LocKey: LOCHNDOptDetailsViewSectionOrderTags
-        Type: Int32
-        Default: '4'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderNewsViewer:
-        Title: 'News Viewer'
-        LocKey: LOCHNDOptDetailsViewSectionOrderNewsViewer
-        Type: Int32
-        Default: '5'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderVideo:
-        Title: 'Video'
-        LocKey: LOCHNDOptDetailsViewSectionOrderVideo
-        Type: Int32
-        Default: '6'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderGameActivity:
-        Title: 'GameActivity'
-        LocKey: LOCHNDOptDetailsViewSectionOrderGameActivity
-        Type: Int32
-        Default: '7'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderCheckDlc:
-        Title: 'CheckDlc'
-        LocKey: LOCHNDOptDetailsViewSectionOrderCheckDlc
-        Type: Int32
-        Default: '8'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderGameRelations:
-        Title: 'Game Relations'
-        LocKey: LOCHNDOptDetailsViewSectionOrderGameRelations
-        Type: Int32
-        Default: '9'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderWeb:
-        Title: 'Web Explorer'
-        LocKey: LOCHNDOptDetailsViewSectionOrderWeb
-        Type: Int32
-        Default: '10'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    HeaderDetailsOrderRightPanel:
-        Title: 'Details view - right column order (each number once, 0 to 18)'
-        LocKey: LOCHNDHeaderDetailsOrderRight
-        Type: Header
-    DetailsViewSectionOrderHowLongToBeat:
-        Title: 'HowLongToBeat'
-        LocKey: LOCHNDOptDetailsViewSectionOrderHowLongToBeat
-        Type: Int32
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderAchievements:
-        Title: 'PlayniteAchievements'
-        LocKey: LOCHNDOptDetailsViewSectionOrderAchievements
-        Type: Int32
-        Default: '1'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderSteamScreenshots:
-        Title: 'Steam Screenshots'
-        LocKey: LOCHNDOptDetailsViewSectionOrderSteamScreenshots
-        Type: Int32
-        Default: '2'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderVndb:
-        Title: 'VNDB Nexus'
-        LocKey: LOCHNDOptDetailsViewSectionOrderVndb
-        Type: Int32
-        Default: '3'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderScreenshotsVisualizer:
-        Title: 'ScreenshotsVisualizer'
-        LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotsVisualizer
-        Type: Int32
-        Default: '4'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderReviewViewer:
-        Title: 'Review Viewer'
-        LocKey: LOCHNDOptDetailsViewSectionOrderReviewViewer
-        Type: Int32
-        Default: '5'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    DetailsViewSectionOrderScreenshotUtilities:
-        Title: 'Screenshot Utilities'
-        LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotUtilities
-        Type: Int32
-        Default: '6'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
     HeaderDetailsPluginsPanel:
         Title: 'Details view - extension details'
         LocKey: LOCHNDHeaderDetailsPlugins
@@ -1826,42 +2430,6 @@ Variables:
         LocKey: LOCHNDOptDetailsViewShowHltbProgressBar
         Type: Boolean
         Default: 'True'
-    WebExplorerControlHeight:
-        Title: 'Web Explorer height'
-        LocKey: LOCHNDOptWebExplorerControlHeight
-        Type: Double
-        Default: '800'
-        Slider:
-            Min: '400'
-            Max: '1800'
-            Step: '10'
-    CheckDlcListHeight:
-        Title: 'CheckDlc list height'
-        LocKey: LOCHNDOptCheckDlcListHeight
-        Type: Double
-        Default: '700'
-        Slider:
-            Min: '100'
-            Max: '1600'
-            Step: '10'
-    GameActivityChartTimeHeight:
-        Title: 'GameActivity time chart height (0 = automatic)'
-        LocKey: LOCHNDOptGameActivityChartTimeHeight
-        Type: Double
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '1000'
-            Step: '1'
-    GameActivityChartLogHeight:
-        Title: 'GameActivity log chart height (0 = automatic)'
-        LocKey: LOCHNDOptGameActivityChartLogHeight
-        Type: Double
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '1000'
-            Step: '1'
     HeaderDetailsAchievementsPanel:
         Title: 'Details view - achievements (PlayniteAchievements)'
         LocKey: LOCHNDHeaderDetailsAchievements
@@ -1916,396 +2484,10 @@ Variables:
         LocKey: LOCHNDOptDetailsViewAchievementsShowButton
         Type: Boolean
         Default: 'True'
-    HeaderGridDetailsPanel:
-        Title: 'Grid view - game panel'
-        LocKey: LOCHNDHeaderGridDetails
-        Type: Header
-    GridViewAllowUseOfLogos:
-        Title: 'Use game logos (Extra Metadata Loader)'
-        LocKey: LOCHNDOptGridViewAllowUseOfLogos
-        Type: Boolean
-        Default: 'True'
-    GridViewDisplayGameNameIfLogoVisible:
-        Title: 'Show the game name even with a logo'
-        LocKey: LOCHNDOptGridViewDisplayGameNameIfLogoVisible
-        Type: Boolean
-        Default: 'True'
-    GridViewPlayButtonMinWidth:
-        Title: 'Play button minimum width'
-        LocKey: LOCHNDOptGridViewPlayButtonMinWidth
-        Type: Double
-        Default: '190'
-        Slider:
-            Min: '120'
-            Max: '400'
-            Step: '1'
-    GridViewPlayButtonHeight:
-        Title: 'Play button height'
-        LocKey: LOCHNDOptGridViewPlayButtonHeight
-        Type: Double
-        Default: '45'
-        Slider:
-            Min: '30'
-            Max: '80'
-            Step: '1'
-    GridViewShowLastPlayed:
-        Title: 'Last played'
-        LocKey: LOCHNDOptGridViewShowLastPlayed
-        Type: Boolean
-        Default: 'True'
-    GridViewShowPlayTime:
-        Title: 'Time played'
-        LocKey: LOCHNDOptGridViewShowPlayTime
-        Type: Boolean
-        Default: 'True'
-    GridViewShowCompletionStatus:
-        Title: 'Completion status'
-        LocKey: LOCHNDOptGridViewShowCompletionStatus
-        Type: Boolean
-        Default: 'True'
-    GridViewShowAchievementsSummary:
-        Title: 'Achievements summary'
-        LocKey: LOCHNDOptGridViewShowAchievementsSummary
-        Type: Boolean
-        Default: 'True'
-    GridViewShowEditButton:
-        Title: 'Edit button'
-        LocKey: LOCHNDOptGridViewShowEditButton
-        Type: Boolean
-        Default: 'True'
-    GridViewShowInfoButton:
-        Title: 'Information panel button'
-        LocKey: LOCHNDOptGridViewShowInfoButton
-        Type: Boolean
-        Default: 'True'
-    GridViewShowFavoriteButton:
-        Title: 'Favorite button (ThemeExtras)'
-        LocKey: LOCHNDOptGridViewShowFavoriteButton
-        Type: Boolean
-        Default: 'True'
-    GridViewShowHltbDataGrid:
-        Title: 'HowLongToBeat time table'
-        LocKey: LOCHNDOptGridViewShowHltbDataGrid
-        Type: Boolean
-        Default: 'True'
-    GridViewShowMetadataDetailsDefault:
-        Title: 'Platforms, tags and categories open by default'
-        LocKey: LOCHNDOptGridViewShowMetadataDetailsDefault
-        Type: Boolean
-        Default: 'True'
-    HeaderGridSectionsPanel:
-        Title: 'Grid view - sections shown'
-        LocKey: LOCHNDHeaderGridSections
-        Type: Header
-    GridViewShowAchievementsPanel:
-        Title: 'PlayniteAchievements'
-        LocKey: LOCHNDOptGridViewShowAchievementsPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowGameActivityPanel:
-        Title: 'GameActivity'
-        LocKey: LOCHNDOptGridViewShowGameActivityPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowHltbPanel:
-        Title: 'HowLongToBeat'
-        LocKey: LOCHNDOptGridViewShowHltbPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowNotesPanel:
-        Title: 'Play Notes'
-        LocKey: LOCHNDOptGridViewShowNotesPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowVideoPanel:
-        Title: 'Video (Extra Metadata Loader)'
-        LocKey: LOCHNDOptGridViewShowVideoPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowScreenshotsVisualizerPanel:
-        Title: 'ScreenshotsVisualizer'
-        LocKey: LOCHNDOptGridViewShowScreenshotsVisualizerPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowReviewsPanel:
-        Title: 'Review Viewer'
-        LocKey: LOCHNDOptGridViewShowReviewsPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowNewsPanel:
-        Title: 'News Viewer'
-        LocKey: LOCHNDOptGridViewShowNewsPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowVndbPanel:
-        Title: 'VNDB Nexus'
-        LocKey: LOCHNDOptGridViewShowVndbPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowCheckDlcPanel:
-        Title: 'CheckDlc'
-        LocKey: LOCHNDOptGridViewShowCheckDlcPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowGameRelationsPanel:
-        Title: 'Game Relations'
-        LocKey: LOCHNDOptGridViewShowGameRelationsPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowSteamScreenshotsPanel:
-        Title: 'Steam Screenshots'
-        LocKey: LOCHNDOptGridViewShowSteamScreenshotsPanel
-        Type: Boolean
-        Default: 'True'
-    GridViewShowWebExplorerPanel:
-        Title: 'Web Explorer'
-        LocKey: LOCHNDOptGridViewShowWebExplorerPanel
-        Type: Boolean
-        Default: 'True'
-    HeaderGridExpandPanel:
-        Title: 'Grid view - sections open by default'
-        LocKey: LOCHNDHeaderGridExpand
-        Type: Header
-    GridViewShowAchievementsPanelDefault:
-        Title: 'PlayniteAchievements'
-        LocKey: LOCHNDOptGridViewShowAchievementsPanelDefault
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandGameActivityPanel:
-        Title: 'GameActivity'
-        LocKey: LOCHNDOptGridViewExpandGameActivityPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewShowHltbPanelDefault:
-        Title: 'HowLongToBeat'
-        LocKey: LOCHNDOptGridViewShowHltbPanelDefault
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandNotesPanel:
-        Title: 'Play Notes'
-        LocKey: LOCHNDOptGridViewExpandNotesPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandVideoPanel:
-        Title: 'Video'
-        LocKey: LOCHNDOptGridViewExpandVideoPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandScreenshotsVisualizerPanel:
-        Title: 'ScreenshotsVisualizer'
-        LocKey: LOCHNDOptGridViewExpandScreenshotsVisualizerPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandReviewsPanel:
-        Title: 'Review Viewer'
-        LocKey: LOCHNDOptGridViewExpandReviewsPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandNewsPanel:
-        Title: 'News Viewer'
-        LocKey: LOCHNDOptGridViewExpandNewsPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandVndbPanel:
-        Title: 'VNDB Nexus'
-        LocKey: LOCHNDOptGridViewExpandVndbPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandCheckDlcPanel:
-        Title: 'CheckDlc'
-        LocKey: LOCHNDOptGridViewExpandCheckDlcPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandGameRelationsPanel:
-        Title: 'Game Relations'
-        LocKey: LOCHNDOptGridViewExpandGameRelationsPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandSteamScreenshotsPanel:
-        Title: 'Steam Screenshots'
-        LocKey: LOCHNDOptGridViewExpandSteamScreenshotsPanel
-        Type: Boolean
-        Default: 'False'
-    GridViewExpandWebExplorerPanel:
-        Title: 'Web Explorer'
-        LocKey: LOCHNDOptGridViewExpandWebExplorerPanel
-        Type: Boolean
-        Default: 'False'
-    HeaderGridOrderPanel:
-        Title: 'Grid view - sections order (each number once, 0 to 18)'
-        LocKey: LOCHNDHeaderGridOrder
-        Type: Header
-    GridViewSectionOrderAchievements:
-        Title: 'PlayniteAchievements'
-        LocKey: LOCHNDOptGridViewSectionOrderAchievements
-        Type: Int32
-        Default: '0'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderGameActivity:
-        Title: 'GameActivity'
-        LocKey: LOCHNDOptGridViewSectionOrderGameActivity
-        Type: Int32
-        Default: '1'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderHowLongToBeat:
-        Title: 'HowLongToBeat'
-        LocKey: LOCHNDOptGridViewSectionOrderHowLongToBeat
-        Type: Int32
-        Default: '2'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderNotes:
-        Title: 'Notes'
-        LocKey: LOCHNDOptGridViewSectionOrderNotes
-        Type: Int32
-        Default: '3'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderVideo:
-        Title: 'Video'
-        LocKey: LOCHNDOptGridViewSectionOrderVideo
-        Type: Int32
-        Default: '4'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderScreenshotsVisualizer:
-        Title: 'ScreenshotsVisualizer'
-        LocKey: LOCHNDOptGridViewSectionOrderScreenshotsVisualizer
-        Type: Int32
-        Default: '5'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderReviewViewer:
-        Title: 'Review Viewer'
-        LocKey: LOCHNDOptGridViewSectionOrderReviewViewer
-        Type: Int32
-        Default: '6'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderNewsViewer:
-        Title: 'News Viewer'
-        LocKey: LOCHNDOptGridViewSectionOrderNewsViewer
-        Type: Int32
-        Default: '7'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderVndb:
-        Title: 'VNDB Nexus'
-        LocKey: LOCHNDOptGridViewSectionOrderVndb
-        Type: Int32
-        Default: '8'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderCheckDlc:
-        Title: 'CheckDlc'
-        LocKey: LOCHNDOptGridViewSectionOrderCheckDlc
-        Type: Int32
-        Default: '9'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderGameRelations:
-        Title: 'Game Relations'
-        LocKey: LOCHNDOptGridViewSectionOrderGameRelations
-        Type: Int32
-        Default: '10'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderSteamScreenshots:
-        Title: 'Steam Screenshots'
-        LocKey: LOCHNDOptGridViewSectionOrderSteamScreenshots
-        Type: Int32
-        Default: '11'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
-    GridViewSectionOrderWeb:
-        Title: 'Web Explorer'
-        LocKey: LOCHNDOptGridViewSectionOrderWeb
-        Type: Int32
-        Default: '12'
-        Slider:
-            Min: '0'
-            Max: '18'
-            Step: '1'
     HeaderGridAchievementsPanel:
         Title: 'Grid view - achievements (PlayniteAchievements)'
         LocKey: LOCHNDHeaderGridAchievements
         Type: Header
-    GridViewAchievementsShowProgressBar:
-        Title: 'Progress bar'
-        LocKey: LOCHNDOptGridViewAchievementsShowProgressBar
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowUnlockedList:
-        Title: 'Unlocked icons'
-        LocKey: LOCHNDOptGridViewAchievementsShowUnlockedList
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowLockedList:
-        Title: 'Locked icons'
-        LocKey: LOCHNDOptGridViewAchievementsShowLockedList
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowCompactList:
-        Title: 'All icons'
-        LocKey: LOCHNDOptGridViewAchievementsShowCompactList
-        Type: Boolean
-        Default: 'False'
-    GridViewAchievementsShowLatest:
-        Title: 'Latest unlocked'
-        LocKey: LOCHNDOptGridViewAchievementsShowLatest
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowStats:
-        Title: 'Statistics'
-        LocKey: LOCHNDOptGridViewAchievementsShowStats
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowBarChart:
-        Title: 'Bar chart'
-        LocKey: LOCHNDOptGridViewAchievementsShowBarChart
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowPieChart:
-        Title: 'Pie chart'
-        LocKey: LOCHNDOptGridViewAchievementsShowPieChart
-        Type: Boolean
-        Default: 'False'
-    GridViewAchievementsShowDataGrid:
-        Title: 'Full table'
-        LocKey: LOCHNDOptGridViewAchievementsShowDataGrid
-        Type: Boolean
-        Default: 'True'
-    GridViewAchievementsShowButton:
-        Title: 'Button to open the achievements window'
-        LocKey: LOCHNDOptGridViewAchievementsShowButton
-        Type: Boolean
-        Default: 'True'
     AchievementsDataGridMaxHeight:
         Title: 'Full table maximum height'
         LocKey: LOCHNDOptAchievementsDataGridMaxHeight
@@ -2316,60 +2498,6 @@ Variables:
             Min: '100'
             Max: '1200'
             Step: '10'
-    HeaderGridCoversPanel:
-        Title: 'Grid view - covers'
-        LocKey: LOCHNDHeaderGridCovers
-        Type: Header
-    GridViewCoverZoomOnHover:
-        Title: 'Zoom when hovered'
-        LocKey: LOCHNDOptGridViewCoverZoomOnHover
-        Type: Boolean
-        Default: 'True'
-    GridViewCoverShowSelectionBorder:
-        Title: 'Border on hovered and selected covers'
-        LocKey: LOCHNDOptGridViewCoverShowSelectionBorder
-        Type: Boolean
-        Default: 'True'
-    GridViewCoverSubtitleVisibility:
-        Title: 'Time played under covers'
-        LocKey: LOCHNDOptGridViewCoverSubtitleVisibility
-        Type: Visibility
-        Default: 'Collapsed'
-    GridViewCoverCompStatusSubtitleVisibility:
-        Title: 'Completion status under covers'
-        LocKey: LOCHNDOptGridViewCoverCompStatusSubtitleVisibility
-        Type: Visibility
-        Default: 'Collapsed'
-    GridViewEnableCoverShineAnimation:
-        Title: 'Shine animation on hover'
-        LocKey: LOCHNDOptGridViewEnableCoverShineAnimation
-        Type: Boolean
-        Default: 'True'
-    GridViewEnablePlayingGlowBorder:
-        Title: 'Glow while the game is running'
-        LocKey: LOCHNDOptGridViewEnablePlayingGlowBorder
-        Type: Boolean
-        Default: 'True'
-    GridViewLibraryGameShowFavorite:
-        Title: 'Favorite icon'
-        LocKey: LOCHNDOptGridViewLibraryGameShowFavorite
-        Type: Boolean
-        Default: 'True'
-    GridViewCoverDisplayLibraryBanner:
-        Title: 'Library banners (ThemeExtras)'
-        LocKey: LOCHNDOptGridViewCoverDisplayLibraryBanner
-        Type: Boolean
-        Default: 'True'
-    GridViewCoverUseRoundedCorners:
-        Title: 'Rounded corners (slower)'
-        LocKey: LOCHNDOptGridViewCoverUseRoundedCorners
-        Type: Boolean
-        Default: 'False'
-    GridViewCoverDisplayDropShadowEffect:
-        Title: 'Shadow (slower)'
-        LocKey: LOCHNDOptGridViewCoverDisplayDropShadowEffect
-        Type: Boolean
-        Default: 'False'
     HeaderCommonPanel:
         Title: 'Sizes, links and text'
         LocKey: LOCHNDHeaderCommon
@@ -2383,15 +2511,6 @@ Variables:
         Slider:
             Min: '24'
             Max: '64'
-            Step: '1'
-    SectionContainerMinHeight:
-        Title: 'Section minimum height'
-        LocKey: LOCHNDOptSectionContainerMinHeight
-        Type: Double
-        Default: '45'
-        Slider:
-            Min: '20'
-            Max: '160'
             Step: '1'
     LinksShowNames:
         Title: 'Show link names next to icons'
@@ -2409,124 +2528,3 @@ Variables:
             Min: '12'
             Max: '48'
             Step: '1'
-    FontSizeSmall:
-        Title: 'Small text'
-        LocKey: LOCHNDOptFontSizeSmall
-        Type: Double
-        Default: '12'
-        Slider:
-            Min: '8'
-            Max: '24'
-            Step: '1'
-    FontSize:
-        Title: 'Normal text'
-        LocKey: LOCHNDOptFontSize
-        Type: Double
-        Default: '14'
-        Slider:
-            Min: '10'
-            Max: '28'
-            Step: '1'
-    FontSizeLarge:
-        Title: 'Large text'
-        LocKey: LOCHNDOptFontSizeLarge
-        Type: Double
-        Default: '15'
-        Slider:
-            Min: '10'
-            Max: '32'
-            Step: '1'
-    FontSizeLarger:
-        Title: 'Section titles'
-        LocKey: LOCHNDOptFontSizeLarger
-        Type: Double
-        Default: '20'
-        Slider:
-            Min: '12'
-            Max: '40'
-            Step: '1'
-    FontSizeLargest:
-        Title: 'Largest text'
-        LocKey: LOCHNDOptFontSizeLargest
-        Type: Double
-        Default: '29'
-        Slider:
-            Min: '16'
-            Max: '64'
-            Step: '1'
-    HeroChipPosReleaseDate:
-        Title: 'HeroChipPosReleaseDate'
-        Type: Double
-        Default: '10'
-    HeroChipPosPlatforms:
-        Title: 'HeroChipPosPlatforms'
-        Type: Double
-        Default: '20'
-    HeroChipPosSource:
-        Title: 'HeroChipPosSource'
-        Type: Double
-        Default: '30'
-    HeroChipPosGenres:
-        Title: 'HeroChipPosGenres'
-        Type: Double
-        Default: '40'
-    HeroChipPosCategories:
-        Title: 'HeroChipPosCategories'
-        Type: Double
-        Default: '50'
-    HeroChipPosFeatures:
-        Title: 'HeroChipPosFeatures'
-        Type: Double
-        Default: '60'
-    HeroChipPosTags:
-        Title: 'HeroChipPosTags'
-        Type: Double
-        Default: '70'
-    HeroChipPosDevelopers:
-        Title: 'HeroChipPosDevelopers'
-        Type: Double
-        Default: '80'
-    HeroChipPosCompletionStatus:
-        Title: 'HeroChipPosCompletionStatus'
-        Type: Double
-        Default: '90'
-    HeroChipPosCommunityScore:
-        Title: 'HeroChipPosCommunityScore'
-        Type: Double
-        Default: '100'
-    HeroChipPosHltbMain:
-        Title: 'HeroChipPosHltbMain'
-        Type: Double
-        Default: '110'
-    HeroChipPosHltbExtra:
-        Title: 'HeroChipPosHltbExtra'
-        Type: Double
-        Default: '120'
-    HeroChipPosHltbCompletionist:
-        Title: 'HeroChipPosHltbCompletionist'
-        Type: Double
-        Default: '130'
-    HeroChipPosAchievements:
-        Title: 'HeroChipPosAchievements'
-        Type: Double
-        Default: '140'
-    HeroChipPosLatestAchievement:
-        Title: 'HeroChipPosLatestAchievement'
-        Type: Double
-        Default: '150'
-    HeroChipPosRareAchievements:
-        Title: 'HeroChipPosRareAchievements'
-        Type: Double
-        Default: '160'
-    HeroChipPosLastSession:
-        Title: 'HeroChipPosLastSession'
-        Type: Double
-        Default: '170'
-    HeroChipPosRecentActivity:
-        Title: 'HeroChipPosRecentActivity'
-        Type: Double
-        Default: '180'
-    HeroChipPosAvgFps:
-        Title: 'HeroChipPosAvgFps'
-        Type: Double
-        Default: '190'
