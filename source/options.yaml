@@ -704,6 +704,30 @@ Variables:
         Title: '  ↳ Click to open the achievements overview.'
         LocKey: LOCHNDCaptionTopPanelShowCollectorLevel2
         Type: Header
+    TopPanelAutoHide:
+        Title: 'Hide the top panel until the mouse comes over it'
+        LocKey: LOCHNDOptTopPanelAutoHide
+        Type: Boolean
+        Default: 'False'
+        Description: 'The top panel shrinks to a thin strip and comes back when the mouse is over it.'
+    CaptionTopPanelAutoHide1:
+        Title: '  ↳ The top panel shrinks to a thin strip and comes back when the mouse is over it.'
+        LocKey: LOCHNDCaptionTopPanelAutoHide1
+        Type: Header
+    SidebarAutoHide:
+        Title: 'Hide the sidebar until the mouse comes over it'
+        LocKey: LOCHNDOptSidebarAutoHide
+        Type: Boolean
+        Default: 'False'
+        Description: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.'
+    CaptionSidebarAutoHide1:
+        Title: '  ↳ The sidebar shrinks to a thin strip and comes back when the mouse is over it.'
+        LocKey: LOCHNDCaptionSidebarAutoHide1
+        Type: Header
+    CaptionSidebarAutoHide2:
+        Title: '  ↳ Left or right sidebar only.'
+        LocKey: LOCHNDCaptionSidebarAutoHide2
+        Type: Header
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
@@ -1040,6 +1064,20 @@ Variables:
         Title: '  ↳ Needs GameActivity with FPS logging.'
         LocKey: LOCHNDCaptionHeroShowAvgFps2
         Type: Header
+    HeroChipsOpenSections:
+        Title: 'Clicking a chip opens or folds its section'
+        LocKey: LOCHNDOptHeroChipsOpenSections
+        Type: Boolean
+        Default: 'True'
+        Description: 'A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.'
+    CaptionHeroChipsOpenSections1:
+        Title: '  ↳ A click on a chip opens or folds the matching section below.'
+        LocKey: LOCHNDCaptionHeroChipsOpenSections1
+        Type: Header
+    CaptionHeroChipsOpenSections2:
+        Title: '  ↳ Times, achievements, activity, genres and tags.'
+        LocKey: LOCHNDCaptionHeroChipsOpenSections2
+        Type: Header
     HeroChipsBreakBeforeGenres:
         Title: 'New line before genres, categories, features and tags'
         LocKey: LOCHNDOptHeroChipsBreakBeforeGenres
@@ -1187,6 +1225,186 @@ Variables:
         Title: '  ↳ Achievements on each cover of the Grid view.'
         LocKey: LOCHNDCaptionGridCoverShowAchievements1
         Type: Header
+    HeaderTabs:
+        Title: 'Details view - tabs'
+        LocKey: LOCHNDHeaderTabs
+        Type: Header
+    DetailsViewTabsMode:
+        Title: 'Show the sections in tabs'
+        LocKey: LOCHNDOptDetailsViewTabsMode
+        Type: Boolean
+        Default: 'False'
+        Description: 'Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.'
+    CaptionDetailsViewTabsMode1:
+        Title: '  ↳ Tabs above the sections: All, About, Media, Stats, Community.'
+        LocKey: LOCHNDCaptionDetailsViewTabsMode1
+        Type: Header
+    CaptionDetailsViewTabsMode2:
+        Title: '  ↳ The gear of each section sets its tab, 0 = every tab.'
+        LocKey: LOCHNDCaptionDetailsViewTabsMode2
+        Type: Header
+    DetailsViewTabNotes:
+        Title: 'Tab: Notes'
+        LocKey: LOCHNDOptDetailsViewTabNotes
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabGenres:
+        Title: 'Tab: Genres'
+        LocKey: LOCHNDOptDetailsViewTabGenres
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabCategories:
+        Title: 'Tab: Categories'
+        LocKey: LOCHNDOptDetailsViewTabCategories
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabFeatures:
+        Title: 'Tab: Features'
+        LocKey: LOCHNDOptDetailsViewTabFeatures
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabTags:
+        Title: 'Tab: Tags'
+        LocKey: LOCHNDOptDetailsViewTabTags
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabNewsViewer:
+        Title: 'Tab: News'
+        LocKey: LOCHNDOptDetailsViewTabNewsViewer
+        Type: Double
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabVideo:
+        Title: 'Tab: Video'
+        LocKey: LOCHNDOptDetailsViewTabVideo
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabGameActivity:
+        Title: 'Tab: Game activity'
+        LocKey: LOCHNDOptDetailsViewTabGameActivity
+        Type: Double
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabCheckDlc:
+        Title: 'Tab: DLC'
+        LocKey: LOCHNDOptDetailsViewTabCheckDlc
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabGameRelations:
+        Title: 'Tab: Similar games'
+        LocKey: LOCHNDOptDetailsViewTabGameRelations
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabWeb:
+        Title: 'Tab: Web'
+        LocKey: LOCHNDOptDetailsViewTabWeb
+        Type: Double
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabHowLongToBeat:
+        Title: 'Tab: HowLongToBeat'
+        LocKey: LOCHNDOptDetailsViewTabHowLongToBeat
+        Type: Double
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabAchievements:
+        Title: 'Tab: Achievements'
+        LocKey: LOCHNDOptDetailsViewTabAchievements
+        Type: Double
+        Default: '3'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabSteamScreenshots:
+        Title: 'Tab: Steam screenshots'
+        LocKey: LOCHNDOptDetailsViewTabSteamScreenshots
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabVndb:
+        Title: 'Tab: VNDB'
+        LocKey: LOCHNDOptDetailsViewTabVndb
+        Type: Double
+        Default: '1'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabScreenshotsVisualizer:
+        Title: 'Tab: Screenshots (ScreenshotsVisualizer)'
+        LocKey: LOCHNDOptDetailsViewTabScreenshotsVisualizer
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabReviewViewer:
+        Title: 'Tab: Reviews'
+        LocKey: LOCHNDOptDetailsViewTabReviewViewer
+        Type: Double
+        Default: '4'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
+    DetailsViewTabScreenshotUtilities:
+        Title: 'Tab: Screenshots (Screenshot Utilities)'
+        LocKey: LOCHNDOptDetailsViewTabScreenshotUtilities
+        Type: Double
+        Default: '2'
+        Slider:
+            Min: '0'
+            Max: '4'
+            Step: '1'
     HeaderHeaderBar:
         Title: 'Details view - header bar'
         LocKey: LOCHNDHeaderHeaderBar

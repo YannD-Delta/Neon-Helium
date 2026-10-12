@@ -18,6 +18,12 @@
     <sys:String x:Key="LOCHNDHiddenButtonTooltip">Hidden game (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDCollectorTooltip">Collection level (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDCollectorLevel">Lv.</sys:String>
+    <sys:String x:Key="LOCHNDTabAll">All</sys:String>
+    <sys:String x:Key="LOCHNDTabAbout">About</sys:String>
+    <sys:String x:Key="LOCHNDTabMedia">Media</sys:String>
+    <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
+    <sys:String x:Key="LOCHNDTabCommunity">Community</sys:String>
+    <sys:String x:Key="LOCHNDQuickTab">Tab (0 = every tab)</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
@@ -138,6 +144,13 @@
     <sys:String x:Key="LOCHNDTipTopPanelShowCollectorLevel">Collection level of your library, with its progress. Click to open the achievements overview.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel1">  ↳ Collection level of your library, with its progress.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel2">  ↳ Click to open the achievements overview.</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelAutoHide">Hide the top panel until the mouse comes over it</sys:String>
+    <sys:String x:Key="LOCHNDTipTopPanelAutoHide">The top panel shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelAutoHide1">  ↳ The top panel shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
+    <sys:String x:Key="LOCHNDOptSidebarAutoHide">Hide the sidebar until the mouse comes over it</sys:String>
+    <sys:String x:Key="LOCHNDTipSidebarAutoHide">The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionSidebarAutoHide1">  ↳ The sidebar shrinks to a thin strip and comes back when the mouse is over it.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionSidebarAutoHide2">  ↳ Left or right sidebar only.</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Search box width</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Top panel height</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelHeight">Height of the bar at the top of the window.</sys:String>
@@ -214,6 +227,10 @@
     <sys:String x:Key="LOCHNDTipHeroShowAvgFps">Average FPS over all recorded sessions. Needs GameActivity with FPS logging.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps1">  ↳ Average FPS over all recorded sessions.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps2">  ↳ Needs GameActivity with FPS logging.</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsOpenSections">Clicking a chip opens or folds its section</sys:String>
+    <sys:String x:Key="LOCHNDTipHeroChipsOpenSections">A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections1">  ↳ A click on a chip opens or folds the matching section below.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections2">  ↳ Times, achievements, activity, genres and tags.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">New line before genres, categories, features and tags</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">New line before developers, completion status and score</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">New line before HowLongToBeat</sys:String>
@@ -245,6 +262,29 @@
     <sys:String x:Key="LOCHNDOptGridCoverShowAchievements">Achievements on Grid view covers</sys:String>
     <sys:String x:Key="LOCHNDTipGridCoverShowAchievements">Achievements on each cover of the Grid view.</sys:String>
     <sys:String x:Key="LOCHNDCaptionGridCoverShowAchievements1">  ↳ Achievements on each cover of the Grid view.</sys:String>
+    <sys:String x:Key="LOCHNDHeaderTabs">Details view - tabs</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabsMode">Show the sections in tabs</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewTabsMode">Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewTabsMode1">  ↳ Tabs above the sections: All, About, Media, Stats, Community.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewTabsMode2">  ↳ The gear of each section sets its tab, 0 = every tab.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabNotes">Tab: Notes</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGenres">Tab: Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabCategories">Tab: Categories</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabFeatures">Tab: Features</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabTags">Tab: Tags</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabNewsViewer">Tab: News</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabVideo">Tab: Video</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGameActivity">Tab: Game activity</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabCheckDlc">Tab: DLC</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGameRelations">Tab: Similar games</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabWeb">Tab: Web</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabHowLongToBeat">Tab: HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabAchievements">Tab: Achievements</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabSteamScreenshots">Tab: Steam screenshots</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabVndb">Tab: VNDB</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabScreenshotsVisualizer">Tab: Screenshots (ScreenshotsVisualizer)</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabReviewViewer">Tab: Reviews</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabScreenshotUtilities">Tab: Screenshots (Screenshot Utilities)</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Details view - header bar</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHeaderBar">Show the header bar</sys:String>
     <sys:String x:Key="LOCHNDTipDetailsViewShowHeaderBar">The bar under the artwork with the last played date, time played and completion status.</sys:String>

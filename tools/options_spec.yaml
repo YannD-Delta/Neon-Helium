@@ -31,6 +31,12 @@ strings:
   LOCHNDHiddenButtonTooltip: {en: Hidden game (ThemeExtras), fr: Jeu masqué (ThemeExtras)}
   LOCHNDCollectorTooltip: {en: Collection level (PlayniteAchievements), fr: Niveau de collection (PlayniteAchievements)}
   LOCHNDCollectorLevel: {en: Lv., fr: Niv.}
+  LOCHNDTabAll: {en: 'All', fr: 'Tout'}
+  LOCHNDTabAbout: {en: 'About', fr: 'Infos'}
+  LOCHNDTabMedia: {en: 'Media', fr: 'Médias'}
+  LOCHNDTabStats: {en: 'Stats', fr: 'Stats'}
+  LOCHNDTabCommunity: {en: 'Community', fr: 'Communauté'}
+  LOCHNDQuickTab: {en: 'Tab (0 = every tab)', fr: 'Onglet (0 = tous)'}
   LOCHNDChipLatestAchievement: {en: Latest, fr: Dernier succès}
   LOCHNDChipRare: {en: Rare, fr: Rares}
   LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
@@ -444,6 +450,8 @@ variables:
   - {key: ShowNavigationButtons, en: Show navigation buttons, fr: Afficher les boutons de navigation}
   - {key: TopPanelShowThemeSettingsButtons, en: Theme settings and colors buttons (ThemeExtras), fr: Boutons des réglages et couleurs du thème (ThemeExtras)}
   - {key: TopPanelShowCollectorLevel, en: Collection level badge (PlayniteAchievements), fr: Badge de niveau de collection (PlayniteAchievements)}
+  - {key: TopPanelAutoHide, en: Hide the top panel until the mouse comes over it, fr: Masquer la barre du haut jusqu'au passage de la souris}
+  - {key: SidebarAutoHide, en: Hide the sidebar until the mouse comes over it, fr: Masquer la barre latérale jusqu'au passage de la souris}
   - {key: TopPanelSearchBoxWidthHelium, range: [80, 600], en: Search box width, fr: Largeur de la recherche}
   - {key: TopPanelHeight, range: [36, 100], en: Top panel height, fr: Hauteur de la barre du haut}
   - {key: SidebarItemSize, range: [24, 64], en: Sidebar icon size, fr: Taille des icônes de la barre latérale}
@@ -488,6 +496,7 @@ variables:
   - {key: HeroShowLastSession, en: Last session length (GameActivity), fr: Durée de la dernière session (GameActivity)}
   - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
   - {key: HeroShowAvgFps, en: Average FPS (GameActivity), fr: FPS moyen (GameActivity)}
+  - {key: HeroChipsOpenSections, en: Clicking a chip opens or folds its section, fr: Un clic sur une puce ouvre ou replie sa section}
   - {key: HeroChipsBreakBeforeGenres, en: 'New line before genres, categories, features and tags', fr: 'Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes'}
   - {key: HeroChipsBreakBeforeStudio, en: 'New line before developers, completion status and score', fr: 'Retour à la ligne avant les développeurs, le statut et la note'}
   - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
@@ -505,6 +514,29 @@ variables:
   - {key: LibraryListShowAchievements, en: Achievements in the game list, fr: Succès dans la liste des jeux}
   - {key: GridCoverShowHltb, en: HowLongToBeat time on Grid view covers, fr: Durée HowLongToBeat sur les jaquettes de la vue Grille}
   - {key: GridCoverShowAchievements, en: Achievements on Grid view covers, fr: Succès sur les jaquettes de la vue Grille}
+
+  - header: Tabs
+    en: Details view - tabs
+    fr: Vue Détails - onglets
+  - {key: DetailsViewTabsMode, en: Show the sections in tabs, fr: Afficher les sections dans des onglets}
+  - {key: DetailsViewTabNotes, range: [0, 4], en: 'Tab: Notes', fr: 'Onglet : Notes'}
+  - {key: DetailsViewTabGenres, range: [0, 4], en: 'Tab: Genres', fr: 'Onglet : Genres'}
+  - {key: DetailsViewTabCategories, range: [0, 4], en: 'Tab: Categories', fr: 'Onglet : Catégories'}
+  - {key: DetailsViewTabFeatures, range: [0, 4], en: 'Tab: Features', fr: 'Onglet : Fonctionnalités'}
+  - {key: DetailsViewTabTags, range: [0, 4], en: 'Tab: Tags', fr: 'Onglet : Étiquettes'}
+  - {key: DetailsViewTabNewsViewer, range: [0, 4], en: 'Tab: News', fr: 'Onglet : Actualités'}
+  - {key: DetailsViewTabVideo, range: [0, 4], en: 'Tab: Video', fr: 'Onglet : Vidéo'}
+  - {key: DetailsViewTabGameActivity, range: [0, 4], en: 'Tab: Game activity', fr: 'Onglet : Activité de jeu'}
+  - {key: DetailsViewTabCheckDlc, range: [0, 4], en: 'Tab: DLC', fr: 'Onglet : DLC'}
+  - {key: DetailsViewTabGameRelations, range: [0, 4], en: 'Tab: Similar games', fr: 'Onglet : Jeux similaires'}
+  - {key: DetailsViewTabWeb, range: [0, 4], en: 'Tab: Web', fr: 'Onglet : Web'}
+  - {key: DetailsViewTabHowLongToBeat, range: [0, 4], en: 'Tab: HowLongToBeat', fr: 'Onglet : HowLongToBeat'}
+  - {key: DetailsViewTabAchievements, range: [0, 4], en: 'Tab: Achievements', fr: 'Onglet : Succès'}
+  - {key: DetailsViewTabSteamScreenshots, range: [0, 4], en: 'Tab: Steam screenshots', fr: 'Onglet : Captures Steam'}
+  - {key: DetailsViewTabVndb, range: [0, 4], en: 'Tab: VNDB', fr: 'Onglet : VNDB'}
+  - {key: DetailsViewTabScreenshotsVisualizer, range: [0, 4], en: 'Tab: Screenshots (ScreenshotsVisualizer)', fr: 'Onglet : Captures (ScreenshotsVisualizer)'}
+  - {key: DetailsViewTabReviewViewer, range: [0, 4], en: 'Tab: Reviews', fr: 'Onglet : Critiques'}
+  - {key: DetailsViewTabScreenshotUtilities, range: [0, 4], en: 'Tab: Screenshots (Screenshot Utilities)', fr: 'Onglet : Captures (Screenshot Utilities)'}
 
   - header: HeaderBar
     en: Details view - header bar
@@ -868,6 +900,10 @@ tips:
   DetailsViewShowHiddenButton: {en: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.', fr: 'Bouton œil qui masque le jeu de la bibliothèque ou le réaffiche. Demande ThemeExtras.'}
   HeroShowAvgFps: {en: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.', fr: 'FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.'}
   TopPanelShowCollectorLevel: {en: 'Collection level of your library, with its progress. Click to open the achievements overview.', fr: 'Niveau de collection de votre bibliothèque, avec sa progression. Cliquez pour ouvrir les succès.'}
+  TopPanelAutoHide: {en: 'The top panel shrinks to a thin strip and comes back when the mouse is over it.', fr: 'La barre du haut se réduit à une fine bande et revient au passage de la souris.'}
+  SidebarAutoHide: {en: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.', fr: 'La barre latérale se réduit à une fine bande et revient au passage de la souris. Barre à gauche ou à droite seulement.'}
+  HeroChipsOpenSections: {en: 'A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.', fr: 'Un clic sur une puce ouvre ou replie la section liée plus bas. Durées, succès, activité, genres et étiquettes.'}
+  DetailsViewTabsMode: {en: 'Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.', fr: 'Des onglets au-dessus des sections : Tout, Infos, Médias, Stats, Communauté. L''engrenage de chaque section règle son onglet, 0 = tous.'}
   DetailsViewShowInfoPanelDefault: {en: 'Information panel (cover, description, details) open when a game is selected.', fr: 'Panneau d''informations (pochette, description, détails) ouvert quand un jeu est sélectionné.'}
   SectionHeaderMinHeight: {en: 'Height of the section titles with their fold arrow and gear.', fr: 'Hauteur des titres de section avec leur flèche et leur engrenage.'}
   DetailsViewDescriptionWidth: {en: 'Width of the game description.', fr: 'Largeur de la description du jeu.'}
@@ -887,7 +923,7 @@ workshop:
             DetailsViewShowEditButton, DetailsViewShowFavoriteButton, DetailsViewShowHiddenButton, HeroShowSteamShortcuts, HeroShowUpdateStatus,
             DetailsViewAllowUseOfLogos, DetailsViewDisplayGameNameIfLogoVisible]
   - title: {en: Chips, fr: Puces}
-    items: [HeroShowInfoLine, HeroInfoLineMaxWidth]
+    items: [HeroShowInfoLine, HeroInfoLineMaxWidth, HeroChipsOpenSections]
   - title: {en: Header bar, fr: Barre d'en-tête}
     items: [DetailsViewShowHeaderBar, DetailsViewShowLastPlayed, DetailsViewShowPlayTime, DetailsViewShowCompletionStatus,
             DetailsViewShowAchievementsSummary, HltbShowInHeaderBar, DetailsViewShowUserRating, DetailsViewShowInfoButton, HeaderButtonSize]
@@ -896,9 +932,9 @@ workshop:
   - title: {en: Game list and covers, fr: Liste des jeux et jaquettes}
     items: [LibraryListShowHltb, LibraryListShowAchievements, GridCoverShowHltb, GridCoverShowAchievements]
   - title: {en: Sections, fr: Sections}
-    items: [DemoteSectionsShownElsewhere, DetailsViewUseMetadataUtilities, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
+    items: [DetailsViewTabsMode, DemoteSectionsShownElsewhere, DetailsViewUseMetadataUtilities, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
             DetailsViewDescriptionMaxHeight, AchievementsDataGridMaxHeight]
   - title: {en: Links, fr: Liens}
     items: [LinksShowNames, LinkIconSize]
   - title: {en: Top panel, fr: Barre du haut}
-    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons, TopPanelShowCollectorLevel]
+    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons, TopPanelShowCollectorLevel, TopPanelAutoHide, SidebarAutoHide]

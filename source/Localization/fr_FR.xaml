@@ -18,6 +18,12 @@
     <sys:String x:Key="LOCHNDHiddenButtonTooltip">Jeu masqué (ThemeExtras)</sys:String>
     <sys:String x:Key="LOCHNDCollectorTooltip">Niveau de collection (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDCollectorLevel">Niv.</sys:String>
+    <sys:String x:Key="LOCHNDTabAll">Tout</sys:String>
+    <sys:String x:Key="LOCHNDTabAbout">Infos</sys:String>
+    <sys:String x:Key="LOCHNDTabMedia">Médias</sys:String>
+    <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
+    <sys:String x:Key="LOCHNDTabCommunity">Communauté</sys:String>
+    <sys:String x:Key="LOCHNDQuickTab">Onglet (0 = tous)</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Dernier succès</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rares</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rares</sys:String>
@@ -138,6 +144,13 @@
     <sys:String x:Key="LOCHNDTipTopPanelShowCollectorLevel">Niveau de collection de votre bibliothèque, avec sa progression. Cliquez pour ouvrir les succès.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel1">  ↳ Niveau de collection de votre bibliothèque, avec sa progression.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel2">  ↳ Cliquez pour ouvrir les succès.</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelAutoHide">Masquer la barre du haut jusqu'au passage de la souris</sys:String>
+    <sys:String x:Key="LOCHNDTipTopPanelAutoHide">La barre du haut se réduit à une fine bande et revient au passage de la souris.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelAutoHide1">  ↳ La barre du haut se réduit à une fine bande et revient au passage de la souris.</sys:String>
+    <sys:String x:Key="LOCHNDOptSidebarAutoHide">Masquer la barre latérale jusqu'au passage de la souris</sys:String>
+    <sys:String x:Key="LOCHNDTipSidebarAutoHide">La barre latérale se réduit à une fine bande et revient au passage de la souris. Barre à gauche ou à droite seulement.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionSidebarAutoHide1">  ↳ La barre latérale se réduit à une fine bande et revient au passage de la souris.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionSidebarAutoHide2">  ↳ Barre à gauche ou à droite seulement.</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Largeur de la recherche</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Hauteur de la barre du haut</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelHeight">Hauteur de la barre en haut de la fenêtre.</sys:String>
@@ -214,6 +227,10 @@
     <sys:String x:Key="LOCHNDTipHeroShowAvgFps">FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps1">  ↳ FPS moyen sur toutes les sessions enregistrées.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps2">  ↳ Demande GameActivity avec le relevé des FPS.</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipsOpenSections">Un clic sur une puce ouvre ou replie sa section</sys:String>
+    <sys:String x:Key="LOCHNDTipHeroChipsOpenSections">Un clic sur une puce ouvre ou replie la section liée plus bas. Durées, succès, activité, genres et étiquettes.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections1">  ↳ Un clic sur une puce ouvre ou replie la section liée plus bas.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections2">  ↳ Durées, succès, activité, genres et étiquettes.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">Retour à la ligne avant les développeurs, le statut et la note</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">Retour à la ligne avant HowLongToBeat</sys:String>
@@ -245,6 +262,29 @@
     <sys:String x:Key="LOCHNDOptGridCoverShowAchievements">Succès sur les jaquettes de la vue Grille</sys:String>
     <sys:String x:Key="LOCHNDTipGridCoverShowAchievements">Succès sur chaque jaquette de la vue Grille.</sys:String>
     <sys:String x:Key="LOCHNDCaptionGridCoverShowAchievements1">  ↳ Succès sur chaque jaquette de la vue Grille.</sys:String>
+    <sys:String x:Key="LOCHNDHeaderTabs">Vue Détails - onglets</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabsMode">Afficher les sections dans des onglets</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewTabsMode">Des onglets au-dessus des sections : Tout, Infos, Médias, Stats, Communauté. L'engrenage de chaque section règle son onglet, 0 = tous.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewTabsMode1">  ↳ Des onglets au-dessus des sections : Tout, Infos, Médias, Stats, Communauté.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewTabsMode2">  ↳ L'engrenage de chaque section règle son onglet, 0 = tous.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabNotes">Onglet : Notes</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGenres">Onglet : Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabCategories">Onglet : Catégories</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabFeatures">Onglet : Fonctionnalités</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabTags">Onglet : Étiquettes</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabNewsViewer">Onglet : Actualités</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabVideo">Onglet : Vidéo</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGameActivity">Onglet : Activité de jeu</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabCheckDlc">Onglet : DLC</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabGameRelations">Onglet : Jeux similaires</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabWeb">Onglet : Web</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabHowLongToBeat">Onglet : HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabAchievements">Onglet : Succès</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabSteamScreenshots">Onglet : Captures Steam</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabVndb">Onglet : VNDB</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabScreenshotsVisualizer">Onglet : Captures (ScreenshotsVisualizer)</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabReviewViewer">Onglet : Critiques</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewTabScreenshotUtilities">Onglet : Captures (Screenshot Utilities)</sys:String>
     <sys:String x:Key="LOCHNDHeaderHeaderBar">Vue Détails - barre d'en-tête</sys:String>
     <sys:String x:Key="LOCHNDOptDetailsViewShowHeaderBar">Afficher la barre d'en-tête</sys:String>
     <sys:String x:Key="LOCHNDTipDetailsViewShowHeaderBar">La barre sous l'image avec la dernière partie, le temps de jeu et le statut.</sys:String>

@@ -331,6 +331,8 @@
                                                                 VerticalAlignment="Center"
                                                                 Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroInfoLineMaxWidth}}" />
                                                     </DockPanel>
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsOpenSections}" ToolTip="{DynamicResource LOCHNDTipHeroChipsOpenSections}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOpenSections], Mode=TwoWay, FallbackValue={StaticResource HeroChipsOpenSections}}" />
                                                     <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopHeaderbar}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowHeaderBar}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowHeaderBar}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHeaderBar], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHeaderBar}}" />
@@ -371,6 +373,8 @@
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptGridCoverShowAchievements}" ToolTip="{DynamicResource LOCHNDTipGridCoverShowAchievements}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowAchievements], Mode=TwoWay, FallbackValue={StaticResource GridCoverShowAchievements}}" />
                                                     <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopSections}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewTabsMode}" ToolTip="{DynamicResource LOCHNDTipDetailsViewTabsMode}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], Mode=TwoWay, FallbackValue={StaticResource DetailsViewTabsMode}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDemoteSectionsShownElsewhere}" ToolTip="{DynamicResource LOCHNDTipDemoteSectionsShownElsewhere}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}"
@@ -435,6 +439,10 @@
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptTopPanelShowCollectorLevel}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowCollectorLevel}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptTopPanelAutoHide}" ToolTip="{DynamicResource LOCHNDTipTopPanelAutoHide}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelAutoHide], Mode=TwoWay, FallbackValue={StaticResource TopPanelAutoHide}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptSidebarAutoHide}" ToolTip="{DynamicResource LOCHNDTipSidebarAutoHide}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], Mode=TwoWay, FallbackValue={StaticResource SidebarAutoHide}}" />
                                                 </StackPanel>
                                                 <WrapPanel Margin="0,12,0,0" Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}">
                                                     <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -527,5 +535,27 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <!-- Auto-hide (TopPanelAutoHide): a thin strip until the mouse is over it or it has the keyboard focus -->
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelAutoHide], FallbackValue={StaticResource TopPanelAutoHide}, TargetNullValue={StaticResource TopPanelAutoHide}}" Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <!-- From is required: MaxWidth/MaxHeight start at Infinity, which cannot be animated.
+                     Leaving the condition removes the storyboard, so the panel comes back at once. -->
+                <MultiDataTrigger.EnterActions>
+                    <BeginStoryboard x:Name="HndTopPanelHide">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="MaxHeight" From="110" To="10" BeginTime="0:0:0.6" Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiDataTrigger.EnterActions>
+                <MultiDataTrigger.ExitActions>
+                    <RemoveStoryboard BeginStoryboardName="HndTopPanelHide" />
+                </MultiDataTrigger.ExitActions>
+            </MultiDataTrigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

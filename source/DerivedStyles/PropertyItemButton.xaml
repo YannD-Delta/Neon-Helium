@@ -285,4 +285,59 @@
         <Setter Property="Orientation" Value="Horizontal" />
     </Style>
     <Style x:Key="MdStyleItemButton" TargetType="Button" BasedOn="{StaticResource PropertyItemFeedPanelButton}" />
+
+    <!-- Details view tabs (tabs mode): pill radio buttons above the sections -->
+    <Style x:Key="DetailsTabButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0,0,8,6" />
+        <Setter Property="Padding" Value="14,5,14,6" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border x:Name="Pill" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1" CornerRadius="15" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" TextElement.FontWeight="SemiBold" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Pill" Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Pill" Property="Background" Value="{DynamicResource HighlightGlyphBrush}" />
+                            <Setter TargetName="Pill" Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Chips on the artwork: a click opens or folds the matching section (HeroChipsOpenSections) -->
+    <Style x:Key="HeroChipSectionToggle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <ContentPresenter x:Name="Presenter" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Presenter" Property="Opacity" Value="0.8" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOpenSections], FallbackValue={StaticResource HeroChipsOpenSections}, TargetNullValue={StaticResource HeroChipsOpenSections}}" Value="False">
+                <Setter Property="IsHitTestVisible" Value="False" />
+                <Setter Property="Cursor" Value="Arrow" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
