@@ -145,6 +145,30 @@
     </Style>
     
 
+    <!-- PlayniteAchievements collection level badge: Tag is the level, hidden at 0 (no data or extension missing) -->
+    <Style x:Key="TopPanelCollectorButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource TopPanelNavigateBackButtonStyle}">
+        <Setter Property="Margin" Value="8,0,0,0" />
+        <Setter Property="Padding" Value="8,3,8,3" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" BorderThickness="0" Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- Top panel toggle that opens the theme workshop popup -->
     <Style x:Key="TopPanelWorkshopToggleStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="MinWidth" Value="35" />

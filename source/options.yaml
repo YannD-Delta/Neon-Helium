@@ -576,6 +576,20 @@ Variables:
         Title: '  ↳ The workshop button stays.'
         LocKey: LOCHNDCaptionTopPanelShowThemeSettingsButtons3
         Type: Header
+    TopPanelShowCollectorLevel:
+        Title: 'Collection level badge (PlayniteAchievements)'
+        LocKey: LOCHNDOptTopPanelShowCollectorLevel
+        Type: Boolean
+        Default: 'True'
+        Description: 'Collection level of your library, with its progress. Click to open the achievements overview.'
+    CaptionTopPanelShowCollectorLevel1:
+        Title: '  ↳ Collection level of your library, with its progress.'
+        LocKey: LOCHNDCaptionTopPanelShowCollectorLevel1
+        Type: Header
+    CaptionTopPanelShowCollectorLevel2:
+        Title: '  ↳ Click to open the achievements overview.'
+        LocKey: LOCHNDCaptionTopPanelShowCollectorLevel2
+        Type: Header
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
@@ -686,6 +700,20 @@ Variables:
     CaptionDetailsViewShowFavoriteButton2:
         Title: '  ↳ Needs ThemeExtras.'
         LocKey: LOCHNDCaptionDetailsViewShowFavoriteButton2
+        Type: Header
+    DetailsViewShowHiddenButton:
+        Title: 'Show the hide button (ThemeExtras)'
+        LocKey: LOCHNDOptDetailsViewShowHiddenButton
+        Type: Boolean
+        Default: 'False'
+        Description: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.'
+    CaptionDetailsViewShowHiddenButton1:
+        Title: '  ↳ Eye button that hides the game from the library or shows it again.'
+        LocKey: LOCHNDCaptionDetailsViewShowHiddenButton1
+        Type: Header
+    CaptionDetailsViewShowHiddenButton2:
+        Title: '  ↳ Needs ThemeExtras.'
+        LocKey: LOCHNDCaptionDetailsViewShowHiddenButton2
         Type: Header
     HeroShowSteamShortcuts:
         Title: 'Steam shortcuts button (Steam Shortcuts)'
@@ -884,6 +912,20 @@ Variables:
         LocKey: LOCHNDOptHeroShowRecentActivity
         Type: Boolean
         Default: 'True'
+    HeroShowAvgFps:
+        Title: 'Average FPS (GameActivity)'
+        LocKey: LOCHNDOptHeroShowAvgFps
+        Type: Boolean
+        Default: 'True'
+        Description: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.'
+    CaptionHeroShowAvgFps1:
+        Title: '  ↳ Average FPS over all recorded sessions.'
+        LocKey: LOCHNDCaptionHeroShowAvgFps1
+        Type: Header
+    CaptionHeroShowAvgFps2:
+        Title: '  ↳ Needs GameActivity with FPS logging.'
+        LocKey: LOCHNDCaptionHeroShowAvgFps2
+        Type: Header
     HeroChipsBreakBeforeGenres:
         Title: 'New line before genres, categories, features and tags'
         LocKey: LOCHNDOptHeroChipsBreakBeforeGenres
@@ -1303,6 +1345,20 @@ Variables:
     CaptionDemoteSectionsShownElsewhere2:
         Title: '  ↳ Each section can opt out in its gear.'
         LocKey: LOCHNDCaptionDemoteSectionsShownElsewhere2
+        Type: Header
+    DetailsViewUseMetadataUtilities:
+        Title: 'Group genres and tags by prefix (Metadata Utilities)'
+        LocKey: LOCHNDOptDetailsViewUseMetadataUtilities
+        Type: Boolean
+        Default: 'False'
+        Description: 'Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.'
+    CaptionDetailsViewUseMetadataUtilities1:
+        Title: '  ↳ Genres, categories, features and tags grouped by prefix.'
+        LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities1
+        Type: Header
+    CaptionDetailsViewUseMetadataUtilities2:
+        Title: '  ↳ Needs Metadata Utilities and its prefixes.'
+        LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities2
         Type: Header
     DemoteGenresSection:
         Title: '... including Genres'

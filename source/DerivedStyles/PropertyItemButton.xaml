@@ -222,4 +222,67 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- Metadata Utilities (MetadataUtilities_*PrefixItemControl): items grouped by prefix.
+         The section shows either the Playnite list or this control, depending on DetailsViewUseMetadataUtilities. -->
+    <Style x:Key="MetadataUtilitiesNativeList" TargetType="ItemsControl">
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" Value="True" />
+                    <Condition Binding="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be, Status=Installed}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Visibility" Value="Collapsed" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MetadataUtilitiesPrefixHost" TargetType="ContentControl">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" Value="True" />
+                    <Condition Binding="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be, Status=Installed}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Visibility" Value="Visible" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Styles the plugin control looks up by name: group label on the left, items on the right -->
+    <Style x:Key="MdStyleOuterPanel" TargetType="DockPanel">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    <Style x:Key="MdStyleGrid" TargetType="Grid">
+        <Setter Property="Margin" Value="0,2,0,4" />
+    </Style>
+    <Style x:Key="MdStyleLabel" TargetType="Label">
+        <Setter Property="Padding" Value="0,5,8,0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+    </Style>
+    <Style x:Key="MdStyleIcon" TargetType="TextBlock">
+        <Setter Property="Width" Value="20" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+    </Style>
+    <Style x:Key="MdStyleTitle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+    </Style>
+    <!-- The plugin sets a StackPanel as items panel: an items host in the template wraps the items instead -->
+    <Style x:Key="MdStyleItemOuter" TargetType="ItemsControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ItemsControl">
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MdStyleItemPanel" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+    <Style x:Key="MdStyleItemButton" TargetType="Button" BasedOn="{StaticResource PropertyItemFeedPanelButton}" />
 </ResourceDictionary>

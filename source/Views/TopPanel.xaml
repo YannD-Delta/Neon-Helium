@@ -310,6 +310,8 @@
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowEditButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowEditButton}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowFavoriteButton}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowFavoriteButton}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowFavoriteButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowFavoriteButton}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowHiddenButton}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowHiddenButton}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHiddenButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHiddenButton}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowSteamShortcuts}" ToolTip="{DynamicResource LOCHNDTipHeroShowSteamShortcuts}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSteamShortcuts], Mode=TwoWay, FallbackValue={StaticResource HeroShowSteamShortcuts}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowUpdateStatus}" ToolTip="{DynamicResource LOCHNDTipHeroShowUpdateStatus}"
@@ -371,6 +373,8 @@
                                                     <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDWorkshopSections}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDemoteSectionsShownElsewhere}" ToolTip="{DynamicResource LOCHNDTipDemoteSectionsShownElsewhere}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewShowInfoPanelDefault}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowInfoPanelDefault}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInfoPanelDefault], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowInfoPanelDefault}}" />
                                                     <DockPanel Margin="0,4,0,4" Background="Transparent" ToolTip="{DynamicResource LOCHNDTipSectionHeaderMinHeight}">
@@ -429,6 +433,8 @@
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], Mode=TwoWay, FallbackValue={StaticResource ShowNavigationButtons}}" />
                                                     <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptTopPanelShowThemeSettingsButtons}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowThemeSettingsButtons}"
                                                               IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}}" />
+                                                    <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptTopPanelShowCollectorLevel}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowCollectorLevel}}" />
                                                 </StackPanel>
                                                 <WrapPanel Margin="0,12,0,0" Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}">
                                                     <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -465,6 +471,27 @@
                                 </StackPanel>
                             </Border>
 
+                            <!-- PlayniteAchievements: library collection level, opens the achievements overview -->
+                            <Grid Style="{DynamicResource SectionToggleGrid}" VerticalAlignment="Center" DockPanel.Dock="Left"
+                                  Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], FallbackValue={StaticResource TopPanelShowCollectorLevel}, TargetNullValue={StaticResource TopPanelShowCollectorLevel}}">
+                                <Button Style="{DynamicResource TopPanelCollectorButtonStyle}"
+                                        Tag="{PluginSettings Plugin=PlayniteAchievements, Path=CollectorLevel, FallbackValue=0}"
+                                        ToolTip="{DynamicResource LOCHNDCollectorTooltip}"
+                                        Command="{PluginSettings Plugin=PlayniteAchievements, Path=OpenAchievementWindow, FallbackValue={x:Null}}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock FontFamily="{DynamicResource FontIcoFont}" Text="&#xEDD7;" FontSize="15" VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource GlyphBrush}" />
+                                            <TextBlock Text="{DynamicResource LOCHNDCollectorLevel}" Margin="5,0,0,0" FontSize="12" VerticalAlignment="Center" />
+                                            <TextBlock Text="{PluginSettings Plugin=PlayniteAchievements, Path=CollectorLevel, FallbackValue=0}" Margin="3,0,0,0"
+                                                       FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                        <ProgressBar Height="2" Margin="0,3,0,0" Minimum="0" Maximum="100" IsHitTestVisible="False"
+                                                     Value="{PluginSettings Plugin=PlayniteAchievements, Path=CollectorLevelProgress, FallbackValue=0}"
+                                                     Foreground="{DynamicResource GlyphBrush}" Background="{DynamicResource TopPanelSearchBoxBackgroundBrush}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
                             <StackPanel x:Name="PART_PanelMainItems" Orientation="Horizontal"
                                         VerticalAlignment="Stretch" Margin="0,6,0,6"/>
 

@@ -100,6 +100,8 @@
     <sys:Boolean x:Key="DetailsViewShowEditButton">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowInfoButton">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowFavoriteButton">True</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewShowHiddenButton">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewUseMetadataUtilities">False</sys:Boolean>
     <sys:Boolean x:Key="GridViewShowLastPlayed">True</sys:Boolean>
     <sys:Boolean x:Key="GridViewShowPlayTime">True</sys:Boolean>
     <sys:Boolean x:Key="GridViewShowCompletionStatus">True</sys:Boolean>
@@ -160,6 +162,7 @@
     <sys:Boolean x:Key="HeroShowAchievements">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowLastSession">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowRecentActivity">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroShowAvgFps">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowLatestAchievement">True</sys:Boolean>
     <sys:Boolean x:Key="HeroShowRareAchievements">False</sys:Boolean>
     <sys:Boolean x:Key="HeroShowSteamShortcuts">True</sys:Boolean>
@@ -206,6 +209,11 @@
     <sys:String x:Key="LOCHNDChipHltbExtra">Main + Extra</sys:String>
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100%</sys:String>
     <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
+    <sys:String x:Key="LOCHNDChipAvgFps">Avg FPS</sys:String>
+    <sys:String x:Key="LOCHNDFavoriteButtonTooltip">Favorite (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDHiddenButtonTooltip">Hidden game (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorTooltip">Collection level (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorLevel">Lv.</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
@@ -241,6 +249,7 @@
     <sys:Double x:Key="GameLogoMaxHeight">400</sys:Double>
     <sys:Double x:Key="TopPanelHeight">50</sys:Double>
     <sys:Boolean x:Key="TopPanelShowThemeSettingsButtons">True</sys:Boolean>
+    <sys:Boolean x:Key="TopPanelShowCollectorLevel">True</sys:Boolean>
     <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>

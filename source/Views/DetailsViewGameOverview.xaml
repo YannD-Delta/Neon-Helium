@@ -159,6 +159,8 @@
                                             <DockPanel LastChildFill="False">
                                                 <ContentControl x:Name="ScreenshotsVisualizer_PluginButton" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,0" DockPanel.Dock="Left" Opacity="0.80"
                                                             Visibility="{PluginSettings Plugin=ScreenshotsVisualizer, Path=HasData, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                                <ContentControl x:Name="ScreenshotUtilities_ButtonControl" Height="40" FontSize="22" VerticalAlignment="Bottom" Margin="0,0,10,0" DockPanel.Dock="Left" Opacity="0.80"
+                                                            Visibility="{PluginSettings Plugin=ScreenshotUtilities, Path=IsButtonControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                 <ContentControl x:Name="SystemChecker_PluginButton" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,0" DockPanel.Dock="Left" Opacity="0.80"
                                                             Visibility="{PluginSettings Plugin=SystemChecker, Path=EnableIntegrationButton, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                                 <ContentControl x:Name="CheckLocalizations_PluginButton" Height="40" VerticalAlignment="Bottom" Margin="0,0,10,0" DockPanel.Dock="Left" Opacity="0.80"
@@ -255,6 +257,8 @@
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroShowLastSession}}" />
                                                                         <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowRecentActivity}"
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}}" />
+                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowAvgFps}"
+                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroShowAvgFps}}" />
                                                                         <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickChipsBreaks}" />
                                                                         <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeGenres}"
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeGenres}}" />
@@ -937,6 +941,40 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
                                                             <!-- slot 1 -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderGame], FallbackValue={StaticResource HeroChipsOrderGame}, TargetNullValue={StaticResource HeroChipsOrderGame}}">
                                                                 <Grid.Style>
@@ -1540,6 +1578,40 @@
                                                                         </Grid.Style>
                                                                         <Border Style="{DynamicResource HeroInfoChip}">
                                                                             <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
                                                                                 <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
                                                                             </StackPanel>
                                                                         </Border>
@@ -2155,6 +2227,40 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
                                                             <!-- slot 3 -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderGame], FallbackValue={StaticResource HeroChipsOrderGame}, TargetNullValue={StaticResource HeroChipsOrderGame}}">
                                                                 <Grid.Style>
@@ -2758,6 +2864,40 @@
                                                                         </Grid.Style>
                                                                         <Border Style="{DynamicResource HeroInfoChip}">
                                                                             <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
                                                                                 <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
                                                                             </StackPanel>
                                                                         </Border>
@@ -3373,6 +3513,40 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
                                                             <!-- slot 5 -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderGame], FallbackValue={StaticResource HeroChipsOrderGame}, TargetNullValue={StaticResource HeroChipsOrderGame}}">
                                                                 <Grid.Style>
@@ -3982,6 +4156,40 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
+                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
+                                                                <Grid.Style>
+                                                                    <Style TargetType="Grid">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
+                                                                                <Setter Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Grid.Style>
+                                                                <Grid Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}">
+                                                                    <Grid Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                                        <Grid.Style>
+                                                                            <Style TargetType="Grid">
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                    <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </Grid.Style>
+                                                                        <Border Style="{DynamicResource HeroInfoChip}">
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipLabel}" Text="{DynamicResource LOCHNDChipAvgFps}" />
+                                                                                <TextBlock Style="{DynamicResource HeroInfoChipText}" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}}" />
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Grid>
                                                         </WrapPanel>
                                                     </Grid>
                                                 </Grid>
@@ -4345,6 +4553,7 @@
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <Grid Grid.Column="0">
                                                 <Button Name="PART_ButtonPlayAction" Style="{DynamicResource HeroPlayButton}" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" />
@@ -4360,19 +4569,28 @@
                                                         Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" />
                                             </Grid>
                                             <Grid Grid.Column="2" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowFavoriteButton], FallbackValue={StaticResource DetailsViewShowFavoriteButton}, TargetNullValue={StaticResource DetailsViewShowFavoriteButton}}">
-                                                <ToggleButton Name="GameFavoriteToggleButton" Margin="8,0,0,0" Focusable="False"
+                                                <ToggleButton Name="GameFavoriteToggleButton" Margin="8,0,0,0" Focusable="False" ToolTip="{DynamicResource LOCHNDFavoriteButtonTooltip}"
                                                               Style="{DynamicResource HeroFavoriteToggle}"
                                                               Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}"
                                                               Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
                                                               IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Favorite, Mode=TwoWay, FallbackValue={StaticResource False}}" />
                                             </Grid>
+                                            <!-- ThemeExtras: hide or show the game in the library (eye, crossed out when hidden) -->
+                                            <Grid Grid.Column="3" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHiddenButton], FallbackValue={StaticResource DetailsViewShowHiddenButton}, TargetNullValue={StaticResource DetailsViewShowHiddenButton}}">
+                                                <ToggleButton Name="GameHiddenToggleButton" Margin="8,0,0,0" Focusable="False"
+                                                              Style="{DynamicResource HeroFavoriteToggle}" Content="&#xE890;" Tag="&#xED1A;"
+                                                              ToolTip="{DynamicResource LOCHNDHiddenButtonTooltip}"
+                                                              Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}"
+                                                              Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin}"
+                                                              IsChecked="{PluginSettings Plugin=ThemeExtras, Path=Game.Hidden, Mode=TwoWay, FallbackValue={StaticResource False}}" />
+                                            </Grid>
                                             <!-- Steam Shortcuts: one button with the Steam client, store and community pages -->
-                                            <Grid Grid.Column="3" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSteamShortcuts], FallbackValue={StaticResource HeroShowSteamShortcuts}, TargetNullValue={StaticResource HeroShowSteamShortcuts}}">
+                                            <Grid Grid.Column="4" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSteamShortcuts], FallbackValue={StaticResource HeroShowSteamShortcuts}, TargetNullValue={StaticResource HeroShowSteamShortcuts}}">
                                                 <ContentControl x:Name="SteamShortcuts_SteamGameActionsLauncher" Margin="8,0,0,0" VerticalAlignment="Center"
                                                                 Visibility="{PluginSettings Plugin=SteamShortcuts, Path=IsControlVisible, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}" />
                                             </Grid>
                                             <!-- Game Update Status: update available dot for Steam and Epic games -->
-                                            <Grid Grid.Column="4" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowUpdateStatus], FallbackValue={StaticResource HeroShowUpdateStatus}, TargetNullValue={StaticResource HeroShowUpdateStatus}}">
+                                            <Grid Grid.Column="5" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowUpdateStatus], FallbackValue={StaticResource HeroShowUpdateStatus}, TargetNullValue={StaticResource HeroShowUpdateStatus}}">
                                                 <ContentControl x:Name="GameUpdateStatus_UpdateStatus" Margin="10,0,0,0" VerticalAlignment="Center" />
                                             </Grid>
                                         </Grid>
@@ -4907,6 +5125,9 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandGenres], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandGenres}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], Mode=TwoWay, FallbackValue={StaticResource DemoteGenresSection}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}"
+                                                                                          Visibility="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -4932,7 +5153,7 @@
                                                         </Grid.Style>
                                                         <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
                                                         <Border Style="{DynamicResource OutlineBorder}" />
-                                                        <ItemsControl ItemsSource="{Binding Game.Genres}" Margin="0,3,0,3">
+                                                        <ItemsControl ItemsSource="{Binding Game.Genres}" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesNativeList}">
                                                             <ItemsControl.ItemsPanel>
                                                                 <ItemsPanelTemplate>
                                                                     <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
@@ -4946,6 +5167,8 @@
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>
+                                                        <!-- Metadata Utilities: the same items grouped by prefix (option in the gear) -->
+                                                        <ContentControl x:Name="MetadataUtilities_GenrePrefixItemControl" Tag="&#xEF74;" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesPrefixHost}" />
                                                     </Grid>
                                                 </StackPanel>
                                                 </Grid>
@@ -5025,6 +5248,9 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandCategories], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandCategories}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteCategoriesSection}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}"
+                                                                                          Visibility="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -5050,7 +5276,7 @@
                                                         </Grid.Style>
                                                         <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
                                                         <Border Style="{DynamicResource OutlineBorder}" />
-                                                        <ItemsControl ItemsSource="{Binding Game.Categories}" Margin="0,3,0,3">
+                                                        <ItemsControl ItemsSource="{Binding Game.Categories}" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesNativeList}">
                                                             <ItemsControl.ItemsPanel>
                                                                 <ItemsPanelTemplate>
                                                                     <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
@@ -5064,6 +5290,8 @@
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>
+                                                        <!-- Metadata Utilities: the same items grouped by prefix (option in the gear) -->
+                                                        <ContentControl x:Name="MetadataUtilities_CategoryPrefixItemControl" Tag="&#xEF74;" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesPrefixHost}" />
                                                     </Grid>
                                                 </StackPanel>
                                                 </Grid>
@@ -5143,6 +5371,9 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandFeatures], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandFeatures}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteFeaturesSection}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}"
+                                                                                          Visibility="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -5168,7 +5399,7 @@
                                                         </Grid.Style>
                                                         <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
                                                         <Border Style="{DynamicResource OutlineBorder}" />
-                                                        <ItemsControl ItemsSource="{Binding Game.Features}" Margin="0,3,0,3">
+                                                        <ItemsControl ItemsSource="{Binding Game.Features}" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesNativeList}">
                                                             <ItemsControl.ItemsPanel>
                                                                 <ItemsPanelTemplate>
                                                                     <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
@@ -5182,6 +5413,8 @@
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>
+                                                        <!-- Metadata Utilities: the same items grouped by prefix (option in the gear) -->
+                                                        <ContentControl x:Name="MetadataUtilities_FeaturePrefixItemControl" Tag="&#xEF74;" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesPrefixHost}" />
                                                     </Grid>
                                                 </StackPanel>
                                                 </Grid>
@@ -5261,6 +5494,9 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandTags], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandTags}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickDemoteThis}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], Mode=TwoWay, FallbackValue={StaticResource DemoteTagsSection}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}"
+                                                                                          Visibility="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                                                                             </StackPanel>
                                                                             <WrapPanel Margin="0,12,0,0">
                                                                                 <Button Margin="0,4,8,0" Padding="10,5,10,5" Content="{DynamicResource LOCHNDQuickThemeSettings}"
@@ -5286,7 +5522,7 @@
                                                         </Grid.Style>
                                                         <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
                                                         <Border Style="{DynamicResource OutlineBorder}" />
-                                                        <ItemsControl ItemsSource="{Binding Game.Tags}" Margin="0,3,0,3">
+                                                        <ItemsControl ItemsSource="{Binding Game.Tags}" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesNativeList}">
                                                             <ItemsControl.ItemsPanel>
                                                                 <ItemsPanelTemplate>
                                                                     <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
@@ -5300,6 +5536,8 @@
                                                                 </DataTemplate>
                                                             </ItemsControl.ItemTemplate>
                                                         </ItemsControl>
+                                                        <!-- Metadata Utilities: the same items grouped by prefix (option in the gear) -->
+                                                        <ContentControl x:Name="MetadataUtilities_TagPrefixItemControl" Tag="&#xEC85;" Margin="0,3,0,3" Style="{DynamicResource MetadataUtilitiesPrefixHost}" />
                                                     </Grid>
                                                 </StackPanel>
                                                 </Grid>
@@ -5589,6 +5827,8 @@
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowLastSession], Mode=TwoWay, FallbackValue={StaticResource HeroShowLastSession}}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowRecentActivity}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}}" />
+                                                                                <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowAvgFps}"
+                                                                                          IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroShowAvgFps}}" />
                                                                                 <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickSectionGroup}" />
                                                                                 <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDQuickOpen}"
                                                                                           IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandGameActivityPanel], Mode=TwoWay, FallbackValue={StaticResource DetailsViewExpandGameActivityPanel}}" />

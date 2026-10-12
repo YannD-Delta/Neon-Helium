@@ -445,7 +445,10 @@ def hero_buttons(name):
         </Style.Triggers>
     </Style>
 
+    <!-- Icon toggle: Content is the unchecked glyph, Tag the checked glyph (heart by default) -->
     <Style x:Key="HeroFavoriteToggle" TargetType="{{x:Type ToggleButton}}">
+        <Setter Property="Content" Value="&#xE734;" />
+        <Setter Property="Tag" Value="&#xE735;" />
         <Setter Property="Width" Value="{{DynamicResource HeroActionButtonHeight}}" />
         <Setter Property="Height" Value="{{DynamicResource HeroActionButtonHeight}}" />
         <Setter Property="Foreground" Value="White" />
@@ -458,14 +461,14 @@ def hero_buttons(name):
                 <ControlTemplate TargetType="{{x:Type ToggleButton}}">
                     <Border x:Name="Part" BorderBrush="{{TemplateBinding BorderBrush}}" BorderThickness="{{TemplateBinding BorderThickness}}"
                             Background="{{TemplateBinding Background}}" CornerRadius="{r}">
-                        <TextBlock x:Name="Icon" Text="&#xE734;" FontSize="18" FontWeight="Normal"
+                        <TextBlock x:Name="Icon" Text="{{Binding Content, RelativeSource={{RelativeSource TemplatedParent}}}}" FontSize="18" FontWeight="Normal"
                                    FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Foreground="{{TemplateBinding Foreground}}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Icon" Property="Text" Value="&#xE735;" />
+                            <Setter TargetName="Icon" Property="Text" Value="{{Binding Tag, RelativeSource={{RelativeSource TemplatedParent}}}}" />
                             <Setter TargetName="Icon" Property="Foreground" Value="{{DynamicResource GlyphBrush}}" />
                             <Setter TargetName="Part" Property="BorderBrush" Value="{{DynamicResource GlyphBrush}}" />
                         </Trigger>

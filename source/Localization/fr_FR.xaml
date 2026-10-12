@@ -13,6 +13,11 @@
     <sys:String x:Key="LOCHNDChipHltbExtra">Histoire + extras</sys:String>
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100 %</sys:String>
     <sys:String x:Key="LOCHNDChipLastSession">Dernière session</sys:String>
+    <sys:String x:Key="LOCHNDChipAvgFps">FPS moy.</sys:String>
+    <sys:String x:Key="LOCHNDFavoriteButtonTooltip">Favori (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDHiddenButtonTooltip">Jeu masqué (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorTooltip">Niveau de collection (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorLevel">Niv.</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Dernier succès</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rares</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rares</sys:String>
@@ -112,6 +117,10 @@
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons1">  ↳ Boutons vers Theme Options et ThemeModifier.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons2">  ↳ Demandent ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons3">  ↳ Le bouton de l'atelier reste.</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelShowCollectorLevel">Badge de niveau de collection (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDTipTopPanelShowCollectorLevel">Niveau de collection de votre bibliothèque, avec sa progression. Cliquez pour ouvrir les succès.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel1">  ↳ Niveau de collection de votre bibliothèque, avec sa progression.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel2">  ↳ Cliquez pour ouvrir les succès.</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Largeur de la recherche</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Hauteur de la barre du haut</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelHeight">Hauteur de la barre en haut de la fenêtre.</sys:String>
@@ -135,6 +144,10 @@
     <sys:String x:Key="LOCHNDTipDetailsViewShowFavoriteButton">Bouton étoile pour ajouter ou retirer le jeu des favoris. Demande ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDetailsViewShowFavoriteButton1">  ↳ Bouton étoile pour ajouter ou retirer le jeu des favoris.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDetailsViewShowFavoriteButton2">  ↳ Demande ThemeExtras.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowHiddenButton">Afficher le bouton Masquer (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewShowHiddenButton">Bouton œil qui masque le jeu de la bibliothèque ou le réaffiche. Demande ThemeExtras.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewShowHiddenButton1">  ↳ Bouton œil qui masque le jeu de la bibliothèque ou le réaffiche.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewShowHiddenButton2">  ↳ Demande ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowSteamShortcuts">Bouton de raccourcis Steam (Steam Shortcuts)</sys:String>
     <sys:String x:Key="LOCHNDTipHeroShowSteamShortcuts">Bouton vers le client, le magasin, la communauté et les guides Steam. Demande Steam Shortcuts.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowSteamShortcuts1">  ↳ Bouton vers le client, le magasin, la communauté et les guides Steam.</sys:String>
@@ -180,6 +193,10 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Succès rares et ultra rares (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Durée de la dernière session (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Activité récente (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowAvgFps">FPS moyen (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDTipHeroShowAvgFps">FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps1">  ↳ FPS moyen sur toutes les sessions enregistrées.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps2">  ↳ Demande GameActivity avec le relevé des FPS.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">Retour à la ligne avant les développeurs, le statut et la note</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">Retour à la ligne avant HowLongToBeat</sys:String>
@@ -276,6 +293,10 @@
     <sys:String x:Key="LOCHNDTipDemoteSectionsShownElsewhere">Une section dont l'info est déjà affichée en haut se replie en bas de sa colonne. Chaque section peut s'en exclure dans son engrenage.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDemoteSectionsShownElsewhere1">  ↳ Une section dont l'info est déjà affichée en haut se replie en bas de sa colonne.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDemoteSectionsShownElsewhere2">  ↳ Chaque section peut s'en exclure dans son engrenage.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewUseMetadataUtilities">Regrouper genres et étiquettes par préfixe (Metadata Utilities)</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewUseMetadataUtilities">Genres, catégories, fonctionnalités et étiquettes regroupés par préfixe. Demande Metadata Utilities et ses préfixes.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewUseMetadataUtilities1">  ↳ Genres, catégories, fonctionnalités et étiquettes regroupés par préfixe.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewUseMetadataUtilities2">  ↳ Demande Metadata Utilities et ses préfixes.</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteGenresSection">... dont Genres</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteCategoriesSection">... dont Catégories</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteFeaturesSection">... dont Fonctionnalités</sys:String>

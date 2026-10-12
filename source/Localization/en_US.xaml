@@ -13,6 +13,11 @@
     <sys:String x:Key="LOCHNDChipHltbExtra">Main + Extra</sys:String>
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100%</sys:String>
     <sys:String x:Key="LOCHNDChipLastSession">Last session</sys:String>
+    <sys:String x:Key="LOCHNDChipAvgFps">Avg FPS</sys:String>
+    <sys:String x:Key="LOCHNDFavoriteButtonTooltip">Favorite (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDHiddenButtonTooltip">Hidden game (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorTooltip">Collection level (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDCollectorLevel">Lv.</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
@@ -112,6 +117,10 @@
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons1">  ↳ Buttons for Theme Options and ThemeModifier.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons2">  ↳ Need ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDCaptionTopPanelShowThemeSettingsButtons3">  ↳ The workshop button stays.</sys:String>
+    <sys:String x:Key="LOCHNDOptTopPanelShowCollectorLevel">Collection level badge (PlayniteAchievements)</sys:String>
+    <sys:String x:Key="LOCHNDTipTopPanelShowCollectorLevel">Collection level of your library, with its progress. Click to open the achievements overview.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel1">  ↳ Collection level of your library, with its progress.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionTopPanelShowCollectorLevel2">  ↳ Click to open the achievements overview.</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelSearchBoxWidthHelium">Search box width</sys:String>
     <sys:String x:Key="LOCHNDOptTopPanelHeight">Top panel height</sys:String>
     <sys:String x:Key="LOCHNDTipTopPanelHeight">Height of the bar at the top of the window.</sys:String>
@@ -135,6 +144,10 @@
     <sys:String x:Key="LOCHNDTipDetailsViewShowFavoriteButton">Star button that adds or removes the game from favorites. Needs ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDetailsViewShowFavoriteButton1">  ↳ Star button that adds or removes the game from favorites.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDetailsViewShowFavoriteButton2">  ↳ Needs ThemeExtras.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewShowHiddenButton">Show the hide button (ThemeExtras)</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewShowHiddenButton">Eye button that hides the game from the library or shows it again. Needs ThemeExtras.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewShowHiddenButton1">  ↳ Eye button that hides the game from the library or shows it again.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewShowHiddenButton2">  ↳ Needs ThemeExtras.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowSteamShortcuts">Steam shortcuts button (Steam Shortcuts)</sys:String>
     <sys:String x:Key="LOCHNDTipHeroShowSteamShortcuts">Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroShowSteamShortcuts1">  ↳ Button with the Steam client, store, community and guides pages.</sys:String>
@@ -180,6 +193,10 @@
     <sys:String x:Key="LOCHNDOptHeroShowRareAchievements">Rare and ultra rare achievements (PlayniteAchievements)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowLastSession">Last session length (GameActivity)</sys:String>
     <sys:String x:Key="LOCHNDOptHeroShowRecentActivity">Recent activity (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroShowAvgFps">Average FPS (GameActivity)</sys:String>
+    <sys:String x:Key="LOCHNDTipHeroShowAvgFps">Average FPS over all recorded sessions. Needs GameActivity with FPS logging.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps1">  ↳ Average FPS over all recorded sessions.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionHeroShowAvgFps2">  ↳ Needs GameActivity with FPS logging.</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">New line before genres, categories, features and tags</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">New line before developers, completion status and score</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">New line before HowLongToBeat</sys:String>
@@ -276,6 +293,10 @@
     <sys:String x:Key="LOCHNDTipDemoteSectionsShownElsewhere">A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDemoteSectionsShownElsewhere1">  ↳ A section whose information is already shown above folds at the bottom of its column.</sys:String>
     <sys:String x:Key="LOCHNDCaptionDemoteSectionsShownElsewhere2">  ↳ Each section can opt out in its gear.</sys:String>
+    <sys:String x:Key="LOCHNDOptDetailsViewUseMetadataUtilities">Group genres and tags by prefix (Metadata Utilities)</sys:String>
+    <sys:String x:Key="LOCHNDTipDetailsViewUseMetadataUtilities">Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewUseMetadataUtilities1">  ↳ Genres, categories, features and tags grouped by prefix.</sys:String>
+    <sys:String x:Key="LOCHNDCaptionDetailsViewUseMetadataUtilities2">  ↳ Needs Metadata Utilities and its prefixes.</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteGenresSection">... including Genres</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteCategoriesSection">... including Categories</sys:String>
     <sys:String x:Key="LOCHNDOptDemoteFeaturesSection">... including Features</sys:String>

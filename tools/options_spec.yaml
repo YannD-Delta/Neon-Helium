@@ -26,6 +26,11 @@ strings:
   LOCHNDChipHltbExtra: {en: Main + Extra, fr: Histoire + extras}
   LOCHNDChipHltbCompletionist: {en: "100%", fr: "100 %"}
   LOCHNDChipLastSession: {en: Last session, fr: Dernière session}
+  LOCHNDChipAvgFps: {en: Avg FPS, fr: FPS moy.}
+  LOCHNDFavoriteButtonTooltip: {en: Favorite (ThemeExtras), fr: Favori (ThemeExtras)}
+  LOCHNDHiddenButtonTooltip: {en: Hidden game (ThemeExtras), fr: Jeu masqué (ThemeExtras)}
+  LOCHNDCollectorTooltip: {en: Collection level (PlayniteAchievements), fr: Niveau de collection (PlayniteAchievements)}
+  LOCHNDCollectorLevel: {en: Lv., fr: Niv.}
   LOCHNDChipLatestAchievement: {en: Latest, fr: Dernier succès}
   LOCHNDChipRare: {en: Rare, fr: Rares}
   LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
@@ -346,6 +351,7 @@ variables:
     fr: Barre du haut et barre latérale
   - {key: ShowNavigationButtons, en: Show navigation buttons, fr: Afficher les boutons de navigation}
   - {key: TopPanelShowThemeSettingsButtons, en: Theme settings and colors buttons (ThemeExtras), fr: Boutons des réglages et couleurs du thème (ThemeExtras)}
+  - {key: TopPanelShowCollectorLevel, en: Collection level badge (PlayniteAchievements), fr: Badge de niveau de collection (PlayniteAchievements)}
   - {key: TopPanelSearchBoxWidthHelium, range: [80, 600], en: Search box width, fr: Largeur de la recherche}
   - {key: TopPanelHeight, range: [36, 100], en: Top panel height, fr: Hauteur de la barre du haut}
   - {key: SidebarItemSize, range: [24, 64], en: Sidebar icon size, fr: Taille des icônes de la barre latérale}
@@ -359,6 +365,7 @@ variables:
   - {key: HeroButtonCornerRadius, range: [0, 24], en: Button corner rounding, fr: Arrondi des boutons}
   - {key: DetailsViewShowEditButton, en: Show the edit button, fr: Afficher le bouton Modifier}
   - {key: DetailsViewShowFavoriteButton, en: Show the favorite button (ThemeExtras), fr: Afficher le bouton Favori (ThemeExtras)}
+  - {key: DetailsViewShowHiddenButton, en: Show the hide button (ThemeExtras), fr: Afficher le bouton Masquer (ThemeExtras)}
   - {key: HeroShowSteamShortcuts, en: Steam shortcuts button (Steam Shortcuts), fr: Bouton de raccourcis Steam (Steam Shortcuts)}
   - {key: HeroShowUpdateStatus, en: Update available indicator (Game Update Status), fr: Indicateur de mise à jour (Game Update Status)}
   - {key: DetailsViewAllowUseOfLogos, en: Use game logos (Extra Metadata Loader), fr: Utiliser les logos des jeux (Extra Metadata Loader)}
@@ -388,6 +395,7 @@ variables:
   - {key: HeroShowRareAchievements, en: Rare and ultra rare achievements (PlayniteAchievements), fr: Succès rares et ultra rares (PlayniteAchievements)}
   - {key: HeroShowLastSession, en: Last session length (GameActivity), fr: Durée de la dernière session (GameActivity)}
   - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
+  - {key: HeroShowAvgFps, en: Average FPS (GameActivity), fr: FPS moyen (GameActivity)}
   - {key: HeroChipsBreakBeforeGenres, en: 'New line before genres, categories, features and tags', fr: 'Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes'}
   - {key: HeroChipsBreakBeforeStudio, en: 'New line before developers, completion status and score', fr: 'Retour à la ligne avant les développeurs, le statut et la note'}
   - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
@@ -453,6 +461,7 @@ variables:
     en: Details view - sections open by default
     fr: Vue Détails - sections dépliées par défaut
   - {key: DemoteSectionsShownElsewhere, en: 'Fold sections at the bottom when their information is shown above (chips, cover, header bar)', fr: 'Replier en bas les sections dont l''info est déjà affichée en haut (puces, pochette, barre)'}
+  - {key: DetailsViewUseMetadataUtilities, en: Group genres and tags by prefix (Metadata Utilities), fr: Regrouper genres et étiquettes par préfixe (Metadata Utilities)}
   - {key: DemoteGenresSection, en: '... including Genres', fr: '... dont Genres'}
   - {key: DemoteCategoriesSection, en: '... including Categories', fr: '... dont Catégories'}
   - {key: DemoteFeaturesSection, en: '... including Features', fr: '... dont Fonctionnalités'}
@@ -763,6 +772,10 @@ tips:
   GridCoverShowHltb: {en: 'HowLongToBeat time on each cover of the Grid view.', fr: 'Durée HowLongToBeat sur chaque jaquette de la vue Grille.'}
   GridCoverShowAchievements: {en: 'Achievements on each cover of the Grid view.', fr: 'Succès sur chaque jaquette de la vue Grille.'}
   DemoteSectionsShownElsewhere: {en: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.', fr: 'Une section dont l''info est déjà affichée en haut se replie en bas de sa colonne. Chaque section peut s''en exclure dans son engrenage.'}
+  DetailsViewUseMetadataUtilities: {en: 'Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.', fr: 'Genres, catégories, fonctionnalités et étiquettes regroupés par préfixe. Demande Metadata Utilities et ses préfixes.'}
+  DetailsViewShowHiddenButton: {en: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.', fr: 'Bouton œil qui masque le jeu de la bibliothèque ou le réaffiche. Demande ThemeExtras.'}
+  HeroShowAvgFps: {en: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.', fr: 'FPS moyen sur toutes les sessions enregistrées. Demande GameActivity avec le relevé des FPS.'}
+  TopPanelShowCollectorLevel: {en: 'Collection level of your library, with its progress. Click to open the achievements overview.', fr: 'Niveau de collection de votre bibliothèque, avec sa progression. Cliquez pour ouvrir les succès.'}
   DetailsViewShowInfoPanelDefault: {en: 'Information panel (cover, description, details) open when a game is selected.', fr: 'Panneau d''informations (pochette, description, détails) ouvert quand un jeu est sélectionné.'}
   SectionHeaderMinHeight: {en: 'Height of the section titles with their fold arrow and gear.', fr: 'Hauteur des titres de section avec leur flèche et leur engrenage.'}
   DetailsViewDescriptionWidth: {en: 'Width of the game description.', fr: 'Largeur de la description du jeu.'}
@@ -779,7 +792,7 @@ tips:
 workshop:
   - title: {en: Artwork header, fr: En-tête avec image}
     items: [HeroMinHeight, HeroActionButtonWidth, HeroActionButtonHeight, GameLogoMaxWidth, GameLogoMaxHeight,
-            DetailsViewShowEditButton, DetailsViewShowFavoriteButton, HeroShowSteamShortcuts, HeroShowUpdateStatus,
+            DetailsViewShowEditButton, DetailsViewShowFavoriteButton, DetailsViewShowHiddenButton, HeroShowSteamShortcuts, HeroShowUpdateStatus,
             DetailsViewAllowUseOfLogos, DetailsViewDisplayGameNameIfLogoVisible]
   - title: {en: Chips, fr: Puces}
     items: [HeroShowInfoLine, HeroInfoLineMaxWidth]
@@ -791,9 +804,9 @@ workshop:
   - title: {en: Game list and covers, fr: Liste des jeux et jaquettes}
     items: [LibraryListShowHltb, LibraryListShowAchievements, GridCoverShowHltb, GridCoverShowAchievements]
   - title: {en: Sections, fr: Sections}
-    items: [DemoteSectionsShownElsewhere, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
+    items: [DemoteSectionsShownElsewhere, DetailsViewUseMetadataUtilities, DetailsViewShowInfoPanelDefault, SectionHeaderMinHeight, DetailsViewDescriptionWidth,
             DetailsViewDescriptionMaxHeight, AchievementsDataGridMaxHeight]
   - title: {en: Links, fr: Liens}
     items: [LinksShowNames, LinkIconSize]
   - title: {en: Top panel, fr: Barre du haut}
-    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons]
+    items: [TopPanelHeight, ShowNavigationButtons, TopPanelShowThemeSettingsButtons, TopPanelShowCollectorLevel]
