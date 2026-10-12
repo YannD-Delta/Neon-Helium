@@ -42,8 +42,6 @@ strings:
   LOCHNDChipRare: {en: Rare, fr: Rares}
   LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
   LOCHNDSectionScreenshotUtilities: {en: Screenshots, fr: Captures d'écran}
-  LOCHNDThemeOptionsButton: {en: Theme settings (Theme Options), fr: Réglages du thème (Theme Options)}
-  LOCHNDThemeColorsButton: {en: Theme colors (ThemeModifier), fr: Couleurs du thème (ThemeModifier)}
   LOCHNDQuickTooltip: {en: 'Quick settings', fr: 'Réglages rapides'}
   LOCHNDQuickShowIn: {en: 'Show in', fr: 'Afficher dans'}
   LOCHNDQuickSectionGroup: {en: 'Section', fr: 'Section'}
@@ -462,13 +460,12 @@ color_profiles:
 
 variables:
   - header: PanelNote
-    en: 'Most settings are in the theme panel: gear on each section, or the workshop button in the top panel'
-    fr: 'La plupart des réglages sont dans le panneau du thème : engrenage de chaque section, ou bouton atelier de la barre du haut'
+    en: '— Below: settings of the theme panel (top panel button, section gears). Change them there —'
+    fr: '— Ci-dessous : réglages du panneau du thème (bouton de la barre du haut, engrenages). Réglez-les plutôt là-bas —'
   - header: TopPanel
     en: Top panel and sidebar
     fr: Barre du haut et barre latérale
   - {key: ShowNavigationButtons, en: Show navigation buttons, fr: Afficher les boutons de navigation}
-  - {key: TopPanelShowThemeSettingsButtons, en: Theme settings and colors buttons (ThemeExtras), fr: Boutons des réglages et couleurs du thème (ThemeExtras)}
   - {key: TopPanelShowCollectorLevel, en: Collection level badge (PlayniteAchievements), fr: Badge de niveau de collection (PlayniteAchievements)}
   - {key: TopPanelAutoHide, en: Hide the top panel until the mouse comes over it, fr: Masquer la barre du haut jusqu'au passage de la souris}
   - {key: SettingsPanelWidth, range: [700, 1400], en: Settings panel width, fr: Largeur du panneau de réglages}
@@ -949,7 +946,6 @@ tips:
   LinkIconSize: {en: 'Size of the link icons (favicons).', fr: 'Taille des icônes de liens (favicons).'}
   TopPanelHeight: {en: 'Height of the bar at the top of the window.', fr: 'Hauteur de la barre en haut de la fenêtre.'}
   ShowNavigationButtons: {en: 'Back and forward buttons. Need ThemeExtras.', fr: 'Boutons précédent et suivant. Demandent ThemeExtras.'}
-  TopPanelShowThemeSettingsButtons: {en: 'Buttons for Theme Options and ThemeModifier. Need ThemeExtras. The workshop button stays.', fr: 'Boutons vers Theme Options et ThemeModifier. Demandent ThemeExtras. Le bouton de l''atelier reste.'}
 
 # Settings panel: one panel with a page list on the left, generated into the Details view
 # (opened by the section gears) and into both top panels (opened by the workshop button).
@@ -1053,7 +1049,6 @@ panel:
       items:
       - TopPanelHeight
       - ShowNavigationButtons
-      - TopPanelShowThemeSettingsButtons
       - TopPanelShowCollectorLevel
       - TopPanelAutoHide
       - SidebarAutoHide

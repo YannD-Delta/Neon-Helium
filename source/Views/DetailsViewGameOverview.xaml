@@ -776,10 +776,6 @@
                                                                 <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptShowNavigationButtons}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], Mode=TwoWay, FallbackValue={StaticResource ShowNavigationButtons}}" />
                                                             </DockPanel>
                                                             <DockPanel Style="{DynamicResource HndPanelRow}">
-                                                                <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowThemeSettingsButtons}" />
-                                                                <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelShowThemeSettingsButtons}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}}" />
-                                                            </DockPanel>
-                                                            <DockPanel Style="{DynamicResource HndPanelRow}">
                                                                 <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}" />
                                                                 <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelShowCollectorLevel}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowCollectorLevel}}" />
                                                             </DockPanel>

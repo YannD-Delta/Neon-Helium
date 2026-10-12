@@ -239,8 +239,6 @@
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
-    <sys:String x:Key="LOCHNDThemeOptionsButton">Theme settings (Theme Options)</sys:String>
-    <sys:String x:Key="LOCHNDThemeColorsButton">Theme colors (ThemeModifier)</sys:String>
     <sys:String x:Key="LOCHNDQuickTooltip">Quick settings</sys:String>
     <sys:String x:Key="LOCHNDWorkshopTooltip">Theme workshop</sys:String>
     <sys:String x:Key="LOCHNDWorkshopTitle">Theme workshop</sys:String>
@@ -268,7 +266,6 @@
     <sys:Double x:Key="GameLogoMaxWidth">1000</sys:Double>
     <sys:Double x:Key="GameLogoMaxHeight">400</sys:Double>
     <sys:Double x:Key="TopPanelHeight">50</sys:Double>
-    <sys:Boolean x:Key="TopPanelShowThemeSettingsButtons">True</sys:Boolean>
     <sys:Boolean x:Key="TopPanelShowCollectorLevel">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewTabsMode">False</sys:Boolean>
     <sys:Double x:Key="DetailsViewTabNotes">1</sys:Double>

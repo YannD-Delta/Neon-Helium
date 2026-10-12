@@ -853,10 +853,6 @@
                                                                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptShowNavigationButtons}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], Mode=TwoWay, FallbackValue={StaticResource ShowNavigationButtons}}" />
                                                                     </DockPanel>
                                                                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                                                                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowThemeSettingsButtons}" />
-                                                                        <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelShowThemeSettingsButtons}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}}" />
-                                                                    </DockPanel>
-                                                                    <DockPanel Style="{DynamicResource HndPanelRow}">
                                                                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}" />
                                                                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelShowCollectorLevel}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowCollectorLevel}}" />
                                                                     </DockPanel>
@@ -1579,21 +1575,6 @@
                                     </Popup>
                                 </Grid>
                                 <!-- END generated workshop -->
-                                <Border Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowThemeSettingsButtons], FallbackValue={StaticResource TopPanelShowThemeSettingsButtons}, TargetNullValue={StaticResource TopPanelShowThemeSettingsButtons}}" VerticalAlignment="Center"
-                                        Visibility="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <StackPanel Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" Orientation="Horizontal">
-                                        <Button Style="{DynamicResource TopPanelThemeOptionsButtonStyle}"
-                                                ToolTip="{DynamicResource LOCHNDThemeOptionsButton}"
-                                                Visibility="{PluginStatus Plugin=ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef, Status=Installed}"
-                                                Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
-                                                CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef" />
-                                        <Button Style="{DynamicResource TopPanelThemeColorsButtonStyle}"
-                                                ToolTip="{DynamicResource LOCHNDThemeColorsButton}"
-                                                Visibility="{PluginStatus Plugin=playnite-thememodifier-plugin, Status=Installed}"
-                                                Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
-                                                CommandParameter="ec2f4013-17e6-428a-b8a9-5e34a3b80009" />
-                                    </StackPanel>
-                                </Border>
                                 <!-- PlayniteAchievements: library collection level, opens the achievements overview -->
                                 <Grid Style="{DynamicResource SectionToggleGrid}" VerticalAlignment="Center"
                                       Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], FallbackValue={StaticResource TopPanelShowCollectorLevel}, TargetNullValue={StaticResource TopPanelShowCollectorLevel}}">

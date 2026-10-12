@@ -106,45 +106,6 @@
         </Setter>
     </Style>
 
-    <!-- Opens an extension's settings through ThemeExtras (Commands.OpenPluginSettingsCommand, parameter = plugin Id). -->
-    <Style x:Key="TopPanelThemeOptionsButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource TopPanelNavigateBackButtonStyle}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Border" BorderThickness="0" Background="{TemplateBinding Background}"
-                            CornerRadius="{DynamicResource ControlCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE713;"
-                                   FontSize="18"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Margin="{TemplateBinding Padding}"  />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Same, with a palette icon. Opens an extension's settings through ThemeExtras (Commands.OpenPluginSettingsCommand, parameter = plugin Id). -->
-    <Style x:Key="TopPanelThemeColorsButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource TopPanelNavigateBackButtonStyle}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="Border" BorderThickness="0" Background="{TemplateBinding Background}"
-                            CornerRadius="{DynamicResource ControlCornerRadius}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE790;"
-                                   FontSize="18"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Margin="{TemplateBinding Padding}"  />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
-
     <!-- PlayniteAchievements collection level badge: Tag is the level, hidden at 0 (no data or extension missing) -->
     <Style x:Key="TopPanelCollectorButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource TopPanelNavigateBackButtonStyle}">
         <Setter Property="Margin" Value="8,0,0,0" />

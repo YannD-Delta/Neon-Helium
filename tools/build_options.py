@@ -105,11 +105,8 @@ def split_sentences(text):
     return [part.strip() for part in re.split(r"(?<=[.!?])\s+", text.strip()) if part.strip()]
 
 
-HIDDEN_STYLE = "HndHiddenOption"  # DockPanel style that collapses a Theme Options row (Variable.Style)
-
-
 def panel_keys(spec):
-    """Variables the settings panel shows: their Theme Options rows are hidden."""
+    """Variables the settings panel shows: Theme Options lists them last, without caption rows."""
     panel = spec.get("panel") or {}
     keys = set()
     for page in panel.get("pages", []):
@@ -123,7 +120,7 @@ def panel_keys(spec):
     return keys
 
 
-def caption_rows(key, tip, labels, english, hidden=False):
+def caption_rows(key, tip, labels, english):
     """One Theme Options Header row per sentence of the tip: the Desktop settings view shows
     Header titles but no descriptions, and its text does not wrap."""
     french, other = split_sentences(tip["fr"]), split_sentences(tip["en"])
@@ -140,7 +137,7 @@ def caption_rows(key, tip, labels, english, hidden=False):
         labels[lkey] = CAPTION_PREFIX + fr_text
         english[lkey] = CAPTION_PREFIX + en_text
         rows += [f"    {name}:", f"        Title: {q(CAPTION_PREFIX + en_text)}", f"        LocKey: {lkey}",
-                 "        Type: Header"] + ([f"        Style: {HIDDEN_STYLE}"] if hidden else [])
+                 "        Type: Header"]
     return rows
 
 def build_options(spec, constants, source: Path):
@@ -196,25 +193,15 @@ def build_options(spec, constants, source: Path):
 
     lines += ["", "Variables:"]
     seen = set()
-    hidden_keys = panel_keys(spec)
-    header_hidden = {}
-    current = None
-    for entry in spec["variables"]:
-        if "header" in entry:
-            current = entry["header"]
-            header_hidden[current] = True
-        elif current and entry["key"] not in hidden_keys:
-            header_hidden[current] = False
-    for entry in spec["variables"]:
-        if "header" in entry:
-            name = "Header" + entry["header"]
-            key = loc_key("Header", entry["header"])
-            labels[key] = entry["fr"]
-            english[key] = entry["en"]
-            lines += [f"    {name}:", f"        Title: {q(entry['en'])}", f"        LocKey: {key}", "        Type: Header"]
-            if header_hidden.get(entry["header"]):
-                lines.append(f"        Style: {HIDDEN_STYLE}")
-            continue
+    panel_shown = panel_keys(spec)
+
+    def header_rows(entry, name):
+        key = loc_key("Header", entry["header"])
+        labels[key] = entry["fr"]
+        english[key] = entry["en"]
+        return [f"    {name}:", f"        Title: {q(entry['en'])}", f"        LocKey: {key}", "        Type: Header"]
+
+    def variable_rows(entry, with_captions):
         extra = set(entry) - {"key", "en", "fr", "range"}
         if extra or not {"key", "en", "fr"} <= set(entry):
             raise SpecError(f"bad variable entry (quote values that contain commas): {entry}")
@@ -229,15 +216,13 @@ def build_options(spec, constants, source: Path):
         lkey = loc_key("Opt", key)
         labels[lkey] = entry["fr"]
         english[lkey] = entry["en"]
-        lines += [f"    {key}:", f"        Title: {q(entry['en'])}", f"        LocKey: {lkey}",
-                  f"        Type: {kind}", f"        Default: {q(default)}"]
-        if key in hidden_keys:
-            lines.append(f"        Style: {HIDDEN_STYLE}")
+        rows = [f"    {key}:", f"        Title: {q(entry['en'])}", f"        LocKey: {lkey}",
+                f"        Type: {kind}", f"        Default: {q(default)}"]
         tip = (spec.get("tips") or {}).get(key)
         if tip:
-            # Theme Options keeps Description in its model but never displays it; the workshop
+            # Theme Options keeps Description in its model but never displays it; the panel
             # shows the tooltip, and caption rows (below) show the text in Theme Options.
-            lines.append(f"        Description: {q(tip['en'])}")
+            rows.append(f"        Description: {q(tip['en'])}")
             labels[loc_key("Tip", key)] = tip["fr"]
             english[loc_key("Tip", key)] = tip["en"]
         if kind in SLIDER_TYPES:
@@ -248,13 +233,36 @@ def build_options(spec, constants, source: Path):
             if not number.is_integer() or not low <= number <= high:
                 raise SpecError(f"variable {key}: default {default} must be a whole number within {low}..{high}")
             step = 1 if high - low <= 1000 else 10
-            lines += ["        Slider:", f"            Min: {q(low)}", f"            Max: {q(high)}", f"            Step: {q(step)}"]
+            rows += ["        Slider:", f"            Min: {q(low)}", f"            Max: {q(high)}", f"            Step: {q(step)}"]
         elif kind not in PLAIN_TYPES:
             raise SpecError(f"variable {key}: type {kind} cannot be a ThemeOptions variable")
         elif "range" in entry:
             raise SpecError(f"variable {key}: a range makes no sense for {kind}")
-        if tip:
-            lines += caption_rows(key, tip, labels, english, key in hidden_keys)
+        if tip and with_captions:
+            rows += caption_rows(key, tip, labels, english)
+        return rows
+
+    # The desktop Theme Options view cannot hide a variable (Variable.Style is only read in Fullscreen),
+    # and dropping the panel settings from this file would lose them: saving the Theme Options dialog
+    # keeps only declared variables. So the settings only Theme Options has come first, and the panel
+    # ones last, under the PanelNote header, grouped as in the spec but without caption rows.
+    note = next((e for e in spec["variables"] if e.get("header") == "PanelNote"), None)
+    if note is None:
+        raise SpecError("the variables need a PanelNote header (title of the panel settings at the end)")
+    for in_panel in (False, True):
+        if in_panel:
+            lines += header_rows(note, "HeaderPanelNote")
+        pending = None
+        for entry in spec["variables"]:
+            if "header" in entry:
+                pending = None if entry is note else entry
+                continue
+            if (entry.get("key") in panel_shown) != in_panel:
+                continue
+            if pending:
+                lines += header_rows(pending, "Header" + pending["header"] + ("Panel" if in_panel else ""))
+                pending = None
+            lines += variable_rows(entry, not in_panel)
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))

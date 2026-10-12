@@ -1,5 +1,12 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.5.3
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5.3/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5_3.pthm
+    Changelog:
+      - "One theme button in the top panel: the Theme Options and ThemeModifier shortcuts are gone (the Colors page of the settings panel opens both)"
+      - "Theme Options lists its own settings first; the settings of the theme panel come last, under a note, without help rows (the desktop Theme Options view cannot hide them, and removing them would lose them on save)"
   - Version: 2.5.2
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-12
