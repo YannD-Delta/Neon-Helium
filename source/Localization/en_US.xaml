@@ -556,6 +556,12 @@
     <sys:String x:Key="LOCHNDPanelChipNameAvgFps">Average FPS</sys:String>
     <sys:String x:Key="LOCHNDPanelChipOrder">Chips, in their order</sys:String>
     <sys:String x:Key="LOCHNDPanelChipOrderText">Arrows on the left move a chip, the switch shows it, the button on the right starts a new line before it. The preview and the artwork follow at once.</sys:String>
+    <sys:String x:Key="LOCHNDPanelRestart">after restart</sys:String>
+    <sys:String x:Key="LOCHNDPanelRestartTip">Playnite reads this setting when it starts.</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextSection">Section title</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextLarge">Large text, game name in lists</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextNormal">Normal text, descriptions and values</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextSmall">Small text, notes and captions</sys:String>
     <sys:String x:Key="LOCHNDPanelShow">Show</sys:String>
     <sys:String x:Key="LOCHNDPanelHide">Hide</sys:String>
     <sys:String x:Key="LOCHNDPanelMoveUp">Move before the previous chip</sys:String>

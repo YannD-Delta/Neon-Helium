@@ -556,6 +556,12 @@
     <sys:String x:Key="LOCHNDPanelChipNameAvgFps">FPS moyen</sys:String>
     <sys:String x:Key="LOCHNDPanelChipOrder">Puces, dans leur ordre</sys:String>
     <sys:String x:Key="LOCHNDPanelChipOrderText">Les flèches à gauche déplacent une puce, l'interrupteur l'affiche, le bouton à droite fait un retour à la ligne avant elle. L'aperçu et l'illustration suivent aussitôt.</sys:String>
+    <sys:String x:Key="LOCHNDPanelRestart">au redémarrage</sys:String>
+    <sys:String x:Key="LOCHNDPanelRestartTip">Playnite lit ce réglage au démarrage.</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextSection">Titre de section</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextLarge">Grand texte, nom du jeu dans les listes</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextNormal">Texte normal, descriptions et valeurs</sys:String>
+    <sys:String x:Key="LOCHNDPanelTextSmall">Petit texte, notes et légendes</sys:String>
     <sys:String x:Key="LOCHNDPanelShow">Afficher</sys:String>
     <sys:String x:Key="LOCHNDPanelHide">Masquer</sys:String>
     <sys:String x:Key="LOCHNDPanelMoveUp">Placer avant la puce précédente</sys:String>

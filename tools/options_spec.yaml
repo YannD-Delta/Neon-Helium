@@ -1615,6 +1615,24 @@ panel:
     LOCHNDPanelChipOrderText:
       en: Arrows on the left move a chip, the switch shows it, the button on the right starts a new line before it. The preview and the artwork follow at once.
       fr: Les flèches à gauche déplacent une puce, l'interrupteur l'affiche, le bouton à droite fait un retour à la ligne avant elle. L'aperçu et l'illustration suivent aussitôt.
+    LOCHNDPanelRestart:
+      en: after restart
+      fr: au redémarrage
+    LOCHNDPanelRestartTip:
+      en: Playnite reads this setting when it starts.
+      fr: Playnite lit ce réglage au démarrage.
+    LOCHNDPanelTextSection:
+      en: Section title
+      fr: Titre de section
+    LOCHNDPanelTextLarge:
+      en: Large text, game name in lists
+      fr: Grand texte, nom du jeu dans les listes
+    LOCHNDPanelTextNormal:
+      en: Normal text, descriptions and values
+      fr: Texte normal, descriptions et valeurs
+    LOCHNDPanelTextSmall:
+      en: Small text, notes and captions
+      fr: Petit texte, notes et légendes
     LOCHNDPanelShow:
       en: Show
       fr: Afficher

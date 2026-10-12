@@ -14,6 +14,9 @@ THEME_OPTIONS_ADDON = "ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef"
 THEME_OPTIONS_GUID = "904cbf3b-573f-48f8-9642-0a09d05c64ef"
 THEME_MODIFIER_GUID = "ec2f4013-17e6-428a-b8a9-5e34a3b80009"
 EXTRAS = "felixkmh_Extras_Plugin"
+# settings still read as {DynamicResource ...} somewhere (style setters, Playnite's own keys): Theme Options
+# turns them into resources when Playnite starts, so the panel marks them "after a restart" (set by build_options)
+RESTART_KEYS = set()
 
 
 def glyph(text):
@@ -36,6 +39,24 @@ def indent(text, spaces):
     return "\n".join(pad + line if line.strip() else line for line in text.split("\n"))
 
 
+# live examples at the top of some pages, drawn with the theme's own styles and settings
+PAGE_PREVIEWS = {
+    "Header": f'''<StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+    <Button Style="{{DynamicResource HeroPlayButton}}" Content="{{DynamicResource LOCPlayGame}}" Margin="0,0,8,0"
+            Width="{opt('HeroActionButtonWidth')}" Height="{opt('HeroActionButtonHeight')}" />
+    <Button Style="{{DynamicResource HeroContextButton}}" Content="{{DynamicResource LOCInstallGame}}"
+            Width="{opt('HeroActionButtonWidth')}" Height="{opt('HeroActionButtonHeight')}" />
+</StackPanel>''',
+    "Text": '''<StackPanel>
+    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLargest}" Text="Aa 2024" />
+    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarger}" Text="{DynamicResource LOCHNDPanelTextSection}" />
+    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}" Text="{DynamicResource LOCHNDPanelTextLarge}" />
+    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSize}" Text="{DynamicResource LOCHNDPanelTextNormal}" />
+    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeSmall}" Text="{DynamicResource LOCHNDPanelTextSmall}" />
+</StackPanel>''',
+}
+
+
 class Panel:
     def __init__(self, spec, constants, loc_key, prefix):
         self.spec, self.constants, self.loc_key, self.prefix = spec, constants, loc_key, prefix
@@ -52,8 +73,14 @@ class Panel:
             raise ValueError(f"panel item {key} is not a variable")
         kind = self.constants[key][0]
         label = "{DynamicResource %s}" % self.loc_key("Opt", key)
-        tip = ' ToolTip="{DynamicResource %s}"' % self.loc_key("Tip", key) if key in self.tips else ""
-        info = ('\n    <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}"%s />' % tip) if tip else ""
+        # the help text sits under the setting; settings that apply after a restart get a badge
+        info = ""
+        if key in RESTART_KEYS:
+            info += ('\n    <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" '
+                     'Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />')
+        if key in self.tips:
+            info += ('\n    <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource %s}" />'
+                     % self.loc_key("Tip", key))
         if kind == "Boolean":
             return (f'<DockPanel Style="{{DynamicResource HndPanelRow}}">{info}\n'
                     f'    <CheckBox Style="{{DynamicResource HndPanelSwitch}}" Content="{label}" IsChecked="{twoway(key)}" />\n'
@@ -142,6 +169,11 @@ class Panel:
             else:
                 body = "\n".join(self.card(self.loc_key("PanelCard", page["id"], str(i)), g["items"])
                                  for i, g in enumerate(page["groups"]))
+            preview = PAGE_PREVIEWS.get(page["id"])
+            if preview:
+                body = (f'<Border Style="{{DynamicResource HndPanelPreview}}">\n    <StackPanel>\n'
+                        f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource LOCHNDPanelPreview}}" />\n'
+                        f'{indent(preview, 8)}\n    </StackPanel>\n</Border>\n' + body)
             if page.get("desc"):
                 body = (f'<TextBlock Style="{{DynamicResource HndPanelPageDesc}}" Text="{{DynamicResource {self.loc_key("PanelPageDesc", page["id"])}}}" />\n'
                         + body)

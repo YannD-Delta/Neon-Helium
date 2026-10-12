@@ -1690,11 +1690,11 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardChips0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroShowInfoLine}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroShowInfoLine}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowInfoLine}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], Mode=TwoWay, FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroInfoLineMaxWidth}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroInfoLineMaxWidth}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptHeroInfoLineMaxWidth}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderHeroInfoLineMaxWidth, StringFormat={}{0:0}}" />
@@ -1702,7 +1702,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroChipsOpenSections}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroChipsOpenSections}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroChipsOpenSections}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOpenSections], Mode=TwoWay, FallbackValue={StaticResource HeroChipsOpenSections}, TargetNullValue={StaticResource HeroChipsOpenSections}}" />
                     </DockPanel>
                 </StackPanel>
@@ -1713,11 +1713,22 @@
         <StackPanel>
             <TextBlock Style="{DynamicResource HndPanelPageTitle}" Text="{DynamicResource LOCHNDPanelPageHeader}" />
             <TextBlock Style="{DynamicResource HndPanelPageDesc}" Text="{DynamicResource LOCHNDPanelPageDescHeader}" />
+            <Border Style="{DynamicResource HndPanelPreview}">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelPreview}" />
+                    <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                        <Button Style="{DynamicResource HeroPlayButton}" Content="{DynamicResource LOCPlayGame}" Margin="0,0,8,0"
+                                Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonWidth], FallbackValue={StaticResource HeroActionButtonWidth}, TargetNullValue={StaticResource HeroActionButtonWidth}}" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" />
+                        <Button Style="{DynamicResource HeroContextButton}" Content="{DynamicResource LOCInstallGame}"
+                                Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonWidth], FallbackValue={StaticResource HeroActionButtonWidth}, TargetNullValue={StaticResource HeroActionButtonWidth}}" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
             <Border Style="{DynamicResource HndPanelCard}">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardHeader0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroMinHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroMinHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptHeroMinHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderHeroMinHeight, StringFormat={}{0:0}}" />
@@ -1725,7 +1736,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroMinHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroMinHeight}, TargetNullValue={StaticResource HeroMinHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroActionButtonWidth}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroActionButtonWidth}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptHeroActionButtonWidth}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderHeroActionButtonWidth, StringFormat={}{0:0}}" />
@@ -1733,7 +1744,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroActionButtonWidth}, TargetNullValue={StaticResource HeroActionButtonWidth}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroActionButtonHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroActionButtonHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptHeroActionButtonHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderHeroActionButtonHeight, StringFormat={}{0:0}}" />
@@ -1741,7 +1752,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroActionButtonHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource HeroActionButtonHeight}, TargetNullValue={StaticResource HeroActionButtonHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipGameLogoMaxWidth}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipGameLogoMaxWidth}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptGameLogoMaxWidth}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderGameLogoMaxWidth, StringFormat={}{0:0}}" />
@@ -1749,7 +1760,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource GameLogoMaxWidth}, TargetNullValue={StaticResource GameLogoMaxWidth}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipGameLogoMaxHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipGameLogoMaxHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptGameLogoMaxHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderGameLogoMaxHeight, StringFormat={}{0:0}}" />
@@ -1757,31 +1768,31 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[GameLogoMaxHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource GameLogoMaxHeight}, TargetNullValue={StaticResource GameLogoMaxHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowEditButton}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowEditButton}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowEditButton}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowEditButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowEditButton}, TargetNullValue={StaticResource DetailsViewShowEditButton}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowFavoriteButton}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowFavoriteButton}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowFavoriteButton}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowFavoriteButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowFavoriteButton}, TargetNullValue={StaticResource DetailsViewShowFavoriteButton}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowHiddenButton}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowHiddenButton}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowHiddenButton}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHiddenButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHiddenButton}, TargetNullValue={StaticResource DetailsViewShowHiddenButton}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroShowSteamShortcuts}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroShowSteamShortcuts}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowSteamShortcuts}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowSteamShortcuts], Mode=TwoWay, FallbackValue={StaticResource HeroShowSteamShortcuts}, TargetNullValue={StaticResource HeroShowSteamShortcuts}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroShowUpdateStatus}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroShowUpdateStatus}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowUpdateStatus}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowUpdateStatus], Mode=TwoWay, FallbackValue={StaticResource HeroShowUpdateStatus}, TargetNullValue={StaticResource HeroShowUpdateStatus}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewAllowUseOfLogos}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewAllowUseOfLogos}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewAllowUseOfLogos}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewAllowUseOfLogos], Mode=TwoWay, FallbackValue={StaticResource DetailsViewAllowUseOfLogos}, TargetNullValue={StaticResource DetailsViewAllowUseOfLogos}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewDisplayGameNameIfLogoVisible}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewDisplayGameNameIfLogoVisible}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDisplayGameNameIfLogoVisible], Mode=TwoWay, FallbackValue={StaticResource DetailsViewDisplayGameNameIfLogoVisible}, TargetNullValue={StaticResource DetailsViewDisplayGameNameIfLogoVisible}}" />
                     </DockPanel>
                 </StackPanel>
@@ -1795,39 +1806,39 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardHeaderBar0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowHeaderBar}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowHeaderBar}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowHeaderBar}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHeaderBar], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowHeaderBar}, TargetNullValue={StaticResource DetailsViewShowHeaderBar}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowLastPlayed}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowLastPlayed}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowLastPlayed}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowLastPlayed], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowLastPlayed}, TargetNullValue={StaticResource DetailsViewShowLastPlayed}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowPlayTime}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowPlayTime}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowPlayTime}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowPlayTime], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowPlayTime}, TargetNullValue={StaticResource DetailsViewShowPlayTime}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowCompletionStatus}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowCompletionStatus}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowCompletionStatus}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowCompletionStatus], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowCompletionStatus}, TargetNullValue={StaticResource DetailsViewShowCompletionStatus}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowAchievementsSummary}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowAchievementsSummary}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowAchievementsSummary}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowAchievementsSummary}, TargetNullValue={StaticResource DetailsViewShowAchievementsSummary}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHltbShowInHeaderBar}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHltbShowInHeaderBar}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHltbShowInHeaderBar}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], Mode=TwoWay, FallbackValue={StaticResource HltbShowInHeaderBar}, TargetNullValue={StaticResource HltbShowInHeaderBar}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowUserRating}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowUserRating}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowUserRating}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowUserRating], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowUserRating}, TargetNullValue={StaticResource DetailsViewShowUserRating}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowInfoButton}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowInfoButton}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowInfoButton}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInfoButton], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowInfoButton}, TargetNullValue={StaticResource DetailsViewShowInfoButton}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeaderButtonSize}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeaderButtonSize}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptHeaderButtonSize}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderHeaderButtonSize, StringFormat={}{0:0}}" />
@@ -1846,11 +1857,11 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardCovers0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHltbShowOnCover}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHltbShowOnCover}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHltbShowOnCover}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowOnCover], Mode=TwoWay, FallbackValue={StaticResource HltbShowOnCover}, TargetNullValue={StaticResource HltbShowOnCover}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipAchievementsShowOnCover}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipAchievementsShowOnCover}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptAchievementsShowOnCover}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsShowOnCover], Mode=TwoWay, FallbackValue={StaticResource AchievementsShowOnCover}, TargetNullValue={StaticResource AchievementsShowOnCover}}" />
                     </DockPanel>
                 </StackPanel>
@@ -1859,19 +1870,19 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardCovers1}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipLibraryListShowHltb}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipLibraryListShowHltb}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptLibraryListShowHltb}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowHltb], Mode=TwoWay, FallbackValue={StaticResource LibraryListShowHltb}, TargetNullValue={StaticResource LibraryListShowHltb}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipLibraryListShowAchievements}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipLibraryListShowAchievements}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptLibraryListShowAchievements}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LibraryListShowAchievements], Mode=TwoWay, FallbackValue={StaticResource LibraryListShowAchievements}, TargetNullValue={StaticResource LibraryListShowAchievements}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipGridCoverShowHltb}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipGridCoverShowHltb}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptGridCoverShowHltb}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowHltb], Mode=TwoWay, FallbackValue={StaticResource GridCoverShowHltb}, TargetNullValue={StaticResource GridCoverShowHltb}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipGridCoverShowAchievements}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipGridCoverShowAchievements}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptGridCoverShowAchievements}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[GridCoverShowAchievements], Mode=TwoWay, FallbackValue={StaticResource GridCoverShowAchievements}, TargetNullValue={StaticResource GridCoverShowAchievements}}" />
                     </DockPanel>
                 </StackPanel>
@@ -1880,11 +1891,11 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardCovers2}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipLinksShowNames}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipLinksShowNames}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptLinksShowNames}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[LinksShowNames], Mode=TwoWay, FallbackValue={StaticResource LinksShowNames}, TargetNullValue={StaticResource LinksShowNames}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipLinkIconSize}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipLinkIconSize}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptLinkIconSize}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderLinkIconSize, StringFormat={}{0:0}}" />
@@ -1903,23 +1914,23 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardLayout0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewTabsMode}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewTabsMode}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewTabsMode}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], Mode=TwoWay, FallbackValue={StaticResource DetailsViewTabsMode}, TargetNullValue={StaticResource DetailsViewTabsMode}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDemoteSectionsShownElsewhere}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDemoteSectionsShownElsewhere}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDemoteSectionsShownElsewhere}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], Mode=TwoWay, FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowInfoPanelDefault}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowInfoPanelDefault}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowInfoPanelDefault}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowInfoPanelDefault], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowInfoPanelDefault}, TargetNullValue={StaticResource DetailsViewShowInfoPanelDefault}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipSectionHeaderMinHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipSectionHeaderMinHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptSectionHeaderMinHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderSectionHeaderMinHeight, StringFormat={}{0:0}}" />
@@ -1927,7 +1938,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewDescriptionWidth}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewDescriptionWidth}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptDetailsViewDescriptionWidth}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderDetailsViewDescriptionWidth, StringFormat={}{0:0}}" />
@@ -1935,7 +1946,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDescriptionWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource DetailsViewDescriptionWidth}, TargetNullValue={StaticResource DetailsViewDescriptionWidth}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewDescriptionMaxHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewDescriptionMaxHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptDetailsViewDescriptionMaxHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderDetailsViewDescriptionMaxHeight, StringFormat={}{0:0}}" />
@@ -1943,7 +1954,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewDescriptionMaxHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource DetailsViewDescriptionMaxHeight}, TargetNullValue={StaticResource DetailsViewDescriptionMaxHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipAchievementsDataGridMaxHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipAchievementsDataGridMaxHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptAchievementsDataGridMaxHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderAchievementsDataGridMaxHeight, StringFormat={}{0:0}}" />
@@ -1973,6 +1984,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[GameInfoWideValueMaxWidth], Mode=TwoWay, Delay=150, FallbackValue={StaticResource GameInfoWideValueMaxWidth}, TargetNullValue={StaticResource GameInfoWideValueMaxWidth}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewEnablePanelsDropShadowEffect}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewEnablePanelsDropShadowEffect], Mode=TwoWay, FallbackValue={StaticResource DetailsViewEnablePanelsDropShadowEffect}, TargetNullValue={StaticResource DetailsViewEnablePanelsDropShadowEffect}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
@@ -2159,7 +2171,7 @@
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardTopPanel0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelHeight}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipTopPanelHeight}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptTopPanelHeight}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderTopPanelHeight, StringFormat={}{0:0}}" />
@@ -2167,19 +2179,19 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelHeight], Mode=TwoWay, Delay=150, FallbackValue={StaticResource TopPanelHeight}, TargetNullValue={StaticResource TopPanelHeight}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipShowNavigationButtons}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipShowNavigationButtons}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptShowNavigationButtons}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[ShowNavigationButtons], Mode=TwoWay, FallbackValue={StaticResource ShowNavigationButtons}, TargetNullValue={StaticResource ShowNavigationButtons}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipTopPanelShowCollectorLevel}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelShowCollectorLevel}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelShowCollectorLevel], Mode=TwoWay, FallbackValue={StaticResource TopPanelShowCollectorLevel}, TargetNullValue={StaticResource TopPanelShowCollectorLevel}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipTopPanelAutoHide}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipTopPanelAutoHide}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptTopPanelAutoHide}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelAutoHide], Mode=TwoWay, FallbackValue={StaticResource TopPanelAutoHide}, TargetNullValue={StaticResource TopPanelAutoHide}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipSidebarAutoHide}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipSidebarAutoHide}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptSidebarAutoHide}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], Mode=TwoWay, FallbackValue={StaticResource SidebarAutoHide}, TargetNullValue={StaticResource SidebarAutoHide}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
@@ -2534,10 +2546,23 @@
         <StackPanel>
             <TextBlock Style="{DynamicResource HndPanelPageTitle}" Text="{DynamicResource LOCHNDPanelPageText}" />
             <TextBlock Style="{DynamicResource HndPanelPageDesc}" Text="{DynamicResource LOCHNDPanelPageDescText}" />
+            <Border Style="{DynamicResource HndPanelPreview}">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelPreview}" />
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLargest}" Text="Aa 2024" />
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarger}" Text="{DynamicResource LOCHNDPanelTextSection}" />
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeLarge}" Text="{DynamicResource LOCHNDPanelTextLarge}" />
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSize}" Text="{DynamicResource LOCHNDPanelTextNormal}" />
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}" FontSize="{DynamicResource FontSizeSmall}" Text="{DynamicResource LOCHNDPanelTextSmall}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
             <Border Style="{DynamicResource HndPanelCard}">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource HndPanelCardTitle}" Text="{DynamicResource LOCHNDPanelCardText0}" />
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptFontSizeSmall}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderFontSizeSmall, StringFormat={}{0:0}}" />
@@ -2545,6 +2570,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeSmall], Mode=TwoWay, Delay=150, FallbackValue={StaticResource FontSizeSmall}, TargetNullValue={StaticResource FontSizeSmall}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptFontSize}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderFontSize, StringFormat={}{0:0}}" />
@@ -2552,6 +2578,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSize], Mode=TwoWay, Delay=150, FallbackValue={StaticResource FontSize}, TargetNullValue={StaticResource FontSize}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptFontSizeLarge}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderFontSizeLarge, StringFormat={}{0:0}}" />
@@ -2559,6 +2586,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeLarge], Mode=TwoWay, Delay=150, FallbackValue={StaticResource FontSizeLarge}, TargetNullValue={StaticResource FontSizeLarge}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptFontSizeLarger}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderFontSizeLarger, StringFormat={}{0:0}}" />
@@ -2566,6 +2594,7 @@
                                 IsSnapToTickEnabled="True" VerticalAlignment="Center" Value="{PluginSettings Plugin=ThemeOptions, Path=Options[FontSizeLarger], Mode=TwoWay, Delay=150, FallbackValue={StaticResource FontSizeLarger}, TargetNullValue={StaticResource FontSizeLarger}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
+                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelRestart}" Text="{DynamicResource LOCHNDPanelRestart}" ToolTip="{DynamicResource LOCHNDPanelRestartTip}" />
                         <TextBlock DockPanel.Dock="Top" Style="{DynamicResource HndPanelLabel}" Text="{DynamicResource LOCHNDOptFontSizeLargest}" />
                         <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelValue}"
                                    Text="{Binding Value, ElementName=HndPageSliderFontSizeLargest, StringFormat={}{0:0}}" />
@@ -2685,7 +2714,7 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDemoteGenresSection}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], Mode=TwoWay, FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                     </DockPanel>
                 </StackPanel>
@@ -2720,7 +2749,7 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDemoteCategoriesSection}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                     </DockPanel>
                 </StackPanel>
@@ -2755,7 +2784,7 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDemoteFeaturesSection}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], Mode=TwoWay, FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                     </DockPanel>
                 </StackPanel>
@@ -2790,7 +2819,7 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDemoteTagsSection}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], Mode=TwoWay, FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewUseMetadataUtilities}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewUseMetadataUtilities}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], Mode=TwoWay, FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" />
                     </DockPanel>
                 </StackPanel>
@@ -2881,7 +2910,7 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowRecentActivity}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}, TargetNullValue={StaticResource HeroShowRecentActivity}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHeroShowAvgFps}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHeroShowAvgFps}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowAvgFps}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroShowAvgFps}, TargetNullValue={StaticResource HeroShowAvgFps}}" />
                     </DockPanel>
                 </StackPanel>
@@ -3027,11 +3056,11 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowHltb}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowHltb], Mode=TwoWay, FallbackValue={StaticResource HeroShowHltb}, TargetNullValue={StaticResource HeroShowHltb}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHltbShowOnCover}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHltbShowOnCover}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHltbShowOnCover}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowOnCover], Mode=TwoWay, FallbackValue={StaticResource HltbShowOnCover}, TargetNullValue={StaticResource HltbShowOnCover}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipHltbShowInHeaderBar}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipHltbShowInHeaderBar}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHltbShowInHeaderBar}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HltbShowInHeaderBar], Mode=TwoWay, FallbackValue={StaticResource HltbShowInHeaderBar}, TargetNullValue={StaticResource HltbShowInHeaderBar}}" />
                     </DockPanel>
                 </StackPanel>
@@ -3087,11 +3116,11 @@
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptHeroShowRareAchievements}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRareAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroShowRareAchievements}, TargetNullValue={StaticResource HeroShowRareAchievements}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipAchievementsShowOnCover}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipAchievementsShowOnCover}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptAchievementsShowOnCover}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[AchievementsShowOnCover], Mode=TwoWay, FallbackValue={StaticResource AchievementsShowOnCover}, TargetNullValue={StaticResource AchievementsShowOnCover}}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource HndPanelRow}">
-                        <TextBlock DockPanel.Dock="Right" Style="{DynamicResource HndPanelInfo}" ToolTip="{DynamicResource LOCHNDTipDetailsViewShowAchievementsSummary}" />
+                        <TextBlock DockPanel.Dock="Bottom" Style="{DynamicResource HndPanelHelp}" Text="{DynamicResource LOCHNDTipDetailsViewShowAchievementsSummary}" />
                         <CheckBox Style="{DynamicResource HndPanelSwitch}" Content="{DynamicResource LOCHNDOptDetailsViewShowAchievementsSummary}" IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowAchievementsSummary], Mode=TwoWay, FallbackValue={StaticResource DetailsViewShowAchievementsSummary}, TargetNullValue={StaticResource DetailsViewShowAchievementsSummary}}" />
                     </DockPanel>
                 </StackPanel>

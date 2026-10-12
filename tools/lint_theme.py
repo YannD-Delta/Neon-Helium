@@ -22,6 +22,8 @@ of mistakes that already happened or are easy to make:
     defined, never read or only read through StaticResource, preset files that
     are missing or define keys the theme does not have, labels without a French
     translation, and generated files that are out of date
+  * Double / Int32 variables without Slider and no DOUBLE_ / INT32_PanelTemplate
+    to render them in the desktop Theme Options view
 
 Usage:
     python tools/lint_theme.py [--source source] [--base path/to/old/source]
@@ -162,6 +164,15 @@ def check_theme_options(source: Path, definitions, dynamic, static, errors):
         locale = {element.get(KEY) for element in ET.fromstring(read_text(locale_path)).iter() if element.get(KEY)}
     theme_files = [f for f in source.rglob("*.xaml") if "Presets" not in f.parts and "Localization" not in f.parts]
     theme_keys = set(collect_definitions(theme_files))
+
+    # a Double or Int32 variable without Slider has no template in the desktop Theme Options view, which then
+    # looks up DOUBLE_PanelTemplate / INT32_PanelTemplate in the application resources (the theme's)
+    for key, variable in (options.get("Variables") or {}).items():
+        kind = (variable or {}).get("Type")
+        if kind in ("Double", "Int32") and not variable.get("Slider"):
+            template = kind.upper() + "_PanelTemplate"
+            if template not in theme_keys:
+                errors.append(f"{path} ({key}): {kind} without Slider needs a {template} in the theme dictionaries")
 
     def check_read(key, where):
         if key not in theme_keys:

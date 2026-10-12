@@ -1,5 +1,15 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.6
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.6/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_6.pthm
+    Changelog:
+      - "Chips in any order: arrows on the chips page move a chip before the previous one or after the next one, the artwork follows at once; a line break before any chip"
+      - "Every setting is in the settings panel: new Grid view, Grid covers and text size pages, Details column order, information panel and extension heights"
+      - "Each page has a description and live previews (chips of the selected game, Play buttons, text sizes); help text under every setting, an after restart badge where Playnite reads the setting at startup"
+      - "Grid view, Grid covers, library list, sidebar and Details section order settings now apply at once"
+      - "Lighter: the Details view went from 1.36 MB to 0.61 MB and the top panel from 245 KB to 127 KB; the panel only builds the page you open"
   - Version: 2.5.3
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-12
