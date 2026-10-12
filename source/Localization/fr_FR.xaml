@@ -42,7 +42,6 @@
     <sys:String x:Key="LOCHNDQuickDemoteThis">Replier cette section en bas quand son info est affichée en haut</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsTitle">Puces sur l'image</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsShown">Puces affichées</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipsBreaks">Retour à la ligne avant</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsOrder">Ordre des groupes (0 = en premier)</sys:String>
     <sys:String x:Key="LOCHNDQuickPluginSettings">Paramètres de l'extension</sys:String>
     <sys:String x:Key="LOCHNDQuickThemeSettings">Tous les réglages du thème</sys:String>
@@ -232,11 +231,6 @@
     <sys:String x:Key="LOCHNDTipHeroChipsOpenSections">Un clic sur une puce ouvre ou replie la section liée plus bas. Durées, succès, activité, genres et étiquettes.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections1">  ↳ Un clic sur une puce ouvre ou replie la section liée plus bas.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections2">  ↳ Durées, succès, activité, genres et étiquettes.</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">Retour à la ligne avant les développeurs, le statut et la note</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">Retour à la ligne avant HowLongToBeat</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">Retour à la ligne avant les succès</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">Retour à la ligne avant GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakReleaseDate">Retour à la ligne avant : Date de sortie</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakPlatforms">Retour à la ligne avant : Plateformes</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakSource">Retour à la ligne avant : Source</sys:String>

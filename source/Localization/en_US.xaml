@@ -42,7 +42,6 @@
     <sys:String x:Key="LOCHNDQuickDemoteThis">Fold this section at the bottom when its information is shown above</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsTitle">Chips on the artwork</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsShown">Chips shown</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipsBreaks">New line before</sys:String>
     <sys:String x:Key="LOCHNDQuickChipsOrder">Group order (0 = first)</sys:String>
     <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
     <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
@@ -232,11 +231,6 @@
     <sys:String x:Key="LOCHNDTipHeroChipsOpenSections">A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections1">  ↳ A click on a chip opens or folds the matching section below.</sys:String>
     <sys:String x:Key="LOCHNDCaptionHeroChipsOpenSections2">  ↳ Times, achievements, activity, genres and tags.</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeGenres">New line before genres, categories, features and tags</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeStudio">New line before developers, completion status and score</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">New line before HowLongToBeat</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">New line before achievements</sys:String>
-    <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">New line before GameActivity</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakReleaseDate">New line before: Release date</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakPlatforms">New line before: Platforms</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipBreakSource">New line before: Source</sys:String>

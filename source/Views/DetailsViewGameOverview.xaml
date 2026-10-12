@@ -259,17 +259,6 @@
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowRecentActivity], Mode=TwoWay, FallbackValue={StaticResource HeroShowRecentActivity}}" />
                                                                         <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroShowAvgFps}"
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowAvgFps], Mode=TwoWay, FallbackValue={StaticResource HeroShowAvgFps}}" />
-                                                                        <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickChipsBreaks}" />
-                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeGenres}"
-                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeStudio}"
-                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeHltb}"
-                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeHltb}}" />
-                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeAchievements}"
-                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                                        <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipsBreakBeforeActivity}"
-                                                                                  IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], Mode=TwoWay, FallbackValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                                         <TextBlock Style="{DynamicResource QuickSettingsHeading}" Text="{DynamicResource LOCHNDQuickChipBreaks}" />
                                                                         <CheckBox Margin="0,3,0,3" Content="{DynamicResource LOCHNDOptHeroChipBreakReleaseDate}"
                                                                                   IsChecked="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipBreakReleaseDate], Mode=TwoWay, FallbackValue={StaticResource HeroChipBreakReleaseDate}}" />
@@ -508,19 +497,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -705,19 +681,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -856,19 +819,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -1035,19 +985,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -1175,19 +1112,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
@@ -1481,19 +1405,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -1678,19 +1589,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -1829,19 +1727,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -2008,19 +1893,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -2148,19 +2020,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="1">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
@@ -2454,19 +2313,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -2651,19 +2497,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -2802,19 +2635,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -2981,19 +2801,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -3121,19 +2928,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="2">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
@@ -3427,19 +3221,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -3624,19 +3405,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -3775,19 +3543,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -3954,19 +3709,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -4094,19 +3836,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="3">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
@@ -4400,19 +4129,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -4597,19 +4313,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -4748,19 +4451,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -4927,19 +4617,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -5067,19 +4744,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="4">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
@@ -5373,19 +5037,6 @@
                                                                     </Grid>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeGenres], FallbackValue={StaticResource HeroChipsBreakBeforeGenres}, TargetNullValue={StaticResource HeroChipsBreakBeforeGenres}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderClassification], FallbackValue={StaticResource HeroChipsOrderClassification}, TargetNullValue={StaticResource HeroChipsOrderClassification}}">
                                                                 <Grid.Style>
@@ -5570,19 +5221,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeStudio], FallbackValue={StaticResource HeroChipsBreakBeforeStudio}, TargetNullValue={StaticResource HeroChipsBreakBeforeStudio}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderStudio], FallbackValue={StaticResource HeroChipsOrderStudio}, TargetNullValue={StaticResource HeroChipsOrderStudio}}">
                                                                 <Grid.Style>
@@ -5721,19 +5359,6 @@
                                                                         </Border>
                                                                     </Grid>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeHltb], FallbackValue={StaticResource HeroChipsBreakBeforeHltb}, TargetNullValue={StaticResource HeroChipsBreakBeforeHltb}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderHltb], FallbackValue={StaticResource HeroChipsOrderHltb}, TargetNullValue={StaticResource HeroChipsOrderHltb}}">
@@ -5900,19 +5525,6 @@
                                                                     </ToggleButton>
                                                                 </Grid>
                                                             </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeAchievements], FallbackValue={StaticResource HeroChipsBreakBeforeAchievements}, TargetNullValue={StaticResource HeroChipsBreakBeforeAchievements}}" />
-                                                            </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderAchievements], FallbackValue={StaticResource HeroChipsOrderAchievements}, TargetNullValue={StaticResource HeroChipsOrderAchievements}}">
                                                                 <Grid.Style>
@@ -6040,19 +5652,6 @@
                                                                         </Grid>
                                                                     </ToggleButton>
                                                                 </Grid>
-                                                            </Grid>
-                                                            <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">
-                                                                <Grid.Style>
-                                                                    <Style TargetType="Grid">
-                                                                        <Setter Property="Visibility" Value="Collapsed" />
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="5">
-                                                                                <Setter Property="Visibility" Value="Visible" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Grid.Style>
-                                                                <Grid Height="0" Width="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroInfoLineMaxWidth], FallbackValue={StaticResource HeroInfoLineMaxWidth}, TargetNullValue={StaticResource HeroInfoLineMaxWidth}}" Style="{DynamicResource SectionToggleGrid}" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsBreakBeforeActivity], FallbackValue={StaticResource HeroChipsBreakBeforeActivity}, TargetNullValue={StaticResource HeroChipsBreakBeforeActivity}}" />
                                                             </Grid>
                                                             <!-- optional line break before this chip -->
                                                             <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOrderActivity], FallbackValue={StaticResource HeroChipsOrderActivity}, TargetNullValue={StaticResource HeroChipsOrderActivity}}">

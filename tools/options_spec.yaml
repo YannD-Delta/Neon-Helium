@@ -55,7 +55,6 @@ strings:
   LOCHNDQuickDemoteThis: {en: 'Fold this section at the bottom when its information is shown above', fr: 'Replier cette section en bas quand son info est affichée en haut'}
   LOCHNDQuickChipsTitle: {en: 'Chips on the artwork', fr: 'Puces sur l''image'}
   LOCHNDQuickChipsShown: {en: 'Chips shown', fr: 'Puces affichées'}
-  LOCHNDQuickChipsBreaks: {en: 'New line before', fr: 'Retour à la ligne avant'}
   LOCHNDQuickChipsOrder: {en: 'Group order (0 = first)', fr: 'Ordre des groupes (0 = en premier)'}
   LOCHNDQuickPluginSettings: {en: 'Extension settings', fr: 'Paramètres de l''extension'}
   LOCHNDQuickThemeSettings: {en: 'All theme settings', fr: 'Tous les réglages du thème'}
@@ -498,11 +497,6 @@ variables:
   - {key: HeroShowRecentActivity, en: Recent activity (GameActivity), fr: Activité récente (GameActivity)}
   - {key: HeroShowAvgFps, en: Average FPS (GameActivity), fr: FPS moyen (GameActivity)}
   - {key: HeroChipsOpenSections, en: Clicking a chip opens or folds its section, fr: Un clic sur une puce ouvre ou replie sa section}
-  - {key: HeroChipsBreakBeforeGenres, en: 'New line before genres, categories, features and tags', fr: 'Retour à la ligne avant les genres, catégories, fonctionnalités et étiquettes'}
-  - {key: HeroChipsBreakBeforeStudio, en: 'New line before developers, completion status and score', fr: 'Retour à la ligne avant les développeurs, le statut et la note'}
-  - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
-  - {key: HeroChipsBreakBeforeAchievements, en: New line before achievements, fr: Retour à la ligne avant les succès}
-  - {key: HeroChipsBreakBeforeActivity, en: New line before GameActivity, fr: Retour à la ligne avant GameActivity}
   - {key: HeroChipBreakReleaseDate, en: 'New line before: Release date', fr: 'Retour à la ligne avant : Date de sortie'}
   - {key: HeroChipBreakPlatforms, en: 'New line before: Platforms', fr: 'Retour à la ligne avant : Plateformes'}
   - {key: HeroChipBreakSource, en: 'New line before: Source', fr: 'Retour à la ligne avant : Source'}

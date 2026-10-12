@@ -1078,31 +1078,6 @@ Variables:
         Title: '  ↳ Times, achievements, activity, genres and tags.'
         LocKey: LOCHNDCaptionHeroChipsOpenSections2
         Type: Header
-    HeroChipsBreakBeforeGenres:
-        Title: 'New line before genres, categories, features and tags'
-        LocKey: LOCHNDOptHeroChipsBreakBeforeGenres
-        Type: Boolean
-        Default: 'False'
-    HeroChipsBreakBeforeStudio:
-        Title: 'New line before developers, completion status and score'
-        LocKey: LOCHNDOptHeroChipsBreakBeforeStudio
-        Type: Boolean
-        Default: 'False'
-    HeroChipsBreakBeforeHltb:
-        Title: 'New line before HowLongToBeat'
-        LocKey: LOCHNDOptHeroChipsBreakBeforeHltb
-        Type: Boolean
-        Default: 'False'
-    HeroChipsBreakBeforeAchievements:
-        Title: 'New line before achievements'
-        LocKey: LOCHNDOptHeroChipsBreakBeforeAchievements
-        Type: Boolean
-        Default: 'False'
-    HeroChipsBreakBeforeActivity:
-        Title: 'New line before GameActivity'
-        LocKey: LOCHNDOptHeroChipsBreakBeforeActivity
-        Type: Boolean
-        Default: 'True'
     HeroChipBreakReleaseDate:
         Title: 'New line before: Release date'
         LocKey: LOCHNDOptHeroChipBreakReleaseDate
@@ -1187,7 +1162,7 @@ Variables:
         Title: 'New line before: Last session'
         LocKey: LOCHNDOptHeroChipBreakLastSession
         Type: Boolean
-        Default: 'False'
+        Default: 'True'
     HeroChipBreakRecentActivity:
         Title: 'New line before: Recent activity'
         LocKey: LOCHNDOptHeroChipBreakRecentActivity
