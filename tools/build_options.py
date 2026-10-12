@@ -825,8 +825,9 @@ def main() -> int:
             outputs[name] = top_panel_file(source, spec, constants, name)
         outputs["Views/DetailsViewGameOverview.xaml"] = details_panel_file(source, spec, constants)
         common = (source / "Common.xaml").read_text(encoding="utf-8-sig")
-        outputs["Common.xaml"] = replace_block(common, "Common.xaml", ROWS_BEGIN, ROWS_END,
-                                               chips_line.shared_resources(spec["panel"]["chips"], loc_key))
+        outputs["Common.xaml"] = replace_block(with_namespaces(common), "Common.xaml", ROWS_BEGIN, ROWS_END,
+                                               chips_line.shared_resources(spec["panel"]["chips"], loc_key) + "\n"
+                                               + settings_panel.Panel(spec, constants, loc_key, "HndPage").page_templates())
         for language, extra in settings_panel.panel_labels(spec, loc_key).items():
             labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.

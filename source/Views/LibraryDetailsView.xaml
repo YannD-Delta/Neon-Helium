@@ -225,7 +225,7 @@
                 </Style.Triggers>
             </Style>
         </DataTemplate.Resources>
-        <GridEx Name="HltbDataGrid" ColumnCount="2" AutoLayoutColumns="2" RowCount="6" Tag="{DynamicResource DetailsViewShowHltbDataGrid}">
+        <GridEx Name="HltbDataGrid" ColumnCount="2" AutoLayoutColumns="2" RowCount="6" Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewShowHltbDataGrid], FallbackValue={StaticResource DetailsViewShowHltbDataGrid}, TargetNullValue={StaticResource DetailsViewShowHltbDataGrid}}">
             <Label Content="{DynamicResource LOCHowLongToBeatMainStory}"
                     Style="{DynamicResource HltbGridLabelStyle}"
                     Visibility="{Binding ElementName=MainStoryFormat, Path=Visibility}" />

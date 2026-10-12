@@ -58,7 +58,8 @@ class Panel:
             return (f'<DockPanel Style="{{DynamicResource HndPanelRow}}">{info}\n'
                     f'    <CheckBox Style="{{DynamicResource HndPanelSwitch}}" Content="{label}" IsChecked="{twoway(key)}" />\n'
                     f'</DockPanel>')
-        if kind == "Double" and self.ranges[key]:
+        if kind in ("Double", "Int32") and self.ranges[key]:
+            # an Int32 setting gets the slider's Double: Theme Options keeps the declared type when it saves
             low, high = self.ranges[key]
             slider = self.name("Slider", key)
             step = 1 if high - low <= 12 else 10
@@ -70,7 +71,20 @@ class Panel:
                     f'    <Slider x:Name="{slider}" Minimum="{low}" Maximum="{high}" SmallChange="1" LargeChange="{step}" TickFrequency="1"\n'
                     f'            IsSnapToTickEnabled="True"{ticks} VerticalAlignment="Center" Value="{twoway(key, True)}" />\n'
                     f'</DockPanel>')
-        raise ValueError(f"panel item {key}: only Booleans and Doubles with a range are supported ({kind})")
+        if kind == "Visibility":
+            # two radio buttons: ObjectEqualityToBoolConverter writes its parameter back when one is checked
+            def choice(value, text):
+                return (f'<RadioButton Style="{{DynamicResource HndPanelSegment}}" GroupName="Hnd{key}" Content="{{DynamicResource {text}}}"\n'
+                        f'             IsChecked="{{PluginSettings Plugin=ThemeOptions, Path=Options[{key}], Mode=TwoWay, '
+                        f'Converter={{StaticResource ObjectEqualityToBoolConverter}}, ConverterParameter={{x:Static Visibility.{value}}}, '
+                        f'FallbackValue=False}}" />')
+            return (f'<DockPanel Style="{{DynamicResource HndPanelRow}}">{info}\n'
+                    f'    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">\n'
+                    f'{indent(choice("Visible", "LOCHNDPanelShow"), 8)}\n{indent(choice("Collapsed", "LOCHNDPanelHide"), 8)}\n'
+                    f'    </StackPanel>\n'
+                    f'    <TextBlock Style="{{DynamicResource HndPanelLabel}}" VerticalAlignment="Center" Text="{label}" />\n'
+                    f'</DockPanel>')
+        raise ValueError(f"panel item {key}: only Booleans, Visibility, and Doubles or Int32 with a range, are supported ({kind})")
 
     def card(self, title_key, items, extra=""):
         body = "\n".join(self.control(k) for k in items)
@@ -86,13 +100,16 @@ class Panel:
 
     # ------------------------------------------------------------------ pages
     def chips_page(self, page):
-        # live preview in the chip order, then one row per chip in that order: arrows on the left move it
-        # (and the real line), the switch shows it, the toggle on the right starts a new line before it
+        # live preview in the chip order (each host defines HndChipsPreview: the real chips of the selected game
+        # in the Details view, name pills in the top panel), then one row per chip in that order: arrows on the
+        # left move it (and the real line), the switch shows it, the toggle on the right starts a new line before it
         preview = (f'<Border Style="{{DynamicResource HndPanelPreview}}">\n    <StackPanel>\n'
                    f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource LOCHNDPanelPreview}}" />\n'
-                   f'{indent(chips_line.panel_preview(self.prefix), 8)}\n'
+                   f'        <ContentControl Focusable="False" Content="{{Binding}}" ContentTemplate="{{DynamicResource HndChipsPreview}}" />\n'
                    f'    </StackPanel>\n</Border>')
         rows = (f'<Border Style="{{DynamicResource HndPanelCard}}">\n    <StackPanel>\n'
+                f'        <StackPanel.Resources>\n{indent(chips_line.rows_resources(self.prefix, self.panel["chips"]), 12)}\n'
+                f'        </StackPanel.Resources>\n'
                 f'        <TextBlock Style="{{DynamicResource HndPanelCardTitle}}" Text="{{DynamicResource LOCHNDPanelChipOrder}}" />\n'
                 f'        <TextBlock Style="{{DynamicResource HndPanelText}}" Text="{{DynamicResource LOCHNDPanelChipOrderText}}" />\n'
                 f'{indent(chips_line.rows_list(self.prefix), 8)}\n'
@@ -125,15 +142,31 @@ class Panel:
             else:
                 body = "\n".join(self.card(self.loc_key("PanelCard", page["id"], str(i)), g["items"])
                                  for i, g in enumerate(page["groups"]))
+            if page.get("desc"):
+                body = (f'<TextBlock Style="{{DynamicResource HndPanelPageDesc}}" Text="{{DynamicResource {self.loc_key("PanelPageDesc", page["id"])}}}" />\n'
+                        + body)
             result.append((page["id"], self.loc_key("PanelPage", page["id"]), glyph(page["glyph"]), body))
         for section in self.panel["sections"]:
             result.append(("Section" + section["id"], self.loc_key("PanelSection", section["id"]), None,
                            self.section_page(section)))
         return result
 
+    def page_templates(self):
+        """Common.xaml: one DataTemplate per page (HndPage<Id>), built only when a host shows that page."""
+        templates = []
+        for pid, title, _, body in self.pages():
+            templates.append(f'<DataTemplate x:Key="HndPage{pid}">\n    <StackPanel>\n'
+                             f'        <TextBlock Style="{{DynamicResource HndPanelPageTitle}}" Text="{{DynamicResource {title}}}" />\n'
+                             f'{indent(body, 8)}\n    </StackPanel>\n</DataTemplate>')
+        return "\n".join(templates)
+
+    def page_ids(self):
+        return ([(p["id"], self.loc_key("PanelPage", p["id"]), glyph(p["glyph"])) for p in self.panel["pages"]]
+                + [("Section" + s["id"], self.loc_key("PanelSection", s["id"]), None) for s in self.panel["sections"]])
+
     # ------------------------------------------------------------------ frame
     def frame(self, host, close_binding, first_checked):
-        pages = self.pages()
+        pages = [(pid, title, icon, None) for pid, title, icon in self.page_ids()]
         group = self.prefix + "Pages"
         nav, content = [], []
         for index, (pid, title, icon, body) in enumerate(pages):
@@ -144,11 +177,8 @@ class Panel:
             tag = f' Tag="{icon}"' if icon else ""
             nav.append(f'<RadioButton x:Name="{radio}" GroupName="{group}" Style="{{DynamicResource HndPanelNavButton}}"{checked}{tag}\n'
                        f'             Content="{{DynamicResource {title}}}" />')
-            # the page is built only while its radio button is checked (ContentTemplate set by the trigger):
-            # a closed panel costs its page list, not twenty pages of controls
-            page = (f'<StackPanel>\n'
-                    f'    <TextBlock Style="{{DynamicResource HndPanelPageTitle}}" Text="{{DynamicResource {title}}}" />\n'
-                    f'{indent(body, 4)}\n</StackPanel>')
+            # the page is built only while its radio button is checked: the trigger sets the page template,
+            # kept once in Common.xaml, so a closed panel costs its page list only
             content.append(f'<ContentControl Focusable="False" Content="{{Binding}}">\n'
                            f'    <ContentControl.Style>\n'
                            f'        <Style TargetType="ContentControl">\n'
@@ -156,13 +186,7 @@ class Panel:
                            f'            <Style.Triggers>\n'
                            f'                <DataTrigger Binding="{{Binding IsChecked, ElementName={radio}}}" Value="True">\n'
                            f'                    <Setter Property="Visibility" Value="Visible" />\n'
-                           f'                    <Setter Property="ContentTemplate">\n'
-                           f'                        <Setter.Value>\n'
-                           f'                            <DataTemplate>\n'
-                           f'{indent(page, 32)}\n'
-                           f'                            </DataTemplate>\n'
-                           f'                        </Setter.Value>\n'
-                           f'                    </Setter>\n'
+                           f'                    <Setter Property="ContentTemplate" Value="{{DynamicResource HndPage{pid}}}" />\n'
                            f'                </DataTrigger>\n'
                            f'            </Style.Triggers>\n'
                            f'        </Style>\n'
@@ -171,7 +195,7 @@ class Panel:
         none_radio = ""
         if host == "details":
             none_radio = (f'\n<RadioButton x:Name="{self.name("PageNone")}" GroupName="{group}" Visibility="Collapsed" IsChecked="True" />')
-        resources = chips_line.panel_resources(self.prefix, self.panel["chips"], self.loc_key, host == "details")
+        resources = chips_line.preview_template(self.prefix, self.panel["chips"], self.loc_key, host == "details")
         return f'''<Grid Width="{opt('SettingsPanelWidth')}" Height="{opt('SettingsPanelHeight')}">
 <Grid.Resources>
 {indent(resources, 4)}
@@ -235,6 +259,8 @@ def panel_labels(spec, loc_key):
         labels["fr"][key] = entry["fr"]
     for page in panel["pages"]:
         add(loc_key("PanelPage", page["id"]), page)
+        if page.get("desc"):
+            add(loc_key("PanelPageDesc", page["id"]), page["desc"])
         for i, group in enumerate(page.get("groups", [])):
             add(loc_key("PanelCard", page["id"], str(i)), group)
     for section in panel["sections"]:

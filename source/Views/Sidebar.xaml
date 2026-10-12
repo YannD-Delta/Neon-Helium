@@ -15,7 +15,7 @@
                             x:Name="BorderContentHolder" Margin="{TemplateBinding Padding}">
                         <DockPanel x:Name="DockContentHolder">                            
                             <Border x:Name="PART_ElemMainMenu" Background="Transparent"
-                                    Width="{DynamicResource SidebarItemSize}" Height="{DynamicResource SidebarItemSize}" Margin="0,0,0,5"
+                                    Width="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarItemSize], FallbackValue={StaticResource SidebarItemSize}, TargetNullValue={StaticResource SidebarItemSize}}" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarItemSize], FallbackValue={StaticResource SidebarItemSize}, TargetNullValue={StaticResource SidebarItemSize}}" Margin="0,0,0,5"
                                     DockPanel.Dock="Top" Padding="5" Cursor="Hand"
                                     WindowChrome.IsHitTestVisibleInChrome="True">
                                 <Image Source="{ThemeFile 'Images/applogo.png'}"

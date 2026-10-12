@@ -227,7 +227,14 @@ def panel_resources(prefix, chips, labels, real_chips):
     for index, chip in enumerate(chips):
         entries.append((f"{prefix}PreviewBreak{chip['id']}Item", f"{index:02}a", f"{prefix}PreviewBreak{chip['id']}", chip))
         entries.append((f"{prefix}PreviewChip{chip['id']}Item", f"{index:02}b", template(chip), chip))
-    return rows_resources(prefix, chips) + "\n" + breaks + "\n" + pills + sorted_view(f"{prefix}Preview", entries)
+    return breaks + "\n" + pills + sorted_view(f"{prefix}Preview", entries)
+
+
+def preview_template(prefix, chips, labels, real_chips):
+    """Host resource HndChipsPreview, shown by the chips page of Common.xaml."""
+    return (f'<DataTemplate x:Key="HndChipsPreview">\n    <Grid>\n        <Grid.Resources>\n'
+            f'{indent(panel_resources(prefix, chips, labels, real_chips), 12)}\n        </Grid.Resources>\n'
+            f'{indent(panel_preview(prefix), 8)}\n    </Grid>\n</DataTemplate>')
 
 
 def rows_list(prefix):
