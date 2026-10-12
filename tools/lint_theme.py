@@ -8,6 +8,10 @@ of mistakes that already happened or are easy to make:
   * XAML files that are not well-formed XML
   * `x:Shared`, which is rejected outside compiled dictionaries
   * Playnite binding markup extensions used as a Setter value (WPF rejects them)
+  * StaticResource nested in another markup extension outside a template, for a
+    key the same file does not define first: Playnite parses every theme file
+    alone against the default theme before merging anything, so the key of
+    the theme's Constants.xaml is not found and the whole theme is rejected
   * ThemeModifier entries that point to a missing or unsupported resource
   * ThemeModifier entries whose resource is never read (dead options) or is
     only read through StaticResource (the override would not apply)
@@ -70,6 +74,46 @@ def parse_modifier(path: Path):
         if match:
             entries.append((number, match.group(1), match.group(2), match.group(3).strip()))
     return entries, headers
+
+
+FRAMEWORK_TEMPLATES = {"ControlTemplate", "DataTemplate", "HierarchicalDataTemplate", "ItemsPanelTemplate"}
+NESTED_STATIC = re.compile(r"\{\s*StaticResource\s+(?:ResourceKey=)?([A-Za-z0-9_.]+)\s*\}")
+
+
+def read_default_keys() -> set:
+    path = Path(__file__).with_name("playnite_default_keys.txt")
+    if not path.exists():
+        return set()
+    return {line.strip() for line in read_text(path).splitlines() if line.strip() and not line.startswith("#")}
+
+
+def nested_static_outside_templates(root: ET.Element, default_keys: set):
+    """Yield (key, element name) for each StaticResource used as an argument of another markup extension
+    (FallbackValue={StaticResource X} in a PluginSettings binding, ...) outside a template, when the key is
+    not defined earlier in the same file nor by Playnite's default theme.
+
+    Playnite's ThemeManager first parses every theme file on its own, with only the default theme in the
+    application resources. Template content is deferred and a StaticResource set directly on a property can
+    be resolved later, but an argument of another markup extension is resolved right away and throws."""
+    defined = set()
+
+    def walk(element, deferred):
+        name = local_name(element.tag)
+        deferred = deferred or name in FRAMEWORK_TEMPLATES
+        if not deferred:
+            for value in element.attrib.values():
+                value = value.strip()
+                if not value.startswith("{") or re.fullmatch(r"\{\s*StaticResource\s+[^{}]+\}", value):
+                    continue
+                for key in NESTED_STATIC.findall(value):
+                    if key not in defined and key not in default_keys:
+                        yield key, name
+        for child in element:
+            yield from walk(child, deferred)
+        if element.get(KEY):
+            defined.add(element.get(KEY))
+
+    yield from walk(root, False)
 
 
 def collect_definitions(files):
@@ -170,13 +214,19 @@ def main() -> int:
     source = Path(args.source)
     files = sorted(source.rglob("*.xaml"))
     errors, warnings = [], []
+    default_keys = read_default_keys()
 
     for path in files:
         text = read_text(path)
         try:
-            ET.fromstring(text)
+            root = ET.fromstring(text)
         except ET.ParseError as exc:
             errors.append(f"{path}: not well-formed XML ({exc})")
+        else:
+            for key, element in sorted(set(nested_static_outside_templates(root, default_keys))):
+                errors.append(f"{path}: {element} reads {{StaticResource {key}}} inside another markup extension "
+                              "outside a template, Playnite cannot resolve it when it validates the file alone "
+                              "(write the default value instead)")
         if re.search(r"\bx:Shared\s*=", text):
             errors.append(f"{path}: x:Shared is rejected by Playnite's loose XAML loader")
         # Playnite's binding markup extensions return themselves for a Setter value, and WPF only accepts

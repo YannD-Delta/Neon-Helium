@@ -1,5 +1,11 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.5.1
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5.1/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5_1.pthm
+    Changelog:
+      - "Fix: the theme failed to load since 2.4 (missing resource DetailsViewUseMetadataUtilities in PropertyItemButton.xaml); the auto-hide, Metadata Utilities and chip section triggers no longer read theme constants at validation time"
   - Version: 2.5
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-12

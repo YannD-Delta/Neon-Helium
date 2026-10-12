@@ -58,7 +58,7 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], FallbackValue={StaticResource SidebarAutoHide}, TargetNullValue={StaticResource SidebarAutoHide}}" Value="True" />
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], FallbackValue=False, TargetNullValue=False}" Value="True" />
                     <Condition Binding="{Settings SidebarPosition}" Value="Left" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="False" />
@@ -78,7 +78,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], FallbackValue={StaticResource SidebarAutoHide}, TargetNullValue={StaticResource SidebarAutoHide}}" Value="True" />
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[SidebarAutoHide], FallbackValue=False, TargetNullValue=False}" Value="True" />
                     <Condition Binding="{Settings SidebarPosition}" Value="Right" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="False" />

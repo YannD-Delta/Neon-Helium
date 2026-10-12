@@ -1646,7 +1646,7 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelAutoHide], FallbackValue={StaticResource TopPanelAutoHide}, TargetNullValue={StaticResource TopPanelAutoHide}}" Value="True" />
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[TopPanelAutoHide], FallbackValue=False, TargetNullValue=False}" Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="False" />
                 </MultiDataTrigger.Conditions>

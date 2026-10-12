@@ -229,7 +229,7 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" Value="True" />
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue=False, TargetNullValue=False}" Value="True" />
                     <Condition Binding="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be, Status=Installed}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -241,7 +241,7 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue={StaticResource DetailsViewUseMetadataUtilities}, TargetNullValue={StaticResource DetailsViewUseMetadataUtilities}}" Value="True" />
+                    <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewUseMetadataUtilities], FallbackValue=False, TargetNullValue=False}" Value="True" />
                     <Condition Binding="{PluginStatus Plugin=MetadataUtilities_485ab5f0-bfb1-4c17-93cc-20d8338673be, Status=Installed}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Visibility" Value="Visible" />
@@ -334,7 +334,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOpenSections], FallbackValue={StaticResource HeroChipsOpenSections}, TargetNullValue={StaticResource HeroChipsOpenSections}}" Value="False">
+            <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroChipsOpenSections], FallbackValue=True, TargetNullValue=True}" Value="False">
                 <Setter Property="IsHitTestVisible" Value="False" />
                 <Setter Property="Cursor" Value="Arrow" />
             </DataTrigger>
