@@ -171,12 +171,126 @@ Presets:
                 NeedRestart: True
                 Files:
                     - 'Presets\TopPanel\Dune.xaml'
+    ColorProfile:
+        Name: 'Color profile'
+        LocKey: LOCHNDPresetColorProfile
+        Presets:
+            Default:
+                Name: 'Neon (theme colors)'
+                LocKey: LOCHNDPresetColorProfileDefault
+                Preview: 'Presets\Previews\ColorProfile_Default.png'
+                NeedRestart: True
+            DuneSand:
+                Name: 'Dune sand (amber on warm brown)'
+                LocKey: LOCHNDPresetColorProfileDuneSand
+                Preview: 'Presets\Previews\ColorProfile_DuneSand.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\DuneSand.xaml'
+            HybridRed:
+                Name: 'Hybrid red (red on charcoal)'
+                LocKey: LOCHNDPresetColorProfileHybridRed
+                Preview: 'Presets\Previews\ColorProfile_HybridRed.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\HybridRed.xaml'
+            OledBlack:
+                Name: 'OLED black (true black, ice blue)'
+                LocKey: LOCHNDPresetColorProfileOledBlack
+                Preview: 'Presets\Previews\ColorProfile_OledBlack.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\OledBlack.xaml'
+            Synthwave:
+                Name: 'Synthwave (magenta and cyan on night purple)'
+                LocKey: LOCHNDPresetColorProfileSynthwave
+                Preview: 'Presets\Previews\ColorProfile_Synthwave.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Synthwave.xaml'
+            Nord:
+                Name: 'Nord (frost blue, arctic grey)'
+                LocKey: LOCHNDPresetColorProfileNord
+                Preview: 'Presets\Previews\ColorProfile_Nord.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Nord.xaml'
+            Dracula:
+                Name: 'Dracula (purple and pink)'
+                LocKey: LOCHNDPresetColorProfileDracula
+                Preview: 'Presets\Previews\ColorProfile_Dracula.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Dracula.xaml'
+            Catppuccin:
+                Name: 'Catppuccin Mocha (pastel mauve)'
+                LocKey: LOCHNDPresetColorProfileCatppuccin
+                Preview: 'Presets\Previews\ColorProfile_Catppuccin.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Catppuccin.xaml'
+            TokyoNight:
+                Name: 'Tokyo Night (city blue and violet)'
+                LocKey: LOCHNDPresetColorProfileTokyoNight
+                Preview: 'Presets\Previews\ColorProfile_TokyoNight.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\TokyoNight.xaml'
+            Gruvbox:
+                Name: 'Gruvbox (retro yellow and orange)'
+                LocKey: LOCHNDPresetColorProfileGruvbox
+                Preview: 'Presets\Previews\ColorProfile_Gruvbox.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Gruvbox.xaml'
+            RosePine:
+                Name: 'Rose Pine (iris and rose, soft)'
+                LocKey: LOCHNDPresetColorProfileRosePine
+                Preview: 'Presets\Previews\ColorProfile_RosePine.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\RosePine.xaml'
+            Everforest:
+                Name: 'Everforest (moss green, forest)'
+                LocKey: LOCHNDPresetColorProfileEverforest
+                Preview: 'Presets\Previews\ColorProfile_Everforest.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Everforest.xaml'
+            Solarized:
+                Name: 'Solarized dark (blue and cyan on deep teal)'
+                LocKey: LOCHNDPresetColorProfileSolarized
+                Preview: 'Presets\Previews\ColorProfile_Solarized.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Solarized.xaml'
+            OneDark:
+                Name: 'One Dark (editor blue and violet)'
+                LocKey: LOCHNDPresetColorProfileOneDark
+                Preview: 'Presets\Previews\ColorProfile_OneDark.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\OneDark.xaml'
+            OceanAbyss:
+                Name: 'Ocean abyss (turquoise on deep blue)'
+                LocKey: LOCHNDPresetColorProfileOceanAbyss
+                Preview: 'Presets\Previews\ColorProfile_OceanAbyss.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\OceanAbyss.xaml'
+            Graphite:
+                Name: 'Graphite (neutral greys, no color)'
+                LocKey: LOCHNDPresetColorProfileGraphite
+                Preview: 'Presets\Previews\ColorProfile_Graphite.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Graphite.xaml'
     Accent:
         Name: 'Accent color'
         LocKey: LOCHNDPresetAccent
         Presets:
             Default:
-                Name: 'Neon blue'
+                Name: 'Color of the color profile (Neon blue by default)'
                 LocKey: LOCHNDPresetAccentDefault
                 Preview: 'Presets\Previews\Accent_Default.png'
                 NeedRestart: True

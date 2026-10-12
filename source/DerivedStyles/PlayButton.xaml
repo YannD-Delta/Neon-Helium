@@ -53,21 +53,16 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Gradient colors come from Constants.xaml (PlayButton*Color, ContextButton*Color), so ThemeModifier
+         and the color profiles also change these Grid view buttons. StaticResource: the hover
+         storyboards need frozen colors. -->
     <Style x:Key="PlayButtonBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#4FC82F</Color>
-            <Color x:Key="BackgroundColor2">#2BB943</Color>
-            <Color x:Key="BackgroundColor3">#18B14E</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#6FD51D</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#4AC632</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#38BE3C</Color>
-        </Style.Resources>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.75"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -78,15 +73,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -96,15 +91,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
+                                    To="{StaticResource PlayButtonBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
+                                    To="{StaticResource PlayButtonBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
+                                    To="{StaticResource PlayButtonBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -212,20 +207,12 @@
     </Style>
 
     <Style x:Key="ContextButtonBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#399AEC</Color>
-            <Color x:Key="BackgroundColor2">#2A71D8</Color>
-            <Color x:Key="BackgroundColor3">#235ECF</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#47BDFE</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#3794EA</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#3081E0</Color>
-        </Style.Resources>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
+                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor2}" Offset="0.75"/>
+                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -236,15 +223,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
+                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
+                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
+                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -254,15 +241,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
+                                    To="{StaticResource ContextButtonBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
+                                    To="{StaticResource ContextButtonBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
+                                    To="{StaticResource ContextButtonBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -328,17 +315,11 @@
     </Style>
 
     <Style x:Key="MoreActionsButtonBlueBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#235ECF</Color>
-            <Color x:Key="BackgroundColor2">#235ECF</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#47bfff</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#3a9eee</Color>
-        </Style.Resources>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.60"/>
+                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0"/>
+                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0.60"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -349,11 +330,11 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
+                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
+                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -363,11 +344,11 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
+                                    To="{StaticResource ContextButtonBackgroundColor3}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
+                                    To="{StaticResource ContextButtonBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -377,20 +358,12 @@
     </Style>
 
     <Style x:Key="MoreActionsButtonGreenBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#4FC82F</Color>
-            <Color x:Key="BackgroundColor2">#2BB943</Color>
-            <Color x:Key="BackgroundColor3">#18B14E</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#6BD41F</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#52C92D</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#38BE3C</Color>
-        </Style.Resources>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.50"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.50"/>
+                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -401,15 +374,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
+                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>
@@ -419,15 +392,15 @@
                         <Storyboard>
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
+                                    To="{StaticResource PlayButtonBackgroundColor1}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
+                                    To="{StaticResource PlayButtonBackgroundColor2}"
                                     Duration="0:0:0.2" />
                             <ColorAnimation
                                     Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
+                                    To="{StaticResource PlayButtonBackgroundColor3}"
                                     Duration="0:0:0.2" />
                         </Storyboard>
                     </BeginStoryboard>

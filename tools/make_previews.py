@@ -14,6 +14,9 @@ import argparse
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+import yaml
+
+import color_profiles
 
 W, H = 400, 250
 HERO_TOP, HERO_BOTTOM = 18, 150
@@ -233,6 +236,85 @@ def top_panel(layout):
     return img
 
 
+
+def color_profile(palette):
+    """A small library window drawn with the colors a profile derives."""
+    c = color_profiles.derive(palette)
+    rgb = lambda value: color_profiles.parse(color_profiles.fmt(value))  # noqa: E731
+    def col(key, index=None):
+        value = c[key] if index is None else c[key][index]
+        return tuple(int(round(v)) for v in rgb(value))
+    img = Image.new("RGBA", (W, H), col("WindowBackgroundGradientColor2"))
+    d = ImageDraw.Draw(img, "RGBA")
+    top, bottom = col("WindowBackgroundGradientColor1"), col("WindowBackgroundGradientColor2")
+    for y in range(26, H):
+        t = (y - 26) / (H - 26)
+        d.line([(0, y), (W, y)], fill=tuple(int(top[i] * (1 - t) + bottom[i] * t) for i in range(3)) + (255,))
+    # top panel
+    d.rectangle((0, 0, W, 26), fill=col("TopPanelBackgroundBrush"))
+    d.ellipse((10, 7, 22, 19), fill=col("GlyphColor"))
+    rounded(d, (30, 6, 130, 20), 4, fill=col("TopPanelSearchBoxBackgroundBrush"))
+    for i in range(5):
+        rounded(d, (150 + i * 18, 8, 160 + i * 18, 18), 2, fill=col("TopPanelItemForegroundBrush"))
+    rounded(d, (W - 76, 7, W - 16, 19), 3, fill=col("TopPanelItemForegroundBrush"))
+    # game list
+    d.rectangle((0, 26, 124, H), fill=col("LibraryDetailsViewBackgroundBrush"))
+    for i in range(9):
+        y = 36 + i * 22
+        if i == 2:
+            d.rectangle((0, y - 4, 124, y + 14), fill=col("DetailsViewItemIsSelectedBackgroundBrush"))
+        if i == 4:
+            d.rectangle((0, y - 4, 124, y + 14), fill=col("DetailsViewItemIsMouseOverBackgroundBrush"))
+        key = "LibraryDetailsViewIsRunningForegroundBrush" if i == 6 else (
+            "LibraryDetailsViewNotInstalledForegroundBrush" if i in (5, 8) else "TextColor")
+        d.rectangle((10, y + 2, 10 + 60 + (i * 13) % 40, y + 8), fill=col(key))
+    # header: title, chips, buttons
+    d.text((140, 36), "GAME TITLE", font=font(17, True), fill=col("DetailsViewOverviewHeaderLabelBrush"))
+    x = 140
+    for width in (44, 58, 38, 50):
+        rounded(d, (x, 62, x + width, 76), 7, fill=col("HeroSecondaryButtonBackgroundBrush"),
+                outline=col("HeroSecondaryButtonBorderBrush"))
+        d.rectangle((x + 8, 67, x + width - 8, 71), fill=col("TextColor"))
+        x += width + 6
+    play = Image.new("RGBA", (118, 30))
+    pd = ImageDraw.Draw(play)
+    stops = [col("PlayButtonBackgroundColor1"), col("PlayButtonBackgroundColor2"), col("PlayButtonBackgroundColor3")]
+    for xx in range(118):
+        t = xx / 117
+        a, b, f = (stops[0], stops[1], t / 0.75) if t < 0.75 else (stops[1], stops[2], (t - 0.75) / 0.25)
+        pd.line([(xx, 0), (xx, 30)], fill=tuple(int(a[i] * (1 - f) + b[i] * f) for i in range(3)) + (255,))
+    mask = Image.new("L", (118, 30), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, 117, 29), 6, fill=255)
+    img.paste(play, (140, 88), mask)
+    d.text((176, 95), "PLAY", font=font(11, True), fill=(255, 255, 255, 255))
+    rounded(d, (264, 88, 294, 118), 6, fill=col("ContextButtonBackgroundColor2"))
+    rounded(d, (300, 88, 330, 118), 6, fill=col("HeroSecondaryButtonBackgroundBrush"), outline=col("GlyphColor"), width=2)
+    # section card with progress and ratings
+    rounded(d, (140, 132, W - 14, H - 40), 8, fill=col("ControlBackgroundColor"))
+    d.text((152, 140), "Achievements", font=font(10, True), fill=col("TextColor"))
+    d.text((152, 156), "42 / 60", font=font(9), fill=col("TextColorDarker"))
+    rounded(d, (152, 174, W - 28, 180), 3, fill=col("ProgressBarBackgroundBrush"))
+    rounded(d, (152, 174, 152 + int((W - 180) * 0.7), 180), 3, fill=col("GlyphColor"))
+    for i, key in enumerate(("PositiveRatingBrush", "MixedRatingBrush", "NegativeRatingBrush", "DataChangeNotifColor")):
+        d.ellipse((152 + i * 22, 188, 164 + i * 22, 200), fill=col(key))
+    rounded(d, (260, 186, W - 28, 202), 4, fill=col("MenusPopupsHoverBrush"))
+    d.text((268, 188), "Menu item", font=font(9), fill=col("MenusPopupMouseOverForegroundBrush"))
+    # base palette strip
+    keys = ("bg_deep", "bg", "panel", "control", "text_dim", "text", "accent", "accent2", "play")
+    for i, key in enumerate(keys):
+        x0 = 140 + i * 27
+        rounded(d, (x0, H - 30, x0 + 23, H - 12), 3, fill=color_profiles.parse(palette[key]), outline=(255, 255, 255, 60))
+    return img
+
+
+def color_profile_previews():
+    spec = yaml.safe_load(Path(__file__).with_name("options_spec.yaml").read_text(encoding="utf-8"))
+    section = spec.get("color_profiles") or {}
+    previews = {"ColorProfile_Default": lambda: color_profile(section["default_palette"])} if section else {}
+    for profile in section.get("profiles", []):
+        previews[f"ColorProfile_{profile['id']}"] = (lambda palette: lambda: color_profile(palette))(profile["palette"])
+    return previews
+
 PRESETS = {
     "TopPanel_Default": lambda: top_panel("neon"),
     "TopPanel_Dune": lambda: top_panel("dune"),
@@ -289,11 +371,11 @@ def main():
     args = parser.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    for name, draw in PRESETS.items():
+    for name, draw in {**PRESETS, **color_profile_previews()}.items():
         image = draw().convert("RGB")
         image = image.quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
         image.save(out / f"{name}.png", optimize=True)
-    print(f"{len(PRESETS)} previews written to {out}")
+    print(f"{len(PRESETS) + len(color_profile_previews())} previews written to {out}")
 
 
 if __name__ == "__main__":

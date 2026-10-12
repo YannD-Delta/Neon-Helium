@@ -639,16 +639,22 @@
         <GradientStop Color="#38BE3C" Offset="1"/>
     </LinearGradientBrush>
 
+    <Color x:Key="ContextButtonBackgroundColor1">#399AEC</Color>
+    <Color x:Key="ContextButtonBackgroundColor2">#2A71D8</Color>
+    <Color x:Key="ContextButtonBackgroundColor3">#235ECF</Color>
     <LinearGradientBrush x:Key="ContextButtonBackgroundBrush" StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-        <GradientStop Color="#399AEC" Offset="0"/>
-        <GradientStop Color="#2A71D8" Offset="0.75"/>
-        <GradientStop Color="#235ECF" Offset="1"/>
+        <GradientStop Color="{DynamicResource ContextButtonBackgroundColor1}" Offset="0"/>
+        <GradientStop Color="{DynamicResource ContextButtonBackgroundColor2}" Offset="0.75"/>
+        <GradientStop Color="{DynamicResource ContextButtonBackgroundColor3}" Offset="1"/>
     </LinearGradientBrush>
 
+    <Color x:Key="ContextButtonIsMouseOverBackgroundColor1">#47BDFE</Color>
+    <Color x:Key="ContextButtonIsMouseOverBackgroundColor2">#3794EA</Color>
+    <Color x:Key="ContextButtonIsMouseOverBackgroundColor3">#3081E0</Color>
     <LinearGradientBrush x:Key="ContextButtonIsMouseOverBackgroundBrush" StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-        <GradientStop Color="#47BDFE" Offset="0"/>
-        <GradientStop Color="#3794EA" Offset="0.75"/>
-        <GradientStop Color="#3081E0" Offset="1"/>
+        <GradientStop Color="{DynamicResource ContextButtonIsMouseOverBackgroundColor1}" Offset="0"/>
+        <GradientStop Color="{DynamicResource ContextButtonIsMouseOverBackgroundColor2}" Offset="0.75"/>
+        <GradientStop Color="{DynamicResource ContextButtonIsMouseOverBackgroundColor3}" Offset="1"/>
     </LinearGradientBrush>
 
     <SolidColorBrush x:Key="MoreButtonNotInstalledBackgroundBrush" Color="#235ECF" />

@@ -7,6 +7,7 @@ Outputs (all inside the theme folder):
   Localization/fr_FR.xaml   French labels for ThemeOptions and the views
   thememodifier.yaml        ThemeModifier color pickers
   Presets/**/*.xaml         preset resource files (button, chip, animation and artwork looks)
+  Presets/Colors/*.xaml     color profiles (color_profiles section, see tools/color_profiles.py)
   DerivedStyles/PlayButton.xaml  the default hero styles, between the generated markers
   Views/TopPanel.xaml       the theme workshop popup, between the generated markers (also in the
                             Dune top panel preset, Presets/TopPanel/Dune.xaml)
@@ -26,6 +27,8 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 import yaml
+
+import color_profiles
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
 SYS_NS = "clr-namespace:System;assembly=mscorlib"
@@ -598,6 +601,37 @@ def preset_files():
     return files
 
 
+
+def add_color_profile_group(spec):
+    """Turn the color_profiles section into a preset group placed before insert_before."""
+    section = spec.get("color_profiles")
+    if not section:
+        return
+    group = {"group": "ColorProfile", "en": section["group"]["en"], "fr": section["group"]["fr"], "restart": True,
+             "options": [{"id": "Default", "en": section["default"]["en"], "fr": section["default"]["fr"]}]}
+    for profile in section["profiles"]:
+        group["options"].append({"id": profile["id"], "en": profile["en"], "fr": profile["fr"],
+                                 "files": [f"Presets/Colors/{profile['id']}.xaml"]})
+    names = [g["group"] for g in spec["presets"]]
+    where = names.index(section["insert_before"]) if section.get("insert_before") in names else len(names)
+    spec["presets"].insert(where, group)
+
+
+def color_profile_files(spec, source: Path):
+    section = spec.get("color_profiles")
+    if not section:
+        return {}
+    constants_text = (source / "Constants.xaml").read_text(encoding="utf-8-sig")
+    expected = set(color_profiles.literal_color_keys(constants_text))
+    files = {}
+    for profile in section["profiles"]:
+        derived = set(color_profiles.derive(profile["palette"]))
+        if derived != expected:
+            raise SpecError(f"color profile {profile['id']}: Constants.xaml colors not covered: "
+                            f"{sorted(expected - derived)}; unknown: {sorted(derived - expected)} (tools/color_profiles.py)")
+        files[f"Presets/Colors/{profile['id']}.xaml"] = color_profiles.profile_file(profile, constants_text, GENERATED)
+    return files
+
 # ---------------------------------------------------------------------------
 # Theme workshop: a popup in the top panel, generated from the "workshop" section of the
 # spec into Views/TopPanel.xaml. Every control is bound TwoWay to Theme Options
@@ -726,7 +760,9 @@ def main() -> int:
     try:
         spec = yaml.safe_load(Path(args.spec).read_text(encoding="utf-8"))
         constants = read_constants(source)
-        outputs = {"DerivedStyles/PlayButton.xaml": play_button_file(source), **preset_files()}
+        add_color_profile_group(spec)
+        outputs = {"DerivedStyles/PlayButton.xaml": play_button_file(source), **preset_files(),
+                   **color_profile_files(spec, source)}
         if not args.check:
             # preset files must exist before the preset file check in build_options runs
             for name, content in outputs.items():
