@@ -217,6 +217,7 @@
     <sys:Boolean x:Key="DetailsViewExpandFeatures">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewExpandTags">True</sys:Boolean>
     <sys:Boolean x:Key="DetailsViewShowUserRating">False</sys:Boolean>
+    <sys:String x:Key="LOCHNDThemeSettingsTooltip">Theme settings (Theme Options)</sys:String>
     <sys:String x:Key="LOCHNDChipAchievements">Achievements</sys:String>
     <sys:String x:Key="LOCHNDChipScore">Score</sys:String>
     <sys:String x:Key="LOCHNDChipHltbMain">Main</sys:String>
@@ -233,31 +234,10 @@
     <sys:String x:Key="LOCHNDTabMedia">Media</sys:String>
     <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
     <sys:String x:Key="LOCHNDTabCommunity">Community</sys:String>
-    <sys:String x:Key="LOCHNDQuickTab">Tab (0 = every tab)</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipBreaks">New line before a chip</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
     <sys:String x:Key="LOCHNDSectionScreenshotUtilities">Screenshots</sys:String>
-    <sys:String x:Key="LOCHNDQuickTooltip">Quick settings</sys:String>
-    <sys:String x:Key="LOCHNDWorkshopTooltip">Theme workshop</sys:String>
-    <sys:String x:Key="LOCHNDWorkshopTitle">Theme workshop</sys:String>
-    <sys:String x:Key="LOCHNDWorkshopIntro">Changes apply while you drag or click, and are kept by Theme Options. Styles (global style, buttons, chips, accent color) are drop-down lists in the Theme Options settings.</sys:String>
-    <sys:String x:Key="LOCHNDWorkshopColors">Colors</sys:String>
-    <sys:String x:Key="LOCHNDQuickShowIn">Show in</sys:String>
-    <sys:String x:Key="LOCHNDQuickSectionGroup">Section</sys:String>
-    <sys:String x:Key="LOCHNDQuickThisSection">This section</sys:String>
-    <sys:String x:Key="LOCHNDQuickChips">Chips on the artwork</sys:String>
-    <sys:String x:Key="LOCHNDQuickCover">On the cover</sys:String>
-    <sys:String x:Key="LOCHNDQuickHeaderBar">Header bar</sys:String>
-    <sys:String x:Key="LOCHNDQuickOpen">Open by default</sys:String>
-    <sys:String x:Key="LOCHNDQuickDemoteThis">Fold this section at the bottom when its information is shown above</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipsTitle">Chips on the artwork</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipsShown">Chips shown</sys:String>
-    <sys:String x:Key="LOCHNDQuickChipsOrder">Group order (0 = first)</sys:String>
-    <sys:String x:Key="LOCHNDQuickPluginSettings">Extension settings</sys:String>
-    <sys:String x:Key="LOCHNDQuickThemeSettings">All theme settings</sys:String>
-    <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Install the Theme Options extension to change these settings here.</sys:String>
     <sys:Double x:Key="CheckDlcListHeight">700</sys:Double>
     <sys:Double x:Key="GameInfoNarrowValueMaxWidth">180</sys:Double>
     <sys:Double x:Key="GameInfoWideValueMaxWidth">200</sys:Double>
@@ -289,11 +269,6 @@
     <sys:Boolean x:Key="HeroChipsOpenSections">True</sys:Boolean>
     <sys:Boolean x:Key="TopPanelAutoHide">False</sys:Boolean>
     <sys:Boolean x:Key="SidebarAutoHide">False</sys:Boolean>
-    <sys:Double x:Key="SettingsPanelWidth">900</sys:Double>
-    <sys:Double x:Key="SettingsPanelHeight">680</sys:Double>
-    <sys:Double x:Key="SettingsPanelProfileOpacity">1</sys:Double>
-    <SolidColorBrush x:Key="SettingsPanelOverlayBrush" Color="Transparent" />
-    <CornerRadius x:Key="SettingsPanelCornerRadius">12</CornerRadius>
     <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>

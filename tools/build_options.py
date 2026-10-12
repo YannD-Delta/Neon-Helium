@@ -9,8 +9,6 @@ Outputs (all inside the theme folder):
   Presets/**/*.xaml         preset resource files (button, chip, animation and artwork looks)
   Presets/Colors/*.xaml     color profiles (color_profiles section, see tools/color_profiles.py)
   DerivedStyles/PlayButton.xaml  the default hero styles, between the generated markers
-  Views/TopPanel.xaml       the theme workshop popup, between the generated markers (also in the
-                            Dune top panel preset, Presets/TopPanel/Dune.xaml)
 
 Types and defaults come from Constants.xaml. The script stops on any inconsistency.
 
@@ -29,7 +27,6 @@ from xml.sax.saxutils import escape
 import yaml
 
 import color_profiles
-import settings_panel
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
 SYS_NS = "clr-namespace:System;assembly=mscorlib"
@@ -105,21 +102,6 @@ def split_sentences(text):
     return [part.strip() for part in re.split(r"(?<=[.!?])\s+", text.strip()) if part.strip()]
 
 
-def panel_keys(spec):
-    """Variables the settings panel shows: Theme Options lists them last, without caption rows."""
-    panel = spec.get("panel") or {}
-    keys = set()
-    for page in panel.get("pages", []):
-        for group in page.get("groups", []):
-            keys.update(group["items"])
-    for chip in panel.get("chips", []):
-        keys.update([chip["show"], chip["break"]])
-    keys.update(g["order"] for g in panel.get("chip_groups", []))
-    for section in panel.get("sections", []):
-        keys.update(section["show_in"] + section["section"])
-    return keys
-
-
 def caption_rows(key, tip, labels, english):
     """One Theme Options Header row per sentence of the tip: the Desktop settings view shows
     Header titles but no descriptions, and its text does not wrap."""
@@ -193,7 +175,6 @@ def build_options(spec, constants, source: Path):
 
     lines += ["", "Variables:"]
     seen = set()
-    panel_shown = panel_keys(spec)
 
     def header_rows(entry, name):
         key = loc_key("Header", entry["header"])
@@ -220,7 +201,7 @@ def build_options(spec, constants, source: Path):
                 f"        Type: {kind}", f"        Default: {q(default)}"]
         tip = (spec.get("tips") or {}).get(key)
         if tip:
-            # Theme Options keeps Description in its model but never displays it; the panel
+            # Theme Options keeps Description in its model but never displays it; the views
             # shows the tooltip, and caption rows (below) show the text in Theme Options.
             rows.append(f"        Description: {q(tip['en'])}")
             labels[loc_key("Tip", key)] = tip["fr"]
@@ -242,27 +223,17 @@ def build_options(spec, constants, source: Path):
             rows += caption_rows(key, tip, labels, english)
         return rows
 
-    # The desktop Theme Options view cannot hide a variable (Variable.Style is only read in Fullscreen),
-    # and dropping the panel settings from this file would lose them: saving the Theme Options dialog
-    # keeps only declared variables. So the settings only Theme Options has come first, and the panel
-    # ones last, under the PanelNote header, grouped as in the spec but without caption rows.
-    note = next((e for e in spec["variables"] if e.get("header") == "PanelNote"), None)
-    if note is None:
-        raise SpecError("the variables need a PanelNote header (title of the panel settings at the end)")
-    for in_panel in (False, True):
-        if in_panel:
-            lines += header_rows(note, "HeaderPanelNote")
-        pending = None
-        for entry in spec["variables"]:
-            if "header" in entry:
-                pending = None if entry is note else entry
-                continue
-            if (entry.get("key") in panel_shown) != in_panel:
-                continue
-            if pending:
-                lines += header_rows(pending, "Header" + pending["header"] + ("Panel" if in_panel else ""))
-                pending = None
-            lines += variable_rows(entry, not in_panel)
+    # every setting is listed with its group header and caption rows; a header with no setting under it
+    # is left out
+    pending = None
+    for entry in spec["variables"]:
+        if "header" in entry:
+            pending = entry
+            continue
+        if pending:
+            lines += header_rows(pending, "Header" + pending["header"])
+            pending = None
+        lines += variable_rows(entry, True)
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))
@@ -673,75 +644,7 @@ def color_profile_files(spec, source: Path):
     return files
 
 # ---------------------------------------------------------------------------
-# Theme workshop: a popup in the top panel, generated from the "workshop" section of the
-# spec into Views/TopPanel.xaml. Every control is bound TwoWay to Theme Options
-# Options[...], so the theme behind the popup changes while you click or drag.
-# ---------------------------------------------------------------------------
-
-WS_BEGIN = "<!-- BEGIN generated workshop: edit tools/options_spec.yaml (workshop), then run tools/build_options.py -->"
-WS_END = "<!-- END generated workshop -->"
-THEME_OPTIONS_ADDON = "ThemeOptions_904cbf3b-573f-48f8-9642-0a09d05c64ef"
-THEME_OPTIONS_GUID = "904cbf3b-573f-48f8-9642-0a09d05c64ef"
-THEME_MODIFIER_GUID = "ec2f4013-17e6-428a-b8a9-5e34a3b80009"
-
-
-def workshop_block(spec, constants, indent_text):
-    """Top panel toggle and the settings panel popup (tools/settings_panel.py)."""
-    frame = settings_panel.Panel(spec, constants, loc_key, "HndTop").top_host("ThemeWorkshopToggle")
-    frame = "\n".join("        " + line if line.strip() else line for line in frame.split("\n"))
-    block = f'''{WS_BEGIN}
-<Grid VerticalAlignment="Center" Margin="{{Binding ElementName=PART_ToggleNotifications, Path=Margin}}">
-    <ToggleButton x:Name="ThemeWorkshopToggle" Style="{{DynamicResource TopPanelWorkshopToggleStyle}}"
-                  ToolTip="{{DynamicResource LOCHNDWorkshopTooltip}}" />
-    <Popup IsOpen="{{Binding IsChecked, ElementName=ThemeWorkshopToggle, Mode=TwoWay}}" StaysOpen="False" AllowsTransparency="True"
-           PlacementTarget="{{Binding ElementName=ThemeWorkshopToggle}}" Placement="Bottom" VerticalOffset="6">
-{frame}
-    </Popup>
-</Grid>
-{WS_END}'''
-    return "\n".join(indent_text + line if line.strip() else line for line in block.split("\n"))
-
-
-DP_BEGIN = "<!-- BEGIN generated settings panel: edit tools/options_spec.yaml (panel), then run tools/build_options.py -->"
-DP_END = "<!-- END generated settings panel -->"
-
-
-def details_panel_file(source: Path, spec, constants, name="Views/DetailsViewGameOverview.xaml"):
-    text = (source / name).read_text(encoding="utf-8-sig")
-    start, end = text.find(DP_BEGIN), text.find(DP_END)
-    if start < 0 or end < 0:
-        raise SpecError(f"{name} must contain the generated settings panel markers")
-    line_start = text.rfind("\n", 0, start) + 1
-    pad = text[line_start:start]
-    block = DP_BEGIN + "\n" + settings_panel.Panel(spec, constants, loc_key, "HndPanel").details_host() + "\n" + DP_END
-    block = "\n".join((pad + line if line.strip() else line) if i else line for i, line in enumerate(block.split("\n")))
-    return text[:start] + block + text[end + len(DP_END):]
-
-
-def workshop_labels(spec):
-    labels = {"en": {}, "fr": {}}
-    for group in spec.get("workshop") or []:
-        key = loc_key("Workshop", re.sub(r"\W", "", group["title"]["en"]))
-        labels["en"][key] = group["title"]["en"]
-        labels["fr"][key] = group["title"]["fr"]
-    return labels
-
-
-# files that host the workshop toggle: the Neon top panel and the Dune top panel preset
-WORKSHOP_FILES = ["Views/TopPanel.xaml", "Presets/TopPanel/Dune.xaml"]
-
-
-def top_panel_file(source: Path, spec, constants, name="Views/TopPanel.xaml"):
-    text = (source / name).read_text(encoding="utf-8-sig")
-    start = text.find(WS_BEGIN)
-    end = text.find(WS_END)
-    if start < 0 or end < 0:
-        raise SpecError(f"{name} must contain the generated workshop markers")
-    line_start = text.rfind("\n", 0, start) + 1
-    indent_text = text[line_start:start]
-    return text[:line_start] + workshop_block(spec, constants, indent_text) + text[end + len(WS_END):]
-
-
+# DerivedStyles/PlayButton.xaml: the default hero styles (the Dune button, Pills chip and Smooth fade presets)
 BEGIN = "    <!-- BEGIN generated hero styles: edit tools/build_options.py, then run it. -->\n"
 END = "    <!-- END generated hero styles -->\n"
 
@@ -781,11 +684,6 @@ def main() -> int:
                     print(f"wrote {path}")
         options, labels, _ = build_options(spec, constants, source)
         outputs["options.yaml"] = options
-        for name in WORKSHOP_FILES:
-            outputs[name] = top_panel_file(source, spec, constants, name)
-        outputs["Views/DetailsViewGameOverview.xaml"] = details_panel_file(source, spec, constants)
-        for language, extra in settings_panel.panel_labels(spec, loc_key).items():
-            labels[language].update(extra)
         # Playnite loads Localization/<language>.xaml for themes only when en_US.xaml exists.
         outputs["Localization/en_US.xaml"] = build_localization(spec, labels["en"], constants, "en")
         outputs["Localization/fr_FR.xaml"] = build_localization(spec, labels["fr"], constants, "fr")

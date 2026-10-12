@@ -130,8 +130,8 @@
         </Style.Triggers>
     </Style>
 
-    <!-- Top panel toggle that opens the theme workshop popup -->
-    <Style x:Key="TopPanelWorkshopToggleStyle" TargetType="{x:Type ToggleButton}">
+    <!-- Top panel button that opens Theme Options (ThemeExtras Commands.OpenPluginSettingsCommand) -->
+    <Style x:Key="TopPanelThemeSettingsButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="MinWidth" Value="35" />
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
         <Setter Property="Margin" Value="8,0,0,0" />
@@ -143,10 +143,10 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Border BorderThickness="0" Background="{TemplateBinding Background}"
                             CornerRadius="{DynamicResource ControlCornerRadius}">
-                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE771;" FontSize="18"
+                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE713;" FontSize="18"
                                    Foreground="{TemplateBinding Foreground}"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Margin="{TemplateBinding Padding}" />
@@ -156,12 +156,6 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
-                <Setter Property="Opacity" Value="1" />
-            </Trigger>
-            <!-- While the popup is open, a click outside closes it; do not let the same click reopen it -->
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="IsHitTestVisible" Value="False" />
                 <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
                 <Setter Property="Opacity" Value="1" />
             </Trigger>
