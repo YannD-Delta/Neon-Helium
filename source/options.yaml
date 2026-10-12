@@ -1103,6 +1103,101 @@ Variables:
         LocKey: LOCHNDOptHeroChipsBreakBeforeActivity
         Type: Boolean
         Default: 'True'
+    HeroChipBreakReleaseDate:
+        Title: 'New line before: Release date'
+        LocKey: LOCHNDOptHeroChipBreakReleaseDate
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakPlatforms:
+        Title: 'New line before: Platforms'
+        LocKey: LOCHNDOptHeroChipBreakPlatforms
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakSource:
+        Title: 'New line before: Source'
+        LocKey: LOCHNDOptHeroChipBreakSource
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakGenres:
+        Title: 'New line before: Genres'
+        LocKey: LOCHNDOptHeroChipBreakGenres
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakCategories:
+        Title: 'New line before: Categories'
+        LocKey: LOCHNDOptHeroChipBreakCategories
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakFeatures:
+        Title: 'New line before: Features'
+        LocKey: LOCHNDOptHeroChipBreakFeatures
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakTags:
+        Title: 'New line before: Tags'
+        LocKey: LOCHNDOptHeroChipBreakTags
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakDevelopers:
+        Title: 'New line before: Developers'
+        LocKey: LOCHNDOptHeroChipBreakDevelopers
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakCompletionStatus:
+        Title: 'New line before: Completion status'
+        LocKey: LOCHNDOptHeroChipBreakCompletionStatus
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakCommunityScore:
+        Title: 'New line before: Community score'
+        LocKey: LOCHNDOptHeroChipBreakCommunityScore
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakHltbMain:
+        Title: 'New line before: HowLongToBeat main story'
+        LocKey: LOCHNDOptHeroChipBreakHltbMain
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakHltbExtra:
+        Title: 'New line before: HowLongToBeat main + extra'
+        LocKey: LOCHNDOptHeroChipBreakHltbExtra
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakHltbCompletionist:
+        Title: 'New line before: HowLongToBeat 100%'
+        LocKey: LOCHNDOptHeroChipBreakHltbCompletionist
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakAchievements:
+        Title: 'New line before: Achievements'
+        LocKey: LOCHNDOptHeroChipBreakAchievements
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakLatestAchievement:
+        Title: 'New line before: Latest achievement'
+        LocKey: LOCHNDOptHeroChipBreakLatestAchievement
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakRareAchievements:
+        Title: 'New line before: Rare achievements'
+        LocKey: LOCHNDOptHeroChipBreakRareAchievements
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakLastSession:
+        Title: 'New line before: Last session'
+        LocKey: LOCHNDOptHeroChipBreakLastSession
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakRecentActivity:
+        Title: 'New line before: Recent activity'
+        LocKey: LOCHNDOptHeroChipBreakRecentActivity
+        Type: Boolean
+        Default: 'False'
+    HeroChipBreakAvgFps:
+        Title: 'New line before: Average FPS'
+        LocKey: LOCHNDOptHeroChipBreakAvgFps
+        Type: Boolean
+        Default: 'False'
     HeroChipsOrderGame:
         Title: 'Order: date, platforms, source'
         LocKey: LOCHNDOptHeroChipsOrderGame

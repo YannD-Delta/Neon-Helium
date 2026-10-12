@@ -37,6 +37,7 @@ strings:
   LOCHNDTabStats: {en: 'Stats', fr: 'Stats'}
   LOCHNDTabCommunity: {en: 'Community', fr: 'Communauté'}
   LOCHNDQuickTab: {en: 'Tab (0 = every tab)', fr: 'Onglet (0 = tous)'}
+  LOCHNDQuickChipBreaks: {en: 'New line before a chip', fr: 'Retour à la ligne avant une puce'}
   LOCHNDChipLatestAchievement: {en: Latest, fr: Dernier succès}
   LOCHNDChipRare: {en: Rare, fr: Rares}
   LOCHNDChipUltraRare: {en: Ultra rare, fr: Ultra rares}
@@ -502,6 +503,25 @@ variables:
   - {key: HeroChipsBreakBeforeHltb, en: New line before HowLongToBeat, fr: Retour à la ligne avant HowLongToBeat}
   - {key: HeroChipsBreakBeforeAchievements, en: New line before achievements, fr: Retour à la ligne avant les succès}
   - {key: HeroChipsBreakBeforeActivity, en: New line before GameActivity, fr: Retour à la ligne avant GameActivity}
+  - {key: HeroChipBreakReleaseDate, en: 'New line before: Release date', fr: 'Retour à la ligne avant : Date de sortie'}
+  - {key: HeroChipBreakPlatforms, en: 'New line before: Platforms', fr: 'Retour à la ligne avant : Plateformes'}
+  - {key: HeroChipBreakSource, en: 'New line before: Source', fr: 'Retour à la ligne avant : Source'}
+  - {key: HeroChipBreakGenres, en: 'New line before: Genres', fr: 'Retour à la ligne avant : Genres'}
+  - {key: HeroChipBreakCategories, en: 'New line before: Categories', fr: 'Retour à la ligne avant : Catégories'}
+  - {key: HeroChipBreakFeatures, en: 'New line before: Features', fr: 'Retour à la ligne avant : Fonctionnalités'}
+  - {key: HeroChipBreakTags, en: 'New line before: Tags', fr: 'Retour à la ligne avant : Étiquettes'}
+  - {key: HeroChipBreakDevelopers, en: 'New line before: Developers', fr: 'Retour à la ligne avant : Développeurs'}
+  - {key: HeroChipBreakCompletionStatus, en: 'New line before: Completion status', fr: 'Retour à la ligne avant : Statut de complétion'}
+  - {key: HeroChipBreakCommunityScore, en: 'New line before: Community score', fr: 'Retour à la ligne avant : Note de la communauté'}
+  - {key: HeroChipBreakHltbMain, en: 'New line before: HowLongToBeat main story', fr: 'Retour à la ligne avant : HowLongToBeat histoire'}
+  - {key: HeroChipBreakHltbExtra, en: 'New line before: HowLongToBeat main + extra', fr: 'Retour à la ligne avant : HowLongToBeat histoire + extras'}
+  - {key: HeroChipBreakHltbCompletionist, en: 'New line before: HowLongToBeat 100%', fr: 'Retour à la ligne avant : HowLongToBeat 100 %'}
+  - {key: HeroChipBreakAchievements, en: 'New line before: Achievements', fr: 'Retour à la ligne avant : Succès'}
+  - {key: HeroChipBreakLatestAchievement, en: 'New line before: Latest achievement', fr: 'Retour à la ligne avant : Dernier succès'}
+  - {key: HeroChipBreakRareAchievements, en: 'New line before: Rare achievements', fr: 'Retour à la ligne avant : Succès rares'}
+  - {key: HeroChipBreakLastSession, en: 'New line before: Last session', fr: 'Retour à la ligne avant : Dernière session'}
+  - {key: HeroChipBreakRecentActivity, en: 'New line before: Recent activity', fr: 'Retour à la ligne avant : Activité récente'}
+  - {key: HeroChipBreakAvgFps, en: 'New line before: Average FPS', fr: 'Retour à la ligne avant : FPS moyen'}
   - {key: HeroChipsOrderGame, range: [0, 5], en: 'Order: date, platforms, source', fr: 'Ordre : date, plateformes, source'}
   - {key: HeroChipsOrderClassification, range: [0, 5], en: 'Order: genres, categories, features, tags', fr: 'Ordre : genres, catégories, fonctionnalités, étiquettes'}
   - {key: HeroChipsOrderStudio, range: [0, 5], en: 'Order: developers, status, score', fr: 'Ordre : développeurs, statut, note'}

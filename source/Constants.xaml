@@ -191,6 +191,25 @@
     <sys:Boolean x:Key="HeroChipsBreakBeforeHltb">False</sys:Boolean>
     <sys:Boolean x:Key="HeroChipsBreakBeforeAchievements">False</sys:Boolean>
     <sys:Boolean x:Key="HeroChipsBreakBeforeActivity">True</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakReleaseDate">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakPlatforms">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakSource">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakGenres">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakCategories">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakFeatures">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakTags">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakDevelopers">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakCompletionStatus">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakCommunityScore">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakHltbMain">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakHltbExtra">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakHltbCompletionist">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakAchievements">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakLatestAchievement">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakRareAchievements">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakLastSession">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakRecentActivity">False</sys:Boolean>
+    <sys:Boolean x:Key="HeroChipBreakAvgFps">False</sys:Boolean>
     <!-- Chip group order (Double so live sliders can write it; each group shows in the slot equal to its value) -->
     <sys:Double x:Key="HeroChipsOrderGame">0</sys:Double>
     <sys:Double x:Key="HeroChipsOrderClassification">1</sys:Double>
@@ -220,6 +239,7 @@
     <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
     <sys:String x:Key="LOCHNDTabCommunity">Community</sys:String>
     <sys:String x:Key="LOCHNDQuickTab">Tab (0 = every tab)</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipBreaks">New line before a chip</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>

@@ -24,6 +24,7 @@
     <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
     <sys:String x:Key="LOCHNDTabCommunity">Community</sys:String>
     <sys:String x:Key="LOCHNDQuickTab">Tab (0 = every tab)</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipBreaks">New line before a chip</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Latest</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rare</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rare</sys:String>
@@ -236,6 +237,25 @@
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">New line before HowLongToBeat</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">New line before achievements</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">New line before GameActivity</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakReleaseDate">New line before: Release date</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakPlatforms">New line before: Platforms</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakSource">New line before: Source</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakGenres">New line before: Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCategories">New line before: Categories</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakFeatures">New line before: Features</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakTags">New line before: Tags</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakDevelopers">New line before: Developers</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCompletionStatus">New line before: Completion status</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCommunityScore">New line before: Community score</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbMain">New line before: HowLongToBeat main story</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbExtra">New line before: HowLongToBeat main + extra</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbCompletionist">New line before: HowLongToBeat 100%</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakAchievements">New line before: Achievements</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakLatestAchievement">New line before: Latest achievement</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakRareAchievements">New line before: Rare achievements</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakLastSession">New line before: Last session</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakRecentActivity">New line before: Recent activity</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakAvgFps">New line before: Average FPS</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderGame">Order: date, platforms, source</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderClassification">Order: genres, categories, features, tags</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderStudio">Order: developers, status, score</sys:String>

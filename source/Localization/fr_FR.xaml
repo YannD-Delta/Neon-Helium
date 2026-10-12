@@ -24,6 +24,7 @@
     <sys:String x:Key="LOCHNDTabStats">Stats</sys:String>
     <sys:String x:Key="LOCHNDTabCommunity">Communauté</sys:String>
     <sys:String x:Key="LOCHNDQuickTab">Onglet (0 = tous)</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipBreaks">Retour à la ligne avant une puce</sys:String>
     <sys:String x:Key="LOCHNDChipLatestAchievement">Dernier succès</sys:String>
     <sys:String x:Key="LOCHNDChipRare">Rares</sys:String>
     <sys:String x:Key="LOCHNDChipUltraRare">Ultra rares</sys:String>
@@ -236,6 +237,25 @@
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeHltb">Retour à la ligne avant HowLongToBeat</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeAchievements">Retour à la ligne avant les succès</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsBreakBeforeActivity">Retour à la ligne avant GameActivity</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakReleaseDate">Retour à la ligne avant : Date de sortie</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakPlatforms">Retour à la ligne avant : Plateformes</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakSource">Retour à la ligne avant : Source</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakGenres">Retour à la ligne avant : Genres</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCategories">Retour à la ligne avant : Catégories</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakFeatures">Retour à la ligne avant : Fonctionnalités</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakTags">Retour à la ligne avant : Étiquettes</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakDevelopers">Retour à la ligne avant : Développeurs</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCompletionStatus">Retour à la ligne avant : Statut de complétion</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakCommunityScore">Retour à la ligne avant : Note de la communauté</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbMain">Retour à la ligne avant : HowLongToBeat histoire</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbExtra">Retour à la ligne avant : HowLongToBeat histoire + extras</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakHltbCompletionist">Retour à la ligne avant : HowLongToBeat 100 %</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakAchievements">Retour à la ligne avant : Succès</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakLatestAchievement">Retour à la ligne avant : Dernier succès</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakRareAchievements">Retour à la ligne avant : Succès rares</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakLastSession">Retour à la ligne avant : Dernière session</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakRecentActivity">Retour à la ligne avant : Activité récente</sys:String>
+    <sys:String x:Key="LOCHNDOptHeroChipBreakAvgFps">Retour à la ligne avant : FPS moyen</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderGame">Ordre : date, plateformes, source</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderClassification">Ordre : genres, catégories, fonctionnalités, étiquettes</sys:String>
     <sys:String x:Key="LOCHNDOptHeroChipsOrderStudio">Ordre : développeurs, statut, note</sys:String>
