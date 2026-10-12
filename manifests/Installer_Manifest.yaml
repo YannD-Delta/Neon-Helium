@@ -1,5 +1,16 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.4
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.4/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_4.pthm
+    Changelog:
+      - "15 complete color profiles (Dune sand, Hybrid red, OLED black, Synthwave, Nord, Dracula, Catppuccin, Tokyo Night, Gruvbox, Rose Pine, Everforest, Solarized, One Dark, Ocean abyss, Graphite), each recoloring the whole theme"
+      - "Optional tabs above the Details view sections (All, About, Media, Stats, Community), set per section in its gear"
+      - "Chips on the artwork open or fold their section with a click; optional auto-hiding top panel and sidebar"
+      - "New integrations: ThemeExtras hide button, GameActivity average FPS chip, Metadata Utilities prefix groups, Screenshot Utilities button, PlayniteAchievements collection level badge and themed unlock notification"
+      - "Playnite theme API 2.10: load more button under long descriptions, wrapped text in the information panel"
+      - "Every setting tooltip now also shows under the setting in Theme Options; window and popup gradients editable in ThemeModifier"
   - Version: 2.3
     RequiredApiVersion: 2.9.0
     ReleaseDate: 2026-10-11

@@ -36,3 +36,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Color palettes
+
+The color profiles named Nord, Dracula, Catppuccin Mocha, Tokyo Night, Gruvbox, Rose Pine,
+Everforest, Solarized dark and One Dark use base color values from these published palettes:
+
+- Nord, Arctic Ice Studio and Sven Greb: https://www.nordtheme.com
+- Dracula, Zeno Rocha and contributors: https://draculatheme.com
+- Catppuccin, Catppuccin organization: https://catppuccin.com
+- Tokyo Night, enkia: https://github.com/enkia/tokyo-night-vscode-theme
+- Gruvbox, Pavel Pertsev (morhetz): https://github.com/morhetz/gruvbox
+- Rosé Pine, Rosé Pine organization: https://rosepinetheme.com
+- Everforest, sainnhe: https://github.com/sainnhe/everforest
+- Solarized, Ethan Schoonover: https://ethanschoonover.com/solarized
+- One Dark, Atom: https://github.com/atom/atom/tree/master/packages/one-dark-ui
+
+Only color values are reused; the other theme colors are derived from them by
+tools/color_profiles.py. No code or files from these projects are included.
