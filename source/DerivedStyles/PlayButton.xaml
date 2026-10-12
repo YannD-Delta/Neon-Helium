@@ -19,7 +19,65 @@
                     <Grid x:Name="Grid">
                         <Border x:Name="DefaultBorder" BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2,0,0,2"
-                                Style="{DynamicResource PlayButtonBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Gradient colors come from Constants.xaml (PlayButton*Color, ContextButton*Color), so ThemeModifier
+                                 and the color profiles also change these Grid view buttons. StaticResource: the hover storyboards
+                                 need frozen colors. The style stays inside the template because Playnite parses each theme file
+                                 alone before merging, and only template content is resolved later, once Constants.xaml is loaded. -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.75"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5">
                             <Viewbox Stretch="Uniform" Width="20"
                                      VerticalAlignment="Center" Margin="0,5,8,0">
@@ -50,61 +108,6 @@
                 <Setter Property="Background" Value="{DynamicResource PlayButtonIsMouseOverBackgroundBrush}" />
                 <Setter Property="Tag" Value="True" />
             </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <!-- Gradient colors come from Constants.xaml (PlayButton*Color, ContextButton*Color), so ThemeModifier
-         and the color profiles also change these Grid view buttons. StaticResource: the hover
-         storyboards need frozen colors. -->
-    <Style x:Key="PlayButtonBackgroundStyle" TargetType="Border">
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -159,7 +162,62 @@
                         <Border x:Name="DefaultBorder" BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="2,0,0,2" MinHeight="{TemplateBinding MinHeight}" MinWidth="{TemplateBinding MinWidth}"
-                                Style="{DynamicResource ContextButtonBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor2}" Offset="0.75"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5">
                             <Grid Height="22" Margin="0,3,10,0">
                                 <Viewbox Stretch="Uniform" x:Name="DownloadIcon" Visibility="Visible">
@@ -206,58 +264,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ContextButtonBackgroundStyle" TargetType="Border">
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-
     <Style x:Key="MoreActionsButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="White" />
@@ -275,10 +281,111 @@
                     <Grid x:Name="Grid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border x:Name="GreenBorder" BorderBrush="{TemplateBinding BorderBrush}" Visibility="Collapsed"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,2,2,0"
-                                Style="{DynamicResource MoreActionsButtonGreenBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.50"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <Border x:Name="BlueBorder" BorderBrush="{TemplateBinding BorderBrush}" Visibility="Visible"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,2,2,0"
-                                Style="{DynamicResource MoreActionsButtonBlueBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0.60"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                             <TextBlock x:Name="Icon" Text="&#xEA67;" FontFamily="{DynamicResource FontIcoFont}" FontSize="18"
                                        Foreground="#ffffff" VerticalAlignment="Center" Margin="0,0,0,0"/>
@@ -311,101 +418,6 @@
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Tag" Value="True" />
             </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="MoreActionsButtonBlueBackgroundStyle" TargetType="Border">
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0"/>
-                    <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0.60"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource ContextButtonBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="MoreActionsButtonGreenBackgroundStyle" TargetType="Border">
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.50"/>
-                    <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource PlayButtonBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
         </Style.Triggers>
     </Style>
 
