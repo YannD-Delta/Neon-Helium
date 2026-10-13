@@ -11,6 +11,17 @@
     <sys:String x:Key="LOCHNDChipHltbCompletionist">100 %</sys:String>
     <sys:String x:Key="LOCHNDChipLastSession">Dernière session</sys:String>
     <sys:String x:Key="LOCHNDChipAvgFps">FPS moy.</sys:String>
+    <sys:String x:Key="LOCHNDQuickTooltip">Réglages de la section</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsTitle">Puces sur l'image</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsShown">Puces affichées</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsBreaks">Retour à la ligne avant</sys:String>
+    <sys:String x:Key="LOCHNDQuickChipsOrder">Ordre des groupes (0 = en premier)</sys:String>
+    <sys:String x:Key="LOCHNDQuickPlace">Emplacement</sys:String>
+    <sys:String x:Key="LOCHNDQuickContent">Contenu</sys:String>
+    <sys:String x:Key="LOCHNDQuickRestart">↻ s'applique après un redémarrage de Playnite</sys:String>
+    <sys:String x:Key="LOCHNDQuickPluginSettings">Paramètres de l'extension</sys:String>
+    <sys:String x:Key="LOCHNDQuickThemeSettings">Tous les réglages du thème</sys:String>
+    <sys:String x:Key="LOCHNDQuickNeedsThemeOptions">Installez l'extension Theme Options pour modifier ces réglages ici.</sys:String>
     <sys:String x:Key="LOCHNDTileScores">Critiques · Communauté</sys:String>
     <sys:String x:Key="LOCHNDTileRecentActivity">Activité récente</sys:String>
     <sys:String x:Key="LOCHNDTileHltbExtra">HLTB · Histoire + extras</sys:String>

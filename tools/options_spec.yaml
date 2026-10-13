@@ -24,6 +24,17 @@ strings:
   LOCHNDChipHltbCompletionist: {en: "100%", fr: "100 %"}
   LOCHNDChipLastSession: {en: Last session, fr: Dernière session}
   LOCHNDChipAvgFps: {en: Avg FPS, fr: FPS moy.}
+  LOCHNDQuickTooltip: {en: 'Section settings', fr: 'Réglages de la section'}
+  LOCHNDQuickChipsTitle: {en: 'Chips on the artwork', fr: 'Puces sur l''image'}
+  LOCHNDQuickChipsShown: {en: 'Chips shown', fr: 'Puces affichées'}
+  LOCHNDQuickChipsBreaks: {en: 'New line before', fr: 'Retour à la ligne avant'}
+  LOCHNDQuickChipsOrder: {en: 'Group order (0 = first)', fr: 'Ordre des groupes (0 = en premier)'}
+  LOCHNDQuickPlace: {en: 'Place', fr: 'Emplacement'}
+  LOCHNDQuickContent: {en: 'Content', fr: 'Contenu'}
+  LOCHNDQuickRestart: {en: '↻ applies after a Playnite restart', fr: '↻ s''applique après un redémarrage de Playnite'}
+  LOCHNDQuickPluginSettings: {en: 'Extension settings', fr: 'Paramètres de l''extension'}
+  LOCHNDQuickThemeSettings: {en: 'All theme settings', fr: 'Tous les réglages du thème'}
+  LOCHNDQuickNeedsThemeOptions: {en: 'Install the Theme Options extension to change these settings here.', fr: 'Installez l''extension Theme Options pour modifier ces réglages ici.'}
   LOCHNDTileScores: {en: 'Critics · Community', fr: 'Critiques · Communauté'}
   LOCHNDTileRecentActivity: {en: Recent activity, fr: Activité récente}
   LOCHNDTileHltbExtra: {en: 'HLTB · Main + Extra', fr: 'HLTB · Histoire + extras'}
@@ -534,6 +545,105 @@ tip_images:
   HltbShowOnCover: HeroCover_Hidden
   AchievementsShowOnCover: HeroCover_Hidden
   DetailsViewShowInfoPanelDefault: HeroCover_InsideKeepPanel
+
+# Section gear menus (tools/section_menus.py): the gear of each Details view section opens a popup with
+# its settings, changed at once through Theme Options (TwoWay bindings to Options[...]). Entries are
+# variable keys (label LOCHNDOpt<key>) or {heading: <string key>}. "plugin" adds an extension settings button.
+# A gear id ending with Right (the right-column copies) uses the menu without that suffix.
+section_menus:
+  Chips:
+    title: LOCHNDQuickChipsTitle
+    keys: [HeroShowInfoLine, HeroChipsOpenSections, HeroInfoLineMaxWidth, {heading: LOCHNDQuickChipsShown},
+           HeroShowReleaseDate, HeroShowPlatforms, HeroShowSource, HeroShowGenres, HeroShowCategories, HeroShowFeatures, HeroShowTags,
+           HeroShowDevelopers, HeroShowCompletionStatus, HeroShowCommunityScore, HeroShowHltb, HeroShowAchievements,
+           HeroShowLatestAchievement, HeroShowRareAchievements, HeroShowLastSession, HeroShowRecentActivity, HeroShowAvgFps,
+           {heading: LOCHNDQuickChipsBreaks},
+           HeroChipBreakReleaseDate, HeroChipBreakPlatforms, HeroChipBreakSource, HeroChipBreakGenres, HeroChipBreakCategories,
+           HeroChipBreakFeatures, HeroChipBreakTags, HeroChipBreakDevelopers, HeroChipBreakCompletionStatus, HeroChipBreakCommunityScore,
+           HeroChipBreakHltbMain, HeroChipBreakHltbExtra, HeroChipBreakHltbCompletionist, HeroChipBreakAchievements,
+           HeroChipBreakLatestAchievement, HeroChipBreakRareAchievements, HeroChipBreakLastSession, HeroChipBreakRecentActivity, HeroChipBreakAvgFps,
+           {heading: LOCHNDQuickChipsOrder},
+           HeroChipsOrderGame, HeroChipsOrderClassification, HeroChipsOrderStudio, HeroChipsOrderHltb, HeroChipsOrderAchievements, HeroChipsOrderActivity]
+  Notes:
+    title: LOCNotesLabel
+    plugin: 4208657d-4f78-42d2-968f-39f24de275e1
+    keys: [DetailsViewShowNotesPanel, DetailsViewExpandNotesPanel, DetailsViewTabNotes, DetailsViewSectionOrderNotes]
+  Genres:
+    title: LOCGenreLabel
+    keys: [DetailsViewExpandGenres, HeroShowGenres, DemoteGenresSection, DetailsViewUseMetadataUtilities, {heading: LOCHNDQuickPlace},
+           DetailsViewGenresInRightColumn, DetailsViewTabGenres, DetailsViewSectionOrderGenres, DetailsViewSectionOrderRightGenres]
+  Categories:
+    title: LOCGameCategoriesTitle
+    keys: [DetailsViewExpandCategories, HeroShowCategories, DemoteCategoriesSection, DetailsViewUseMetadataUtilities, {heading: LOCHNDQuickPlace},
+           DetailsViewCategoriesInRightColumn, DetailsViewTabCategories, DetailsViewSectionOrderCategories, DetailsViewSectionOrderRightCategories]
+  Features:
+    title: LOCFeaturesLabel
+    keys: [DetailsViewExpandFeatures, HeroShowFeatures, DemoteFeaturesSection, DetailsViewUseMetadataUtilities, {heading: LOCHNDQuickPlace},
+           DetailsViewFeaturesInRightColumn, DetailsViewTabFeatures, DetailsViewSectionOrderFeatures, DetailsViewSectionOrderRightFeatures]
+  Tags:
+    title: LOCTagsLabel
+    keys: [DetailsViewExpandTags, HeroShowTags, DemoteTagsSection, DetailsViewUseMetadataUtilities, {heading: LOCHNDQuickPlace},
+           DetailsViewTagsInRightColumn, DetailsViewTabTags, DetailsViewSectionOrderTags, DetailsViewSectionOrderRightTags]
+  News:
+    title: LOC_NewsViewer_NewsViewerControl_NewsLabel
+    plugin: 15e03ffe-90f6-4e8e-bd4d-94514777481d
+    keys: [DetailsViewShowNewsPanel, DetailsViewExpandNewsPanel, DetailsViewTabNewsViewer, DetailsViewSectionOrderNewsViewer]
+  Video:
+    title: LOCExtra_Metadata_Loader_VideoLabel
+    plugin: 705fdbca-e1fc-4004-b839-1d040b8b4429
+    keys: [DetailsViewShowVideoPanel, DetailsViewExpandVideoPanel, DetailsViewTabVideo, DetailsViewSectionOrderVideo]
+  GameActivity:
+    title: LOCGameActivityTitle
+    plugin: afbb1a0d-04a1-4d0c-9afa-c6e42ca855b4
+    keys: [DetailsViewShowGameActivityPanel, DetailsViewExpandGameActivityPanel, HeroShowLastSession, HeroShowRecentActivity, HeroShowAvgFps,
+           DemoteGameActivitySection, GameActivityChartTimeHeight, GameActivityChartLogHeight, {heading: LOCHNDQuickPlace},
+           DetailsViewTabGameActivity, DetailsViewSectionOrderGameActivity]
+  CheckDlc:
+    title: DLC
+    plugin: bf78d9af-6e79-4c73-aca6-c23a11a485ae
+    keys: [DetailsViewShowCheckDlcPanel, DetailsViewExpandCheckDlcPanel, DetailsViewTabCheckDlc, DetailsViewSectionOrderCheckDlc]
+  GameRelations:
+    title: LOCGameRelations_RelatedGamesLabel
+    plugin: a4c15d63-9ab4-4d96-9a0c-8f9b35d43a1f
+    keys: [DetailsViewShowGameRelationsPanel, DetailsViewExpandGameRelationsPanel, DetailsViewTabGameRelations, DetailsViewSectionOrderGameRelations]
+  Web:
+    title: LOCWebExplorer_WebLabel
+    plugin: 181ddd05-2168-4162-a116-b9c2a20c652c
+    keys: [DetailsViewShowWebExplorerPanel, DetailsViewExpandWebExplorerPanel, DetailsViewTabWeb, DetailsViewSectionOrderWeb]
+  Hltb:
+    title: HowLongToBeat
+    plugin: e08cd51f-9c9a-4ee3-a094-fde03b55492f
+    keys: [DetailsViewShowHltbPanel, DetailsViewShowHltbPanelDefault, HeroShowHltb, HltbShowOnCover, DetailsViewShowHltbProgressBar,
+           DetailsViewShowHltbDataGrid, DemoteHltbSection, {heading: LOCHNDQuickPlace}, DetailsViewTabHowLongToBeat, DetailsViewSectionOrderHowLongToBeat]
+  Achievements:
+    title: LOCCommonLinksAchievements
+    plugin: e6aad2c9-6e06-4d8d-ac55-ac3b252b5f7b
+    keys: [DetailsViewShowAchievementsPanel, DetailsViewShowAchievementsPanelDefault, HeroShowAchievements, HeroShowLatestAchievement,
+           HeroShowRareAchievements, AchievementsShowOnCover, DemoteAchievementsSection, {heading: LOCHNDQuickContent},
+           DetailsViewAchievementsShowProgressBar, DetailsViewAchievementsShowUnlockedList, DetailsViewAchievementsShowLockedList,
+           DetailsViewAchievementsShowCompactList, DetailsViewAchievementsShowLatest, DetailsViewAchievementsShowStats,
+           DetailsViewAchievementsShowBarChart, DetailsViewAchievementsShowPieChart, DetailsViewAchievementsShowDataGrid,
+           DetailsViewAchievementsShowButton, {heading: LOCHNDQuickPlace}, DetailsViewTabAchievements, DetailsViewSectionOrderAchievements]
+  SteamScreenshots:
+    title: LOC_SteamScreenshots_SteamScreenshotsLabel
+    plugin: 8e77fe31-5e62-41e2-8fa2-64844cfd5b6b
+    keys: [DetailsViewShowSteamScreenshotsPanel, DetailsViewExpandSteamScreenshotsPanel, DetailsViewTabSteamScreenshots, DetailsViewSectionOrderSteamScreenshots]
+  ScreenshotUtilities:
+    title: LOCHNDSectionScreenshotUtilities
+    plugin: 485d682f-73e9-4d54-b16f-b8dd49e88f90
+    keys: [DetailsViewShowScreenshotUtilitiesPanel, DetailsViewExpandScreenshotUtilitiesPanel, DetailsViewTabScreenshotUtilities, DetailsViewSectionOrderScreenshotUtilities]
+  Vndb:
+    title: VNDB
+    plugin: 39229206-1199-4fee-a014-e8478ea4cd77
+    keys: [DetailsViewShowVndbPanel, DetailsViewExpandVndbPanel, DetailsViewTabVndb, DetailsViewSectionOrderVndb]
+  ScreenshotsVisualizer:
+    title: LOCSsvTitle
+    plugin: c6c8276f-91bf-48e5-a1d1-4bee0b493488
+    keys: [DetailsViewShowScreenshotsVisualizerPanel, DetailsViewExpandScreenshotsVisualizerPanel, DetailsViewTabScreenshotsVisualizer, DetailsViewSectionOrderScreenshotsVisualizer]
+  Reviews:
+    title: LOCReview_Viewer_ReviewsLabel
+    plugin: ca24e37a-76d9-49bf-89ab-d3cba4a54bd1
+    keys: [DetailsViewShowReviewsPanel, DetailsViewExpandReviewsPanel, DetailsViewTabReviewViewer, DetailsViewSectionOrderReviewViewer]
 
 # Header tiles: twelve slots under the artwork card, each one a Theme Options list of every
 # information type below (tools/header_tiles.py writes the tiles into the Details view and the lists).

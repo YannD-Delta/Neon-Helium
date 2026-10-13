@@ -28,6 +28,7 @@ import yaml
 
 import color_profiles
 import header_tiles
+import section_menus
 
 XAML_NS = "http://schemas.microsoft.com/winfx/2006/xaml"
 SYS_NS = "clr-namespace:System;assembly=mscorlib"
@@ -728,6 +729,13 @@ def main() -> int:
             view = source / "Views" / "DetailsViewGameOverview.xaml"
             outputs["Views/DetailsViewGameOverview.xaml"] = header_tiles.view_with_region(
                 view.read_text(encoding="utf-8-sig"), tiles)
+        if spec.get("section_menus"):
+            name = "Views/DetailsViewGameOverview.xaml"
+            text = outputs.get(name) or (source / name).read_text(encoding="utf-8-sig")
+            others = "".join(f.read_text(encoding="utf-8-sig") for f in source.rglob("*.xaml")
+                             if f.name != "DetailsViewGameOverview.xaml" and "Localization" not in f.parts)
+            kinds = {key: kind for key, (kind, _) in constants.items()}
+            outputs[name] = section_menus.view_with_menus(text, spec, kinds, others)
         if not args.check:
             # preset files must exist before the preset file check in build_options runs
             for name, content in outputs.items():

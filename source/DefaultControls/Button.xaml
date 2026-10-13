@@ -457,20 +457,21 @@
     </Style>
 
     <!-- Quick settings gear in section headers and its popup -->
-    <Style x:Key="SectionQuickSettingsButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+    <!-- Gear in section headers: opens the menu of that section (tools/section_menus.py) -->
+    <Style x:Key="SectionQuickSettingsToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Width" Value="26" />
         <Setter Property="Height" Value="26" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="#ffffff" />
         <Setter Property="Background" Value="#d3d8e0" />
-        <Setter Property="ToolTip" Value="{DynamicResource LOCHNDThemeSettingsTooltip}" />
+        <Setter Property="ToolTip" Value="{DynamicResource LOCHNDQuickTooltip}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Grid>
                         <Border x:Name="GearBackground" Background="{TemplateBinding Background}"
-                                CornerRadius="{DynamicResource DetailsViewExtraButtonsCornerRadius}" Opacity="0.14" />
+                                CornerRadius="{DynamicResource HeroChipCornerRadius}" Opacity="0.14" />
                         <TextBlock x:Name="Gear" Text="&#xE713;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="14"
                                    Foreground="{TemplateBinding Foreground}" Opacity="0.5"
                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -480,12 +481,19 @@
                             <Setter TargetName="GearBackground" Property="Opacity" Value="0.30" />
                             <Setter TargetName="Gear" Property="Opacity" Value="0.9" />
                         </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Gear" Property="Opacity" Value="1" />
+                            <Setter TargetName="Gear" Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <!-- While the popup is open, a click outside closes it; do not let the same click reopen it -->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="IsHitTestVisible" Value="False" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -493,7 +501,7 @@
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
         <Setter Property="Padding" Value="16,12,16,14" />
         <Setter Property="Margin" Value="0,0,8,8" />
         <Setter Property="MinWidth" Value="300" />

@@ -1,5 +1,12 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.9.2
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9.2/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9_2.pthm
+    Changelog:
+      - "Section gear menus are back: each gear opens the settings of its section (shown, open by default, chips, folding, column, tab, order), applied at once; ↻ marks the ones that need a restart"
+      - "Buttons in each menu open the extension settings and Theme Options"
   - Version: 2.9.1
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-13
