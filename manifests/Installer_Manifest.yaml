@@ -1,5 +1,11 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.9.1
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9.1/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9_1.pthm
+    Changelog:
+      - "Fix: changing game scrolled the Details view to the bottom (a section asking to be brought into view after Playnite scrolled back to the top)"
   - Version: 2.9
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-13

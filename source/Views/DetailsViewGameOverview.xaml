@@ -8643,7 +8643,9 @@
                                     </DockPanel>
                                 </Grid>
 
-                                <Grid Name="GameDetailsSection" Grid.Row="1">
+                                <!-- A section that selects or focuses something when the game changes (reviews, screenshots...) asks the
+                                     page to scroll to it after Playnite scrolled back to the top: those requests stop here. -->
+                                <Grid Name="GameDetailsSection" Grid.Row="1" pbeh:FocusBahaviors.BlockBringIntoViewRequest="True">
                                     <Grid>
                                         <Border Background="{DynamicResource BackdropGlass2}" Height="380" VerticalAlignment="Top" Margin="0,0,0,0"/>
                                     </Grid>
