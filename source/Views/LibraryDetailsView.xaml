@@ -100,12 +100,11 @@
 
     <Style TargetType="Border" x:Key="OutlineBorder">
         <Setter Property="Tag" Value="{DynamicResource DetailsViewEnablePanelsDropShadowEffect}" />
-        <Setter Property="Background" Value="{DynamicResource LinksContainerBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SectionGlassBrush}" />
         <Setter Property="BorderBrush" Value="#1A000025" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="Margin" Value="-0.5" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="true">
                 <Setter Property="Effect">
@@ -136,11 +135,11 @@
 
     <Style TargetType="Border" x:Key="OutlineBorderSidePanels">
         <Setter Property="Tag" Value="{DynamicResource DetailsViewEnablePanelsDropShadowEffect}" />
-        <Setter Property="Background" Value="{DynamicResource SectionContainerBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource SectionContainerBorderBrush}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource SectionGlassBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SectionGlassBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="true">
                 <Setter Property="Effect">
@@ -155,10 +154,10 @@
     <Style TargetType="Border" x:Key="OutlineBorderSidePanelsBorder">
         <Setter Property="Tag" Value="{DynamicResource DetailsViewEnablePanelsDropShadowEffect}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="#80252a31" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SectionGlassBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="true">
                 <Setter Property="Effect">
@@ -171,11 +170,11 @@
     </Style>
     
     <Style TargetType="Border" x:Key="SectionContainerMain">
-        <Setter Property="Background" Value="{DynamicResource SectionContainerMainBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="#1A000025" />
+        <Setter Property="Background" Value="{DynamicResource SectionGlassBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SectionGlassBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="IsHitTestVisible" Value="False" />
-        <Setter Property="Margin" Value="-0.5" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
     </Style>
 
     <Style TargetType="StackPanel" x:Key="PluginStackpanelVisibility">

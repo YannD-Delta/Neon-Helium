@@ -1,5 +1,17 @@
 AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
+  - Version: 2.9
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9.pthm
+    Changelog:
+      - "Liquid glass: the blurred artwork stays behind the whole page; information, links, sections, tiles and chips are glass panels in the profile colors"
+      - "One corner rounding for the card, panels, tiles, chips, buttons and cover (Corner rounding list); side margins aligned with the card"
+      - "Tiles: spacing under the row, small label over a larger bright value, empty tiles hidden again, new looks (large, compact, text only)"
+      - "Fewer global styles (Liquid Glass, Dune, Neon, Minimal), clearer names, and a preview on every choice of every list"
+      - "New lists: Corner rounding, Page background, Glass of the panels; reworked color profiles (Liquid, Midnight, Ember, Forest, Aurora, Rose, Violet and the best of the previous ones)"
+      - "Help rows in Theme Options: a ? under explained settings, with the full text and sometimes a schema on hover"
+      - "Genres, categories, features and tags can move to the right column, with their own order there"
   - Version: 2.8
     RequiredApiVersion: 2.10.0
     ReleaseDate: 2026-10-13

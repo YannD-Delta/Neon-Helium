@@ -34,32 +34,42 @@ Drop-down lists (Theme Options):
 
 | List | Choices |
 |---|---|
-| Global style | Helium-Neon-Dune 2.7 (card), Dune (card, text chips), Helium-Neon-Dune 2.5 (full width), Neon classic, Dune 2.5, Minimal |
-| Artwork header shape | rounded card, very rounded and spaced, slightly rounded and tight, without outline, full width (2.5) |
-| Progressive blur at the bottom of the artwork | off, light, medium, strong, very strong |
-| Height of the blurred band | bottom quarter, bottom half, two thirds, whole artwork |
-| Color over the blurred band | none, accent light, accent strong, white frost, accent and frost |
-| Cover in the artwork header | over the card edge and the tiles, inside the card (with or without the information panel cover), hidden |
+| Global style | Liquid Glass, Dune, Neon (full width, buttons in a bar), Minimal |
+| Corner rounding | rounded, square, subtle, very round (card, panels, tiles, chips, buttons and cover together) |
+| Page background | liquid glass, clear glass, smoked glass, tinted glass, ambient reflection, solid |
+| Glass of the panels, tiles and chips | glass, frosted, clear, without outlines |
+| Artwork card size | spaced, wide spacing, close to the edges, full width |
+| Blur at the bottom of the artwork | medium, none, light, strong, very strong |
+| Height of the blurred band | bottom half, bottom quarter, two thirds, whole artwork |
+| Color over the blurred band | light accent, none, strong accent, white frost, accent and frost |
+| Dark shade at the bottom of the artwork | light, none, medium, strong |
+| Cover in the artwork card | over the card edge and the tiles, inside the card (with or without the information panel cover), information panel only |
 | Play button style | Dune, Neon, Pill, Glass |
-| Play, edit and favorite buttons | in the artwork at the right of the information, in the artwork under the chips (Dune), or in the header bar (Neon) |
-| Information chips | pills, plain text (Dune), outline, hidden |
-| Color profile | Neon (theme colors), Dune sand, Hybrid red, OLED black, Synthwave, Nord, Dracula, Catppuccin Mocha, Tokyo Night, Gruvbox, Rose Pine, Everforest, Solarized dark, One Dark, Ocean abyss, Graphite |
+| Play, edit and favorite buttons | at the right of the information, under the chips, or in the header bar |
+| Information chips | pills, plain text, outline, hidden |
+| Tiles under the card (look) | glass tiles, large, compact, text only, frosted bar, solid bar, hidden |
+| Tile 1 to Tile 12 | the information shown in each tile under the card, from 30 choices (see below) |
+| Color profile | theme colors, Liquid, Midnight, Graphite, OLED black, Dune sand, Ember, Forest, Aurora, Rose, Violet, Nord, Catppuccin Mocha, Tokyo Night |
 | Accent color | color of the profile, Dune amber, violet, emerald, crimson, pink, cyan, gold, Hybrid red |
 | Animations | smooth, fast, off |
-| Shade over the artwork | none, light, medium, strong |
 | Artwork sharpness and position | sharp or blurred, vertical and horizontal alignment |
-| Header bar | tiles, outlined tiles, compact tiles, frosted glass bar, solid bar, transparent bar, hidden |
-| Tile 1 to Tile 12 | the information shown in each tile under the card, from 30 choices (see below) |
-| Blurred background behind the information | off, light, normal, strong |
 | Top panel | Neon, Dune (view buttons centered, transparent) |
+
+Every choice of every list shows a preview while the mouse is over it.
 
 The global style sets a starting point; every list below it, and every individual setting, overrides it.
 
-**Color profiles.** Each profile recolors the whole theme: window and panel backgrounds, text, accent, buttons, game list, menus, popups, inputs, ratings and section cards (109 colors, derived from 13 base colors per profile, with white text kept readable on buttons). All profiles are dark, because the theme draws white text over the artwork. The Accent list can still replace the accent of any profile.
+**Color profiles.** Each profile recolors the whole theme: window and panel backgrounds, text, accent, buttons, game list, menus, popups, inputs, ratings and section cards (109 colors, derived from 13 base colors per profile, with white text kept readable on buttons; backgrounds use steps of one hue and accents sit next to each other on the color wheel). All profiles are dark, because the theme draws white text over the artwork. The Accent list can still replace the accent of any profile.
 
-**Artwork card (2.7).** The top of the Details view is a rounded card: the artwork gets sharper towards the top and blurs progressively towards the bottom, under a light accent tint instead of a dark shade, and the bottom band holds the logo or name, the information line, the chips and the buttons. The cover sits in the bottom-left corner, over the edge of the card and the row of tiles below it. Shape, blur strength, blur height, tint, cover place and tile look each have a list with previews; cover size and rounding have their own settings.
+**Liquid glass.** The artwork of the selected game, blurred and dimmed, stays behind the whole page while it scrolls. The information panel, the links, the sections, the tiles and the chips are glass panels in the colors of the profile, with one corner rounding for everything (Corner rounding list) and the same side margins as the artwork card.
 
-**Tiles.** The row under the card has twelve slots, "Tile 1" to "Tile 12" in Theme Options, from left to right. Each slot is a list of every information the theme can show there, with a preview of the tile: time played, last played, completion status (editable with ThemeExtras), play count, date added, release date, source, platforms, developers, publishers, genres, series, age rating, version, your score, critic score, community score, both scores, install size, achievements (count and bar, percentage, latest, rare and ultra rare), HowLongToBeat (main story, main + extra, 100%, all three), GameActivity (average FPS, last session, recent activity), or empty. A tile without a value for the selected game hides itself and the next tiles move left; an information chosen in two slots shows in the later one. "Helium-Neon-Dune 2.5" in the global style list brings back the full-width artwork.
+**Help in Theme Options.** Settings with an explanation have a "?" row under them: the mouse over it shows the full text and, for some, a schema.
+
+**Sections in the right column.** Genres, categories, features and tags can each move to the narrow right column (Theme Options, "Details view - sections moved to the right column"), with their own order there. In the right column they show the Playnite list, without the Metadata Utilities grouping.
+
+**Artwork card.** The top of the Details view is a rounded card: the artwork gets sharper towards the top and blurs progressively towards the bottom, under a light accent tint instead of a dark shade, and the bottom band holds the logo or name, the information line, the chips and the buttons. The cover sits in the bottom-left corner, over the edge of the card and the row of tiles below it. Shape, blur strength, blur height, tint, cover place and tile look each have a list with previews; cover size and rounding have their own settings.
+
+**Tiles.** The row under the card has twelve slots, "Tile 1" to "Tile 12" in Theme Options, from left to right. Each slot is a list of every information the theme can show there, with a preview of the tile: time played, last played, completion status (editable with ThemeExtras), play count, date added, release date, source, platforms, developers, publishers, genres, series, age rating, version, your score, critic score, community score, both scores, install size, achievements (count and bar, percentage, latest, rare and ultra rare), HowLongToBeat (main story, main + extra, 100%, all three), GameActivity (average FPS, last session, recent activity), or empty. A tile without a value for the selected game hides itself and the next tiles move left; an information chosen in two slots shows in the later one. The Neon global style and the full-width card size bring back the full-width artwork.
 
 **Theme settings.** The gear button of the top panel and the gear of each section open Theme Options (needs ThemeExtras).
 

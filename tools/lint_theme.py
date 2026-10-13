@@ -207,9 +207,13 @@ def check_theme_options(source: Path, definitions, dynamic, static, errors):
     for key, variable in variables.items():
         where = f"{path} variable {key}"
         check_loc(variable.get("LocKey"), where)
-        if variable.get("Type") != "Header":
+        if variable.get("Type") == "Thickness" and key.startswith("Help"):
+            # help row (tools/build_options.py help_row): drawn by the theme's THICKNESS_PanelTemplate, never read
+            if "THICKNESS_PanelTemplate" not in theme_keys:
+                errors.append(f"{where}: help rows need THICKNESS_PanelTemplate in the theme dictionaries")
+        elif variable.get("Type") != "Header":
             check_read(key, where)
-    return len(groups), sum(1 for v in variables.values() if v.get("Type") != "Header")
+    return len(groups), sum(1 for v in variables.values() if v.get("Type") not in ("Header", "Thickness"))
 
 
 def main() -> int:

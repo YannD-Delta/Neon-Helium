@@ -49,11 +49,11 @@ presets:
     fr: Style global
     options:
       - id: Default
-        en: Helium-Neon-Dune 2.7 (rounded card, progressive blur, cover, tiles)
-        fr: Helium-Neon-Dune 2.7 (carte arrondie, flou progressif, jaquette, tuiles)
+        en: Liquid Glass (card, blurred page, glass tiles)
+        fr: Liquid Glass (carte, page floutée, tuiles en verre)
       - id: Dune
-        en: Dune (rounded card, text chips, taller and stronger blur)
-        fr: Dune (carte arrondie, infos en texte, flou plus haut et plus fort)
+        en: Dune (text chips, taller and stronger blur)
+        fr: Dune (infos en texte, flou plus haut et plus fort)
         files: [Presets/Chips/Text.xaml]
         constants:
           HeroShadeOpacity: 0.5
@@ -62,10 +62,11 @@ presets:
           HeroBlurStart: 0.3
           HeroBlurMid: 0.5
           HeroBlurFull: 0.8
-      - id: Classic
-        en: Helium-Neon-Dune 2.5 (full-width artwork, frosted header bar)
-        fr: Helium-Neon-Dune 2.5 (image pleine largeur, barre en verre dépoli)
-        constants: &classic_look
+      - id: Neon
+        en: Neon (full-width artwork, buttons in a header bar)
+        fr: Neon (image pleine largeur, boutons dans une barre)
+        files: [Presets/Buttons/Neon.xaml]
+        constants:
           HeroCardMargin: 0
           HeroCardCornerRadius: 0
           HeroCardBorderThickness: 0
@@ -75,89 +76,129 @@ presets:
           HeroTintLightOpacity: 0
           HeroCoverPlacement: 2
           InfoPanelStyleShowCover: True
-          HeroShadeOpacity: 0.65
-          HeroActionsLocation: 0
+          HeroShadeOpacity: 0.25
+          HeroActionsLocation: 1
+          HeroStyleShowInfoLine: False
+          PageGlassOpacity: 0
+          DetailsViewBackgroundBlurOpacity: 0.25
           HeaderBarBlurOpacity: 1
           HeaderBarGlassOpacity: 1
           HeaderRowBackgroundOpacity: 1
           HeaderRowPadding: 20,10,30,10
           HeaderTileBackgroundOpacity: 0
-          HeaderTileCornerRadius: 0
           HeaderTilePadding: 0
           HeaderTileMargin: 20,0,0,0
-      - id: Neon
-        en: Neon classic (full width, buttons in the header bar)
-        fr: Neon classique (pleine largeur, boutons dans la barre)
-        files: [Presets/Buttons/Neon.xaml]
-        constants:
-          <<: *classic_look
-          HeroActionsLocation: 1
-          HeroStyleShowInfoLine: False
-          HeroShadeOpacity: 0.25
-      - id: DuneClassic
-        en: Dune 2.5 (full width, large artwork, text chips, clear header bar)
-        fr: Dune 2.5 (pleine largeur, grande image, infos en texte, barre transparente)
-        files: [Presets/Chips/Text.xaml]
-        constants:
-          <<: *classic_look
-          HeroShadeOpacity: 0.85
-          HeaderBarBlurOpacity: 0
-          HeaderBarGlassOpacity: 0
       - id: Minimal
-        en: Minimal (card without chips or tiles)
-        fr: Minimal (carte sans puces ni tuiles)
+        en: Minimal (card only, no chips or tiles)
+        fr: Minimal (carte seule, sans puces ni tuiles)
         constants:
           HeroStyleShowInfoLine: False
           HeaderBarStyleVisible: False
           HeroShadeOpacity: 0.5
 
-  - group: HeroCard
-    en: Artwork header shape
-    fr: Forme de l'en-tête avec image
+  - group: Corners
+    en: Corner rounding (card, panels, tiles, chips, buttons, cover)
+    fr: Arrondi des coins (carte, panneaux, tuiles, puces, boutons, jaquette)
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
-      - id: Card
-        en: Rounded card (20 px corners)
-        fr: Carte arrondie (coins de 20 px)
-        constants: {HeroCardMargin: '20,16,20,0', HeroCardCornerRadius: 20, HeroCardBorderThickness: 1, HeroFadeStart: 1}
-      - id: Soft
-        en: Very rounded card, wide spacing (32 px)
-        fr: Carte très arrondie, espacée (32 px)
-        constants: {HeroCardMargin: '40,24,40,0', HeroCardCornerRadius: 32, HeroCardBorderThickness: 1, HeroFadeStart: 1}
+        en: Rounded (Liquid Glass)
+        fr: Arrondi (Liquid Glass)
+      - id: Square
+        en: Square
+        fr: Carré
+        constants: {HeroCardCornerRadius: 0, SectionCornerRadius: 0, HeaderTileCornerRadius: 0, HeroChipCornerRadius: 0, HeroButtonCornerRadius: 0, HeroCoverCornerRadius: 0}
+      - id: Subtle
+        en: Subtle
+        fr: Léger
+        constants: {HeroCardCornerRadius: 10, SectionCornerRadius: 8, HeaderTileCornerRadius: 8, HeroChipCornerRadius: 5, HeroButtonCornerRadius: 5, HeroCoverCornerRadius: 6}
+      - id: Round
+        en: Very round
+        fr: Très arrondi
+        constants: {HeroCardCornerRadius: 28, SectionCornerRadius: 20, HeaderTileCornerRadius: 18, HeroChipCornerRadius: 14, HeroButtonCornerRadius: 16, HeroCoverCornerRadius: 18}
+
+  - group: PageBackground
+    en: Page background
+    fr: Fond de la page
+    options:
+      - id: Default
+        en: Liquid glass (blurred artwork behind everything)
+        fr: Verre liquide (image floutée derrière tout)
+      - id: Clear
+        en: Clear glass (brighter artwork)
+        fr: Verre clair (image plus lumineuse)
+        constants: {PageGlassOpacity: 1, PageGlassScrimOpacity: 0.35, PageGlassBlurRadius: 40, DetailsViewBackgroundBlurOpacity: 0}
+      - id: Dark
+        en: Smoked glass (darker)
+        fr: Verre fumé (plus sombre)
+        constants: {PageGlassOpacity: 1, PageGlassScrimOpacity: 0.75, PageGlassBlurRadius: 40, DetailsViewBackgroundBlurOpacity: 0}
+      - id: Tinted
+        en: Tinted glass (accent color)
+        fr: Verre teinté (couleur d'accent)
+        constants: {PageGlassOpacity: 1, PageGlassScrimOpacity: 0.55, PageGlassTintOpacity: 0.18, DetailsViewBackgroundBlurOpacity: 0}
+      - id: Ambient
+        en: Ambient reflection under the header only
+        fr: Reflet sous l'en-tête seulement
+        constants: {PageGlassOpacity: 0, DetailsViewBackgroundBlurOpacity: 0.25, GridViewBackgroundBlurOpacity: 0.25}
+      - id: Solid
+        en: Solid (color profile only)
+        fr: Uni (profil de couleurs seulement)
+        constants: {PageGlassOpacity: 0, DetailsViewBackgroundBlurOpacity: 0, GridViewBackgroundBlurOpacity: 0}
+
+  - group: Glass
+    en: Glass of the panels, tiles and chips
+    fr: Verre des panneaux, tuiles et puces
+    options:
+      - id: Default
+        en: Glass
+        fr: Verre
+      - id: Frosted
+        en: Frosted (more opaque)
+        fr: Dépoli (plus opaque)
+        constants: {SectionGlassOpacity: 0.11, SectionGlassBorderOpacity: 0.14, ChipGlassOpacity: 0.12, HeaderTileBackgroundOpacity: 0.13}
+      - id: Clear
+        en: Clear (barely visible)
+        fr: Clair (à peine visible)
+        constants: {SectionGlassOpacity: 0.03, SectionGlassBorderOpacity: 0.07, ChipGlassOpacity: 0.04, HeaderTileBackgroundOpacity: 0.04}
+      - id: Borderless
+        en: Glass without outlines
+        fr: Verre sans contours
+        constants: {SectionGlassBorderOpacity: 0, HeroCardBorderThickness: 0}
+
+  - group: HeroCard
+    en: Artwork card size
+    fr: Taille de la carte avec l'image
+    options:
+      - id: Default
+        en: Spaced (20 px from the edges)
+        fr: Espacée (20 px des bords)
+      - id: Wide
+        en: Wide spacing (40 px)
+        fr: Très espacée (40 px)
+        constants: {HeroCardMargin: '40,24,40,0', PageSideMargin: '40,0,40,0', PageLinksMargin: '40,12,40,12', HeroFadeStart: 1}
       - id: Tight
-        en: Slightly rounded card, close to the edges (10 px)
-        fr: Carte peu arrondie, près des bords (10 px)
-        constants: {HeroCardMargin: '8,8,8,0', HeroCardCornerRadius: 10, HeroCardBorderThickness: 1, HeroFadeStart: 1}
-      - id: Frameless
-        en: Rounded card without outline
-        fr: Carte arrondie sans contour
-        constants: {HeroCardMargin: '20,16,20,0', HeroCardCornerRadius: 20, HeroCardBorderThickness: 0, HeroFadeStart: 1}
+        en: Close to the edges (8 px)
+        fr: Près des bords (8 px)
+        constants: {HeroCardMargin: '8,8,8,0', PageSideMargin: '8,0,8,0', PageLinksMargin: '8,12,8,12', HeroFadeStart: 1}
       - id: FullWidth
-        en: Full width, fading into the page (2.5)
-        fr: Pleine largeur, fondu dans la page (2.5)
+        en: Full width, fading into the page
+        fr: Pleine largeur, fondu dans la page
         constants: {HeroCardMargin: 0, HeroCardCornerRadius: 0, HeroCardBorderThickness: 0, HeroFadeStart: 0.75}
 
   - group: HeroBlur
-    en: Progressive blur at the bottom of the artwork
-    fr: Flou progressif en bas de l'image
+    en: Blur at the bottom of the artwork
+    fr: Flou en bas de l'image
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
+        en: Medium
+        fr: Moyen
       - id: "Off"
-        en: Off (sharp artwork)
-        fr: Désactivé (image nette)
+        en: None (sharp artwork)
+        fr: Aucun (image nette)
         constants: {HeroBlurOpacity: 0}
       - id: Light
         en: Light
         fr: Léger
         constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 4, HeroBlurRadius: 14}
-      - id: Medium
-        en: Medium
-        fr: Moyen
-        constants: {HeroBlurOpacity: 1, HeroBlurRadiusSoft: 8, HeroBlurRadius: 28}
       - id: Strong
         en: Strong
         fr: Fort
@@ -172,19 +213,15 @@ presets:
     fr: Hauteur de la bande floutée
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
+        en: Bottom half
+        fr: Moitié du bas
       - id: Small
-        en: Small (bottom quarter)
-        fr: Petite (quart du bas)
+        en: Bottom quarter
+        fr: Quart du bas
         constants: {HeroBlurStart: 0.6, HeroBlurMid: 0.75, HeroBlurFull: 0.92}
-      - id: Medium
-        en: Medium (bottom half)
-        fr: Moyenne (moitié du bas)
-        constants: {HeroBlurStart: 0.45, HeroBlurMid: 0.65, HeroBlurFull: 0.9}
       - id: Large
-        en: Large (two thirds)
-        fr: Grande (deux tiers)
+        en: Two thirds
+        fr: Deux tiers
         constants: {HeroBlurStart: 0.3, HeroBlurMid: 0.5, HeroBlurFull: 0.8}
       - id: Full
         en: Whole artwork, blurrier towards the bottom
@@ -196,19 +233,15 @@ presets:
     fr: Couleur sur la bande floutée
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
+        en: Light accent color
+        fr: Couleur d'accent légère
       - id: None
         en: None (artwork colors)
         fr: Aucune (couleurs de l'image)
         constants: {HeroTintAccentOpacity: 0, HeroTintLightOpacity: 0}
-      - id: Accent
-        en: Accent color, light
-        fr: Couleur d'accent, légère
-        constants: {HeroTintAccentOpacity: 0.3, HeroTintLightOpacity: 0}
       - id: AccentStrong
-        en: Accent color, strong
-        fr: Couleur d'accent, forte
+        en: Strong accent color
+        fr: Couleur d'accent forte
         constants: {HeroTintAccentOpacity: 0.55, HeroTintLightOpacity: 0}
       - id: Frost
         en: White frost
@@ -219,17 +252,33 @@ presets:
         fr: Couleur d'accent et givre
         constants: {HeroTintAccentOpacity: 0.25, HeroTintLightOpacity: 0.08}
 
-  - group: HeroCover
-    en: Cover in the artwork header
-    fr: Jaquette dans l'en-tête
+  - group: HeroShade
+    en: Dark shade at the bottom of the artwork
+    fr: Ombre en bas de l'image
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
-      - id: Overlap
+        en: Light
+        fr: Légère
+      - id: None
+        en: None
+        fr: Aucune
+        constants: {HeroShadeOpacity: 0}
+      - id: Medium
+        en: Medium
+        fr: Moyenne
+        constants: {HeroShadeOpacity: 0.65}
+      - id: Strong
+        en: Strong
+        fr: Forte
+        constants: {HeroShadeOpacity: 0.85}
+
+  - group: HeroCover
+    en: Cover in the artwork card
+    fr: Jaquette dans la carte
+    options:
+      - id: Default
         en: Over the card edge and the tiles
         fr: À cheval sur la carte et les tuiles
-        constants: {HeroCoverPlacement: 0, InfoPanelStyleShowCover: False}
       - id: Inside
         en: Inside the card
         fr: Dans la carte
@@ -239,8 +288,8 @@ presets:
         fr: Dans la carte, et aussi dans le panneau d'informations
         constants: {HeroCoverPlacement: 1, InfoPanelStyleShowCover: True}
       - id: Hidden
-        en: Hidden (cover in the information panel only)
-        fr: Masquée (jaquette dans le panneau d'informations seulement)
+        en: Information panel only
+        fr: Panneau d'informations seulement
         constants: {HeroCoverPlacement: 2, InfoPanelStyleShowCover: True}
 
   - group: Buttons
@@ -391,30 +440,6 @@ presets:
         fr: Désactivées
         files: [Presets/Animations/Off.xaml]
 
-  - group: HeroShade
-    en: Shade over the artwork
-    fr: Voile sur l'image
-    options:
-      - id: Default
-        en: From the global style
-        fr: Selon le style global
-      - id: None
-        en: None
-        fr: Aucun
-        constants: {HeroShadeOpacity: 0}
-      - id: Light
-        en: Light
-        fr: Léger
-        constants: {HeroShadeOpacity: 0.35}
-      - id: Medium
-        en: Medium
-        fr: Moyen
-        constants: {HeroShadeOpacity: 0.65}
-      - id: Strong
-        en: Strong
-        fr: Fort
-        constants: {HeroShadeOpacity: 0.85}
-
   - group: HeroBackground
     en: Artwork sharpness
     fr: Netteté de l'image
@@ -464,65 +489,51 @@ presets:
         files: [Presets/Background/AlignRight.xaml]
 
   - group: HeaderBar
-    en: Header bar (time played, last played...)
-    fr: Barre d'en-tête (temps de jeu, dernière partie...)
+    en: Tiles under the card (look)
+    fr: Tuiles sous la carte (apparence)
     options:
       - id: Default
-        en: From the global style
-        fr: Selon le style global
-      - id: Tiles
-        en: Tiles (rounded boxes under the card)
-        fr: Tuiles (cases arrondies sous la carte)
-        constants: &tiles_look {HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0, HeaderRowBackgroundOpacity: 0, HeaderRowPadding: '0,14,0,0',
-                                HeaderTileBackgroundOpacity: 0.08, HeaderTileCornerRadius: 14, HeaderTilePadding: '16,10,16,10',
-                                HeaderTileMargin: '0,0,12,0', HeaderBarStyleVisible: True}
-      - id: TilesOutline
-        en: Outlined tiles
-        fr: Tuiles à contour léger
-        constants: {<<: *tiles_look, HeaderTileBackgroundOpacity: 0.04, HeaderTileCornerRadius: 10}
-      - id: TilesCompact
-        en: Compact tiles
-        fr: Tuiles compactes
-        constants: {<<: *tiles_look, HeaderTilePadding: '10,6,10,6', HeaderTileMargin: '0,0,8,0', HeaderTileCornerRadius: 10, HeaderRowPadding: '0,10,0,0'}
-      - id: Glass
-        en: Frosted glass bar
-        fr: Barre en verre dépoli
+        en: Glass tiles
+        fr: Tuiles en verre
+      - id: Large
+        en: Large glass tiles
+        fr: Grandes tuiles en verre
+        constants: {HeaderTilePadding: '20,14,20,14', HeaderTileMargin: '0,0,14,0', HeaderTileValueFontSize: 20, HeaderRowPadding: '0,16,0,20'}
+      - id: Compact
+        en: Compact glass tiles
+        fr: Tuiles en verre compactes
+        constants: {HeaderTilePadding: '12,7,12,7', HeaderTileMargin: '0,0,8,0', HeaderTileValueFontSize: 14, HeaderRowPadding: '0,10,0,14'}
+      - id: TextOnly
+        en: Text only (no boxes)
+        fr: Texte seul (sans cases)
+        constants: {HeaderTileBackgroundOpacity: 0, HeaderTilePadding: '0,4,0,4', HeaderTileMargin: '0,0,28,0'}
+      - id: Bar
+        en: Frosted bar across the page (Neon)
+        fr: Barre en verre dépoli sur toute la largeur (Neon)
         constants: &plain_bar {HeaderBarBlurOpacity: 1, HeaderBarGlassOpacity: 1, HeaderRowBackgroundOpacity: 1, HeaderRowPadding: '20,10,30,10',
-                               HeaderTileBackgroundOpacity: 0, HeaderTileCornerRadius: 0, HeaderTilePadding: 0, HeaderTileMargin: '20,0,0,0',
-                               HeaderBarStyleVisible: True}
-      - id: Solid
-        en: Solid bar
-        fr: Barre opaque
+                               HeaderTileBackgroundOpacity: 0, HeaderTilePadding: 0, HeaderTileMargin: '20,0,0,0', HeaderBarStyleVisible: True}
+      - id: SolidBar
+        en: Solid bar across the page
+        fr: Barre opaque sur toute la largeur
         constants: {<<: *plain_bar, HeaderBarBlurOpacity: 0}
-      - id: Transparent
-        en: Transparent bar
-        fr: Barre transparente
-        constants: {<<: *plain_bar, HeaderBarBlurOpacity: 0, HeaderBarGlassOpacity: 0}
       - id: Hidden
         en: Hidden
-        fr: Masquée
+        fr: Masquées
         constants: {HeaderBarStyleVisible: False}
 
-  - group: BackgroundBlur
-    en: Blurred background behind the information
-    fr: Fond flouté derrière les informations
-    options:
-      - id: Default
-        en: Normal
-        fr: Normal
-      - id: "Off"
-        en: Off
-        fr: Désactivé
-        constants: {DetailsViewBackgroundBlurOpacity: 0, GridViewBackgroundBlurOpacity: 0}
-      - id: Light
-        en: Light
-        fr: Léger
-        constants: {DetailsViewBackgroundBlurOpacity: 0.15, GridViewBackgroundBlurOpacity: 0.15}
-      - id: Strong
-        en: Strong
-        fr: Fort
-        constants: {DetailsViewBackgroundBlurOpacity: 0.5, GridViewBackgroundBlurOpacity: 0.5}
-
+# Schema shown in the help tooltip of a setting (Presets/Previews/<name>.png)
+tip_images:
+  HeroCoverWidth: HeroCover_Default
+  HeroCoverHeight: HeroCover_Inside
+  HeroShowInfoLine: Chips_Default
+  HeroInfoLineMaxWidth: Chips_Default
+  HeroActionButtonWidth: Buttons_Default
+  HeroActionButtonHeight: Buttons_Default
+  DetailsViewShowHeaderBar: HeaderBar_Default
+  HeaderButtonSize: HeaderBar_Bar
+  HltbShowOnCover: HeroCover_Hidden
+  AchievementsShowOnCover: HeroCover_Hidden
+  DetailsViewShowInfoPanelDefault: HeroCover_InsideKeepPanel
 
 # Header tiles: twelve slots under the artwork card, each one a Theme Options list of every
 # information type below (tools/header_tiles.py writes the tiles into the Details view and the lists).
@@ -578,81 +589,71 @@ color_profiles:
   insert_before: Accent
   default: {en: Neon (theme colors), fr: Neon (couleurs du thème)}
   profiles:
-    - id: DuneSand
-      en: Dune sand (amber on warm brown)
-      fr: Sable de Dune (ambre sur brun chaud)
-      palette: {bg_deep: "#120E0A", bg: "#2A2118", panel: "#1A1510", control: "#3A2F24", text: "#EDE3D3", text_dim: "#A8988A",
-                accent: "#FFB547", accent2: "#E8912D", play: "#D98E2B", positive: "#A8C77A", mixed: "#F2D16B", negative: "#E06C5A", orange: "#FF9F1C"}
-    - id: HybridRed
-      en: Hybrid red (red on charcoal)
-      fr: Rouge Hybrid (rouge sur anthracite)
-      palette: {bg_deep: "#0B0B0C", bg: "#232325", panel: "#141415", control: "#2E2E31", text: "#ECECEC", text_dim: "#9C9C9F",
-                accent: "#E63946", accent2: "#C1121F", play: "#C1121F", positive: "#7FD48A", mixed: "#F4D35E", negative: "#FF5A5F", orange: "#F08A4B"}
+    - id: Liquid
+      en: Liquid (cool graphite, system blue)
+      fr: Liquid (graphite froid, bleu système)
+      palette: {bg_deep: "#0B0D11", bg: "#1A1D23", panel: "#12141A", control: "#262A32", text: "#F2F4F7", text_dim: "#9BA3AE", accent: "#4DA3FF",
+                accent2: "#6E7BFF", play: "#30C75A", positive: "#34C759", mixed: "#FFD60A", negative: "#FF453A", orange: "#FF9F0A"}
+    - id: Midnight
+      en: Midnight (deep blue)
+      fr: Minuit (bleu profond)
+      palette: {bg_deep: "#060A12", bg: "#111A2C", panel: "#0B1220", control: "#1B2742", text: "#EAF0FF", text_dim: "#93A0BF", accent: "#5AA9FF",
+                accent2: "#7C6CFF", play: "#2FB868", positive: "#4ADE80", mixed: "#FACC15", negative: "#FB7185", orange: "#FB923C"}
+    - id: Graphite
+      en: Graphite (neutral greys)
+      fr: Graphite (gris neutres)
+      palette: {bg_deep: "#0F1011", bg: "#1C1D1F", panel: "#151617", control: "#2A2B2E", text: "#ECECEC", text_dim: "#9C9DA1", accent: "#D6DAE0",
+                accent2: "#8E949C", play: "#4E9A68", positive: "#86C98A", mixed: "#E3C567", negative: "#E07A7A", orange: "#E0A060"}
     - id: OledBlack
       en: OLED black (true black, ice blue)
       fr: Noir OLED (noir pur, bleu glacier)
-      palette: {bg_deep: "#000000", bg: "#0A0A0B", panel: "#000000", control: "#1A1A1C", text: "#F2F2F2", text_dim: "#8E8E93",
-                accent: "#4CC2FF", accent2: "#2A9DF4", play: "#22A06B", positive: "#4ADE80", mixed: "#FACC15", negative: "#F87171", orange: "#FB923C"}
-    - id: Synthwave
-      en: Synthwave (magenta and cyan on night purple)
-      fr: Synthwave (magenta et cyan sur violet nuit)
-      palette: {bg_deep: "#0D0221", bg: "#2A1050", panel: "#170A35", control: "#34195E", text: "#F5E9FF", text_dim: "#B39DDB",
-                accent: "#FF2A6D", accent2: "#05D9E8", play: "#D61C7A", positive: "#5CF2A4", mixed: "#FFD319", negative: "#FF4365", orange: "#FF8F40"}
+      palette: {bg_deep: "#000000", bg: "#0A0A0B", panel: "#000000", control: "#1A1A1C", text: "#F2F2F2", text_dim: "#8E8E93", accent: "#4CC2FF",
+                accent2: "#2A9DF4", play: "#22A06B", positive: "#4ADE80", mixed: "#FACC15", negative: "#F87171", orange: "#FB923C"}
+    - id: DuneSand
+      en: Dune sand (amber on warm brown)
+      fr: Sable de Dune (ambre sur brun chaud)
+      palette: {bg_deep: "#100C08", bg: "#211A12", panel: "#17120D", control: "#30271C", text: "#F4EADB", text_dim: "#B4A592", accent: "#F5B451",
+                accent2: "#E07B39", play: "#C98A2E", positive: "#A8C77A", mixed: "#F2D16B", negative: "#E06C5A", orange: "#FF9F1C"}
+    - id: Ember
+      en: Ember (warm red)
+      fr: Braise (rouge chaud)
+      palette: {bg_deep: "#110909", bg: "#221313", panel: "#180D0D", control: "#331C1C", text: "#F8EEEE", text_dim: "#B79C9C", accent: "#FF6B6B",
+                accent2: "#FF9F6B", play: "#E5484D", positive: "#7FD48A", mixed: "#F4D35E", negative: "#FF5A5F", orange: "#F08A4B"}
+    - id: Forest
+      en: Forest (green)
+      fr: Forêt (vert)
+      palette: {bg_deep: "#090F0B", bg: "#132019", panel: "#0E1712", control: "#1E2F25", text: "#EAF4EC", text_dim: "#9DB3A3", accent: "#4ADE80",
+                accent2: "#2DD4BF", play: "#22A55B", positive: "#4ADE80", mixed: "#E5C07B", negative: "#F87171", orange: "#FB923C"}
+    - id: Aurora
+      en: Aurora (teal and violet)
+      fr: Aurore (sarcelle et violet)
+      palette: {bg_deep: "#071114", bg: "#10222A", panel: "#0B191F", control: "#19333D", text: "#E6F6F7", text_dim: "#90B2B8", accent: "#2DD4BF",
+                accent2: "#A78BFA", play: "#14A38F", positive: "#6EE7B7", mixed: "#FDE68A", negative: "#FB7185", orange: "#FDBA74"}
+    - id: Rose
+      en: Rose (pink and lilac)
+      fr: Rose (rose et lilas)
+      palette: {bg_deep: "#13090E", bg: "#24131B", panel: "#1A0E14", control: "#351F29", text: "#FBEFF4", text_dim: "#BC9AA9", accent: "#FF7AB6",
+                accent2: "#C084FC", play: "#DB4C8A", positive: "#86EFAC", mixed: "#FDE68A", negative: "#FB7185", orange: "#FDBA74"}
+    - id: Violet
+      en: Violet (purple and pink)
+      fr: Violet (violet et rose)
+      palette: {bg_deep: "#0D0915", bg: "#1B142D", panel: "#130E21", control: "#292043", text: "#F1ECFF", text_dim: "#A79CC4", accent: "#A78BFA",
+                accent2: "#F472B6", play: "#7C5CE6", positive: "#86EFAC", mixed: "#FDE68A", negative: "#FB7185", orange: "#FDBA74"}
     - id: Nord
       en: Nord (frost blue, arctic grey)
       fr: Nord (bleu givre, gris arctique)
-      palette: {bg_deep: "#242933", bg: "#2E3440", panel: "#272C36", control: "#3B4252", text: "#ECEFF4", text_dim: "#A0A8B7",
-                accent: "#88C0D0", accent2: "#5E81AC", play: "#A3BE8C", positive: "#A3BE8C", mixed: "#EBCB8B", negative: "#BF616A", orange: "#D08770"}
-    - id: Dracula
-      en: Dracula (purple and pink)
-      fr: Dracula (violet et rose)
-      palette: {bg_deep: "#191A21", bg: "#282A36", panel: "#21222C", control: "#44475A", text: "#F8F8F2", text_dim: "#A4A9C9",
-                accent: "#BD93F9", accent2: "#FF79C6", play: "#50FA7B", positive: "#50FA7B", mixed: "#F1FA8C", negative: "#FF5555", orange: "#FFB86C"}
+      palette: {bg_deep: "#242933", bg: "#2E3440", panel: "#272C36", control: "#3B4252", text: "#ECEFF4", text_dim: "#A0A8B7", accent: "#88C0D0",
+                accent2: "#5E81AC", play: "#A3BE8C", positive: "#A3BE8C", mixed: "#EBCB8B", negative: "#BF616A", orange: "#D08770"}
     - id: Catppuccin
       en: Catppuccin Mocha (pastel mauve)
       fr: Catppuccin Mocha (mauve pastel)
-      palette: {bg_deep: "#11111B", bg: "#1E1E2E", panel: "#181825", control: "#313244", text: "#CDD6F4", text_dim: "#A6ADC8",
-                accent: "#CBA6F7", accent2: "#89B4FA", play: "#A6E3A1", positive: "#A6E3A1", mixed: "#F9E2AF", negative: "#F38BA8", orange: "#FAB387"}
+      palette: {bg_deep: "#11111B", bg: "#1E1E2E", panel: "#181825", control: "#313244", text: "#CDD6F4", text_dim: "#A6ADC8", accent: "#CBA6F7",
+                accent2: "#89B4FA", play: "#A6E3A1", positive: "#A6E3A1", mixed: "#F9E2AF", negative: "#F38BA8", orange: "#FAB387"}
     - id: TokyoNight
       en: Tokyo Night (city blue and violet)
       fr: Tokyo Night (bleu et violet urbains)
-      palette: {bg_deep: "#16161E", bg: "#1A1B26", panel: "#1F2335", control: "#292E42", text: "#C0CAF5", text_dim: "#8C94BF",
-                accent: "#7AA2F7", accent2: "#BB9AF7", play: "#9ECE6A", positive: "#9ECE6A", mixed: "#E0AF68", negative: "#F7768E", orange: "#FF9E64"}
-    - id: Gruvbox
-      en: Gruvbox (retro yellow and orange)
-      fr: Gruvbox (jaune et orange rétro)
-      palette: {bg_deep: "#141617", bg: "#282828", panel: "#1D2021", control: "#3C3836", text: "#EBDBB2", text_dim: "#A89984",
-                accent: "#FABD2F", accent2: "#FE8019", play: "#98971A", positive: "#B8BB26", mixed: "#FABD2F", negative: "#FB4934", orange: "#FE8019"}
-    - id: RosePine
-      en: Rose Pine (iris and rose, soft)
-      fr: Rose Pine (iris et rose, doux)
-      palette: {bg_deep: "#13111C", bg: "#191724", panel: "#1F1D2E", control: "#26233A", text: "#E0DEF4", text_dim: "#908CAA",
-                accent: "#C4A7E7", accent2: "#EB6F92", play: "#31748F", positive: "#9CCFD8", mixed: "#F6C177", negative: "#EB6F92", orange: "#F6C177"}
-    - id: Everforest
-      en: Everforest (moss green, forest)
-      fr: Everforest (vert mousse, forêt)
-      palette: {bg_deep: "#232A2E", bg: "#2D353B", panel: "#272E33", control: "#3D484D", text: "#D3C6AA", text_dim: "#9DA9A0",
-                accent: "#A7C080", accent2: "#83C092", play: "#A7C080", positive: "#A7C080", mixed: "#DBBC7F", negative: "#E67E80", orange: "#E69875"}
-    - id: Solarized
-      en: Solarized dark (blue and cyan on deep teal)
-      fr: Solarized sombre (bleu et cyan sur sarcelle)
-      palette: {bg_deep: "#00212B", bg: "#002B36", panel: "#00252F", control: "#073642", text: "#EEE8D5", text_dim: "#93A1A1",
-                accent: "#268BD2", accent2: "#2AA198", play: "#859900", positive: "#859900", mixed: "#B58900", negative: "#DC322F", orange: "#CB4B16"}
-    - id: OneDark
-      en: One Dark (editor blue and violet)
-      fr: One Dark (bleu et violet d'éditeur)
-      palette: {bg_deep: "#1E2127", bg: "#282C34", panel: "#21252B", control: "#2C313A", text: "#DCDFE4", text_dim: "#9DA5B4",
-                accent: "#61AFEF", accent2: "#C678DD", play: "#98C379", positive: "#98C379", mixed: "#E5C07B", negative: "#E06C75", orange: "#D19A66"}
-    - id: OceanAbyss
-      en: Ocean abyss (turquoise on deep blue)
-      fr: Abysses (turquoise sur bleu profond)
-      palette: {bg_deep: "#04121C", bg: "#0B2433", panel: "#071A26", control: "#12354A", text: "#E2F3F5", text_dim: "#8FB3BF",
-                accent: "#2EC4B6", accent2: "#3A86FF", play: "#1F9E8F", positive: "#7EE0A0", mixed: "#FFD166", negative: "#EF476F", orange: "#F4A261"}
-    - id: Graphite
-      en: Graphite (neutral greys, no color)
-      fr: Graphite (gris neutres, sans couleur)
-      palette: {bg_deep: "#111213", bg: "#1E1F21", panel: "#161718", control: "#2C2D30", text: "#E8E8E8", text_dim: "#9A9B9E",
-                accent: "#C8CCD2", accent2: "#8E949C", play: "#5A8F69", positive: "#8BC48A", mixed: "#E3C567", negative: "#E07A7A", orange: "#E0A060"}
+      palette: {bg_deep: "#16161E", bg: "#1A1B26", panel: "#1F2335", control: "#292E42", text: "#C0CAF5", text_dim: "#8C94BF", accent: "#7AA2F7",
+                accent2: "#BB9AF7", play: "#9ECE6A", positive: "#9ECE6A", mixed: "#E0AF68", negative: "#F7768E", orange: "#FF9E64"}
   # only for the preview of the Default choice (the theme colors, no file)
   default_palette: {bg_deep: "#151616", bg: "#2C323D", panel: "#171D25", control: "#3E4047", text: "#DFE3E6", text_dim: "#A3A3A3",
                     accent: "#1A9FFF", accent2: "#2A71D8", play: "#2BB943", positive: "#78FFA0", mixed: "#FFFCA1", negative: "#FF6B6B", orange: "#FFA500"}
@@ -675,7 +676,6 @@ variables:
   - {key: HeroMinHeight, range: [300, 900], en: Minimum height of the header, fr: Hauteur minimale de l'en-tête}
   - {key: HeroActionButtonWidth, range: [200, 600], en: Width of the button row, fr: Largeur de la rangée de boutons}
   - {key: HeroActionButtonHeight, range: [28, 72], en: Height of the buttons, fr: Hauteur des boutons}
-  - {key: HeroButtonCornerRadius, range: [0, 24], en: Button corner rounding, fr: Arrondi des boutons}
   - {key: DetailsViewShowEditButton, en: Show the edit button, fr: Afficher le bouton Modifier}
   - {key: DetailsViewShowFavoriteButton, en: Show the favorite button (ThemeExtras), fr: Afficher le bouton Favori (ThemeExtras)}
   - {key: DetailsViewShowHiddenButton, en: Show the hide button (ThemeExtras), fr: Afficher le bouton Masquer (ThemeExtras)}
@@ -687,14 +687,12 @@ variables:
   - {key: GameLogoMaxHeight, range: [50, 1000], en: Logo maximum height, fr: Hauteur maximale du logo}
   - {key: HeroCoverWidth, range: [100, 500], en: Width of the cover in the header, fr: Largeur de la jaquette dans l'en-tête}
   - {key: HeroCoverHeight, range: [150, 600], en: Height of the cover in the header, fr: Hauteur de la jaquette dans l'en-tête}
-  - {key: HeroCoverCornerRadius, range: [0, 40], en: Cover corner rounding, fr: Arrondi de la jaquette}
 
   - header: HeroChips
     en: Details view - information chips
     fr: Vue Détails - puces d'information
   - {key: HeroShowInfoLine, en: Show the chips, fr: Afficher les puces}
   - {key: HeroInfoLineMaxWidth, range: [300, 2000], en: Maximum width of the chips line, fr: Largeur maximale de la ligne de puces}
-  - {key: HeroChipCornerRadius, range: [0, 20], en: Chip corner rounding, fr: Arrondi des puces}
   - {key: HeroShowReleaseDate, en: Release date, fr: Date de sortie}
   - {key: HeroShowPlatforms, en: Platforms, fr: Plateformes}
   - {key: HeroShowSource, en: Source, fr: Source}
@@ -837,6 +835,14 @@ variables:
   - {key: DetailsViewExpandReviewsPanel, en: Review Viewer, fr: Review Viewer}
   - {key: DetailsViewExpandScreenshotUtilitiesPanel, en: Screenshot Utilities, fr: Screenshot Utilities}
 
+  - header: DetailsColumns
+    en: Details view - sections moved to the right column
+    fr: Vue Détails - sections déplacées dans la colonne de droite
+  - {key: DetailsViewGenresInRightColumn, en: Genres in the right column, fr: Genres dans la colonne de droite}
+  - {key: DetailsViewCategoriesInRightColumn, en: Categories in the right column, fr: Catégories dans la colonne de droite}
+  - {key: DetailsViewFeaturesInRightColumn, en: Features in the right column, fr: Fonctionnalités dans la colonne de droite}
+  - {key: DetailsViewTagsInRightColumn, en: Tags in the right column, fr: Étiquettes dans la colonne de droite}
+
   - header: DetailsOrderLeft
     en: Details view - left column order (each number once, 0 to 18)
     fr: Vue Détails - ordre de la colonne de gauche (chaque numéro une fois, 0 à 18)
@@ -862,6 +868,10 @@ variables:
   - {key: DetailsViewSectionOrderScreenshotsVisualizer, range: [0, 18], en: ScreenshotsVisualizer, fr: ScreenshotsVisualizer}
   - {key: DetailsViewSectionOrderReviewViewer, range: [0, 18], en: Review Viewer, fr: Review Viewer}
   - {key: DetailsViewSectionOrderScreenshotUtilities, range: [0, 18], en: Screenshot Utilities, fr: Screenshot Utilities}
+  - {key: DetailsViewSectionOrderRightGenres, range: [0, 18], en: 'Genres (when in the right column)', fr: 'Genres (si dans la colonne de droite)'}
+  - {key: DetailsViewSectionOrderRightCategories, range: [0, 18], en: 'Categories (when in the right column)', fr: 'Catégories (si dans la colonne de droite)'}
+  - {key: DetailsViewSectionOrderRightFeatures, range: [0, 18], en: 'Features (when in the right column)', fr: 'Fonctionnalités (si dans la colonne de droite)'}
+  - {key: DetailsViewSectionOrderRightTags, range: [0, 18], en: 'Tags (when in the right column)', fr: 'Étiquettes (si dans la colonne de droite)'}
 
   - header: DetailsPlugins
     en: Details view - extension details
@@ -1133,6 +1143,6 @@ tips:
   LinkIconSize: {en: 'Size of the link icons (favicons).', fr: 'Taille des icônes de liens (favicons).'}
   TopPanelHeight: {en: 'Height of the bar at the top of the window.', fr: 'Hauteur de la barre en haut de la fenêtre.'}
   ShowNavigationButtons: {en: 'Back and forward buttons. Need ThemeExtras.', fr: 'Boutons précédent et suivant. Demandent ThemeExtras.'}
-  HeroCoverWidth: {en: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork header" list.', fr: 'Jaquette affichée en bas à gauche de la carte. Sa place se règle dans la liste « Jaquette dans l''en-tête ».'}
+  DetailsViewGenresInRightColumn: {en: 'Moves the section to the narrow right column, for example at its bottom (order below). There it shows the Playnite list, without the Metadata Utilities grouping, and the chips of the artwork no longer fold it. Applies after a Playnite restart.', fr: 'Déplace la section dans la colonne étroite de droite, par exemple tout en bas (ordre plus bas). Elle y affiche la liste de Playnite, sans le regroupement de Metadata Utilities, et les puces de l''image ne la replient plus. S''applique après un redémarrage de Playnite.'}
+  HeroCoverWidth: {en: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork card" list.', fr: 'Jaquette affichée en bas à gauche de la carte. Sa place se règle dans la liste « Jaquette dans la carte ».'}
   HeroCoverHeight: {en: 'A 2:3 ratio (230 x 345) fits most covers.', fr: 'Un rapport 2:3 (230 x 345) convient à la plupart des jaquettes.'}
-  HeroCoverCornerRadius: {en: 'Applies after a Playnite restart.', fr: 'S''applique après un redémarrage de Playnite.'}

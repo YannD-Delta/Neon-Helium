@@ -9,6 +9,32 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DetailsViewGameOverview}">
+                    <Grid>
+                    <!-- Liquid glass: the artwork, blurred and dimmed, fixed behind the whole page (it does not scroll).
+                         Rendered at a tenth of its size and scaled up, which blurs it at a low cost. -->
+                    <Grid x:Name="PageGlassBackground" IsHitTestVisible="False" ClipToBounds="True" Opacity="{DynamicResource PageGlassOpacity}">
+                        <Border>
+                            <Border.Background>
+                                <VisualBrush Visual="{Binding ElementName=HeroArtworkLayer}" Stretch="UniformToFill" AlignmentY="Top" />
+                            </Border.Background>
+                            <Border.CacheMode>
+                                <BitmapCache EnableClearType="False" RenderAtScale="0.1" SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                            <Border.Effect>
+                                <BlurEffect Radius="{DynamicResource PageGlassBlurRadius}" KernelType="Gaussian" RenderingBias="Performance" />
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource GlyphBrush}" Opacity="{DynamicResource PageGlassTintOpacity}" />
+                        <Border Background="Black" Opacity="{DynamicResource PageGlassScrimOpacity}" />
+                        <Border>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#00000000" Offset="0.3" />
+                                    <GradientStop Color="#66000000" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
                     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                                   VerticalScrollBarVisibility="Auto"
                                   Style="{DynamicResource DetailsScrollViewer}"
@@ -5893,6 +5919,21 @@
                                                 
                                                     <!-- BEGIN generated header tiles: edit tools/header_tiles.py, then run tools/build_options.py. -->
                                                     <Grid x:Name="HeaderTilesGrid" DockPanel.Dock="Left">
+                                                        <Grid.Resources>
+                                                            <!-- Tile text: a small label over a larger, brighter value (overrides the header bar styles inside the tiles) -->
+                                                            <Style TargetType="Label" x:Key="HeaderLabel">
+                                                                <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
+                                                                <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+                                                                <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+                                                                <Setter Property="Padding" Value="0" />
+                                                                <Setter Property="Margin" Value="0,0,0,3" />
+                                                            </Style>
+                                                            <Style TargetType="TextBlock" x:Key="HeaderTextBlock">
+                                                                <Setter Property="FontSize" Value="{DynamicResource HeaderTileValueFontSize}" />
+                                                                <Setter Property="FontWeight" Value="SemiBold" />
+                                                                <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                                                            </Style>
+                                                        </Grid.Resources>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="Auto" />
                                                             <ColumnDefinition Width="Auto" />
@@ -5978,7 +6019,7 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=PART_ElemPlayTime}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
@@ -6066,7 +6107,7 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=PART_ElemLastPlayed}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
@@ -6137,13 +6178,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyCompletionStatus}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center" Margin="0">
+                                                            <StackPanel x:Name="HeaderTileBodyCompletionStatus" VerticalAlignment="Center" Margin="0">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -6231,13 +6272,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyAchievements}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <DockPanel VerticalAlignment="Center" Margin="0"
+                                                            <DockPanel x:Name="HeaderTileBodyAchievements" VerticalAlignment="Center" Margin="0"
                                                                        Visibility="{PluginSettings Plugin=PlayniteAchievements, Path=HasAchievements, FallbackValue=Collapsed, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Viewbox Stretch="Uniform" Height="32" Margin="-2,3,-2,0">
                                                                     <Viewbox.Style>
@@ -6402,13 +6443,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyAchievementsPercent}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyAchievementsPercent" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -6483,13 +6524,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyLatestAchievement}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyLatestAchievement" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -6561,13 +6602,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyRareAchievements}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyRareAchievements" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -6647,13 +6688,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyHltbMain}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center" Margin="0"
+                                                            <StackPanel x:Name="HeaderTileBodyHltbMain" VerticalAlignment="Center" Margin="0"
                                                                         Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainStoryFormat, FallbackValue=''}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
@@ -6729,13 +6770,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyHltbMainExtra}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center"
+                                                            <StackPanel x:Name="HeaderTileBodyHltbMainExtra" VerticalAlignment="Center"
                                                                         Tag="{PluginSettings Plugin=HowLongToBeat, Path=MainExtraFormat, FallbackValue=''}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
@@ -6814,13 +6855,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyHltbCompletionist}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center"
+                                                            <StackPanel x:Name="HeaderTileBodyHltbCompletionist" VerticalAlignment="Center"
                                                                         Tag="{PluginSettings Plugin=HowLongToBeat, Path=CompletionistFormat, FallbackValue=''}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
@@ -6899,13 +6940,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyHltbAll}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyHltbAll" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -6986,13 +7027,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyScores}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyScores" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7072,13 +7113,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyCriticScore}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyCriticScore" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7150,13 +7191,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyCommunityScore}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyCommunityScore" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7228,13 +7269,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyUserScore}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyUserScore" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7306,13 +7347,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyInstallSize}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyInstallSize" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7387,13 +7428,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyAvgFps}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center" Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
+                                                            <StackPanel x:Name="HeaderTileBodyAvgFps" VerticalAlignment="Center" Tag="{PluginSettings Plugin=GameActivity, Path=AvgFpsAllSession, FallbackValue=0}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7468,13 +7509,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyLastSession}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center"
+                                                            <StackPanel x:Name="HeaderTileBodyLastSession" VerticalAlignment="Center"
                                                                         Tag="{PluginSettings Plugin=GameActivity, Path=LastPlaytimeSession, FallbackValue=''}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
@@ -7553,13 +7594,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyRecentActivity}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center"
+                                                            <StackPanel x:Name="HeaderTileBodyRecentActivity" VerticalAlignment="Center"
                                                                         Tag="{PluginSettings Plugin=GameActivity, Path=RecentActivity, FallbackValue=''}">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
@@ -7638,13 +7679,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyPlayCount}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyPlayCount" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7716,13 +7757,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyAdded}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyAdded" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7794,13 +7835,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyReleaseDate}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyReleaseDate" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7872,13 +7913,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodySource}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodySource" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -7953,13 +7994,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyPlatforms}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyPlatforms" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8034,13 +8075,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyDevelopers}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyDevelopers" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8115,13 +8156,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyPublishers}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyPublishers" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8196,13 +8237,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyGenres}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyGenres" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8277,13 +8318,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodySeries}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodySeries" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8358,13 +8399,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyAgeRatings}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyAgeRatings" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8439,13 +8480,13 @@
                                                                             <Setter Property="Grid.Column" Value="11" />
                                                                             <Setter Property="Visibility" Value="Visible" />
                                                                         </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                                                        <DataTrigger Binding="{Binding Visibility, ElementName=HeaderTileBodyVersion}" Value="Collapsed">
                                                                             <Setter Property="Visibility" Value="Collapsed" />
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </Border.Style>
-                                                            <StackPanel VerticalAlignment="Center">
+                                                            <StackPanel x:Name="HeaderTileBodyVersion" VerticalAlignment="Center">
                                                                 <StackPanel.Style>
                                                                     <Style TargetType="StackPanel">
                                                                         <Style.Triggers>
@@ -8631,8 +8672,8 @@
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Grid Grid.Row="0">
-                                                <Border Background="{DynamicResource GameInfoContainerBackgroundBrush}"
-                                                    Margin="20,0,30,0" Padding="15,10,15,10">
+                                                <Border Background="{DynamicResource SectionGlassBrush}" BorderBrush="{DynamicResource SectionGlassBorderBrush}" BorderThickness="1"
+                                                    Margin="{DynamicResource PageSideMargin}" Padding="15,10,15,10" CornerRadius="{DynamicResource SectionCornerRadius}">
                                                     <DockPanel LastChildFill="True">
                                                         <DockPanel.Resources>
                                                             <Style TargetType="Button" BasedOn="{StaticResource PropertyItemButton}" />
@@ -8880,7 +8921,7 @@
                                             </Grid>
                                         </Grid>
 
-                                        <Grid Margin="20,10,30,10" Grid.Row="2">
+                                        <Grid Margin="{DynamicResource PageLinksMargin}" Grid.Row="2">
                                             <Grid.Style>
                                                 <Style TargetType="Grid">
                                                     <Setter Property="Visibility" Value="Visible" />
@@ -8917,7 +8958,7 @@
                                             </ItemsControl>
                                         </Grid>
 
-                                        <Grid Grid.Row="3" Margin="20,0,30,0">
+                                        <Grid Grid.Row="3" Margin="{DynamicResource PageSideMargin}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="2*" />
                                                 <ColumnDefinition Width="40" />
@@ -9146,6 +9187,10 @@
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="19" />
                                                                 </MultiDataTrigger>
+                                                                <!-- column: shown in the left column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewGenresInRightColumn], FallbackValue={StaticResource DetailsViewGenresInRightColumn}, TargetNullValue={StaticResource DetailsViewGenresInRightColumn}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Grid.Style>
@@ -9282,6 +9327,10 @@
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="20" />
                                                                 </MultiDataTrigger>
+                                                                <!-- column: shown in the left column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewCategoriesInRightColumn], FallbackValue={StaticResource DetailsViewCategoriesInRightColumn}, TargetNullValue={StaticResource DetailsViewCategoriesInRightColumn}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Grid.Style>
@@ -9418,6 +9467,10 @@
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="21" />
                                                                 </MultiDataTrigger>
+                                                                <!-- column: shown in the left column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewFeaturesInRightColumn], FallbackValue={StaticResource DetailsViewFeaturesInRightColumn}, TargetNullValue={StaticResource DetailsViewFeaturesInRightColumn}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Grid.Style>
@@ -9554,6 +9607,10 @@
                                                                     </MultiDataTrigger.Conditions>
                                                                     <Setter Property="Grid.Row" Value="22" />
                                                                 </MultiDataTrigger>
+                                                                <!-- column: shown in the left column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTagsInRightColumn], FallbackValue={StaticResource DetailsViewTagsInRightColumn}, TargetNullValue={StaticResource DetailsViewTagsInRightColumn}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </Grid.Style>
@@ -11423,6 +11480,562 @@
                                                 </StackPanel>
                                                 </Grid>
                                                 
+                                                <!-- Genres: shown here when "Genres in the right column" is on (Theme Options) -->
+                                                <Grid>
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Setter Property="Grid.Row" Value="{DynamicResource DetailsViewSectionOrderRightGenres}" />
+                                                            <Style.Triggers>
+                                                                <!-- tabs mode: hidden unless this section belongs to the selected tab (the triggers below still hide it) -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], FallbackValue={StaticResource DetailsViewTabsMode}, TargetNullValue={StaticResource DetailsViewTabsMode}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAll}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabGenres], FallbackValue={StaticResource DetailsViewTabGenres}, TargetNullValue={StaticResource DetailsViewTabGenres}}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAbout}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabGenres], FallbackValue={StaticResource DetailsViewTabGenres}, TargetNullValue={StaticResource DetailsViewTabGenres}}" Value="1" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabMedia}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabGenres], FallbackValue={StaticResource DetailsViewTabGenres}, TargetNullValue={StaticResource DetailsViewTabGenres}}" Value="2" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabStats}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabGenres], FallbackValue={StaticResource DetailsViewTabGenres}, TargetNullValue={StaticResource DetailsViewTabGenres}}" Value="3" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabCommunity}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabGenres], FallbackValue={StaticResource DetailsViewTabGenres}, TargetNullValue={StaticResource DetailsViewTabGenres}}" Value="4" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Grid.Row" Value="19" />
+                                                                </MultiDataTrigger>
+                                                                <!-- column: shown in the right column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewGenresInRightColumn], FallbackValue={StaticResource DetailsViewGenresInRightColumn}, TargetNullValue={StaticResource DetailsViewGenresInRightColumn}}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                <StackPanel Name="HndRightElemGenres">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Genres}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Game.Genres}" Value="{x:Null}">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </StackPanel.Style>
+                                                    <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandGenres], FallbackValue={StaticResource DetailsViewExpandGenres}, TargetNullValue={StaticResource DetailsViewExpandGenres}}">
+                                                        <ToggleButton x:Name="DetailsViewGenresPanelToggleButtonRight" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}" Margin="0,0,0,10" Focusable="False">
+                                                            <ToggleButton.Style>
+                                                                <Style TargetType="ToggleButton" BasedOn="{StaticResource DetailsSectionHeaderToggleButton}">
+                                                                    <!-- WPF only accepts Binding or DynamicResource as a setter value: read the live option from the header Grid Tag -->
+                                                                    <Setter Property="IsChecked" Value="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}, Mode=OneWay}" />
+                                                                    <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteGenresSection], FallbackValue={StaticResource DemoteGenresSection}, TargetNullValue={StaticResource DemoteGenresSection}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowGenres], FallbackValue={StaticResource HeroShowGenres}, TargetNullValue={StaticResource HeroShowGenres}}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="IsChecked" Value="False" />
+                                                                            <Setter Property="Opacity" Value="0.55" />
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ToggleButton.Style>
+                                                            <Label Content="{DynamicResource LOCGenreLabel}" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                        </ToggleButton>
+                                                        <!-- Quick settings: where and how this section shows, applied at once through Theme Options -->
+                                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,32,0" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}">
+                                                            <Button x:Name="QuickSettingsGenresRight" Style="{DynamicResource SectionQuickSettingsButton}" VerticalAlignment="Center"
+                                                                    Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                                    CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef"
+                                                                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" />
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Margin="0,0,0,10" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionContainerMinHeight], FallbackValue={StaticResource SectionContainerMinHeight}, TargetNullValue={StaticResource SectionContainerMinHeight}}">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=DetailsViewGenresPanelToggleButtonRight}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
+                                                        <Border Style="{DynamicResource OutlineBorder}" />
+                                                        <ItemsControl ItemsSource="{Binding Game.Genres}" Margin="0,3,0,3">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Button Content="{Binding Name}" Style="{StaticResource PropertyItemFeedPanelButton}"
+                                                                        Command="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.SetGenreFilterCommand}"
+                                                                        CommandParameter="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+                                                </StackPanel>
+                                                </Grid>
+
+                                                <!-- Categories: shown here when "Categories in the right column" is on (Theme Options) -->
+                                                <Grid>
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Setter Property="Grid.Row" Value="{DynamicResource DetailsViewSectionOrderRightCategories}" />
+                                                            <Style.Triggers>
+                                                                <!-- tabs mode: hidden unless this section belongs to the selected tab (the triggers below still hide it) -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], FallbackValue={StaticResource DetailsViewTabsMode}, TargetNullValue={StaticResource DetailsViewTabsMode}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAll}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabCategories], FallbackValue={StaticResource DetailsViewTabCategories}, TargetNullValue={StaticResource DetailsViewTabCategories}}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAbout}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabCategories], FallbackValue={StaticResource DetailsViewTabCategories}, TargetNullValue={StaticResource DetailsViewTabCategories}}" Value="1" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabMedia}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabCategories], FallbackValue={StaticResource DetailsViewTabCategories}, TargetNullValue={StaticResource DetailsViewTabCategories}}" Value="2" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabStats}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabCategories], FallbackValue={StaticResource DetailsViewTabCategories}, TargetNullValue={StaticResource DetailsViewTabCategories}}" Value="3" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabCommunity}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabCategories], FallbackValue={StaticResource DetailsViewTabCategories}, TargetNullValue={StaticResource DetailsViewTabCategories}}" Value="4" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Grid.Row" Value="20" />
+                                                                </MultiDataTrigger>
+                                                                <!-- column: shown in the right column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewCategoriesInRightColumn], FallbackValue={StaticResource DetailsViewCategoriesInRightColumn}, TargetNullValue={StaticResource DetailsViewCategoriesInRightColumn}}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                <StackPanel Name="HndRightElemCategories">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Categories}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Game.Categories}" Value="{x:Null}">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </StackPanel.Style>
+                                                    <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandCategories], FallbackValue={StaticResource DetailsViewExpandCategories}, TargetNullValue={StaticResource DetailsViewExpandCategories}}">
+                                                        <ToggleButton x:Name="DetailsViewCategoriesPanelToggleButtonRight" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}" Margin="0,0,0,10" Focusable="False">
+                                                            <ToggleButton.Style>
+                                                                <Style TargetType="ToggleButton" BasedOn="{StaticResource DetailsSectionHeaderToggleButton}">
+                                                                    <!-- WPF only accepts Binding or DynamicResource as a setter value: read the live option from the header Grid Tag -->
+                                                                    <Setter Property="IsChecked" Value="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}, Mode=OneWay}" />
+                                                                    <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteCategoriesSection], FallbackValue={StaticResource DemoteCategoriesSection}, TargetNullValue={StaticResource DemoteCategoriesSection}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowCategories], FallbackValue={StaticResource HeroShowCategories}, TargetNullValue={StaticResource HeroShowCategories}}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="IsChecked" Value="False" />
+                                                                            <Setter Property="Opacity" Value="0.55" />
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ToggleButton.Style>
+                                                            <Label Content="{DynamicResource LOCGameCategoriesTitle}" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                        </ToggleButton>
+                                                        <!-- Quick settings: where and how this section shows, applied at once through Theme Options -->
+                                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,32,0" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}">
+                                                            <Button x:Name="QuickSettingsCategoriesRight" Style="{DynamicResource SectionQuickSettingsButton}" VerticalAlignment="Center"
+                                                                    Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                                    CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef"
+                                                                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" />
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Margin="0,0,0,10" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionContainerMinHeight], FallbackValue={StaticResource SectionContainerMinHeight}, TargetNullValue={StaticResource SectionContainerMinHeight}}">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=DetailsViewCategoriesPanelToggleButtonRight}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
+                                                        <Border Style="{DynamicResource OutlineBorder}" />
+                                                        <ItemsControl ItemsSource="{Binding Game.Categories}" Margin="0,3,0,3">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Button Content="{Binding Name}" Style="{StaticResource PropertyItemFeedPanelButton}"
+                                                                        Command="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.SetCategoryFilterCommand}"
+                                                                        CommandParameter="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+                                                </StackPanel>
+                                                </Grid>
+
+                                                <!-- Features: shown here when "Features in the right column" is on (Theme Options) -->
+                                                <Grid>
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Setter Property="Grid.Row" Value="{DynamicResource DetailsViewSectionOrderRightFeatures}" />
+                                                            <Style.Triggers>
+                                                                <!-- tabs mode: hidden unless this section belongs to the selected tab (the triggers below still hide it) -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], FallbackValue={StaticResource DetailsViewTabsMode}, TargetNullValue={StaticResource DetailsViewTabsMode}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAll}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabFeatures], FallbackValue={StaticResource DetailsViewTabFeatures}, TargetNullValue={StaticResource DetailsViewTabFeatures}}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAbout}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabFeatures], FallbackValue={StaticResource DetailsViewTabFeatures}, TargetNullValue={StaticResource DetailsViewTabFeatures}}" Value="1" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabMedia}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabFeatures], FallbackValue={StaticResource DetailsViewTabFeatures}, TargetNullValue={StaticResource DetailsViewTabFeatures}}" Value="2" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabStats}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabFeatures], FallbackValue={StaticResource DetailsViewTabFeatures}, TargetNullValue={StaticResource DetailsViewTabFeatures}}" Value="3" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabCommunity}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabFeatures], FallbackValue={StaticResource DetailsViewTabFeatures}, TargetNullValue={StaticResource DetailsViewTabFeatures}}" Value="4" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Grid.Row" Value="21" />
+                                                                </MultiDataTrigger>
+                                                                <!-- column: shown in the right column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewFeaturesInRightColumn], FallbackValue={StaticResource DetailsViewFeaturesInRightColumn}, TargetNullValue={StaticResource DetailsViewFeaturesInRightColumn}}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                <StackPanel Name="HndRightElemFeatures">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Features}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Game.Features}" Value="{x:Null}">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </StackPanel.Style>
+                                                    <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandFeatures], FallbackValue={StaticResource DetailsViewExpandFeatures}, TargetNullValue={StaticResource DetailsViewExpandFeatures}}">
+                                                        <ToggleButton x:Name="DetailsViewFeaturesPanelToggleButtonRight" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}" Margin="0,0,0,10" Focusable="False">
+                                                            <ToggleButton.Style>
+                                                                <Style TargetType="ToggleButton" BasedOn="{StaticResource DetailsSectionHeaderToggleButton}">
+                                                                    <!-- WPF only accepts Binding or DynamicResource as a setter value: read the live option from the header Grid Tag -->
+                                                                    <Setter Property="IsChecked" Value="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}, Mode=OneWay}" />
+                                                                    <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteFeaturesSection], FallbackValue={StaticResource DemoteFeaturesSection}, TargetNullValue={StaticResource DemoteFeaturesSection}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowFeatures], FallbackValue={StaticResource HeroShowFeatures}, TargetNullValue={StaticResource HeroShowFeatures}}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="IsChecked" Value="False" />
+                                                                            <Setter Property="Opacity" Value="0.55" />
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ToggleButton.Style>
+                                                            <Label Content="{DynamicResource LOCFeaturesLabel}" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                        </ToggleButton>
+                                                        <!-- Quick settings: where and how this section shows, applied at once through Theme Options -->
+                                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,32,0" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}">
+                                                            <Button x:Name="QuickSettingsFeaturesRight" Style="{DynamicResource SectionQuickSettingsButton}" VerticalAlignment="Center"
+                                                                    Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                                    CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef"
+                                                                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" />
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Margin="0,0,0,10" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionContainerMinHeight], FallbackValue={StaticResource SectionContainerMinHeight}, TargetNullValue={StaticResource SectionContainerMinHeight}}">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=DetailsViewFeaturesPanelToggleButtonRight}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
+                                                        <Border Style="{DynamicResource OutlineBorder}" />
+                                                        <ItemsControl ItemsSource="{Binding Game.Features}" Margin="0,3,0,3">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Button Content="{Binding Name}" Style="{StaticResource PropertyItemFeedPanelButton}"
+                                                                        Command="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.SetFeatureFilterCommand}"
+                                                                        CommandParameter="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+                                                </StackPanel>
+                                                </Grid>
+
+                                                <!-- Tags: shown here when "Tags in the right column" is on (Theme Options) -->
+                                                <Grid>
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Setter Property="Grid.Row" Value="{DynamicResource DetailsViewSectionOrderRightTags}" />
+                                                            <Style.Triggers>
+                                                                <!-- tabs mode: hidden unless this section belongs to the selected tab (the triggers below still hide it) -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabsMode], FallbackValue={StaticResource DetailsViewTabsMode}, TargetNullValue={StaticResource DetailsViewTabsMode}}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAll}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabTags], FallbackValue={StaticResource DetailsViewTabTags}, TargetNullValue={StaticResource DetailsViewTabTags}}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </DataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabAbout}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabTags], FallbackValue={StaticResource DetailsViewTabTags}, TargetNullValue={StaticResource DetailsViewTabTags}}" Value="1" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabMedia}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabTags], FallbackValue={StaticResource DetailsViewTabTags}, TargetNullValue={StaticResource DetailsViewTabTags}}" Value="2" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabStats}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabTags], FallbackValue={StaticResource DetailsViewTabTags}, TargetNullValue={StaticResource DetailsViewTabTags}}" Value="3" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding IsChecked, ElementName=DetailsTabCommunity}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTabTags], FallbackValue={StaticResource DetailsViewTabTags}, TargetNullValue={StaticResource DetailsViewTabTags}}" Value="4" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                </MultiDataTrigger>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                        <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                        <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Grid.Row" Value="22" />
+                                                                </MultiDataTrigger>
+                                                                <!-- column: shown in the right column only -->
+                                                                <DataTrigger Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewTagsInRightColumn], FallbackValue={StaticResource DetailsViewTagsInRightColumn}, TargetNullValue={StaticResource DetailsViewTagsInRightColumn}}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                <StackPanel Name="HndRightElemTags">
+                                                    <StackPanel.Style>
+                                                        <Style TargetType="StackPanel">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Settings DetailsVisibility.Tags}" Value="False">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Game.Tags}" Value="{x:Null}">
+                                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </StackPanel.Style>
+                                                    <Grid Tag="{PluginSettings Plugin=ThemeOptions, Path=Options[DetailsViewExpandTags], FallbackValue={StaticResource DetailsViewExpandTags}, TargetNullValue={StaticResource DetailsViewExpandTags}}">
+                                                        <ToggleButton x:Name="DetailsViewTagsPanelToggleButtonRight" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}" Margin="0,0,0,10" Focusable="False">
+                                                            <ToggleButton.Style>
+                                                                <Style TargetType="ToggleButton" BasedOn="{StaticResource DetailsSectionHeaderToggleButton}">
+                                                                    <!-- WPF only accepts Binding or DynamicResource as a setter value: read the live option from the header Grid Tag -->
+                                                                    <Setter Property="IsChecked" Value="{Binding Tag, RelativeSource={RelativeSource AncestorType=Grid}, Mode=OneWay}" />
+                                                                    <Style.Triggers>
+                                                                        <MultiDataTrigger>
+                                                                            <MultiDataTrigger.Conditions>
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteSectionsShownElsewhere], FallbackValue={StaticResource DemoteSectionsShownElsewhere}, TargetNullValue={StaticResource DemoteSectionsShownElsewhere}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[DemoteTagsSection], FallbackValue={StaticResource DemoteTagsSection}, TargetNullValue={StaticResource DemoteTagsSection}}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowInfoLine], FallbackValue={StaticResource HeroShowInfoLine}, TargetNullValue={StaticResource HeroShowInfoLine}}" Value="True" />
+                                                                                <Condition Binding="{Binding Tag, ElementName=HeroInfoLineStyleProbe}" Value="True" />
+                                                                                <Condition Binding="{PluginSettings Plugin=ThemeOptions, Path=Options[HeroShowTags], FallbackValue={StaticResource HeroShowTags}, TargetNullValue={StaticResource HeroShowTags}}" Value="True" />
+                                                                            </MultiDataTrigger.Conditions>
+                                                                            <Setter Property="IsChecked" Value="False" />
+                                                                            <Setter Property="Opacity" Value="0.55" />
+                                                                        </MultiDataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </ToggleButton.Style>
+                                                            <Label Content="{DynamicResource LOCTagsLabel}" Style="{DynamicResource FeedSectionLabel}" Margin="0" />
+                                                        </ToggleButton>
+                                                        <!-- Quick settings: where and how this section shows, applied at once through Theme Options -->
+                                                        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,32,0" Height="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionHeaderMinHeight], FallbackValue={StaticResource SectionHeaderMinHeight}, TargetNullValue={StaticResource SectionHeaderMinHeight}}">
+                                                            <Button x:Name="QuickSettingsTagsRight" Style="{DynamicResource SectionQuickSettingsButton}" VerticalAlignment="Center"
+                                                                    Command="{PluginSettings Plugin=ThemeExtras, Path=Commands.OpenPluginSettingsCommand, FallbackValue={x:Null}}"
+                                                                    CommandParameter="904cbf3b-573f-48f8-9642-0a09d05c64ef"
+                                                                    Visibility="{PluginStatus Plugin=felixkmh_Extras_Plugin, Status=Installed}" />
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Grid Margin="0,0,0,10" MinHeight="{PluginSettings Plugin=ThemeOptions, Path=Options[SectionContainerMinHeight], FallbackValue={StaticResource SectionContainerMinHeight}, TargetNullValue={StaticResource SectionContainerMinHeight}}">
+                                                        <Grid.Style>
+                                                            <Style TargetType="Grid">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=DetailsViewTagsPanelToggleButtonRight}" Value="False">
+                                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Border Style="{DynamicResource OutlineBorderSidePanelsBorder}" />
+                                                        <Border Style="{DynamicResource OutlineBorder}" />
+                                                        <ItemsControl ItemsSource="{Binding Game.Tags}" Margin="0,3,0,3">
+                                                            <ItemsControl.ItemsPanel>
+                                                                <ItemsPanelTemplate>
+                                                                    <WrapPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                                                                </ItemsPanelTemplate>
+                                                            </ItemsControl.ItemsPanel>
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Button Content="{Binding Name}" Style="{StaticResource PropertyItemFeedPanelButton}"
+                                                                        Command="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=DataContext.SetTagFilterCommand}"
+                                                                        CommandParameter="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </Grid>
+                                                </StackPanel>
+                                                </Grid>
+
                                             </Grid>
                                         </Grid>
                                     </Grid>
@@ -11432,6 +12045,7 @@
 
                         </Grid>
                     </ScrollViewer>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

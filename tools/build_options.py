@@ -95,33 +95,75 @@ def loc_key(*parts) -> str:
 
 
 
-CAPTION_PREFIX = "\u2003\u2003\u21b3 "  # indent + arrow, so captions don't read as section headers
-CAPTION_MAX = 95
-
-
-def split_sentences(text):
-    return [part.strip() for part in re.split(r"(?<=[.!?])\s+", text.strip()) if part.strip()]
-
-
-def caption_rows(key, tip, labels, english):
-    """One Theme Options Header row per sentence of the tip: the Desktop settings view shows
-    Header titles but no descriptions, and its text does not wrap."""
-    french, other = split_sentences(tip["fr"]), split_sentences(tip["en"])
-    if len(french) != len(other):
-        raise SpecError(f"tip {key}: French and English must have the same number of sentences")
-    rows = []
-    for index, (fr_text, en_text) in enumerate(zip(french, other), 1):
-        for text in (fr_text, en_text):
-            if len(text) > CAPTION_MAX:
-                raise SpecError(f"tip {key}: sentence longer than {CAPTION_MAX} characters "
-                                f"(Theme Options does not wrap captions): {text}")
-        name = f"Caption{key}{index}"
-        lkey = loc_key("Caption", f"{key}{index}")
-        labels[lkey] = CAPTION_PREFIX + fr_text
-        english[lkey] = CAPTION_PREFIX + en_text
-        rows += [f"    {name}:", f"        Title: {q(CAPTION_PREFIX + en_text)}", f"        LocKey: {lkey}",
-                 "        Type: Header"]
+def help_row(key, tip, image):
+    """A Theme Options help row under a setting: a "?" and the tip, which shows in full with an
+    optional schema when the mouse is over it. Its Thickness type has no template in Theme Options,
+    which then uses THICKNESS_PanelTemplate from Constants.xaml (help_template below). The text
+    is the localized Title (LOCHNDTip<key>); Preview names the schema."""
+    rows = [f"    Help{key}:", f"        Title: {q(tip['en'])}", f"        LocKey: {loc_key('Tip', key)}",
+            "        Type: Thickness", "        Default: '0'"]
+    if image:
+        rows.append(f"        Preview: {q(image)}")
     return rows
+
+
+HELP_BEGIN = "    <!-- BEGIN generated help rows: edit tools/build_options.py, then run it. -->\n"
+HELP_END = "    <!-- END generated help rows -->\n"
+
+
+def help_template(images):
+    """THICKNESS_PanelTemplate and the schema images of the help rows (see help_row)."""
+    lines = ['    <!-- Theme Options help rows (Help<key> variables). The schemas load the first time they show. -->']
+    for name in images:
+        lines.append(f'    <BitmapImage x:Key="HndHelpImage{name}" UriSource="{{ThemeFile \'Presets/Previews/{name}.png\'}}" '
+                     'CacheOption="OnLoad" CreateOptions="DelayCreation" />')
+    lines += ['    <DataTemplate x:Key="THICKNESS_PanelTemplate">',
+              '        <DockPanel Margin="0,-6,0,12" Background="Transparent" ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="60000">',
+              '            <DockPanel.ToolTip>',
+              '                <ToolTip MaxWidth="440">',
+              '                    <StackPanel>',
+              '                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />',
+              '                        <Image MaxWidth="400" Margin="0,8,0,0" Stretch="Uniform">',
+              '                            <Image.Style>',
+              '                                <Style TargetType="Image">',
+              '                                    <Setter Property="Visibility" Value="Collapsed" />',
+              '                                    <Style.Triggers>']
+    for name in images:
+        lines += [f'                                        <DataTrigger Binding="{{Binding Preview}}" Value="{name}">',
+                  f'                                            <Setter Property="Source" Value="{{DynamicResource HndHelpImage{name}}}" />',
+                  '                                            <Setter Property="Visibility" Value="Visible" />',
+                  '                                        </DataTrigger>']
+    lines += ['                                    </Style.Triggers>',
+              '                                </Style>',
+              '                            </Image.Style>',
+              '                        </Image>',
+              '                    </StackPanel>',
+              '                </ToolTip>',
+              '            </DockPanel.ToolTip>',
+              '            <Border DockPanel.Dock="Left" Width="18" Height="18" CornerRadius="9" Margin="28,0,8,0" VerticalAlignment="Center"',
+              '                    BorderThickness="1.5" BorderBrush="{DynamicResource GlyphBrush}">',
+              '                <TextBlock Text="?" FontSize="11" FontWeight="Bold" Foreground="{DynamicResource GlyphBrush}"',
+              '                           HorizontalAlignment="Center" VerticalAlignment="Center" />',
+              '            </Border>',
+              '            <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" Opacity="0.65" VerticalAlignment="Center" />',
+              '        </DockPanel>',
+              '    </DataTemplate>']
+    return "\n".join(lines) + "\n"
+
+
+def constants_file(source: Path, spec):
+    """Constants.xaml with the help row template between the markers."""
+    text = (source / "Constants.xaml").read_text(encoding="utf-8-sig")
+    if text.count(HELP_BEGIN) != 1 or text.count(HELP_END) != 1:
+        raise SpecError("Constants.xaml must contain the generated help rows markers once")
+    images = sorted(set((spec.get("tip_images") or {}).values()))
+    for name in images:
+        if not (source / "Presets" / "Previews" / f"{name}.png").is_file():
+            raise SpecError(f"tip_images: Presets/Previews/{name}.png does not exist (tools/make_previews.py)")
+    head, rest = text.split(HELP_BEGIN)
+    _, tail = rest.split(HELP_END)
+    return head + HELP_BEGIN + help_template(images) + HELP_END + tail
+
 
 def build_options(spec, constants, source: Path):
     lines = [f"# {GENERATED}", "# Read by the ThemeOptions extension (https://codeberg.org/ashpynov/ThemeOptions).", ""]
@@ -222,7 +264,7 @@ def build_options(spec, constants, source: Path):
         elif "range" in entry:
             raise SpecError(f"variable {key}: a range makes no sense for {kind}")
         if tip and with_captions:
-            rows += caption_rows(key, tip, labels, english)
+            rows += help_row(key, tip, (spec.get("tip_images") or {}).get(key))
         return rows
 
     # every setting is listed with its group header and caption rows; a header with no setting under it
@@ -236,6 +278,9 @@ def build_options(spec, constants, source: Path):
             lines += header_rows(pending, "Header" + pending["header"])
             pending = None
         lines += variable_rows(entry, True)
+    unknown_images = sorted(set(spec.get("tip_images") or {}) - set(spec.get("tips") or {}))
+    if unknown_images:
+        raise SpecError("tip_images for keys without a tip: " + ", ".join(unknown_images))
     unknown_tips = sorted(set(spec.get("tips") or {}) - seen)
     if unknown_tips:
         raise SpecError("tips for keys that are not variables: " + ", ".join(unknown_tips))
@@ -675,7 +720,7 @@ def main() -> int:
         constants = read_constants(source)
         add_color_profile_group(spec)
         outputs = {"DerivedStyles/PlayButton.xaml": play_button_file(source), **preset_files(),
-                   **color_profile_files(spec, source)}
+                   **color_profile_files(spec, source), "Constants.xaml": constants_file(source, spec)}
         tiles = spec.get("header_tiles")
         if tiles:
             header_tiles.check_types(tiles, constants)

@@ -532,7 +532,7 @@
         <Setter Property="Background" Value="#CC0B0F14" />
         <Setter Property="BorderBrush" Value="#33FFFFFF" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="CornerRadius" Value="{DynamicResource HeroChipCornerRadius}" />
         <Setter Property="Padding" Value="6,2,7,3" />
         <Setter Property="Margin" Value="0,0,0,5" />
         <Setter Property="HorizontalAlignment" Value="Left" />

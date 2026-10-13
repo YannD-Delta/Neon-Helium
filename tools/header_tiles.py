@@ -11,6 +11,7 @@ The types (id, value, labels, preview example) are listed in tools/options_spec.
 header_tiles. The tile content comes from tools/header_tiles/<Id>.xaml when that file exists,
 otherwise from SIMPLE below. build_options.py writes the view region and the preset groups.
 """
+import re
 from pathlib import Path
 
 FRAGMENTS = Path(__file__).with_name("header_tiles")
@@ -119,12 +120,22 @@ SIMPLE = {
 
 
 def tile_content(tile_id):
+    """The tile content and the name of its root element (added when the root has none)."""
     path = FRAGMENTS / f"{tile_id}.xaml"
     if path.is_file():
-        return path.read_text(encoding="utf-8")
-    if tile_id in SIMPLE:
-        return SIMPLE[tile_id]
-    raise ValueError(f"header tile {tile_id}: no tools/header_tiles/{tile_id}.xaml and no SIMPLE entry")
+        text = path.read_text(encoding="utf-8")
+    elif tile_id in SIMPLE:
+        text = SIMPLE[tile_id]
+    else:
+        raise ValueError(f"header tile {tile_id}: no tools/header_tiles/{tile_id}.xaml and no SIMPLE entry")
+    head_end = text.index(">")
+    head = text[:head_end]
+    found = re.search(r'\b(?:x:)?Name="([^"]+)"', head)
+    if found:
+        return text, found.group(1)
+    name = f"HeaderTileBody{tile_id}"
+    root = re.match(r"<[\w.:]+", text).end()
+    return text[:root] + f' x:Name="{name}"' + text[root:], name
 
 
 def indent(text, pad):
@@ -133,6 +144,7 @@ def indent(text, pad):
 
 def tile_xaml(entry):
     tile_id, value = entry["id"], entry["value"]
+    content, body = tile_content(tile_id)
     lines = [f"<!-- {entry['en']} -->", f'<Border x:Name="HeaderTile{tile_id}">', "    <Border.Style>",
              '        <Style TargetType="Border">',
              '            <Setter Property="Background" Value="{DynamicResource HeaderTileBackground}" />',
@@ -146,17 +158,34 @@ def tile_xaml(entry):
                   f'                    <Setter Property="Grid.Column" Value="{slot - 1}" />',
                   '                    <Setter Property="Visibility" Value="Visible" />',
                   "                </DataTrigger>"]
-    # last, so an empty tile (no data for this game) stays hidden whatever its slot
-    lines += ['                <DataTrigger Binding="{Binding Child.Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">',
+    # last, so an empty tile (no data for this game) stays hidden whatever its slot. The content is
+    # found by name: Border.Child is not a dependency property and is still empty when the style applies.
+    lines += [f'                <DataTrigger Binding="{{Binding Visibility, ElementName={body}}}" Value="Collapsed">',
               '                    <Setter Property="Visibility" Value="Collapsed" />',
               "                </DataTrigger>",
               "            </Style.Triggers>", "        </Style>", "    </Border.Style>"]
-    return "\n".join(lines) + "\n" + indent(tile_content(tile_id), "    ") + "</Border>\n"
+    return "\n".join(lines) + "\n" + indent(content, "    ") + "</Border>\n"
 
 
 def region_xaml(section):
     types = [t for t in section["types"] if t["value"] != 0]
-    lines = ['<Grid x:Name="HeaderTilesGrid" DockPanel.Dock="Left">', "    <Grid.ColumnDefinitions>"]
+    lines = ['<Grid x:Name="HeaderTilesGrid" DockPanel.Dock="Left">',
+             "    <Grid.Resources>",
+             "        <!-- Tile text: a small label over a larger, brighter value (overrides the header bar styles inside the tiles) -->",
+             '        <Style TargetType="Label" x:Key="HeaderLabel">',
+             '            <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />',
+             '            <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />',
+             '            <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />',
+             '            <Setter Property="Padding" Value="0" />',
+             '            <Setter Property="Margin" Value="0,0,0,3" />',
+             "        </Style>",
+             '        <Style TargetType="TextBlock" x:Key="HeaderTextBlock">',
+             '            <Setter Property="FontSize" Value="{DynamicResource HeaderTileValueFontSize}" />',
+             '            <Setter Property="FontWeight" Value="SemiBold" />',
+             '            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />',
+             "        </Style>",
+             "    </Grid.Resources>",
+             "    <Grid.ColumnDefinitions>"]
     lines += ['        <ColumnDefinition Width="Auto" />'] * SLOTS
     lines += ["    </Grid.ColumnDefinitions>",
               '    <!-- Slot probes: Tag is the information type of each slot (Theme Options lists "Tile 1" to "Tile 12") -->']

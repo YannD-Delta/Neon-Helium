@@ -137,8 +137,8 @@
     <sys:Double x:Key="HeroShadeOpacity">0.35</sys:Double>
     <sys:Int32 x:Key="HeroActionsLocation">2</sys:Int32>
     <sys:Double x:Key="HeroInfoLineMaxWidth">900</sys:Double>
-    <CornerRadius x:Key="HeroButtonCornerRadius">6</CornerRadius>
-    <CornerRadius x:Key="HeroChipCornerRadius">12</CornerRadius>
+    <CornerRadius x:Key="HeroButtonCornerRadius">10</CornerRadius>
+    <CornerRadius x:Key="HeroChipCornerRadius">10</CornerRadius>
     <sys:Double x:Key="HeroCoverWidth">230</sys:Double>
     <sys:Double x:Key="HeroCoverHeight">345</sys:Double>
     <CornerRadius x:Key="HeroCoverCornerRadius">12</CornerRadius>
@@ -172,13 +172,30 @@
     <sys:Boolean x:Key="InfoPanelStyleShowCover">False</sys:Boolean>
     <!-- Header bar items drawn as tiles (transparent tile and 20 px gap = classic bar) -->
     <sys:Double x:Key="HeaderRowBackgroundOpacity">0</sys:Double>
-    <Thickness x:Key="HeaderRowPadding">0,14,0,0</Thickness>
+    <Thickness x:Key="HeaderRowPadding">0,14,0,18</Thickness>
     <sys:Double x:Key="HeaderTileBackgroundOpacity">0.08</sys:Double>
     <!-- Tile color follows the text color of the color profile -->
     <SolidColorBrush x:Key="HeaderTileBackground" Color="{DynamicResource TextColor}" Opacity="{DynamicResource HeaderTileBackgroundOpacity}" />
     <CornerRadius x:Key="HeaderTileCornerRadius">14</CornerRadius>
+    <!-- Liquid glass page: blurred artwork fixed behind the page, under an accent tint and a dark scrim -->
+    <sys:Double x:Key="PageGlassOpacity">1</sys:Double>
+    <sys:Double x:Key="PageGlassBlurRadius">40</sys:Double>
+    <sys:Double x:Key="PageGlassScrimOpacity">0.55</sys:Double>
+    <sys:Double x:Key="PageGlassTintOpacity">0.06</sys:Double>
+    <!-- Glass panels (sections, information panel) and glass chips; colors follow the profile text color -->
+    <CornerRadius x:Key="SectionCornerRadius">14</CornerRadius>
+    <sys:Double x:Key="SectionGlassOpacity">0.06</sys:Double>
+    <sys:Double x:Key="SectionGlassBorderOpacity">0.1</sys:Double>
+    <SolidColorBrush x:Key="SectionGlassBrush" Color="{DynamicResource TextColor}" Opacity="{DynamicResource SectionGlassOpacity}" />
+    <SolidColorBrush x:Key="SectionGlassBorderBrush" Color="{DynamicResource TextColor}" Opacity="{DynamicResource SectionGlassBorderOpacity}" />
+    <sys:Double x:Key="ChipGlassOpacity">0.07</sys:Double>
+    <SolidColorBrush x:Key="ChipGlassBrush" Color="{DynamicResource TextColor}" Opacity="{DynamicResource ChipGlassOpacity}" />
+    <!-- Side margins of the information, links and sections, aligned with the card -->
+    <Thickness x:Key="PageSideMargin">20,0,20,0</Thickness>
+    <Thickness x:Key="PageLinksMargin">20,12,20,12</Thickness>
     <Thickness x:Key="HeaderTilePadding">16,10,16,10</Thickness>
     <Thickness x:Key="HeaderTileMargin">0,0,12,0</Thickness>
+    <sys:Double x:Key="HeaderTileValueFontSize">16</sys:Double>
     <!-- Header tiles: information type of each slot (tools/header_tiles.py, set by the Tile 1 to Tile 12 lists) -->
     <sys:Int32 x:Key="HeaderTileSlot1">1</sys:Int32>
     <sys:Int32 x:Key="HeaderTileSlot2">2</sys:Int32>
@@ -314,7 +331,7 @@
     <sys:Boolean x:Key="HeroChipsOpenSections">True</sys:Boolean>
     <sys:Boolean x:Key="TopPanelAutoHide">False</sys:Boolean>
     <sys:Boolean x:Key="SidebarAutoHide">False</sys:Boolean>
-    <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0.25</sys:Double>
+    <sys:Double x:Key="DetailsViewBackgroundBlurOpacity">0</sys:Double>
     <sys:Double x:Key="GridViewBackgroundBlurOpacity">0.25</sys:Double>
     <sys:Double x:Key="DetailsViewDescriptionMaxHeight">2000</sys:Double>
     <sys:Double x:Key="SidebarItemSize">38</sys:Double>
@@ -336,6 +353,15 @@
     <sys:Int32 x:Key="DetailsViewSectionOrderScreenshotsVisualizer">4</sys:Int32>
     <sys:Int32 x:Key="DetailsViewSectionOrderReviewViewer">5</sys:Int32>
     <sys:Int32 x:Key="DetailsViewSectionOrderScreenshotUtilities">6</sys:Int32>
+    <!-- Genres, categories, features and tags can move to the right column -->
+    <sys:Boolean x:Key="DetailsViewGenresInRightColumn">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewCategoriesInRightColumn">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewFeaturesInRightColumn">False</sys:Boolean>
+    <sys:Boolean x:Key="DetailsViewTagsInRightColumn">False</sys:Boolean>
+    <sys:Int32 x:Key="DetailsViewSectionOrderRightGenres">7</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderRightCategories">8</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderRightFeatures">9</sys:Int32>
+    <sys:Int32 x:Key="DetailsViewSectionOrderRightTags">10</sys:Int32>
     <sys:Double x:Key="WebExplorerControlHeight">800</sys:Double>
     <sys:Boolean x:Key="GridViewCoverZoomOnHover">True</sys:Boolean>
     <sys:Boolean x:Key="GridViewCoverShowSelectionBorder">True</sys:Boolean>
@@ -354,18 +380,75 @@
         </Style.Triggers>
     </Style>
 
-    <!--Header bar item drawn as a tile; hides itself when the item inside is collapsed-->
-    <Style x:Key="HeaderTile" TargetType="Border">
-        <Setter Property="Background" Value="{DynamicResource HeaderTileBackground}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource HeaderTileCornerRadius}" />
-        <Setter Property="Padding" Value="{DynamicResource HeaderTilePadding}" />
-        <Setter Property="Margin" Value="{DynamicResource HeaderTileMargin}" />
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Child.Visibility}" Value="Collapsed">
-                <Setter Property="Visibility" Value="Collapsed" />
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
+    <!-- BEGIN generated help rows: edit tools/build_options.py, then run it. -->
+    <!-- Theme Options help rows (Help<key> variables). The schemas load the first time they show. -->
+    <BitmapImage x:Key="HndHelpImageButtons_Default" UriSource="{ThemeFile 'Presets/Previews/Buttons_Default.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageChips_Default" UriSource="{ThemeFile 'Presets/Previews/Chips_Default.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeaderBar_Bar" UriSource="{ThemeFile 'Presets/Previews/HeaderBar_Bar.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeaderBar_Default" UriSource="{ThemeFile 'Presets/Previews/HeaderBar_Default.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeroCover_Default" UriSource="{ThemeFile 'Presets/Previews/HeroCover_Default.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeroCover_Hidden" UriSource="{ThemeFile 'Presets/Previews/HeroCover_Hidden.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeroCover_Inside" UriSource="{ThemeFile 'Presets/Previews/HeroCover_Inside.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <BitmapImage x:Key="HndHelpImageHeroCover_InsideKeepPanel" UriSource="{ThemeFile 'Presets/Previews/HeroCover_InsideKeepPanel.png'}" CacheOption="OnLoad" CreateOptions="DelayCreation" />
+    <DataTemplate x:Key="THICKNESS_PanelTemplate">
+        <DockPanel Margin="0,-6,0,12" Background="Transparent" ToolTipService.InitialShowDelay="100" ToolTipService.ShowDuration="60000">
+            <DockPanel.ToolTip>
+                <ToolTip MaxWidth="440">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                        <Image MaxWidth="400" Margin="0,8,0,0" Stretch="Uniform">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Preview}" Value="Buttons_Default">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageButtons_Default}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="Chips_Default">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageChips_Default}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeaderBar_Bar">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeaderBar_Bar}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeaderBar_Default">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeaderBar_Default}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeroCover_Default">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeroCover_Default}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeroCover_Hidden">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeroCover_Hidden}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeroCover_Inside">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeroCover_Inside}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Preview}" Value="HeroCover_InsideKeepPanel">
+                                            <Setter Property="Source" Value="{DynamicResource HndHelpImageHeroCover_InsideKeepPanel}" />
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </StackPanel>
+                </ToolTip>
+            </DockPanel.ToolTip>
+            <Border DockPanel.Dock="Left" Width="18" Height="18" CornerRadius="9" Margin="28,0,8,0" VerticalAlignment="Center"
+                    BorderThickness="1.5" BorderBrush="{DynamicResource GlyphBrush}">
+                <TextBlock Text="?" FontSize="11" FontWeight="Bold" Foreground="{DynamicResource GlyphBrush}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" Opacity="0.65" VerticalAlignment="Center" />
+        </DockPanel>
+    </DataTemplate>
+    <!-- END generated help rows -->
 
     <!--GameActivity charts: a height of 0 keeps the size provided by the extension-->
     <Style x:Key="GameActivityChartTimeStyle" TargetType="ContentControl">

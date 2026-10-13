@@ -7,11 +7,11 @@ Presets:
         LocKey: LOCHNDPresetStyle
         Presets:
             Default:
-                Name: 'Helium-Neon-Dune 2.7 (rounded card, progressive blur, cover, tiles)'
+                Name: 'Liquid Glass (card, blurred page, glass tiles)'
                 LocKey: LOCHNDPresetStyleDefault
                 Preview: 'Presets\Previews\Style_Default.png'
             Dune:
-                Name: 'Dune (rounded card, text chips, taller and stronger blur)'
+                Name: 'Dune (text chips, taller and stronger blur)'
                 LocKey: LOCHNDPresetStyleDune
                 Preview: 'Presets\Previews\Style_Dune.png'
                 Files:
@@ -35,70 +35,8 @@ Presets:
                     HeroBlurFull:
                         Type: Double
                         Value: '0.8'
-            Classic:
-                Name: 'Helium-Neon-Dune 2.5 (full-width artwork, frosted header bar)'
-                LocKey: LOCHNDPresetStyleClassic
-                Preview: 'Presets\Previews\Style_Classic.png'
-                Constants:
-                    HeroCardMargin:
-                        Type: Thickness
-                        Value: '0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '0'
-                    HeroCardBorderThickness:
-                        Type: Thickness
-                        Value: '0'
-                    HeroFadeStart:
-                        Type: Double
-                        Value: '0.75'
-                    HeroBlurOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeroTintAccentOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeroTintLightOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeroCoverPlacement:
-                        Type: Int32
-                        Value: '2'
-                    InfoPanelStyleShowCover:
-                        Type: Boolean
-                        Value: 'True'
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0.65'
-                    HeroActionsLocation:
-                        Type: Int32
-                        Value: '0'
-                    HeaderBarBlurOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderRowPadding:
-                        Type: Thickness
-                        Value: '20,10,30,10'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '0'
-                    HeaderTilePadding:
-                        Type: Thickness
-                        Value: '0'
-                    HeaderTileMargin:
-                        Type: Thickness
-                        Value: '20,0,0,0'
             Neon:
-                Name: 'Neon classic (full width, buttons in the header bar)'
+                Name: 'Neon (full-width artwork, buttons in a header bar)'
                 LocKey: LOCHNDPresetStyleNeon
                 Preview: 'Presets\Previews\Style_Neon.png'
                 Files:
@@ -137,79 +75,21 @@ Presets:
                     HeroActionsLocation:
                         Type: Int32
                         Value: '1'
-                    HeaderBarBlurOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderRowPadding:
-                        Type: Thickness
-                        Value: '20,10,30,10'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '0'
-                    HeaderTilePadding:
-                        Type: Thickness
-                        Value: '0'
-                    HeaderTileMargin:
-                        Type: Thickness
-                        Value: '20,0,0,0'
                     HeroStyleShowInfoLine:
                         Type: Boolean
                         Value: 'False'
-            DuneClassic:
-                Name: 'Dune 2.5 (full width, large artwork, text chips, clear header bar)'
-                LocKey: LOCHNDPresetStyleDuneClassic
-                Preview: 'Presets\Previews\Style_DuneClassic.png'
-                Files:
-                    - 'Presets\Chips\Text.xaml'
-                Constants:
-                    HeroCardMargin:
-                        Type: Thickness
-                        Value: '0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '0'
-                    HeroCardBorderThickness:
-                        Type: Thickness
-                        Value: '0'
-                    HeroFadeStart:
-                        Type: Double
-                        Value: '0.75'
-                    HeroBlurOpacity:
+                    PageGlassOpacity:
                         Type: Double
                         Value: '0'
-                    HeroTintAccentOpacity:
+                    DetailsViewBackgroundBlurOpacity:
                         Type: Double
-                        Value: '0'
-                    HeroTintLightOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeroCoverPlacement:
-                        Type: Int32
-                        Value: '2'
-                    InfoPanelStyleShowCover:
-                        Type: Boolean
-                        Value: 'True'
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0.85'
-                    HeroActionsLocation:
-                        Type: Int32
-                        Value: '0'
+                        Value: '0.25'
                     HeaderBarBlurOpacity:
                         Type: Double
-                        Value: '0'
+                        Value: '1'
                     HeaderBarGlassOpacity:
                         Type: Double
-                        Value: '0'
+                        Value: '1'
                     HeaderRowBackgroundOpacity:
                         Type: Double
                         Value: '1'
@@ -218,9 +98,6 @@ Presets:
                         Value: '20,10,30,10'
                     HeaderTileBackgroundOpacity:
                         Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
                         Value: '0'
                     HeaderTilePadding:
                         Type: Thickness
@@ -229,7 +106,7 @@ Presets:
                         Type: Thickness
                         Value: '20,0,0,0'
             Minimal:
-                Name: 'Minimal (card without chips or tiles)'
+                Name: 'Minimal (card only, no chips or tiles)'
                 LocKey: LOCHNDPresetStyleMinimal
                 Preview: 'Presets\Previews\Style_Minimal.png'
                 Constants:
@@ -242,83 +119,267 @@ Presets:
                     HeroShadeOpacity:
                         Type: Double
                         Value: '0.5'
+    Corners:
+        Name: 'Corner rounding (card, panels, tiles, chips, buttons, cover)'
+        LocKey: LOCHNDPresetCorners
+        Presets:
+            Default:
+                Name: 'Rounded (Liquid Glass)'
+                LocKey: LOCHNDPresetCornersDefault
+                Preview: 'Presets\Previews\Corners_Default.png'
+            Square:
+                Name: 'Square'
+                LocKey: LOCHNDPresetCornersSquare
+                Preview: 'Presets\Previews\Corners_Square.png'
+                Constants:
+                    HeroCardCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+                    SectionCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+                    HeaderTileCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+                    HeroChipCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+                    HeroButtonCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+                    HeroCoverCornerRadius:
+                        Type: CornerRadius
+                        Value: '0'
+            Subtle:
+                Name: 'Subtle'
+                LocKey: LOCHNDPresetCornersSubtle
+                Preview: 'Presets\Previews\Corners_Subtle.png'
+                Constants:
+                    HeroCardCornerRadius:
+                        Type: CornerRadius
+                        Value: '10'
+                    SectionCornerRadius:
+                        Type: CornerRadius
+                        Value: '8'
+                    HeaderTileCornerRadius:
+                        Type: CornerRadius
+                        Value: '8'
+                    HeroChipCornerRadius:
+                        Type: CornerRadius
+                        Value: '5'
+                    HeroButtonCornerRadius:
+                        Type: CornerRadius
+                        Value: '5'
+                    HeroCoverCornerRadius:
+                        Type: CornerRadius
+                        Value: '6'
+            Round:
+                Name: 'Very round'
+                LocKey: LOCHNDPresetCornersRound
+                Preview: 'Presets\Previews\Corners_Round.png'
+                Constants:
+                    HeroCardCornerRadius:
+                        Type: CornerRadius
+                        Value: '28'
+                    SectionCornerRadius:
+                        Type: CornerRadius
+                        Value: '20'
+                    HeaderTileCornerRadius:
+                        Type: CornerRadius
+                        Value: '18'
+                    HeroChipCornerRadius:
+                        Type: CornerRadius
+                        Value: '14'
+                    HeroButtonCornerRadius:
+                        Type: CornerRadius
+                        Value: '16'
+                    HeroCoverCornerRadius:
+                        Type: CornerRadius
+                        Value: '18'
+    PageBackground:
+        Name: 'Page background'
+        LocKey: LOCHNDPresetPageBackground
+        Presets:
+            Default:
+                Name: 'Liquid glass (blurred artwork behind everything)'
+                LocKey: LOCHNDPresetPageBackgroundDefault
+                Preview: 'Presets\Previews\PageBackground_Default.png'
+            Clear:
+                Name: 'Clear glass (brighter artwork)'
+                LocKey: LOCHNDPresetPageBackgroundClear
+                Preview: 'Presets\Previews\PageBackground_Clear.png'
+                Constants:
+                    PageGlassOpacity:
+                        Type: Double
+                        Value: '1'
+                    PageGlassScrimOpacity:
+                        Type: Double
+                        Value: '0.35'
+                    PageGlassBlurRadius:
+                        Type: Double
+                        Value: '40'
+                    DetailsViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0'
+            Dark:
+                Name: 'Smoked glass (darker)'
+                LocKey: LOCHNDPresetPageBackgroundDark
+                Preview: 'Presets\Previews\PageBackground_Dark.png'
+                Constants:
+                    PageGlassOpacity:
+                        Type: Double
+                        Value: '1'
+                    PageGlassScrimOpacity:
+                        Type: Double
+                        Value: '0.75'
+                    PageGlassBlurRadius:
+                        Type: Double
+                        Value: '40'
+                    DetailsViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0'
+            Tinted:
+                Name: 'Tinted glass (accent color)'
+                LocKey: LOCHNDPresetPageBackgroundTinted
+                Preview: 'Presets\Previews\PageBackground_Tinted.png'
+                Constants:
+                    PageGlassOpacity:
+                        Type: Double
+                        Value: '1'
+                    PageGlassScrimOpacity:
+                        Type: Double
+                        Value: '0.55'
+                    PageGlassTintOpacity:
+                        Type: Double
+                        Value: '0.18'
+                    DetailsViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0'
+            Ambient:
+                Name: 'Ambient reflection under the header only'
+                LocKey: LOCHNDPresetPageBackgroundAmbient
+                Preview: 'Presets\Previews\PageBackground_Ambient.png'
+                Constants:
+                    PageGlassOpacity:
+                        Type: Double
+                        Value: '0'
+                    DetailsViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0.25'
+                    GridViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0.25'
+            Solid:
+                Name: 'Solid (color profile only)'
+                LocKey: LOCHNDPresetPageBackgroundSolid
+                Preview: 'Presets\Previews\PageBackground_Solid.png'
+                Constants:
+                    PageGlassOpacity:
+                        Type: Double
+                        Value: '0'
+                    DetailsViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0'
+                    GridViewBackgroundBlurOpacity:
+                        Type: Double
+                        Value: '0'
+    Glass:
+        Name: 'Glass of the panels, tiles and chips'
+        LocKey: LOCHNDPresetGlass
+        Presets:
+            Default:
+                Name: 'Glass'
+                LocKey: LOCHNDPresetGlassDefault
+                Preview: 'Presets\Previews\Glass_Default.png'
+            Frosted:
+                Name: 'Frosted (more opaque)'
+                LocKey: LOCHNDPresetGlassFrosted
+                Preview: 'Presets\Previews\Glass_Frosted.png'
+                Constants:
+                    SectionGlassOpacity:
+                        Type: Double
+                        Value: '0.11'
+                    SectionGlassBorderOpacity:
+                        Type: Double
+                        Value: '0.14'
+                    ChipGlassOpacity:
+                        Type: Double
+                        Value: '0.12'
+                    HeaderTileBackgroundOpacity:
+                        Type: Double
+                        Value: '0.13'
+            Clear:
+                Name: 'Clear (barely visible)'
+                LocKey: LOCHNDPresetGlassClear
+                Preview: 'Presets\Previews\Glass_Clear.png'
+                Constants:
+                    SectionGlassOpacity:
+                        Type: Double
+                        Value: '0.03'
+                    SectionGlassBorderOpacity:
+                        Type: Double
+                        Value: '0.07'
+                    ChipGlassOpacity:
+                        Type: Double
+                        Value: '0.04'
+                    HeaderTileBackgroundOpacity:
+                        Type: Double
+                        Value: '0.04'
+            Borderless:
+                Name: 'Glass without outlines'
+                LocKey: LOCHNDPresetGlassBorderless
+                Preview: 'Presets\Previews\Glass_Borderless.png'
+                Constants:
+                    SectionGlassBorderOpacity:
+                        Type: Double
+                        Value: '0'
+                    HeroCardBorderThickness:
+                        Type: Thickness
+                        Value: '0'
     HeroCard:
-        Name: 'Artwork header shape'
+        Name: 'Artwork card size'
         LocKey: LOCHNDPresetHeroCard
         Presets:
             Default:
-                Name: 'From the global style'
+                Name: 'Spaced (20 px from the edges)'
                 LocKey: LOCHNDPresetHeroCardDefault
-            Card:
-                Name: 'Rounded card (20 px corners)'
-                LocKey: LOCHNDPresetHeroCardCard
-                Preview: 'Presets\Previews\HeroCard_Card.png'
-                Constants:
-                    HeroCardMargin:
-                        Type: Thickness
-                        Value: '20,16,20,0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '20'
-                    HeroCardBorderThickness:
-                        Type: Thickness
-                        Value: '1'
-                    HeroFadeStart:
-                        Type: Double
-                        Value: '1'
-            Soft:
-                Name: 'Very rounded card, wide spacing (32 px)'
-                LocKey: LOCHNDPresetHeroCardSoft
-                Preview: 'Presets\Previews\HeroCard_Soft.png'
+                Preview: 'Presets\Previews\HeroCard_Default.png'
+            Wide:
+                Name: 'Wide spacing (40 px)'
+                LocKey: LOCHNDPresetHeroCardWide
+                Preview: 'Presets\Previews\HeroCard_Wide.png'
                 Constants:
                     HeroCardMargin:
                         Type: Thickness
                         Value: '40,24,40,0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '32'
-                    HeroCardBorderThickness:
+                    PageSideMargin:
                         Type: Thickness
-                        Value: '1'
+                        Value: '40,0,40,0'
+                    PageLinksMargin:
+                        Type: Thickness
+                        Value: '40,12,40,12'
                     HeroFadeStart:
                         Type: Double
                         Value: '1'
             Tight:
-                Name: 'Slightly rounded card, close to the edges (10 px)'
+                Name: 'Close to the edges (8 px)'
                 LocKey: LOCHNDPresetHeroCardTight
                 Preview: 'Presets\Previews\HeroCard_Tight.png'
                 Constants:
                     HeroCardMargin:
                         Type: Thickness
                         Value: '8,8,8,0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '10'
-                    HeroCardBorderThickness:
+                    PageSideMargin:
                         Type: Thickness
-                        Value: '1'
-                    HeroFadeStart:
-                        Type: Double
-                        Value: '1'
-            Frameless:
-                Name: 'Rounded card without outline'
-                LocKey: LOCHNDPresetHeroCardFrameless
-                Preview: 'Presets\Previews\HeroCard_Frameless.png'
-                Constants:
-                    HeroCardMargin:
+                        Value: '8,0,8,0'
+                    PageLinksMargin:
                         Type: Thickness
-                        Value: '20,16,20,0'
-                    HeroCardCornerRadius:
-                        Type: CornerRadius
-                        Value: '20'
-                    HeroCardBorderThickness:
-                        Type: Thickness
-                        Value: '0'
+                        Value: '8,12,8,12'
                     HeroFadeStart:
                         Type: Double
                         Value: '1'
             FullWidth:
-                Name: 'Full width, fading into the page (2.5)'
+                Name: 'Full width, fading into the page'
                 LocKey: LOCHNDPresetHeroCardFullWidth
                 Preview: 'Presets\Previews\HeroCard_FullWidth.png'
                 Constants:
@@ -335,14 +396,15 @@ Presets:
                         Type: Double
                         Value: '0.75'
     HeroBlur:
-        Name: 'Progressive blur at the bottom of the artwork'
+        Name: 'Blur at the bottom of the artwork'
         LocKey: LOCHNDPresetHeroBlur
         Presets:
             Default:
-                Name: 'From the global style'
+                Name: 'Medium'
                 LocKey: LOCHNDPresetHeroBlurDefault
+                Preview: 'Presets\Previews\HeroBlur_Default.png'
             Off:
-                Name: 'Off (sharp artwork)'
+                Name: 'None (sharp artwork)'
                 LocKey: LOCHNDPresetHeroBlurOff
                 Preview: 'Presets\Previews\HeroBlur_Off.png'
                 Constants:
@@ -363,20 +425,6 @@ Presets:
                     HeroBlurRadius:
                         Type: Double
                         Value: '14'
-            Medium:
-                Name: 'Medium'
-                LocKey: LOCHNDPresetHeroBlurMedium
-                Preview: 'Presets\Previews\HeroBlur_Medium.png'
-                Constants:
-                    HeroBlurOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeroBlurRadiusSoft:
-                        Type: Double
-                        Value: '8'
-                    HeroBlurRadius:
-                        Type: Double
-                        Value: '28'
             Strong:
                 Name: 'Strong'
                 LocKey: LOCHNDPresetHeroBlurStrong
@@ -410,10 +458,11 @@ Presets:
         LocKey: LOCHNDPresetHeroBlurHeight
         Presets:
             Default:
-                Name: 'From the global style'
+                Name: 'Bottom half'
                 LocKey: LOCHNDPresetHeroBlurHeightDefault
+                Preview: 'Presets\Previews\HeroBlurHeight_Default.png'
             Small:
-                Name: 'Small (bottom quarter)'
+                Name: 'Bottom quarter'
                 LocKey: LOCHNDPresetHeroBlurHeightSmall
                 Preview: 'Presets\Previews\HeroBlurHeight_Small.png'
                 Constants:
@@ -426,22 +475,8 @@ Presets:
                     HeroBlurFull:
                         Type: Double
                         Value: '0.92'
-            Medium:
-                Name: 'Medium (bottom half)'
-                LocKey: LOCHNDPresetHeroBlurHeightMedium
-                Preview: 'Presets\Previews\HeroBlurHeight_Medium.png'
-                Constants:
-                    HeroBlurStart:
-                        Type: Double
-                        Value: '0.45'
-                    HeroBlurMid:
-                        Type: Double
-                        Value: '0.65'
-                    HeroBlurFull:
-                        Type: Double
-                        Value: '0.9'
             Large:
-                Name: 'Large (two thirds)'
+                Name: 'Two thirds'
                 LocKey: LOCHNDPresetHeroBlurHeightLarge
                 Preview: 'Presets\Previews\HeroBlurHeight_Large.png'
                 Constants:
@@ -473,8 +508,9 @@ Presets:
         LocKey: LOCHNDPresetHeroTint
         Presets:
             Default:
-                Name: 'From the global style'
+                Name: 'Light accent color'
                 LocKey: LOCHNDPresetHeroTintDefault
+                Preview: 'Presets\Previews\HeroTint_Default.png'
             None:
                 Name: 'None (artwork colors)'
                 LocKey: LOCHNDPresetHeroTintNone
@@ -486,19 +522,8 @@ Presets:
                     HeroTintLightOpacity:
                         Type: Double
                         Value: '0'
-            Accent:
-                Name: 'Accent color, light'
-                LocKey: LOCHNDPresetHeroTintAccent
-                Preview: 'Presets\Previews\HeroTint_Accent.png'
-                Constants:
-                    HeroTintAccentOpacity:
-                        Type: Double
-                        Value: '0.3'
-                    HeroTintLightOpacity:
-                        Type: Double
-                        Value: '0'
             AccentStrong:
-                Name: 'Accent color, strong'
+                Name: 'Strong accent color'
                 LocKey: LOCHNDPresetHeroTintAccentStrong
                 Preview: 'Presets\Previews\HeroTint_AccentStrong.png'
                 Constants:
@@ -530,24 +555,46 @@ Presets:
                     HeroTintLightOpacity:
                         Type: Double
                         Value: '0.08'
+    HeroShade:
+        Name: 'Dark shade at the bottom of the artwork'
+        LocKey: LOCHNDPresetHeroShade
+        Presets:
+            Default:
+                Name: 'Light'
+                LocKey: LOCHNDPresetHeroShadeDefault
+                Preview: 'Presets\Previews\HeroShade_Default.png'
+            None:
+                Name: 'None'
+                LocKey: LOCHNDPresetHeroShadeNone
+                Preview: 'Presets\Previews\HeroShade_None.png'
+                Constants:
+                    HeroShadeOpacity:
+                        Type: Double
+                        Value: '0'
+            Medium:
+                Name: 'Medium'
+                LocKey: LOCHNDPresetHeroShadeMedium
+                Preview: 'Presets\Previews\HeroShade_Medium.png'
+                Constants:
+                    HeroShadeOpacity:
+                        Type: Double
+                        Value: '0.65'
+            Strong:
+                Name: 'Strong'
+                LocKey: LOCHNDPresetHeroShadeStrong
+                Preview: 'Presets\Previews\HeroShade_Strong.png'
+                Constants:
+                    HeroShadeOpacity:
+                        Type: Double
+                        Value: '0.85'
     HeroCover:
-        Name: 'Cover in the artwork header'
+        Name: 'Cover in the artwork card'
         LocKey: LOCHNDPresetHeroCover
         Presets:
             Default:
-                Name: 'From the global style'
-                LocKey: LOCHNDPresetHeroCoverDefault
-            Overlap:
                 Name: 'Over the card edge and the tiles'
-                LocKey: LOCHNDPresetHeroCoverOverlap
-                Preview: 'Presets\Previews\HeroCover_Overlap.png'
-                Constants:
-                    HeroCoverPlacement:
-                        Type: Int32
-                        Value: '0'
-                    InfoPanelStyleShowCover:
-                        Type: Boolean
-                        Value: 'False'
+                LocKey: LOCHNDPresetHeroCoverDefault
+                Preview: 'Presets\Previews\HeroCover_Default.png'
             Inside:
                 Name: 'Inside the card'
                 LocKey: LOCHNDPresetHeroCoverInside
@@ -571,7 +618,7 @@ Presets:
                         Type: Boolean
                         Value: 'True'
             Hidden:
-                Name: 'Hidden (cover in the information panel only)'
+                Name: 'Information panel only'
                 LocKey: LOCHNDPresetHeroCoverHidden
                 Preview: 'Presets\Previews\HeroCover_Hidden.png'
                 Constants:
@@ -588,6 +635,7 @@ Presets:
             Default:
                 Name: 'From the global style'
                 LocKey: LOCHNDPresetButtonsDefault
+                Preview: 'Presets\Previews\Buttons_Default.png'
             Dune:
                 Name: 'Dune (flat, rounded)'
                 LocKey: LOCHNDPresetButtonsDune
@@ -619,6 +667,7 @@ Presets:
             Default:
                 Name: 'From the global style'
                 LocKey: LOCHNDPresetActionsLocationDefault
+                Preview: 'Presets\Previews\ActionsLocation_Default.png'
             HeroRight:
                 Name: 'In the artwork, at the right of the information'
                 LocKey: LOCHNDPresetActionsLocationHeroRight
@@ -650,6 +699,7 @@ Presets:
             Default:
                 Name: 'From the global style'
                 LocKey: LOCHNDPresetChipsDefault
+                Preview: 'Presets\Previews\Chips_Default.png'
             Pills:
                 Name: 'Pills'
                 LocKey: LOCHNDPresetChipsPills
@@ -713,20 +763,27 @@ Presets:
                 LocKey: LOCHNDPresetColorProfileDefault
                 Preview: 'Presets\Previews\ColorProfile_Default.png'
                 NeedRestart: True
-            DuneSand:
-                Name: 'Dune sand (amber on warm brown)'
-                LocKey: LOCHNDPresetColorProfileDuneSand
-                Preview: 'Presets\Previews\ColorProfile_DuneSand.png'
+            Liquid:
+                Name: 'Liquid (cool graphite, system blue)'
+                LocKey: LOCHNDPresetColorProfileLiquid
+                Preview: 'Presets\Previews\ColorProfile_Liquid.png'
                 NeedRestart: True
                 Files:
-                    - 'Presets\Colors\DuneSand.xaml'
-            HybridRed:
-                Name: 'Hybrid red (red on charcoal)'
-                LocKey: LOCHNDPresetColorProfileHybridRed
-                Preview: 'Presets\Previews\ColorProfile_HybridRed.png'
+                    - 'Presets\Colors\Liquid.xaml'
+            Midnight:
+                Name: 'Midnight (deep blue)'
+                LocKey: LOCHNDPresetColorProfileMidnight
+                Preview: 'Presets\Previews\ColorProfile_Midnight.png'
                 NeedRestart: True
                 Files:
-                    - 'Presets\Colors\HybridRed.xaml'
+                    - 'Presets\Colors\Midnight.xaml'
+            Graphite:
+                Name: 'Graphite (neutral greys)'
+                LocKey: LOCHNDPresetColorProfileGraphite
+                Preview: 'Presets\Previews\ColorProfile_Graphite.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Graphite.xaml'
             OledBlack:
                 Name: 'OLED black (true black, ice blue)'
                 LocKey: LOCHNDPresetColorProfileOledBlack
@@ -734,13 +791,48 @@ Presets:
                 NeedRestart: True
                 Files:
                     - 'Presets\Colors\OledBlack.xaml'
-            Synthwave:
-                Name: 'Synthwave (magenta and cyan on night purple)'
-                LocKey: LOCHNDPresetColorProfileSynthwave
-                Preview: 'Presets\Previews\ColorProfile_Synthwave.png'
+            DuneSand:
+                Name: 'Dune sand (amber on warm brown)'
+                LocKey: LOCHNDPresetColorProfileDuneSand
+                Preview: 'Presets\Previews\ColorProfile_DuneSand.png'
                 NeedRestart: True
                 Files:
-                    - 'Presets\Colors\Synthwave.xaml'
+                    - 'Presets\Colors\DuneSand.xaml'
+            Ember:
+                Name: 'Ember (warm red)'
+                LocKey: LOCHNDPresetColorProfileEmber
+                Preview: 'Presets\Previews\ColorProfile_Ember.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Ember.xaml'
+            Forest:
+                Name: 'Forest (green)'
+                LocKey: LOCHNDPresetColorProfileForest
+                Preview: 'Presets\Previews\ColorProfile_Forest.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Forest.xaml'
+            Aurora:
+                Name: 'Aurora (teal and violet)'
+                LocKey: LOCHNDPresetColorProfileAurora
+                Preview: 'Presets\Previews\ColorProfile_Aurora.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Aurora.xaml'
+            Rose:
+                Name: 'Rose (pink and lilac)'
+                LocKey: LOCHNDPresetColorProfileRose
+                Preview: 'Presets\Previews\ColorProfile_Rose.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Rose.xaml'
+            Violet:
+                Name: 'Violet (purple and pink)'
+                LocKey: LOCHNDPresetColorProfileViolet
+                Preview: 'Presets\Previews\ColorProfile_Violet.png'
+                NeedRestart: True
+                Files:
+                    - 'Presets\Colors\Violet.xaml'
             Nord:
                 Name: 'Nord (frost blue, arctic grey)'
                 LocKey: LOCHNDPresetColorProfileNord
@@ -748,13 +840,6 @@ Presets:
                 NeedRestart: True
                 Files:
                     - 'Presets\Colors\Nord.xaml'
-            Dracula:
-                Name: 'Dracula (purple and pink)'
-                LocKey: LOCHNDPresetColorProfileDracula
-                Preview: 'Presets\Previews\ColorProfile_Dracula.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\Dracula.xaml'
             Catppuccin:
                 Name: 'Catppuccin Mocha (pastel mauve)'
                 LocKey: LOCHNDPresetColorProfileCatppuccin
@@ -769,55 +854,6 @@ Presets:
                 NeedRestart: True
                 Files:
                     - 'Presets\Colors\TokyoNight.xaml'
-            Gruvbox:
-                Name: 'Gruvbox (retro yellow and orange)'
-                LocKey: LOCHNDPresetColorProfileGruvbox
-                Preview: 'Presets\Previews\ColorProfile_Gruvbox.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\Gruvbox.xaml'
-            RosePine:
-                Name: 'Rose Pine (iris and rose, soft)'
-                LocKey: LOCHNDPresetColorProfileRosePine
-                Preview: 'Presets\Previews\ColorProfile_RosePine.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\RosePine.xaml'
-            Everforest:
-                Name: 'Everforest (moss green, forest)'
-                LocKey: LOCHNDPresetColorProfileEverforest
-                Preview: 'Presets\Previews\ColorProfile_Everforest.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\Everforest.xaml'
-            Solarized:
-                Name: 'Solarized dark (blue and cyan on deep teal)'
-                LocKey: LOCHNDPresetColorProfileSolarized
-                Preview: 'Presets\Previews\ColorProfile_Solarized.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\Solarized.xaml'
-            OneDark:
-                Name: 'One Dark (editor blue and violet)'
-                LocKey: LOCHNDPresetColorProfileOneDark
-                Preview: 'Presets\Previews\ColorProfile_OneDark.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\OneDark.xaml'
-            OceanAbyss:
-                Name: 'Ocean abyss (turquoise on deep blue)'
-                LocKey: LOCHNDPresetColorProfileOceanAbyss
-                Preview: 'Presets\Previews\ColorProfile_OceanAbyss.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\OceanAbyss.xaml'
-            Graphite:
-                Name: 'Graphite (neutral greys, no color)'
-                LocKey: LOCHNDPresetColorProfileGraphite
-                Preview: 'Presets\Previews\ColorProfile_Graphite.png'
-                NeedRestart: True
-                Files:
-                    - 'Presets\Colors\Graphite.xaml'
     Accent:
         Name: 'Accent color'
         LocKey: LOCHNDPresetAccent
@@ -978,55 +1014,19 @@ Presets:
             Default:
                 Name: 'Smooth'
                 LocKey: LOCHNDPresetAnimationsDefault
+                Preview: 'Presets\Previews\Animations_Default.png'
             Fast:
                 Name: 'Fast'
                 LocKey: LOCHNDPresetAnimationsFast
+                Preview: 'Presets\Previews\Animations_Fast.png'
                 Files:
                     - 'Presets\Animations\Fast.xaml'
             Off:
                 Name: 'False'
                 LocKey: LOCHNDPresetAnimationsOff
+                Preview: 'Presets\Previews\Animations_Off.png'
                 Files:
                     - 'Presets\Animations\Off.xaml'
-    HeroShade:
-        Name: 'Shade over the artwork'
-        LocKey: LOCHNDPresetHeroShade
-        Presets:
-            Default:
-                Name: 'From the global style'
-                LocKey: LOCHNDPresetHeroShadeDefault
-            None:
-                Name: 'None'
-                LocKey: LOCHNDPresetHeroShadeNone
-                Preview: 'Presets\Previews\HeroShade_None.png'
-                Constants:
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0'
-            Light:
-                Name: 'Light'
-                LocKey: LOCHNDPresetHeroShadeLight
-                Preview: 'Presets\Previews\HeroShade_Light.png'
-                Constants:
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0.35'
-            Medium:
-                Name: 'Medium'
-                LocKey: LOCHNDPresetHeroShadeMedium
-                Preview: 'Presets\Previews\HeroShade_Medium.png'
-                Constants:
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0.65'
-            Strong:
-                Name: 'Strong'
-                LocKey: LOCHNDPresetHeroShadeStrong
-                Preview: 'Presets\Previews\HeroShade_Strong.png'
-                Constants:
-                    HeroShadeOpacity:
-                        Type: Double
-                        Value: '0.85'
     HeroBackground:
         Name: 'Artwork sharpness'
         LocKey: LOCHNDPresetHeroBackground
@@ -1088,112 +1088,65 @@ Presets:
                 Files:
                     - 'Presets\Background\AlignRight.xaml'
     HeaderBar:
-        Name: 'Header bar (time played, last played...)'
+        Name: 'Tiles under the card (look)'
         LocKey: LOCHNDPresetHeaderBar
         Presets:
             Default:
-                Name: 'From the global style'
+                Name: 'Glass tiles'
                 LocKey: LOCHNDPresetHeaderBarDefault
-            Tiles:
-                Name: 'Tiles (rounded boxes under the card)'
-                LocKey: LOCHNDPresetHeaderBarTiles
-                Preview: 'Presets\Previews\HeaderBar_Tiles.png'
+                Preview: 'Presets\Previews\HeaderBar_Default.png'
+            Large:
+                Name: 'Large glass tiles'
+                LocKey: LOCHNDPresetHeaderBarLarge
+                Preview: 'Presets\Previews\HeaderBar_Large.png'
                 Constants:
-                    HeaderBarBlurOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowPadding:
-                        Type: Thickness
-                        Value: '0,14,0,0'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0.08'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '14'
                     HeaderTilePadding:
                         Type: Thickness
-                        Value: '16,10,16,10'
+                        Value: '20,14,20,14'
                     HeaderTileMargin:
                         Type: Thickness
-                        Value: '0,0,12,0'
-                    HeaderBarStyleVisible:
-                        Type: Boolean
-                        Value: 'True'
-            TilesOutline:
-                Name: 'Outlined tiles'
-                LocKey: LOCHNDPresetHeaderBarTilesOutline
-                Preview: 'Presets\Previews\HeaderBar_TilesOutline.png'
-                Constants:
-                    HeaderBarBlurOpacity:
+                        Value: '0,0,14,0'
+                    HeaderTileValueFontSize:
                         Type: Double
-                        Value: '0'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
+                        Value: '20'
                     HeaderRowPadding:
                         Type: Thickness
-                        Value: '0,14,0,0'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0.04'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '10'
-                    HeaderTilePadding:
-                        Type: Thickness
-                        Value: '16,10,16,10'
-                    HeaderTileMargin:
-                        Type: Thickness
-                        Value: '0,0,12,0'
-                    HeaderBarStyleVisible:
-                        Type: Boolean
-                        Value: 'True'
-            TilesCompact:
-                Name: 'Compact tiles'
-                LocKey: LOCHNDPresetHeaderBarTilesCompact
-                Preview: 'Presets\Previews\HeaderBar_TilesCompact.png'
+                        Value: '0,16,0,20'
+            Compact:
+                Name: 'Compact glass tiles'
+                LocKey: LOCHNDPresetHeaderBarCompact
+                Preview: 'Presets\Previews\HeaderBar_Compact.png'
                 Constants:
-                    HeaderBarBlurOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowPadding:
-                        Type: Thickness
-                        Value: '0,10,0,0'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0.08'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '10'
                     HeaderTilePadding:
                         Type: Thickness
-                        Value: '10,6,10,6'
+                        Value: '12,7,12,7'
                     HeaderTileMargin:
                         Type: Thickness
                         Value: '0,0,8,0'
-                    HeaderBarStyleVisible:
-                        Type: Boolean
-                        Value: 'True'
-            Glass:
-                Name: 'Frosted glass bar'
-                LocKey: LOCHNDPresetHeaderBarGlass
-                Preview: 'Presets\Previews\HeaderBar_Glass.png'
+                    HeaderTileValueFontSize:
+                        Type: Double
+                        Value: '14'
+                    HeaderRowPadding:
+                        Type: Thickness
+                        Value: '0,10,0,14'
+            TextOnly:
+                Name: 'Text only (no boxes)'
+                LocKey: LOCHNDPresetHeaderBarTextOnly
+                Preview: 'Presets\Previews\HeaderBar_TextOnly.png'
+                Constants:
+                    HeaderTileBackgroundOpacity:
+                        Type: Double
+                        Value: '0'
+                    HeaderTilePadding:
+                        Type: Thickness
+                        Value: '0,4,0,4'
+                    HeaderTileMargin:
+                        Type: Thickness
+                        Value: '0,0,28,0'
+            Bar:
+                Name: 'Frosted bar across the page (Neon)'
+                LocKey: LOCHNDPresetHeaderBarBar
+                Preview: 'Presets\Previews\HeaderBar_Bar.png'
                 Constants:
                     HeaderBarBlurOpacity:
                         Type: Double
@@ -1209,9 +1162,6 @@ Presets:
                         Value: '20,10,30,10'
                     HeaderTileBackgroundOpacity:
                         Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
                         Value: '0'
                     HeaderTilePadding:
                         Type: Thickness
@@ -1222,10 +1172,10 @@ Presets:
                     HeaderBarStyleVisible:
                         Type: Boolean
                         Value: 'True'
-            Solid:
-                Name: 'Solid bar'
-                LocKey: LOCHNDPresetHeaderBarSolid
-                Preview: 'Presets\Previews\HeaderBar_Solid.png'
+            SolidBar:
+                Name: 'Solid bar across the page'
+                LocKey: LOCHNDPresetHeaderBarSolidBar
+                Preview: 'Presets\Previews\HeaderBar_SolidBar.png'
                 Constants:
                     HeaderBarBlurOpacity:
                         Type: Double
@@ -1241,41 +1191,6 @@ Presets:
                         Value: '20,10,30,10'
                     HeaderTileBackgroundOpacity:
                         Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
-                        Value: '0'
-                    HeaderTilePadding:
-                        Type: Thickness
-                        Value: '0'
-                    HeaderTileMargin:
-                        Type: Thickness
-                        Value: '20,0,0,0'
-                    HeaderBarStyleVisible:
-                        Type: Boolean
-                        Value: 'True'
-            Transparent:
-                Name: 'Transparent bar'
-                LocKey: LOCHNDPresetHeaderBarTransparent
-                Preview: 'Presets\Previews\HeaderBar_Transparent.png'
-                Constants:
-                    HeaderBarBlurOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderBarGlassOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderRowBackgroundOpacity:
-                        Type: Double
-                        Value: '1'
-                    HeaderRowPadding:
-                        Type: Thickness
-                        Value: '20,10,30,10'
-                    HeaderTileBackgroundOpacity:
-                        Type: Double
-                        Value: '0'
-                    HeaderTileCornerRadius:
-                        Type: CornerRadius
                         Value: '0'
                     HeaderTilePadding:
                         Type: Thickness
@@ -4366,47 +4281,6 @@ Presets:
                     HeaderTileSlot12:
                         Type: Int32
                         Value: '21'
-    BackgroundBlur:
-        Name: 'Blurred background behind the information'
-        LocKey: LOCHNDPresetBackgroundBlur
-        Presets:
-            Default:
-                Name: 'Normal'
-                LocKey: LOCHNDPresetBackgroundBlurDefault
-                Preview: 'Presets\Previews\BackgroundBlur_Default.png'
-            Off:
-                Name: 'False'
-                LocKey: LOCHNDPresetBackgroundBlurOff
-                Preview: 'Presets\Previews\BackgroundBlur_Off.png'
-                Constants:
-                    DetailsViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0'
-                    GridViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0'
-            Light:
-                Name: 'Light'
-                LocKey: LOCHNDPresetBackgroundBlurLight
-                Preview: 'Presets\Previews\BackgroundBlur_Light.png'
-                Constants:
-                    DetailsViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0.15'
-                    GridViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0.15'
-            Strong:
-                Name: 'Strong'
-                LocKey: LOCHNDPresetBackgroundBlurStrong
-                Preview: 'Presets\Previews\BackgroundBlur_Strong.png'
-                Constants:
-                    DetailsViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0.5'
-                    GridViewBackgroundBlurOpacity:
-                        Type: Double
-                        Value: '0.5'
 
 Variables:
     HeaderTopPanel:
@@ -4419,52 +4293,44 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'Back and forward buttons. Need ThemeExtras.'
-    CaptionShowNavigationButtons1:
-        Title: '  ↳ Back and forward buttons.'
-        LocKey: LOCHNDCaptionShowNavigationButtons1
-        Type: Header
-    CaptionShowNavigationButtons2:
-        Title: '  ↳ Need ThemeExtras.'
-        LocKey: LOCHNDCaptionShowNavigationButtons2
-        Type: Header
+    HelpShowNavigationButtons:
+        Title: 'Back and forward buttons. Need ThemeExtras.'
+        LocKey: LOCHNDTipShowNavigationButtons
+        Type: Thickness
+        Default: '0'
     TopPanelShowCollectorLevel:
         Title: 'Collection level badge (PlayniteAchievements)'
         LocKey: LOCHNDOptTopPanelShowCollectorLevel
         Type: Boolean
         Default: 'True'
         Description: 'Collection level of your library, with its progress. Click to open the achievements overview.'
-    CaptionTopPanelShowCollectorLevel1:
-        Title: '  ↳ Collection level of your library, with its progress.'
-        LocKey: LOCHNDCaptionTopPanelShowCollectorLevel1
-        Type: Header
-    CaptionTopPanelShowCollectorLevel2:
-        Title: '  ↳ Click to open the achievements overview.'
-        LocKey: LOCHNDCaptionTopPanelShowCollectorLevel2
-        Type: Header
+    HelpTopPanelShowCollectorLevel:
+        Title: 'Collection level of your library, with its progress. Click to open the achievements overview.'
+        LocKey: LOCHNDTipTopPanelShowCollectorLevel
+        Type: Thickness
+        Default: '0'
     TopPanelAutoHide:
         Title: 'Hide the top panel until the mouse comes over it'
         LocKey: LOCHNDOptTopPanelAutoHide
         Type: Boolean
         Default: 'False'
         Description: 'The top panel shrinks to a thin strip and comes back when the mouse is over it.'
-    CaptionTopPanelAutoHide1:
-        Title: '  ↳ The top panel shrinks to a thin strip and comes back when the mouse is over it.'
-        LocKey: LOCHNDCaptionTopPanelAutoHide1
-        Type: Header
+    HelpTopPanelAutoHide:
+        Title: 'The top panel shrinks to a thin strip and comes back when the mouse is over it.'
+        LocKey: LOCHNDTipTopPanelAutoHide
+        Type: Thickness
+        Default: '0'
     SidebarAutoHide:
         Title: 'Hide the sidebar until the mouse comes over it'
         LocKey: LOCHNDOptSidebarAutoHide
         Type: Boolean
         Default: 'False'
         Description: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.'
-    CaptionSidebarAutoHide1:
-        Title: '  ↳ The sidebar shrinks to a thin strip and comes back when the mouse is over it.'
-        LocKey: LOCHNDCaptionSidebarAutoHide1
-        Type: Header
-    CaptionSidebarAutoHide2:
-        Title: '  ↳ Left or right sidebar only.'
-        LocKey: LOCHNDCaptionSidebarAutoHide2
-        Type: Header
+    HelpSidebarAutoHide:
+        Title: 'The sidebar shrinks to a thin strip and comes back when the mouse is over it. Left or right sidebar only.'
+        LocKey: LOCHNDTipSidebarAutoHide
+        Type: Thickness
+        Default: '0'
     TopPanelSearchBoxWidthHelium:
         Title: 'Search box width'
         LocKey: LOCHNDOptTopPanelSearchBoxWidthHelium
@@ -4484,10 +4350,11 @@ Variables:
             Min: '36'
             Max: '100'
             Step: '1'
-    CaptionTopPanelHeight1:
-        Title: '  ↳ Height of the bar at the top of the window.'
-        LocKey: LOCHNDCaptionTopPanelHeight1
-        Type: Header
+    HelpTopPanelHeight:
+        Title: 'Height of the bar at the top of the window.'
+        LocKey: LOCHNDTipTopPanelHeight
+        Type: Thickness
+        Default: '0'
     SidebarItemSize:
         Title: 'Sidebar icon size'
         LocKey: LOCHNDOptSidebarItemSize
@@ -4511,10 +4378,11 @@ Variables:
             Min: '300'
             Max: '900'
             Step: '1'
-    CaptionHeroMinHeight1:
-        Title: '  ↳ Minimum height of the artwork header at the top of the Details view.'
-        LocKey: LOCHNDCaptionHeroMinHeight1
-        Type: Header
+    HelpHeroMinHeight:
+        Title: 'Minimum height of the artwork header at the top of the Details view.'
+        LocKey: LOCHNDTipHeroMinHeight
+        Type: Thickness
+        Default: '0'
     HeroActionButtonWidth:
         Title: 'Width of the button row'
         LocKey: LOCHNDOptHeroActionButtonWidth
@@ -4525,10 +4393,12 @@ Variables:
             Min: '200'
             Max: '600'
             Step: '1'
-    CaptionHeroActionButtonWidth1:
-        Title: '  ↳ Total width of the Play, Edit and Favorite row.'
-        LocKey: LOCHNDCaptionHeroActionButtonWidth1
-        Type: Header
+    HelpHeroActionButtonWidth:
+        Title: 'Total width of the Play, Edit and Favorite row.'
+        LocKey: LOCHNDTipHeroActionButtonWidth
+        Type: Thickness
+        Default: '0'
+        Preview: 'Buttons_Default'
     HeroActionButtonHeight:
         Title: 'Height of the buttons'
         LocKey: LOCHNDOptHeroActionButtonHeight
@@ -4539,105 +4409,89 @@ Variables:
             Min: '28'
             Max: '72'
             Step: '1'
-    CaptionHeroActionButtonHeight1:
-        Title: '  ↳ Height of the Play button and of the square buttons next to it.'
-        LocKey: LOCHNDCaptionHeroActionButtonHeight1
-        Type: Header
-    HeroButtonCornerRadius:
-        Title: 'Button corner rounding'
-        LocKey: LOCHNDOptHeroButtonCornerRadius
-        Type: CornerRadius
-        Default: '6'
-        Slider:
-            Min: '0'
-            Max: '24'
-            Step: '1'
+    HelpHeroActionButtonHeight:
+        Title: 'Height of the Play button and of the square buttons next to it.'
+        LocKey: LOCHNDTipHeroActionButtonHeight
+        Type: Thickness
+        Default: '0'
+        Preview: 'Buttons_Default'
     DetailsViewShowEditButton:
         Title: 'Show the edit button'
         LocKey: LOCHNDOptDetailsViewShowEditButton
         Type: Boolean
         Default: 'True'
         Description: 'Pencil button that opens the game editor.'
-    CaptionDetailsViewShowEditButton1:
-        Title: '  ↳ Pencil button that opens the game editor.'
-        LocKey: LOCHNDCaptionDetailsViewShowEditButton1
-        Type: Header
+    HelpDetailsViewShowEditButton:
+        Title: 'Pencil button that opens the game editor.'
+        LocKey: LOCHNDTipDetailsViewShowEditButton
+        Type: Thickness
+        Default: '0'
     DetailsViewShowFavoriteButton:
         Title: 'Show the favorite button (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowFavoriteButton
         Type: Boolean
         Default: 'True'
         Description: 'Star button that adds or removes the game from favorites. Needs ThemeExtras.'
-    CaptionDetailsViewShowFavoriteButton1:
-        Title: '  ↳ Star button that adds or removes the game from favorites.'
-        LocKey: LOCHNDCaptionDetailsViewShowFavoriteButton1
-        Type: Header
-    CaptionDetailsViewShowFavoriteButton2:
-        Title: '  ↳ Needs ThemeExtras.'
-        LocKey: LOCHNDCaptionDetailsViewShowFavoriteButton2
-        Type: Header
+    HelpDetailsViewShowFavoriteButton:
+        Title: 'Star button that adds or removes the game from favorites. Needs ThemeExtras.'
+        LocKey: LOCHNDTipDetailsViewShowFavoriteButton
+        Type: Thickness
+        Default: '0'
     DetailsViewShowHiddenButton:
         Title: 'Show the hide button (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowHiddenButton
         Type: Boolean
         Default: 'False'
         Description: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.'
-    CaptionDetailsViewShowHiddenButton1:
-        Title: '  ↳ Eye button that hides the game from the library or shows it again.'
-        LocKey: LOCHNDCaptionDetailsViewShowHiddenButton1
-        Type: Header
-    CaptionDetailsViewShowHiddenButton2:
-        Title: '  ↳ Needs ThemeExtras.'
-        LocKey: LOCHNDCaptionDetailsViewShowHiddenButton2
-        Type: Header
+    HelpDetailsViewShowHiddenButton:
+        Title: 'Eye button that hides the game from the library or shows it again. Needs ThemeExtras.'
+        LocKey: LOCHNDTipDetailsViewShowHiddenButton
+        Type: Thickness
+        Default: '0'
     HeroShowSteamShortcuts:
         Title: 'Steam shortcuts button (Steam Shortcuts)'
         LocKey: LOCHNDOptHeroShowSteamShortcuts
         Type: Boolean
         Default: 'True'
         Description: 'Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.'
-    CaptionHeroShowSteamShortcuts1:
-        Title: '  ↳ Button with the Steam client, store, community and guides pages.'
-        LocKey: LOCHNDCaptionHeroShowSteamShortcuts1
-        Type: Header
-    CaptionHeroShowSteamShortcuts2:
-        Title: '  ↳ Needs Steam Shortcuts.'
-        LocKey: LOCHNDCaptionHeroShowSteamShortcuts2
-        Type: Header
+    HelpHeroShowSteamShortcuts:
+        Title: 'Button with the Steam client, store, community and guides pages. Needs Steam Shortcuts.'
+        LocKey: LOCHNDTipHeroShowSteamShortcuts
+        Type: Thickness
+        Default: '0'
     HeroShowUpdateStatus:
         Title: 'Update available indicator (Game Update Status)'
         LocKey: LOCHNDOptHeroShowUpdateStatus
         Type: Boolean
         Default: 'True'
         Description: 'Dot that shows when a Steam or Epic update is available. Needs Game Update Status.'
-    CaptionHeroShowUpdateStatus1:
-        Title: '  ↳ Dot that shows when a Steam or Epic update is available.'
-        LocKey: LOCHNDCaptionHeroShowUpdateStatus1
-        Type: Header
-    CaptionHeroShowUpdateStatus2:
-        Title: '  ↳ Needs Game Update Status.'
-        LocKey: LOCHNDCaptionHeroShowUpdateStatus2
-        Type: Header
+    HelpHeroShowUpdateStatus:
+        Title: 'Dot that shows when a Steam or Epic update is available. Needs Game Update Status.'
+        LocKey: LOCHNDTipHeroShowUpdateStatus
+        Type: Thickness
+        Default: '0'
     DetailsViewAllowUseOfLogos:
         Title: 'Use game logos (Extra Metadata Loader)'
         LocKey: LOCHNDOptDetailsViewAllowUseOfLogos
         Type: Boolean
         Default: 'True'
         Description: 'Shows the game logo instead of its name when Extra Metadata Loader has one.'
-    CaptionDetailsViewAllowUseOfLogos1:
-        Title: '  ↳ Shows the game logo instead of its name when Extra Metadata Loader has one.'
-        LocKey: LOCHNDCaptionDetailsViewAllowUseOfLogos1
-        Type: Header
+    HelpDetailsViewAllowUseOfLogos:
+        Title: 'Shows the game logo instead of its name when Extra Metadata Loader has one.'
+        LocKey: LOCHNDTipDetailsViewAllowUseOfLogos
+        Type: Thickness
+        Default: '0'
     DetailsViewDisplayGameNameIfLogoVisible:
         Title: 'Show the game name even with a logo'
         LocKey: LOCHNDOptDetailsViewDisplayGameNameIfLogoVisible
         Type: Boolean
         Default: 'False'
         Description: 'Keeps the game name under the logo.'
-    CaptionDetailsViewDisplayGameNameIfLogoVisible1:
-        Title: '  ↳ Keeps the game name under the logo.'
-        LocKey: LOCHNDCaptionDetailsViewDisplayGameNameIfLogoVisible1
-        Type: Header
+    HelpDetailsViewDisplayGameNameIfLogoVisible:
+        Title: 'Keeps the game name under the logo.'
+        LocKey: LOCHNDTipDetailsViewDisplayGameNameIfLogoVisible
+        Type: Thickness
+        Default: '0'
     GameLogoMaxWidth:
         Title: 'Logo maximum width'
         LocKey: LOCHNDOptGameLogoMaxWidth
@@ -4648,10 +4502,11 @@ Variables:
             Min: '100'
             Max: '2000'
             Step: '10'
-    CaptionGameLogoMaxWidth1:
-        Title: '  ↳ Largest width of the game logo (Extra Metadata Loader).'
-        LocKey: LOCHNDCaptionGameLogoMaxWidth1
-        Type: Header
+    HelpGameLogoMaxWidth:
+        Title: 'Largest width of the game logo (Extra Metadata Loader).'
+        LocKey: LOCHNDTipGameLogoMaxWidth
+        Type: Thickness
+        Default: '0'
     GameLogoMaxHeight:
         Title: 'Logo maximum height'
         LocKey: LOCHNDOptGameLogoMaxHeight
@@ -4662,28 +4517,27 @@ Variables:
             Min: '50'
             Max: '1000'
             Step: '1'
-    CaptionGameLogoMaxHeight1:
-        Title: '  ↳ Largest height of the game logo (Extra Metadata Loader).'
-        LocKey: LOCHNDCaptionGameLogoMaxHeight1
-        Type: Header
+    HelpGameLogoMaxHeight:
+        Title: 'Largest height of the game logo (Extra Metadata Loader).'
+        LocKey: LOCHNDTipGameLogoMaxHeight
+        Type: Thickness
+        Default: '0'
     HeroCoverWidth:
         Title: 'Width of the cover in the header'
         LocKey: LOCHNDOptHeroCoverWidth
         Type: Double
         Default: '230'
-        Description: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork header" list.'
+        Description: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork card" list.'
         Slider:
             Min: '100'
             Max: '500'
             Step: '1'
-    CaptionHeroCoverWidth1:
-        Title: '  ↳ Cover shown in the bottom-left corner of the card.'
-        LocKey: LOCHNDCaptionHeroCoverWidth1
-        Type: Header
-    CaptionHeroCoverWidth2:
-        Title: '  ↳ Its place is set in the "Cover in the artwork header" list.'
-        LocKey: LOCHNDCaptionHeroCoverWidth2
-        Type: Header
+    HelpHeroCoverWidth:
+        Title: 'Cover shown in the bottom-left corner of the card. Its place is set in the "Cover in the artwork card" list.'
+        LocKey: LOCHNDTipHeroCoverWidth
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeroCover_Default'
     HeroCoverHeight:
         Title: 'Height of the cover in the header'
         LocKey: LOCHNDOptHeroCoverHeight
@@ -4694,24 +4548,12 @@ Variables:
             Min: '150'
             Max: '600'
             Step: '1'
-    CaptionHeroCoverHeight1:
-        Title: '  ↳ A 2:3 ratio (230 x 345) fits most covers.'
-        LocKey: LOCHNDCaptionHeroCoverHeight1
-        Type: Header
-    HeroCoverCornerRadius:
-        Title: 'Cover corner rounding'
-        LocKey: LOCHNDOptHeroCoverCornerRadius
-        Type: CornerRadius
-        Default: '12'
-        Description: 'Applies after a Playnite restart.'
-        Slider:
-            Min: '0'
-            Max: '40'
-            Step: '1'
-    CaptionHeroCoverCornerRadius1:
-        Title: '  ↳ Applies after a Playnite restart.'
-        LocKey: LOCHNDCaptionHeroCoverCornerRadius1
-        Type: Header
+    HelpHeroCoverHeight:
+        Title: 'A 2:3 ratio (230 x 345) fits most covers.'
+        LocKey: LOCHNDTipHeroCoverHeight
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeroCover_Inside'
     HeaderHeroChips:
         Title: 'Details view - information chips'
         LocKey: LOCHNDHeaderHeroChips
@@ -4722,14 +4564,12 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.'
-    CaptionHeroShowInfoLine1:
-        Title: '  ↳ The chips under the title (date, platforms, genres, times...).'
-        LocKey: LOCHNDCaptionHeroShowInfoLine1
-        Type: Header
-    CaptionHeroShowInfoLine2:
-        Title: '  ↳ The gear at the start of the chips line sets each chip.'
-        LocKey: LOCHNDCaptionHeroShowInfoLine2
-        Type: Header
+    HelpHeroShowInfoLine:
+        Title: 'The chips under the title (date, platforms, genres, times...). The gear at the start of the chips line sets each chip.'
+        LocKey: LOCHNDTipHeroShowInfoLine
+        Type: Thickness
+        Default: '0'
+        Preview: 'Chips_Default'
     HeroInfoLineMaxWidth:
         Title: 'Maximum width of the chips line'
         LocKey: LOCHNDOptHeroInfoLineMaxWidth
@@ -4740,19 +4580,12 @@ Variables:
             Min: '300'
             Max: '2000'
             Step: '10'
-    CaptionHeroInfoLineMaxWidth1:
-        Title: '  ↳ Width after which the chips wrap to a new line.'
-        LocKey: LOCHNDCaptionHeroInfoLineMaxWidth1
-        Type: Header
-    HeroChipCornerRadius:
-        Title: 'Chip corner rounding'
-        LocKey: LOCHNDOptHeroChipCornerRadius
-        Type: CornerRadius
-        Default: '12'
-        Slider:
-            Min: '0'
-            Max: '20'
-            Step: '1'
+    HelpHeroInfoLineMaxWidth:
+        Title: 'Width after which the chips wrap to a new line.'
+        LocKey: LOCHNDTipHeroInfoLineMaxWidth
+        Type: Thickness
+        Default: '0'
+        Preview: 'Chips_Default'
     HeroShowReleaseDate:
         Title: 'Release date'
         LocKey: LOCHNDOptHeroShowReleaseDate
@@ -4839,28 +4672,22 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.'
-    CaptionHeroShowAvgFps1:
-        Title: '  ↳ Average FPS over all recorded sessions.'
-        LocKey: LOCHNDCaptionHeroShowAvgFps1
-        Type: Header
-    CaptionHeroShowAvgFps2:
-        Title: '  ↳ Needs GameActivity with FPS logging.'
-        LocKey: LOCHNDCaptionHeroShowAvgFps2
-        Type: Header
+    HelpHeroShowAvgFps:
+        Title: 'Average FPS over all recorded sessions. Needs GameActivity with FPS logging.'
+        LocKey: LOCHNDTipHeroShowAvgFps
+        Type: Thickness
+        Default: '0'
     HeroChipsOpenSections:
         Title: 'Clicking a chip opens or folds its section'
         LocKey: LOCHNDOptHeroChipsOpenSections
         Type: Boolean
         Default: 'True'
         Description: 'A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.'
-    CaptionHeroChipsOpenSections1:
-        Title: '  ↳ A click on a chip opens or folds the matching section below.'
-        LocKey: LOCHNDCaptionHeroChipsOpenSections1
-        Type: Header
-    CaptionHeroChipsOpenSections2:
-        Title: '  ↳ Times, achievements, activity, genres and tags.'
-        LocKey: LOCHNDCaptionHeroChipsOpenSections2
-        Type: Header
+    HelpHeroChipsOpenSections:
+        Title: 'A click on a chip opens or folds the matching section below. Times, achievements, activity, genres and tags.'
+        LocKey: LOCHNDTipHeroChipsOpenSections
+        Type: Thickness
+        Default: '0'
     HeroChipBreakReleaseDate:
         Title: 'New line before: Release date'
         LocKey: LOCHNDOptHeroChipBreakReleaseDate
@@ -5016,68 +4843,68 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'HowLongToBeat main story time in a corner of the cover.'
-    CaptionHltbShowOnCover1:
-        Title: '  ↳ HowLongToBeat main story time in a corner of the cover.'
-        LocKey: LOCHNDCaptionHltbShowOnCover1
-        Type: Header
+    HelpHltbShowOnCover:
+        Title: 'HowLongToBeat main story time in a corner of the cover.'
+        LocKey: LOCHNDTipHltbShowOnCover
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeroCover_Hidden'
     AchievementsShowOnCover:
         Title: 'Achievements on the cover'
         LocKey: LOCHNDOptAchievementsShowOnCover
         Type: Boolean
         Default: 'True'
         Description: 'Unlocked and total achievements in a corner of the cover.'
-    CaptionAchievementsShowOnCover1:
-        Title: '  ↳ Unlocked and total achievements in a corner of the cover.'
-        LocKey: LOCHNDCaptionAchievementsShowOnCover1
-        Type: Header
+    HelpAchievementsShowOnCover:
+        Title: 'Unlocked and total achievements in a corner of the cover.'
+        LocKey: LOCHNDTipAchievementsShowOnCover
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeroCover_Hidden'
     LibraryListShowHltb:
         Title: 'HowLongToBeat time in the game list'
         LocKey: LOCHNDOptLibraryListShowHltb
         Type: Boolean
         Default: 'True'
         Description: 'HowLongToBeat time at the end of each game in the list. Turn on "view item" in the HowLongToBeat settings.'
-    CaptionLibraryListShowHltb1:
-        Title: '  ↳ HowLongToBeat time at the end of each game in the list.'
-        LocKey: LOCHNDCaptionLibraryListShowHltb1
-        Type: Header
-    CaptionLibraryListShowHltb2:
-        Title: '  ↳ Turn on "view item" in the HowLongToBeat settings.'
-        LocKey: LOCHNDCaptionLibraryListShowHltb2
-        Type: Header
+    HelpLibraryListShowHltb:
+        Title: 'HowLongToBeat time at the end of each game in the list. Turn on "view item" in the HowLongToBeat settings.'
+        LocKey: LOCHNDTipLibraryListShowHltb
+        Type: Thickness
+        Default: '0'
     LibraryListShowAchievements:
         Title: 'Achievements in the game list'
         LocKey: LOCHNDOptLibraryListShowAchievements
         Type: Boolean
         Default: 'True'
         Description: 'Unlocked and total achievements at the end of each game in the list. Can slow down very large libraries.'
-    CaptionLibraryListShowAchievements1:
-        Title: '  ↳ Unlocked and total achievements at the end of each game in the list.'
-        LocKey: LOCHNDCaptionLibraryListShowAchievements1
-        Type: Header
-    CaptionLibraryListShowAchievements2:
-        Title: '  ↳ Can slow down very large libraries.'
-        LocKey: LOCHNDCaptionLibraryListShowAchievements2
-        Type: Header
+    HelpLibraryListShowAchievements:
+        Title: 'Unlocked and total achievements at the end of each game in the list. Can slow down very large libraries.'
+        LocKey: LOCHNDTipLibraryListShowAchievements
+        Type: Thickness
+        Default: '0'
     GridCoverShowHltb:
         Title: 'HowLongToBeat time on Grid view covers'
         LocKey: LOCHNDOptGridCoverShowHltb
         Type: Boolean
         Default: 'True'
         Description: 'HowLongToBeat time on each cover of the Grid view.'
-    CaptionGridCoverShowHltb1:
-        Title: '  ↳ HowLongToBeat time on each cover of the Grid view.'
-        LocKey: LOCHNDCaptionGridCoverShowHltb1
-        Type: Header
+    HelpGridCoverShowHltb:
+        Title: 'HowLongToBeat time on each cover of the Grid view.'
+        LocKey: LOCHNDTipGridCoverShowHltb
+        Type: Thickness
+        Default: '0'
     GridCoverShowAchievements:
         Title: 'Achievements on Grid view covers'
         LocKey: LOCHNDOptGridCoverShowAchievements
         Type: Boolean
         Default: 'True'
         Description: 'Achievements on each cover of the Grid view.'
-    CaptionGridCoverShowAchievements1:
-        Title: '  ↳ Achievements on each cover of the Grid view.'
-        LocKey: LOCHNDCaptionGridCoverShowAchievements1
-        Type: Header
+    HelpGridCoverShowAchievements:
+        Title: 'Achievements on each cover of the Grid view.'
+        LocKey: LOCHNDTipGridCoverShowAchievements
+        Type: Thickness
+        Default: '0'
     HeaderTabs:
         Title: 'Details view - tabs'
         LocKey: LOCHNDHeaderTabs
@@ -5088,14 +4915,11 @@ Variables:
         Type: Boolean
         Default: 'False'
         Description: 'Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.'
-    CaptionDetailsViewTabsMode1:
-        Title: '  ↳ Tabs above the sections: All, About, Media, Stats, Community.'
-        LocKey: LOCHNDCaptionDetailsViewTabsMode1
-        Type: Header
-    CaptionDetailsViewTabsMode2:
-        Title: '  ↳ The gear of each section sets its tab, 0 = every tab.'
-        LocKey: LOCHNDCaptionDetailsViewTabsMode2
-        Type: Header
+    HelpDetailsViewTabsMode:
+        Title: 'Tabs above the sections: All, About, Media, Stats, Community. The gear of each section sets its tab, 0 = every tab.'
+        LocKey: LOCHNDTipDetailsViewTabsMode
+        Type: Thickness
+        Default: '0'
     DetailsViewTabNotes:
         Title: 'Tab: Notes'
         LocKey: LOCHNDOptDetailsViewTabNotes
@@ -5268,34 +5092,34 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'The bar under the artwork with the last played date, time played and completion status.'
-    CaptionDetailsViewShowHeaderBar1:
-        Title: '  ↳ The bar under the artwork with the last played date, time played and completion status.'
-        LocKey: LOCHNDCaptionDetailsViewShowHeaderBar1
-        Type: Header
+    HelpDetailsViewShowHeaderBar:
+        Title: 'The bar under the artwork with the last played date, time played and completion status.'
+        LocKey: LOCHNDTipDetailsViewShowHeaderBar
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeaderBar_Default'
     DetailsViewShowInfoButton:
         Title: 'Information panel button'
         LocKey: LOCHNDOptDetailsViewShowInfoButton
         Type: Boolean
         Default: 'True'
         Description: 'Button that shows or hides the information panel (cover, description, details).'
-    CaptionDetailsViewShowInfoButton1:
-        Title: '  ↳ Button that shows or hides the information panel (cover, description, details).'
-        LocKey: LOCHNDCaptionDetailsViewShowInfoButton1
-        Type: Header
+    HelpDetailsViewShowInfoButton:
+        Title: 'Button that shows or hides the information panel (cover, description, details).'
+        LocKey: LOCHNDTipDetailsViewShowInfoButton
+        Type: Thickness
+        Default: '0'
     DetailsViewShowUserRating:
         Title: 'Your rating with stars (ThemeExtras)'
         LocKey: LOCHNDOptDetailsViewShowUserRating
         Type: Boolean
         Default: 'False'
         Description: 'Your rating as clickable stars. Needs ThemeExtras.'
-    CaptionDetailsViewShowUserRating1:
-        Title: '  ↳ Your rating as clickable stars.'
-        LocKey: LOCHNDCaptionDetailsViewShowUserRating1
-        Type: Header
-    CaptionDetailsViewShowUserRating2:
-        Title: '  ↳ Needs ThemeExtras.'
-        LocKey: LOCHNDCaptionDetailsViewShowUserRating2
-        Type: Header
+    HelpDetailsViewShowUserRating:
+        Title: 'Your rating as clickable stars. Needs ThemeExtras.'
+        LocKey: LOCHNDTipDetailsViewShowUserRating
+        Type: Thickness
+        Default: '0'
     HeaderButtonSize:
         Title: 'Size of the header bar buttons'
         LocKey: LOCHNDOptHeaderButtonSize
@@ -5306,10 +5130,12 @@ Variables:
             Min: '20'
             Max: '56'
             Step: '1'
-    CaptionHeaderButtonSize1:
-        Title: '  ↳ Size of the round buttons in the header bar.'
-        LocKey: LOCHNDCaptionHeaderButtonSize1
-        Type: Header
+    HelpHeaderButtonSize:
+        Title: 'Size of the round buttons in the header bar.'
+        LocKey: LOCHNDTipHeaderButtonSize
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeaderBar_Bar'
     HeaderDetailsInfo:
         Title: 'Details view - information and description'
         LocKey: LOCHNDHeaderDetailsInfo
@@ -5320,10 +5146,12 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'Information panel (cover, description, details) open when a game is selected.'
-    CaptionDetailsViewShowInfoPanelDefault1:
-        Title: '  ↳ Information panel (cover, description, details) open when a game is selected.'
-        LocKey: LOCHNDCaptionDetailsViewShowInfoPanelDefault1
-        Type: Header
+    HelpDetailsViewShowInfoPanelDefault:
+        Title: 'Information panel (cover, description, details) open when a game is selected.'
+        LocKey: LOCHNDTipDetailsViewShowInfoPanelDefault
+        Type: Thickness
+        Default: '0'
+        Preview: 'HeroCover_InsideKeepPanel'
     DetailsViewDescriptionWidth:
         Title: 'Description width'
         LocKey: LOCHNDOptDetailsViewDescriptionWidth
@@ -5334,10 +5162,11 @@ Variables:
             Min: '150'
             Max: '2400'
             Step: '10'
-    CaptionDetailsViewDescriptionWidth1:
-        Title: '  ↳ Width of the game description.'
-        LocKey: LOCHNDCaptionDetailsViewDescriptionWidth1
-        Type: Header
+    HelpDetailsViewDescriptionWidth:
+        Title: 'Width of the game description.'
+        LocKey: LOCHNDTipDetailsViewDescriptionWidth
+        Type: Thickness
+        Default: '0'
     DetailsViewDescriptionMaxHeight:
         Title: 'Description maximum height'
         LocKey: LOCHNDOptDetailsViewDescriptionMaxHeight
@@ -5348,10 +5177,11 @@ Variables:
             Min: '110'
             Max: '2000'
             Step: '10'
-    CaptionDetailsViewDescriptionMaxHeight1:
-        Title: '  ↳ Height after which the description scrolls.'
-        LocKey: LOCHNDCaptionDetailsViewDescriptionMaxHeight1
-        Type: Header
+    HelpDetailsViewDescriptionMaxHeight:
+        Title: 'Height after which the description scrolls.'
+        LocKey: LOCHNDTipDetailsViewDescriptionMaxHeight
+        Type: Thickness
+        Default: '0'
     DetailsViewDescriptionDockToRight:
         Title: 'Description on the right'
         LocKey: LOCHNDOptDetailsViewDescriptionDockToRight
@@ -5469,28 +5299,22 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.'
-    CaptionDemoteSectionsShownElsewhere1:
-        Title: '  ↳ A section whose information is already shown above folds at the bottom of its column.'
-        LocKey: LOCHNDCaptionDemoteSectionsShownElsewhere1
-        Type: Header
-    CaptionDemoteSectionsShownElsewhere2:
-        Title: '  ↳ Each section can opt out in its gear.'
-        LocKey: LOCHNDCaptionDemoteSectionsShownElsewhere2
-        Type: Header
+    HelpDemoteSectionsShownElsewhere:
+        Title: 'A section whose information is already shown above folds at the bottom of its column. Each section can opt out in its gear.'
+        LocKey: LOCHNDTipDemoteSectionsShownElsewhere
+        Type: Thickness
+        Default: '0'
     DetailsViewUseMetadataUtilities:
         Title: 'Group genres and tags by prefix (Metadata Utilities)'
         LocKey: LOCHNDOptDetailsViewUseMetadataUtilities
         Type: Boolean
         Default: 'False'
         Description: 'Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.'
-    CaptionDetailsViewUseMetadataUtilities1:
-        Title: '  ↳ Genres, categories, features and tags grouped by prefix.'
-        LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities1
-        Type: Header
-    CaptionDetailsViewUseMetadataUtilities2:
-        Title: '  ↳ Needs Metadata Utilities and its prefixes.'
-        LocKey: LOCHNDCaptionDetailsViewUseMetadataUtilities2
-        Type: Header
+    HelpDetailsViewUseMetadataUtilities:
+        Title: 'Genres, categories, features and tags grouped by prefix. Needs Metadata Utilities and its prefixes.'
+        LocKey: LOCHNDTipDetailsViewUseMetadataUtilities
+        Type: Thickness
+        Default: '0'
     DemoteGenresSection:
         Title: '... including Genres'
         LocKey: LOCHNDOptDemoteGenresSection
@@ -5614,6 +5438,36 @@ Variables:
     DetailsViewExpandScreenshotUtilitiesPanel:
         Title: 'Screenshot Utilities'
         LocKey: LOCHNDOptDetailsViewExpandScreenshotUtilitiesPanel
+        Type: Boolean
+        Default: 'False'
+    HeaderDetailsColumns:
+        Title: 'Details view - sections moved to the right column'
+        LocKey: LOCHNDHeaderDetailsColumns
+        Type: Header
+    DetailsViewGenresInRightColumn:
+        Title: 'Genres in the right column'
+        LocKey: LOCHNDOptDetailsViewGenresInRightColumn
+        Type: Boolean
+        Default: 'False'
+        Description: 'Moves the section to the narrow right column, for example at its bottom (order below). There it shows the Playnite list, without the Metadata Utilities grouping, and the chips of the artwork no longer fold it. Applies after a Playnite restart.'
+    HelpDetailsViewGenresInRightColumn:
+        Title: 'Moves the section to the narrow right column, for example at its bottom (order below). There it shows the Playnite list, without the Metadata Utilities grouping, and the chips of the artwork no longer fold it. Applies after a Playnite restart.'
+        LocKey: LOCHNDTipDetailsViewGenresInRightColumn
+        Type: Thickness
+        Default: '0'
+    DetailsViewCategoriesInRightColumn:
+        Title: 'Categories in the right column'
+        LocKey: LOCHNDOptDetailsViewCategoriesInRightColumn
+        Type: Boolean
+        Default: 'False'
+    DetailsViewFeaturesInRightColumn:
+        Title: 'Features in the right column'
+        LocKey: LOCHNDOptDetailsViewFeaturesInRightColumn
+        Type: Boolean
+        Default: 'False'
+    DetailsViewTagsInRightColumn:
+        Title: 'Tags in the right column'
+        LocKey: LOCHNDOptDetailsViewTagsInRightColumn
         Type: Boolean
         Default: 'False'
     HeaderDetailsOrderLeft:
@@ -5782,6 +5636,42 @@ Variables:
         LocKey: LOCHNDOptDetailsViewSectionOrderScreenshotUtilities
         Type: Int32
         Default: '6'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderRightGenres:
+        Title: 'Genres (when in the right column)'
+        LocKey: LOCHNDOptDetailsViewSectionOrderRightGenres
+        Type: Int32
+        Default: '7'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderRightCategories:
+        Title: 'Categories (when in the right column)'
+        LocKey: LOCHNDOptDetailsViewSectionOrderRightCategories
+        Type: Int32
+        Default: '8'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderRightFeatures:
+        Title: 'Features (when in the right column)'
+        LocKey: LOCHNDOptDetailsViewSectionOrderRightFeatures
+        Type: Int32
+        Default: '9'
+        Slider:
+            Min: '0'
+            Max: '18'
+            Step: '1'
+    DetailsViewSectionOrderRightTags:
+        Title: 'Tags (when in the right column)'
+        LocKey: LOCHNDOptDetailsViewSectionOrderRightTags
+        Type: Int32
+        Default: '10'
         Slider:
             Min: '0'
             Max: '18'
@@ -6290,10 +6180,11 @@ Variables:
             Min: '100'
             Max: '1200'
             Step: '10'
-    CaptionAchievementsDataGridMaxHeight1:
-        Title: '  ↳ Height after which the full achievements table scrolls.'
-        LocKey: LOCHNDCaptionAchievementsDataGridMaxHeight1
-        Type: Header
+    HelpAchievementsDataGridMaxHeight:
+        Title: 'Height after which the full achievements table scrolls.'
+        LocKey: LOCHNDTipAchievementsDataGridMaxHeight
+        Type: Thickness
+        Default: '0'
     HeaderGridCovers:
         Title: 'Grid view - covers'
         LocKey: LOCHNDHeaderGridCovers
@@ -6362,10 +6253,11 @@ Variables:
             Min: '24'
             Max: '64'
             Step: '1'
-    CaptionSectionHeaderMinHeight1:
-        Title: '  ↳ Height of the section titles with their fold arrow and gear.'
-        LocKey: LOCHNDCaptionSectionHeaderMinHeight1
-        Type: Header
+    HelpSectionHeaderMinHeight:
+        Title: 'Height of the section titles with their fold arrow and gear.'
+        LocKey: LOCHNDTipSectionHeaderMinHeight
+        Type: Thickness
+        Default: '0'
     SectionContainerMinHeight:
         Title: 'Section minimum height'
         LocKey: LOCHNDOptSectionContainerMinHeight
@@ -6381,14 +6273,11 @@ Variables:
         Type: Boolean
         Default: 'True'
         Description: 'Shows the name next to each link icon. Off: icons only.'
-    CaptionLinksShowNames1:
-        Title: '  ↳ Shows the name next to each link icon.'
-        LocKey: LOCHNDCaptionLinksShowNames1
-        Type: Header
-    CaptionLinksShowNames2:
-        Title: '  ↳ Off: icons only.'
-        LocKey: LOCHNDCaptionLinksShowNames2
-        Type: Header
+    HelpLinksShowNames:
+        Title: 'Shows the name next to each link icon. Off: icons only.'
+        LocKey: LOCHNDTipLinksShowNames
+        Type: Thickness
+        Default: '0'
     LinkIconSize:
         Title: 'Link icon size'
         LocKey: LOCHNDOptLinkIconSize
@@ -6399,10 +6288,11 @@ Variables:
             Min: '12'
             Max: '48'
             Step: '1'
-    CaptionLinkIconSize1:
-        Title: '  ↳ Size of the link icons (favicons).'
-        LocKey: LOCHNDCaptionLinkIconSize1
-        Type: Header
+    HelpLinkIconSize:
+        Title: 'Size of the link icons (favicons).'
+        LocKey: LOCHNDTipLinkIconSize
+        Type: Thickness
+        Default: '0'
     FontSizeSmall:
         Title: 'Small text'
         LocKey: LOCHNDOptFontSizeSmall
