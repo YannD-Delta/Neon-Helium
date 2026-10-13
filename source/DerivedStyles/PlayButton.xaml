@@ -19,7 +19,65 @@
                     <Grid x:Name="Grid">
                         <Border x:Name="DefaultBorder" BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2,0,0,2"
-                                Style="{DynamicResource PlayButtonBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Gradient colors come from Constants.xaml (PlayButton*Color, ContextButton*Color), so ThemeModifier
+                                 and the color profiles also change these Grid view buttons. StaticResource: the hover storyboards
+                                 need frozen colors. The style stays inside the template because Playnite parses each theme file
+                                 alone before merging, and only template content is resolved later, once Constants.xaml is loaded. -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.75"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5">
                             <Viewbox Stretch="Uniform" Width="20"
                                      VerticalAlignment="Center" Margin="0,5,8,0">
@@ -50,66 +108,6 @@
                 <Setter Property="Background" Value="{DynamicResource PlayButtonIsMouseOverBackgroundBrush}" />
                 <Setter Property="Tag" Value="True" />
             </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="PlayButtonBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#4FC82F</Color>
-            <Color x:Key="BackgroundColor2">#2BB943</Color>
-            <Color x:Key="BackgroundColor3">#18B14E</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#6FD51D</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#4AC632</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#38BE3C</Color>
-        </Style.Resources>
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -164,7 +162,62 @@
                         <Border x:Name="DefaultBorder" BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="2,0,0,2" MinHeight="{TemplateBinding MinHeight}" MinWidth="{TemplateBinding MinWidth}"
-                                Style="{DynamicResource ContextButtonBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor2}" Offset="0.75"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,5">
                             <Grid Height="22" Margin="0,3,10,0">
                                 <Viewbox Stretch="Uniform" x:Name="DownloadIcon" Visibility="Visible">
@@ -211,66 +264,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ContextButtonBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#399AEC</Color>
-            <Color x:Key="BackgroundColor2">#2A71D8</Color>
-            <Color x:Key="BackgroundColor3">#235ECF</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#47BDFE</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#3794EA</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#3081E0</Color>
-        </Style.Resources>
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.75"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-
     <Style x:Key="MoreActionsButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="White" />
@@ -288,10 +281,111 @@
                     <Grid x:Name="Grid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border x:Name="GreenBorder" BorderBrush="{TemplateBinding BorderBrush}" Visibility="Collapsed"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,2,2,0"
-                                Style="{DynamicResource MoreActionsButtonGreenBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor1}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor2}" Offset="0.50"/>
+                                                <GradientStop Color="{StaticResource PlayButtonBackgroundColor3}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonIsMouseOverBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                                To="{StaticResource PlayButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <Border x:Name="BlueBorder" BorderBrush="{TemplateBinding BorderBrush}" Visibility="Visible"
                                 BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0,2,2,0"
-                                Style="{DynamicResource MoreActionsButtonBlueBackgroundStyle}" Tag="{TemplateBinding Tag}" />
+                                Tag="{TemplateBinding Tag}">
+                            <!-- Inside the template on purpose, see DefaultBorder in PlayButton -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0"/>
+                                                <GradientStop Color="{StaticResource ContextButtonBackgroundColor3}" Offset="0.60"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor1}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonIsMouseOverBackgroundColor2}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                        <ColorAnimation
+                                                                Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                                To="{StaticResource ContextButtonBackgroundColor3}"
+                                                                Duration="0:0:0.2" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                             <TextBlock x:Name="Icon" Text="&#xEA67;" FontFamily="{DynamicResource FontIcoFont}" FontSize="18"
                                        Foreground="#ffffff" VerticalAlignment="Center" Margin="0,0,0,0"/>
@@ -327,112 +421,276 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MoreActionsButtonBlueBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#235ECF</Color>
-            <Color x:Key="BackgroundColor2">#235ECF</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#47bfff</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#3a9eee</Color>
-        </Style.Resources>
-        <Setter Property="Background">
+    <!-- BEGIN generated hero styles: edit tools/build_options.py, then run it. -->
+    <Style x:Key="HeroPlayButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource PlayButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="12,0,52,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.60"/>
-                </LinearGradientBrush>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource HeroButtonCornerRadius}" />
+                        <Border x:Name="Glow" Background="White" Opacity="0" CornerRadius="{DynamicResource HeroButtonCornerRadius}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                            <TextBlock Text="&#xE768;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="14"
+                                       FontWeight="Normal" Foreground="White" VerticalAlignment="Center" Margin="0,1,10,0" />
+                            <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="True" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Glow" Storyboard.TargetProperty="Opacity" To="0.14" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Glow" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.25" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Grid" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource PlayButtonIsMouseOverBackgroundBrush}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="MoreActionsButtonGreenBackgroundStyle" TargetType="Border">
-        <Style.Resources>
-            <Color x:Key="BackgroundColor1">#4FC82F</Color>
-            <Color x:Key="BackgroundColor2">#2BB943</Color>
-            <Color x:Key="BackgroundColor3">#18B14E</Color>
-            <Color x:Key="IsMouseOverBackgroundColor1">#6BD41F</Color>
-            <Color x:Key="IsMouseOverBackgroundColor2">#52C92D</Color>
-            <Color x:Key="IsMouseOverBackgroundColor3">#38BE3C</Color>
-        </Style.Resources>
-        <Setter Property="Background">
+    <Style x:Key="HeroContextButton" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource ContextButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="12,0,52,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0.0, 0.0" EndPoint="1.0, 0.0" >
-                    <GradientStop Color="{StaticResource BackgroundColor1}" Offset="0"/>
-                    <GradientStop Color="{StaticResource BackgroundColor2}" Offset="0.50"/>
-                    <GradientStop Color="{StaticResource BackgroundColor3}" Offset="1"/>
-                </LinearGradientBrush>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="Grid">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource HeroButtonCornerRadius}" />
+                        <Border x:Name="Glow" Background="White" Opacity="0" CornerRadius="{DynamicResource HeroButtonCornerRadius}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="True" />
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Glow" Storyboard.TargetProperty="Opacity" To="0.14" Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Glow" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.25" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Grid" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
-                <DataTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource IsMouseOverBackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.EnterActions>
-                <DataTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[0].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor1}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[1].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor2}"
-                                    Duration="0:0:0.2" />
-                            <ColorAnimation
-                                    Storyboard.TargetProperty="Background.(GradientBrush.GradientStops)[2].(GradientStop.Color)"
-                                    To="{StaticResource BackgroundColor3}"
-                                    Duration="0:0:0.2" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </DataTrigger.ExitActions>
-            </DataTrigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ContextButtonIsMouseOverBackgroundBrush}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
+
+    <!-- Tag = Visibility of PART_ButtonContextAction: the button takes the context colors when it is shown. -->
+    <Style x:Key="HeroMoreActionsButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource MoreButtonInstalledBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="#55FFFFFF" />
+        <Setter Property="BorderThickness" Value="1,0,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Part" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="{DynamicResource HeroButtonCornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Part" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource MoreButtonInstalledIsMouseOverBackgroundBrush}" />
+            </Trigger>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Visible">
+                <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledBackgroundBrush}" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="Visible" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource MoreButtonNotInstalledIsMouseOverBackgroundBrush}" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroIconActionButton" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontFamily" Value="Segoe Fluent Icons, Segoe MDL2 Assets" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="{DynamicResource HeroButtonCornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Icon toggle: Content is the unchecked glyph, Tag the checked glyph (heart by default) -->
+    <Style x:Key="HeroFavoriteToggle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Content" Value="&#xE734;" />
+        <Setter Property="Tag" Value="&#xE735;" />
+        <Setter Property="Width" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Height" Value="{DynamicResource HeroActionButtonHeight}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="Part" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" CornerRadius="{DynamicResource HeroButtonCornerRadius}">
+                        <TextBlock x:Name="Icon" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="18" FontWeight="Normal"
+                                   FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" Property="Text" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="Icon" Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                            <Setter TargetName="Part" Property="BorderBrush" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonHoverBackgroundBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="HeroInfoChip" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource HeroSecondaryButtonBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HeroSecondaryButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource HeroChipCornerRadius}" />
+        <Setter Property="Padding" Value="9,2,9,3" />
+        <Setter Property="Margin" Value="0,0,8,6" />
+    </Style>
+
+    <Style x:Key="HeroInfoChipText" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSize}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="HeroInfoChipLabel" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSize}" />
+        <Setter Property="Foreground" Value="#B3FFFFFF" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,6,0" />
+    </Style>
+
+    <!--
+        Fade and slide in when the selected game changes (Binding.TargetUpdated).
+        The element must carry its own local TranslateTransform: a transform set by a style
+        setter is frozen and cannot be animated.
+    -->
+    <Style x:Key="HeroFadeInStyle" TargetType="{x:Type FrameworkElement}">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.45">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" From="16" To="0" Duration="0:0:0.45">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- END generated hero styles -->
 </ResourceDictionary>

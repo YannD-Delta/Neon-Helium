@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -456,6 +456,110 @@
         </Setter>
     </Style>
 
+    <!-- Quick settings gear in section headers and its popup -->
+    <!-- Gear in section headers: opens the menu of that section (tools/section_menus.py) -->
+    <Style x:Key="SectionQuickSettingsToggle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="Width" Value="26" />
+        <Setter Property="Height" Value="26" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="#ffffff" />
+        <Setter Property="Background" Value="#d3d8e0" />
+        <Setter Property="ToolTip" Value="{DynamicResource LOCHNDQuickTooltip}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Border x:Name="GearBackground" Background="{TemplateBinding Background}"
+                                CornerRadius="{DynamicResource HeroChipCornerRadius}" Opacity="0.14" />
+                        <TextBlock x:Name="Gear" Text="&#xE713;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="14"
+                                   Foreground="{TemplateBinding Foreground}" Opacity="0.5"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="GearBackground" Property="Opacity" Value="0.30" />
+                            <Setter TargetName="Gear" Property="Opacity" Value="0.9" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Gear" Property="Opacity" Value="1" />
+                            <Setter TargetName="Gear" Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <!-- While the popup is open, a click outside closes it; do not let the same click reopen it -->
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="IsHitTestVisible" Value="False" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="QuickSettingsPanel" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SectionCornerRadius}" />
+        <Setter Property="Padding" Value="16,12,16,14" />
+        <Setter Property="Margin" Value="0,0,8,8" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="MaxWidth" Value="420" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="16" ShadowDepth="2" Opacity="0.6" RenderingBias="Performance" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="QuickSettingsTitle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+    </Style>
+
+    <Style x:Key="QuickSettingsHeading" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrushDarker}" />
+        <Setter Property="Typography.Capitals" Value="AllSmallCaps" />
+        <Setter Property="Margin" Value="0,10,0,4" />
+    </Style>
+
+    <Style x:Key="QuickSettingsHint" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
+        <Setter Property="Foreground" Value="{DynamicResource WarningBrush}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+    </Style>
+
+    <!-- Check boxes and buttons in the popup keep the theme's implicit styles (no explicit Style). -->
+
+    <!-- Badges over the game cover -->
+    <Style x:Key="CoverBadge" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="#CC0B0F14" />
+        <Setter Property="BorderBrush" Value="#33FFFFFF" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource HeroChipCornerRadius}" />
+        <Setter Property="Padding" Value="6,2,7,3" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <Style x:Key="CoverBadgeText" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeSmall}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="CoverBadgeLabel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource CoverBadgeText}">
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+        <Setter Property="Margin" Value="0,0,5,0" />
+    </Style>
+
     <Style TargetType="{x:Type Button}" x:Key="PlayersCountButtonStyle">
         <Setter Property="Background" Value="{DynamicResource DetailsViewBannerPanelBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource PlayersCountDetailsViewForegroundBrush}"/>
@@ -488,5 +592,14 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!-- Playnite 10.57+ (theme API 2.10): "Load more" button under long descriptions -->
+    <Style x:Key="LoadMoreButton" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Margin" Value="0,5,0,5" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Padding" Value="12,4,12,4" />
+    </Style>
+
+
+
 </ResourceDictionary>

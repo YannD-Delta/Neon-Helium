@@ -1,75 +1,130 @@
-AddonId: 8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2
+AddonId: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
 Packages:
-  - Version: 3.0
+  - Version: 2.9.2
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9.2/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9_2.pthm
+    Changelog:
+      - "Section gear menus are back: each gear opens the settings of its section (shown, open by default, chips, folding, column, tab, order), applied at once; ↻ marks the ones that need a restart"
+      - "Buttons in each menu open the extension settings and Theme Options"
+  - Version: 2.9.1
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9.1/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9_1.pthm
+    Changelog:
+      - "Fix: changing game scrolled the Details view to the bottom (a section asking to be brought into view after Playnite scrolled back to the top)"
+  - Version: 2.9
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.9/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_9.pthm
+    Changelog:
+      - "Liquid glass: the blurred artwork stays behind the whole page; information, links, sections, tiles and chips are glass panels in the profile colors"
+      - "One corner rounding for the card, panels, tiles, chips, buttons and cover (Corner rounding list); side margins aligned with the card"
+      - "Tiles: spacing under the row, small label over a larger bright value, empty tiles hidden again, new looks (large, compact, text only)"
+      - "Fewer global styles (Liquid Glass, Dune, Neon, Minimal), clearer names, and a preview on every choice of every list"
+      - "New lists: Corner rounding, Page background, Glass of the panels; reworked color profiles (Liquid, Midnight, Ember, Forest, Aurora, Rose, Violet and the best of the previous ones)"
+      - "Help rows in Theme Options: a ? under explained settings, with the full text and sometimes a schema on hover"
+      - "Genres, categories, features and tags can move to the right column, with their own order there"
+  - Version: 2.8
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.8/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_8.pthm
+    Changelog:
+      - "Tiles under the card: twelve slots, each one a Theme Options list (Tile 1 to Tile 12) with 30 informations to choose from and a preview of each"
+      - "New tile informations: play count, date added, release date, source, platforms, developers, publishers, genres, series, age rating, version, each score, achievements percentage, latest and rare achievements, every HowLongToBeat time, last session and recent activity"
+      - "The header bar switches of last played, time played, status, achievements and HowLongToBeat are replaced by the slots; sections still fold when their information shows in a tile"
+  - Version: 2.7
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-13
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.7/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_7.pthm
+    Changelog:
+      - "Artwork card: rounded corners, progressive blur towards the bottom with an accent tint, logo, information, chips and buttons in the blurred band"
+      - "Cover in the bottom-left corner of the card, over the edge and the tiles row; the information panel hides its own cover meanwhile"
+      - "Header bar items drawn as tiles, with new tiles for critic and community scores, install size and average FPS"
+      - "New Theme Options lists with previews: header shape, blur strength, blur height, tint, cover place; new tile looks and a button place at the right of the information"
+      - "Theme Options is the only settings window: the top panel gear and the section gears open it (ThemeExtras), the custom settings panel is gone"
+      - "Helium-Neon-Dune 2.5 and Dune 2.5 styles bring back the full-width artwork"
+  - Version: 2.5.3
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5.3/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5_3.pthm
+    Changelog:
+      - "One theme button in the top panel: the Theme Options and ThemeModifier shortcuts are gone (the Colors page of the settings panel opens both)"
+      - "Theme Options lists its own settings first; the settings of the theme panel come last, under a note, without help rows (the desktop Theme Options view cannot hide them, and removing them would lose them on save)"
+  - Version: 2.5.2
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5.2/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5_2.pthm
+    Changelog:
+      - "Fix: the theme failed to load since 2.4 (resources of Constants.xaml read through StaticResource outside a template, in the Grid view play buttons and in the auto-hide, Metadata Utilities and chip section triggers)"
+  - Version: 2.5
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.5/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_5.pthm
+    Changelog:
+      - "One large settings panel replaces the workshop and the section menus: pages on the left, cards with switches and sliders, help on hover; each section gear opens its page"
+      - "Chips page with a live preview, a show switch and a line break toggle for every chip, and the group order"
+      - "Line break possible before any chip; the group line breaks are gone"
+      - "Settings panel look (profile colors, dark, glass) and size are adjustable; Theme Options now lists only what the panel does not show"
+  - Version: 2.4
+    RequiredApiVersion: 2.10.0
+    ReleaseDate: 2026-10-12
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.4/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_4.pthm
+    Changelog:
+      - "15 complete color profiles (Dune sand, Hybrid red, OLED black, Synthwave, Nord, Dracula, Catppuccin, Tokyo Night, Gruvbox, Rose Pine, Everforest, Solarized, One Dark, Ocean abyss, Graphite), each recoloring the whole theme"
+      - "Optional tabs above the Details view sections (All, About, Media, Stats, Community), set per section in its gear"
+      - "Chips on the artwork open or fold their section with a click; optional auto-hiding top panel and sidebar"
+      - "New integrations: ThemeExtras hide button, GameActivity average FPS chip, Metadata Utilities prefix groups, Screenshot Utilities button, PlayniteAchievements collection level badge and themed unlock notification"
+      - "Playnite theme API 2.10: load more button under long descriptions, wrapped text in the information panel"
+      - "Every setting tooltip now also shows under the setting in Theme Options; window and popup gradients editable in ThemeModifier"
+  - Version: 2.3
     RequiredApiVersion: 2.9.0
-    ReleaseDate: 2026-08-02
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/3.0/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_3_0.pthm
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.3/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_3.pthm
     Changelog:
-      - "Updated Neon for current Playnite releases"
-      - "Added configurable library and platform banners, cover effects, and improved game cover layout"
-      - "Expanded Grid and Details views with game scores, current player counts, and more optional game information"
-      - "Added support for more optional extension panels, including game relations, screenshots, VNDB, Web Explorer, and game activity"
-      - "Added native PlayniteAchievements support in Grid and Details views"
-      - "Improved DuplicateHider source selectors and library icons"
-      - "Made game information and optional extension panels easier to collapse and expand"
-      - "Refined selected-game controls, notifications, and general theme styling"
+      - "Theme workshop: a top panel button opens live sliders and switches (sizes, header bar, chips, cover, sections, links, top panel) with a tooltip on each setting"
+      - "HowLongToBeat time and achievements at the end of each game in the list and on Grid view covers"
+      - "Chip groups can be reordered from the chips gear or Theme Options"
+      - "Preview images next to every drop-down choice in Theme Options"
+      - "Dune top panel as a choice: view buttons centered, transparent bar"
+  - Version: 2.2
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.2/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_2.pthm
+    Changelog:
+      - "Artwork chips are grouped (game, classification, studio and status, HowLongToBeat, achievements, activity) with an optional line break before each group"
+      - "Gear at the start of the chips line: every chip and every line break in one place"
+      - "Each foldable section has its own fold setting in its gear; PlayniteAchievements and GameActivity stay in place by default"
+  - Version: 2.1
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.1/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_1.pthm
+    Changelog:
+      - "Quick settings gear on every Details view section: where the information shows (section, chips, cover, header bar), what the section contains, open by default, plus buttons to the extension settings and to all theme settings; changes apply at once"
+      - "Sections whose information is already shown above (chips, cover, header bar) fold at the bottom of their column instead of repeating it"
+      - "HowLongToBeat time and achievements on the game cover, HowLongToBeat in the header bar, optional category, feature and tag chips"
+      - "Top panel buttons to open Theme Options and ThemeModifier"
+      - "Fixed presets that set a value also exposed as a setting: Theme Options kept it as a user setting after a restart"
   - Version: 2.0
-    RequiredApiVersion: 2.1.0
-    ReleaseDate: 2023-11-03
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/2.0/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_2_0.pthm
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/2.0/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_2_0.pthm
     Changelog:
-      - "Renamed the theme to Neon"
-  - Version: 1.13
-    RequiredApiVersion: 2.1.0
-    ReleaseDate: 2021-12-18
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.13/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_13.pthm
+      - "Renamed to Helium-Neon-Dune: Neon and Helium game information with the Dune Rev artwork header and buttons"
+      - "Settings moved to the Theme Options extension: about 190 settings and 12 drop-down lists, French labels"
+      - "Choose the global style, play button style (Dune, Neon, pill, glass), button location, chip style, accent color, animations, artwork shade, blur and position, header bar style"
+      - "New chips: developers, completion status, score, HowLongToBeat, achievements, latest and rare achievements, GameActivity sessions"
+      - "New integrations: Screenshot Utilities section, Steam Shortcuts and Game Update Status next to Play, ThemeExtras star rating"
+      - "Each section can be opened by default; fade-in animation when the selected game changes"
+      - "ThemeModifier now only holds the color pickers"
+  - Version: 1.0
+    RequiredApiVersion: 2.9.0
+    ReleaseDate: 2026-10-11
+    PackageUrl: https://github.com/YannD-Delta/Neon-Helium/releases/download/1.0/42f3aebe-d455-44a7-bd7f-2dd8afaec9a6_1_0.pthm
     Changelog:
-      - "Ported new changes from the original Helium"
-      - "General: Slight change in popups background color"
-      - 'Details View: Added support for "News Viewer" extension'
-      - "Details View: Fix incorrect margins in details header when Last Played field is disabled"
-      - "Grid View: Fix missing cover show option not showing in grid view when configured"
-      - "Update to Playnite themes API 2.1.0"
-      - "Fix main window not being resizable from the side the sidebar is docked to"
-      - "Details View: Support for Background image extension BackgroundImage control"
-      - "DetailsView: Fix links panel showing when game links count is 0"
-      - "Style filter ComboBox"
-      - "Details View: Fix background image not showing when BackgroundChanger extension is enabled but control is disabled in settings"
-      - "Grid View: Add support for ExtraMetadataLoader video player control"
-      - "Grid View: Add support for NewsViewer extension control"
-      - "General: Adjustments to ThemeModifier variable names"
-      - "Details View: Add support for ExtraMetadataLoader extension alternative video player"
-  - Version: 1.8.1
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-11-03
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.8.1/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_8_1.pthm
-    Changelog:
-      - "Centered the background image on the details panel"
-  - Version: 1.8
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-10-31
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.8/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_8.pthm
-    Changelog:
-      - "Ported new changes from the original Helium"
-      - "General: Animate PlayButton and ContextButton background color transitions"
-      - "Details View: Animate info button and edit button opacity transitions"
-      - "Grid View: Animate edit button opacity transitions"
-      - "Grid View: Modified opacity changes for game item controls"
-      - "Grid View: Add highlight shine animation to covers on hover"
-      - "Minor fixes and improvements"
-      - "Details View: Add ThemeModifier variable to show or hide information panel when Playnite starts"
-      - "Details View: Add ThemeModifier variables to configure horizontal and Vertical alignment of the background image"
-      - "Details View: Add ThemeModifier variable to configure if Extra Metadata Loader logos can be used in the view"
-      - "Details View: Fix Context action button not changing color when game is installing or uninstalling"
-      - "Details View: Add support to show grid with game HowLongToBeat data and ThemeModifier option to enable or disable"
-      - "Grid View: Add ThemeModifier variable to configure if Extra Metadata Loader logos can be used in the view"
-      - "Grid View: Fix Context action button not changing color when game is installing or uninstalling"
-      - "Grid View: Add support to show grid with game HowLongToBeat data and ThemeModifier option to enable or disable"
-      - "Minor fixes and improvements"
-  - Version: 1.6
-    RequiredApiVersion: 2.0.0
-    ReleaseDate: 2021-10-19
-    PackageUrl: https://github.com/XenorPLxx/Neon/releases/download/1.6/8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2_1_6.pthm
-    Changelog:
-      - "Forked from Helium by darklinkpower"
-      - "Modified Grid view to better utilize displays with higher horizontal pixel count"
+      - "First release of Helium-Neon, a fork of Neon with its own theme Id so it can be installed next to Neon"
+      - "Fixed link favicons (the ThemeExtras icon converter result was used as the icon instead of its Value)"
+      - "About 200 ThemeModifier options: colors, sizes, show or hide every section and header item, section order in the Grid and Details views"
+      - "Wired the options that did nothing in Neon (section order, grid logo and game name options)"
+      - "Grid View honours the Playnite Tags and Categories visibility settings"
+      - "Added options for the Game Activity chart heights and the cover selection border"

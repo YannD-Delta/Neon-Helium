@@ -1,10 +1,15 @@
-ThemeApiVersion: 2.9.0
-Id: 8b15c46a-90c2-4fe5-9ebb-1ab25ba7fcb2
-Name: Neon
-Author: Xenor
-Version: 3.0
+ThemeApiVersion: 2.10.0
+Mode: Desktop
+Id: 42f3aebe-d455-44a7-bd7f-2dd8afaec9a6
+Name: Helium-Neon-Dune
+Author: YannD-Delta
+Version: 2.9.2
 Links:
   - Name: GitHub
+    Url: https://github.com/YannD-Delta/Neon-Helium
+  - Name: Based on Neon (Xenor)
     Url: https://github.com/XenorPLxx/Neon
-  - Name: Original Helium
+  - Name: Based on Helium (darklinkpower)
     Url: https://github.com/darklinkpower/Helium
+  - Name: Based on Dune Rev (hugsyf)
+    Url: https://github.com/hugsyf/dune-rev

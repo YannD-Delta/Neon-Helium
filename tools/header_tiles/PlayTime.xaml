@@ -1,0 +1,23 @@
+<DockPanel x:Name="PART_ElemPlayTime" VerticalAlignment="Center" Margin="0">
+    <Viewbox Height="25">
+        <Canvas Width="256" Height="256" Canvas.Left="0" Canvas.Top="0">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <Canvas.Resources/>
+            <Polyline Points="85.5,149.167 128,128 128,55.167 " FillRule="NonZero" StrokeThickness="16" Stroke="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeMiterLimit="10" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            <Path StrokeThickness="16" Stroke="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeMiterLimit="10" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                <Path.Data>
+                    <PathGeometry Figures="M128 17.5c61.027 0 110.5 49.473 110.5 110.5S189.027 238.5 128 238.5S17.5 189.027 17.5 128" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Ellipse Canvas.Left="20.9" Canvas.Top="80.3" Width="11" Height="11" Fill="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeThickness="7" Stroke="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeMiterLimit="10" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            <Ellipse Canvas.Left="44.7" Canvas.Top="45" Width="11" Height="11" Fill="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeThickness="7" Stroke="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeMiterLimit="10" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+            <Ellipse Canvas.Left="80.5" Canvas.Top="21.2" Width="11" Height="11" Fill="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeThickness="7" Stroke="{DynamicResource DetailsViewHeaderIconsFillBrush}" StrokeMiterLimit="10" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+        </Canvas>
+    </Viewbox>
+    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0">
+        <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCTimePlayed}"/>
+        <TextBlock x:Name="PART_TextPlayTime" Style="{DynamicResource HeaderTextBlock}"/>
+    </StackPanel>
+</DockPanel>

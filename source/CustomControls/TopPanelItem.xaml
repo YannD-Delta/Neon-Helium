@@ -105,5 +105,60 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!-- PlayniteAchievements collection level badge: Tag is the level, hidden at 0 (no data or extension missing) -->
+    <Style x:Key="TopPanelCollectorButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource TopPanelNavigateBackButtonStyle}">
+        <Setter Property="Margin" Value="8,0,0,0" />
+        <Setter Property="Padding" Value="8,3,8,3" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" BorderThickness="0" Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter VerticalAlignment="Center" TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="0">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Top panel button that opens Theme Options (ThemeExtras Commands.OpenPluginSettingsCommand) -->
+    <Style x:Key="TopPanelThemeSettingsButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="MinWidth" Value="35" />
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Margin" Value="8,0,0,0" />
+        <Setter Property="Background" Value="{DynamicResource TopPanelItemBackgroundBrush}" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Foreground" Value="{DynamicResource TopPanelItemIsMouseOverForegroundBrush}" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Opacity" Value="0.75" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="{TemplateBinding Background}"
+                            CornerRadius="{DynamicResource ControlCornerRadius}">
+                        <TextBlock FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" Text="&#xE713;" FontSize="18"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource GlyphBrush}" />
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

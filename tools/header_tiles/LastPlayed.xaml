@@ -1,0 +1,6 @@
+<DockPanel x:Name="PART_ElemLastPlayed" VerticalAlignment="Center" Margin="0">
+    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0">
+        <Label Style="{DynamicResource HeaderLabel}" Content="{DynamicResource LOCLastPlayed}"/>
+        <TextBlock x:Name="PART_TextLastActivity" Style="{DynamicResource HeaderTextBlock}"/>
+    </StackPanel>
+</DockPanel>
